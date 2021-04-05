@@ -11,18 +11,20 @@ import { DatVeComponent } from './nhan/dat-ve/dat-ve.component';
 import { QlNguoiDungComponent } from './kien/ql-nguoi-dung/ql-nguoi-dung.component';
 import { QlTuyenXeComponent } from './kien/ql-tuyen-xe/ql-tuyen-xe.component';
 import { QlNhaXeComponent } from './kien/ql-nha-xe/ql-nha-xe.component';
+import {KiemTraVeComponent} from './thao/kiem-tra-ve/kiem-tra-ve.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    XemChiTietChuyenXeComponent,
-    DatVeComponent,
-    QlNguoiDungComponent,
-    QlTuyenXeComponent,
-    QlNhaXeComponent,
-    DangKyComponent,
-    DangNhapComponent
-  ],
+    declarations: [
+        AppComponent,
+        XemChiTietChuyenXeComponent,
+        DatVeComponent,
+        QlNguoiDungComponent,
+        QlTuyenXeComponent,
+        QlNhaXeComponent,
+        DangKyComponent,
+        DangNhapComponent,
+        KiemTraVeComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule
