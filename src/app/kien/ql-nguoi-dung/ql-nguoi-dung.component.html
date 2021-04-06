@@ -88,15 +88,6 @@
       position: relative;
       top: 3px;
     }
-    table.table .form-control {
-      height: 32px;
-      line-height: 32px;
-      box-shadow: none;
-      border-radius: 2px;
-    }
-    table.table .form-control.error {
-      border-color: #f50000;
-    }
     table.table td .add {
       display: none;
     }
@@ -112,7 +103,7 @@
         var row = '<tr>' +
           '<td><input type="text" class="form-control" name="name" id="name"></td>' +
           '<td><input type="text" class="form-control" name="user" id="user"></td>' +
-          '<td><input type="password" class="form-control" name="pass" id="pass"></td>' +
+          '<td><input type="text" class="form-control" name="pass" id="pass"></td>' +
           '<td><input type="text" class="form-control" name="gender" id="gender"></td>' +
           '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
           '<td>' + actions + '</td>' +
@@ -158,6 +149,27 @@
       });
     });
   </script>
+  <script>
+    $(document).ready(function(){
+      // Activate tooltips
+      $('[data-toggle="tooltip"]').tooltip();
+
+      // Filter table rows based on searched term
+      $("#search").on("keyup", function() {
+        var term = $(this).val().toLowerCase();
+        $("table tbody tr").each(function(){
+          $row = $(this);
+          var name = $row.find("td:nth-child(2)").text().toLowerCase();
+          console.log(name);
+          if(name.search(term) < 0){
+            $row.hide();
+          } else{
+            $row.show();
+          }
+        });
+      });
+    });
+  </script>
 </head>
 <body>
 <div class="container">
@@ -170,9 +182,9 @@
             <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Thêm mới</button>
           </div>
           <div style="margin-left: 600px">
-            <input type="text" placeholder="Tìm kiếm..."/>
+            <input type="text" id="search" placeholder="Tìm kiếm..."/>
             <button>Tìm kiếm</button>
-          </div>
+          </div><br>
           <div class="row">
             <div class="col-lg-4">
               <a href="" >Quản lý tài khoản người dùng</a>
