@@ -5,18 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DangKyComponent } from './thao/dang-ky/dang-ky.component';
 import { DangNhapComponent } from './thao/dang-nhap/dang-nhap.component';
+import {KiemTraVeComponent} from "./thao/kiem-tra-ve/kiem-tra-ve.component";
+import {FormsModule} from "@angular/forms";
 // import {KiemTraVeComponent} from "./thao/kiem-tra-ve/kiem-tra-ve.component";
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        DangKyComponent,
-        DangNhapComponent
-        // KiemTraVeComponent
-    ],
+  declarations: [
+    AppComponent,
+    DangKyComponent,
+    DangNhapComponent,
+    KiemTraVeComponent,
+    // KiemTraVeComponent
+  ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
