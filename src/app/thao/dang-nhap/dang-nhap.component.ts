@@ -19,7 +19,8 @@ export class DangNhapComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   onSubmit(createTK: NgForm) {
-    console.log(createTK.value);
+    this.tttaikhoan = createTK.value;
+    console.log(this.tttaikhoan);
   }
 }
 
