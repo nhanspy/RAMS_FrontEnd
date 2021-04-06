@@ -18,13 +18,21 @@
       <div class="card card-signin my-5">
         <div class="card-body">
           <h5 class="card-title text-center">ĐĂNG NHẬP</h5>
-          <form class="form-signin">
+          <form class="form-signin" #createTK = "ngForm"
+                (ngSubmit)="onSubmit(createTK)">
+
             <div class="form-label-group">
-              <input type="text" id="" class="form-control" placeholder="Tài Khoản" required autofocus>
+              <input
+                [(ngModel)]= tttaikhoan.taikhoan
+                name="taikhoan"
+                type="text" id="" class="form-control" placeholder="Tài Khoản" required autofocus>
               <label for="">Tài Khoản</label>
             </div>
             <div class="form-label-group">
-              <input type="password" id="inputPassword" class="form-control" placeholder="Mật khẩu" required>
+              <input
+                [(ngModel)]= tttaikhoan.matkhau
+                name="matkhau"
+                type="password" id="inputPassword" class="form-control" placeholder="Mật khẩu" required>
               <label for="inputPassword">Mật khẩu</label>
             </div>
 
