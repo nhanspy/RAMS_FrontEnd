@@ -18,6 +18,7 @@ import { QlNhaXeComponent } from './kien/ql-nha-xe/ql-nha-xe.component';
 import {KiemTraVeComponent} from './thao/kiem-tra-ve/kiem-tra-ve.component';
 import {FormsModule} from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,
