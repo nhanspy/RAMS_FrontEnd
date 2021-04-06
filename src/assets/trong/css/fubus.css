@@ -489,9 +489,9 @@ img[data-v-302932a8]{-webkit-user-drag:none;}
 @-webkit-keyframes btn-quick-alo-circle-fill-anim-data-v-68ac1694{0%{transform:rotate(0) scale(.7) skew(1deg);opacity:.2;}50%{transform:rotate(0) scale(1) skew(1deg);opacity:.2;}to{transform:rotate(0) scale(.7) skew(1deg);opacity:.2;}}
 @-webkit-keyframes btn-quick-alo-circle-img-anim-data-v-68ac1694{0%{-webkit-transform:rotate(0) scale(1) skew(1deg);}10%{-webkit-transform:rotate(-25deg) scale(1) skew(1deg);}20%{-webkit-transform:rotate(25deg) scale(1) skew(1deg);}30%{-webkit-transform:rotate(-25deg) scale(1) skew(1deg);}40%{-webkit-transform:rotate(25deg) scale(1) skew(1deg);}50%{-webkit-transform:rotate(0) scale(1) skew(1deg);}to{-webkit-transform:rotate(0) scale(1) skew(1deg);}}
 /*! CSS Used fontfaces */
-@font-face{font-family:"SFProText";src:url(https://futabus.vn/_nuxt/fonts/SFProText.85bd46c.ttf);font-weight:400;font-display:swap;}
-@font-face{font-family:"SFProText";src:url(https://futabus.vn/_nuxt/fonts/SFProText-Bold.d6079ef.ttf);font-weight:700;font-display:swap;}
-@font-face{font-family:"SFProText";src:url(https://futabus.vn/_nuxt/fonts/SFProText-Heavy.6c49879.ttf);font-weight:900;font-display:swap;}
+/*@font-face{font-family:"SFProText";src:url(https://futabus.vn/_nuxt/fonts/SFProText.85bd46c.ttf);font-weight:400;font-display:swap;}*/
+/*@font-face{font-family:"SFProText";src:url(https://futabus.vn/_nuxt/fonts/SFProText-Bold.d6079ef.ttf);font-weight:700;font-display:swap;}*/
+/*@font-face{font-family:"SFProText";src:url(https://futabus.vn/_nuxt/fonts/SFProText-Heavy.6c49879.ttf);font-weight:900;font-display:swap;}*/
 
 
 
