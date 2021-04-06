@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import * as $ from 'jquery';
+//
+$('#elemId').width();
 @Component({
   selector: 'app-ql-nguoi-dung',
   templateUrl: './ql-nguoi-dung.component.html',
