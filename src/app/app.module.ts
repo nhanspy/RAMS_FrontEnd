@@ -9,6 +9,12 @@ import {KiemTraVeComponent} from "./thao/kiem-tra-ve/kiem-tra-ve.component";
 import {FormsModule} from "@angular/forms";
 // import {KiemTraVeComponent} from "./thao/kiem-tra-ve/kiem-tra-ve.component";
 
+import { XemChiTietChuyenXeComponent } from './nhan/xem-chi-tiet-chuyen-xe/xem-chi-tiet-chuyen-xe.component';
+import { DatVeComponent } from './nhan/dat-ve/dat-ve.component';
+import { QlNguoiDungComponent } from './kien/ql-nguoi-dung/ql-nguoi-dung.component';
+import { QlTuyenXeComponent } from './kien/ql-tuyen-xe/ql-tuyen-xe.component';
+import { QlNhaXeComponent } from './kien/ql-nha-xe/ql-nha-xe.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +22,14 @@ import {FormsModule} from "@angular/forms";
     DangNhapComponent,
     KiemTraVeComponent,
     // KiemTraVeComponent
+    XemChiTietChuyenXeComponent,
+    DatVeComponent,
+    QlNguoiDungComponent,
+    QlTuyenXeComponent,
+    QlNhaXeComponent,
+    DangKyComponent,
+    DangNhapComponent
+
   ],
   imports: [
     BrowserModule,
