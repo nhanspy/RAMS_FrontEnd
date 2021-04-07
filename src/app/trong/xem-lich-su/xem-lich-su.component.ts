@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {LoadcssServices} from '../../Services/trong-s/loadcss.Services';
-import {XemLichSu} from '../../Model/trong/xem-lich-su';
+import {XemLichSu} from '../Model/xem-lich-su';
+import {XemLichSu2Service} from "../Services/xem-lich-su-2.service";
 
 @Component({
   selector: 'app-xem-lich-su',
@@ -8,24 +8,45 @@ import {XemLichSu} from '../../Model/trong/xem-lich-su';
   styleUrls: ['./xem-lich-su.component.css']
 })
 export class XemLichSuComponent implements OnInit {
-  xemlichsus: XemLichSu[] = [
-    {id: 1, tenNhaXe: 'Phuong Trang', benDi: 'Ha Noi', benDen: 'Sai Gon', thoiGian: '20h20', giaThanh: '200000'},
-    {id: 1, tenNhaXe: 'Phuong Trang', benDi: 'Ha Noi', benDen: 'Sai Gon', thoiGian: '20h20', giaThanh: '200000'},
-    {id: 1, tenNhaXe: 'Phuong Trang', benDi: 'Ha Noi', benDen: 'Sai Gon', thoiGian: '20h20', giaThanh: '200000'},
-  ]
-  constructor(private  loadcssServices: LoadcssServices) {
-    this.loadcssServices.loadddCss('/assets/trong/css/style.css');
-    this.loadcssServices.loadddCss('/assets/trong/css/bootstrap.css');
-   setTimeout(() => {
-     this.loadcssServices.loadScript('/assets/trong/js/boostrapjs.js');
-     this.loadcssServices.loadScript('/assets/trong/js/queryjs.js');
-     this.loadcssServices.loadScript('/assets/trong/js/jsselect.js');
-     this.loadcssServices.loadScript('/assets/jquery-3.6.0.min.js');
-   }, 300);
+  xemlichsulist: XemLichSu[] = [];
+  Title: string = "Xem lịch sử tuyến xe";
+  // @ts-ignore
+  keyword: string;
 
+  constructor(private xemLichSu2Service: XemLichSu2Service) {
   }
 
   ngOnInit(): void {
+    this.xemlichsulist = this.xemLichSu2Service.xemlichsulist;
   }
-
+  updatekeyword(value: string){
+    this.keyword = value;
+    if (this.keyword){
+      this.xemlichsulist = this.xemLichSu2Service.xemlichsulist.filter( item => {
+        return item.tenNhaXe.includes(this.keyword);
+      });
+    }else {
+      this.xemlichsulist = this.xemLichSu2Service.xemlichsulist;
+    }
+  }
+  updatekeyword2(value: string){
+    this.keyword = value;
+    if (this.keyword){
+      this.xemlichsulist = this.xemLichSu2Service.xemlichsulist.filter( item => {
+        return item.benDi.includes(this.keyword);
+      });
+    }else {
+      this.xemlichsulist = this.xemLichSu2Service.xemlichsulist;
+    }
+  }
+  updatekeyword3(value: string){
+    this.keyword = value;
+    if (this.keyword){
+      this.xemlichsulist = this.xemLichSu2Service.xemlichsulist.filter( item => {
+        return item.benDen.includes(this.keyword);
+      });
+    }else {
+      this.xemlichsulist = this.xemLichSu2Service.xemlichsulist;
+    }
+  }
 }
