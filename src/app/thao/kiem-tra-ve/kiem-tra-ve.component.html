@@ -27,7 +27,7 @@
         <form action="">
           <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
             <div class="input-group">
-              <input type="search" style="border-radius: 2px ;" placeholder="Nhập mã vé bạn cần tìm?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+              <input type="search" style="border-radius: 2px ;" placeholder="Nhập mã vé bạn cần tìm?" aria-describedby="button-addon1" aria-activedescendant="button-addon2" class="form-control border-0 bg-light">
               <div class="input-group-append">
                 <button id="button-addon1" type="submit" class="btn btn-link text-primary">
                   <i class="fa fa-search"></i>
@@ -45,26 +45,34 @@
               <th scope="col">Thông Tin</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody *ngFor="let thongtinve of thongtinveList; let i = index; let o = even">
             <tr>
               <th scope="row">Tên khách hàng</th>
-              <td>Lê Thị Thảo</td>
+              <td> {{thongtinve.tenkhachang}}</td>
             </tr>
             <tr>
               <th scope="row">Số điện thoại</th>
-              <td>0368992115</td>
+              <td >{{thongtinve.sodienthoai}}</td>
             </tr>
             <tr>
               <th scope="row">Nơi đi</th>
-              <td>Quảng Bình</td>
+              <td>{{thongtinve.noidi}}</td>
             </tr>
             <tr>
               <th scope="row">Nhà xe</th>
-              <td>Tân Thủy</td>
+              <td>{{thongtinve.nhaxe}}</td>
             </tr>
             <tr>
+              <th scope="row">Mã chuyến</th>
+              <td>{{thongtinve.machuyen}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Thời gian</th>
+              <td>{{thongtinve.thoigian}}</td>
+            </tr>
+              <tr>
               <th scope="row">Biển số xe</th>
-              <td>73H1-44111</td>
+              <td>{{thongtinve.biensoxe}}</td>
             </tr>
             </tbody>
           </table>

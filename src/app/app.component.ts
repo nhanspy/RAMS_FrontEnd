@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'FrontEnd';
+  // keyword: string | undefined;
+  //
+  // // tslint:disable-next-line:typedef
+  // updateKeyword(value: string){
+  //   this.keyword = value;
+  // }
 }

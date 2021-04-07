@@ -10,7 +10,7 @@ export class DangNhapComponent implements OnInit {
   tttaikhoan = {
     taikhoan: 'lethithao2809',
     matkhau: '12345678'
-  }
+  };
 
   constructor() { }
 
