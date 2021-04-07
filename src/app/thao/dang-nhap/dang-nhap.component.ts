@@ -11,7 +11,6 @@ export class DangNhapComponent implements OnInit {
     taikhoan: 'lethithao2809',
     matkhau: '12345678'
   };
-
   constructor() { }
 
   ngOnInit(): void {
@@ -23,6 +22,7 @@ export class DangNhapComponent implements OnInit {
     console.log(this.tttaikhoan);
   }
 }
+
 
 
 
