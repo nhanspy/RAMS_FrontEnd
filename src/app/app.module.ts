@@ -8,6 +8,8 @@ import { DangNhapComponent } from './thao/dang-nhap/dang-nhap.component';
 
 import { XemChiTietChuyenXeComponent } from './nhan/xem-chi-tiet-chuyen-xe/xem-chi-tiet-chuyen-xe.component';
 import { DatVeComponent } from './nhan/dat-ve/dat-ve.component';
+import {HttpClientModule} from '@angular/common/http';
+import {XemChiTietChuyenXeService} from './nhan/service/xem-chi-tiet-chuyen-xe.service';
 import { XemLichSuComponent } from './trong/xem-lich-su/xem-lich-su.component';
 import { TimKiemComponent } from './trong/tim-kiem/tim-kiem.component';
 import { QlNguoiDungComponent } from './kien/ql-nguoi-dung/ql-nguoi-dung.component';
@@ -31,9 +33,12 @@ import {KiemTraVeComponent} from './thao/kiem-tra-ve/kiem-tra-ve.component';
     ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    XemChiTietChuyenXeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
