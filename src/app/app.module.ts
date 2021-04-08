@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { XemChiTietChuyenXeComponent } from './nhan/xem-chi-tiet-chuyen-xe/xem-chi-tiet-chuyen-xe.component';
 import { DatVeComponent } from './nhan/dat-ve/dat-ve.component';
+import {HttpClientModule} from '@angular/common/http';
+import {XemChiTietChuyenXeService} from './nhan/service/xem-chi-tiet-chuyen-xe.service';
 
 @NgModule({
   declarations: [
@@ -14,9 +16,12 @@ import { DatVeComponent } from './nhan/dat-ve/dat-ve.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    XemChiTietChuyenXeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
