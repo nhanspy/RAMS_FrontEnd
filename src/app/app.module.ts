@@ -14,6 +14,8 @@ import { QlNguoiDungComponent } from './kien/ql-nguoi-dung/ql-nguoi-dung.compone
 import { QlTuyenXeComponent } from './kien/ql-tuyen-xe/ql-tuyen-xe.component';
 import { QlNhaXeComponent } from './kien/ql-nha-xe/ql-nha-xe.component';
 import {KiemTraVeComponent} from './thao/kiem-tra-ve/kiem-tra-ve.component';
+import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
     declarations: [
@@ -31,7 +33,8 @@ import {KiemTraVeComponent} from './thao/kiem-tra-ve/kiem-tra-ve.component';
     ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
