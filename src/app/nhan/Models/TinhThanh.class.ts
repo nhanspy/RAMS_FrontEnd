@@ -1,10 +1,14 @@
+import {Ben} from './Ben.class';
+
 export class TinhThanh {
   private _maTinh: string;
   private _tenTinh: string;
+  private _ben: Ben;
 
-  constructor(maTinh: string, tenTinh: string) {
+  constructor(maTinh: string, tenTinh: string, ben: Ben) {
     this._maTinh = maTinh;
     this._tenTinh = tenTinh;
+    this._ben = ben;
   }
 
   get maTinh(): string {
@@ -21,5 +25,13 @@ export class TinhThanh {
 
   set tenTinh(value: string) {
     this._tenTinh = value;
+  }
+
+  get ben(): Ben {
+    return this._ben;
+  }
+
+  set ben(value: Ben) {
+    this._ben = value;
   }
 }

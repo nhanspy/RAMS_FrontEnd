@@ -7,6 +7,7 @@ import { XemChiTietChuyenXeComponent } from './nhan/xem-chi-tiet-chuyen-xe/xem-c
 import { DatVeComponent } from './nhan/dat-ve/dat-ve.component';
 import {HttpClientModule} from '@angular/common/http';
 import {XemChiTietChuyenXeService} from './nhan/service/xem-chi-tiet-chuyen-xe.service';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,11 +15,12 @@ import {XemChiTietChuyenXeService} from './nhan/service/xem-chi-tiet-chuyen-xe.s
     XemChiTietChuyenXeComponent,
     DatVeComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule
+    ],
   providers: [
     XemChiTietChuyenXeService
   ],
