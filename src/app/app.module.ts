@@ -15,6 +15,10 @@ import { QlTuyenXeComponent } from './kien/ql-tuyen-xe/ql-tuyen-xe.component';
 import { QlNhaXeComponent } from './kien/ql-nha-xe/ql-nha-xe.component';
 import {KiemTraVeComponent} from './thao/kiem-tra-ve/kiem-tra-ve.component';
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AddNguoidungComponent } from './kien/add-nguoidung/add-nguoidung.component';
+import { AddNhaXeComponent } from './kien/add-nha-xe/add-nha-xe.component';
+import { AddTuyenXeComponent } from './kien/add-tuyen-xe/add-tuyen-xe.component';
 
 
 @NgModule({
@@ -29,13 +33,18 @@ import {HttpClientModule} from '@angular/common/http';
         DangNhapComponent,
         KiemTraVeComponent,
         XemLichSuComponent,
-        TimKiemComponent
+        TimKiemComponent,
+        AddNguoidungComponent,
+        AddNhaXeComponent,
+        AddTuyenXeComponent,
     ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,18 +1,36 @@
 import { Injectable } from '@angular/core';
-import {Tuyenxe} from '../../kien/model/tuyenxe';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-const baseURL = 'http://localhost:8080/api/v1/chuyenxe';
+import {Tuyenxe} from '../../kien/model/tuyenxe';
+
 @Injectable({
   providedIn: 'root'
 })
 export class QlTuyenXeService {
-  // tslint:disable-next-line:variable-name
+  private baseURL = 'http://192.168.1.23:8080/api/v1/user';
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private http: HttpClient) {
   }
 
-  getAll(): Observable<any> {
-    return this.httpClient.get(baseURL);
+  findAll(): Observable<Tuyenxe[]> {
+    return this.http.get<Tuyenxe[]>(this.baseURL);
+  }
+  // @ts-ignore
+  delete(maXe): Observable<any> {
+    return this.http.delete(`${'http://localhost:8080/student/delete'}/${maXe}`);
+  }
+
+  // @ts-ignore
+  create(data): Observable<any>{
+    return this.http.post<Tuyenxe>('http://localhost:8080/student/add', data);
+  }
+
+  // @ts-ignore
+  update(maXe, data): Observable<any> {
+    return this.http.put(`${'http://localhost:8080/student/'}/${maXe}`, data);
+  }
+  // @ts-ignore
+  get(maXe): Observable<any> {
+    return this.http.get(`${'http://localhost:8080/student/'}/${maXe}`);
   }
 }
