@@ -25,12 +25,14 @@ export class QlTuyenXeComponent implements OnInit {
   // tslint:disable-next-line:variable-name
   constructor(private _qlTuyenXeService: QlTuyenXeService) {}
   ngOnInit(): void {
+    // @ts-ignore
     this._qlTuyenXeService.getAll().subscribe(data => {
       this.tuyenxeList = data;
       this.tuyenxeListroot = data;
+      // @ts-ignore
     }, error => {
       console.log(error);
-  });
+    });
   }
   get tuyenxeName(): string {
     return this._tuyenxeName;

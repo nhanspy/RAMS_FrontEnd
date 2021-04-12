@@ -79,19 +79,19 @@
         <div class="row">
           <div class="col-sm-8"><h2>Quản lý tài khoản người dùng</h2></div>
           <div class="col-sm-4">
-            <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Thêm mới</button>
+            <button type="button" class="btn btn-info add-new" routerLink="/addnguoidung"><i class="fa fa-plus"></i> Thêm mới</button>
           </div><br><br>
           <div style="margin-left: 600px">
           </div><br>
           <div class="row">
             <div class="col-lg-4">
-              <a href="" >Quản lý tài khoản người dùng</a>
+              <a routerLink="/qlnguoidung" >Quản lý tài khoản người dùng</a>
             </div>
             <div class="col-lg-4">
-              <a href="" >Quản lý tài khoản nhà xe</a>
+              <a routerLink="/qlnhaxe" >Quản lý tài khoản nhà xe</a>
             </div>
             <div class="col-lg-4">
-              <a href="" >Quản lý tuyến xe</a>
+              <a routerLink="/qltuyenxe" >Quản lý tuyến xe</a>
             </div>
           </div><br>
 
@@ -99,34 +99,43 @@
       </div>
       <table class="table table-striped">
         <thead>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm tên" #txtSearch (keyup)="searchName(txtSearch.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm mã tài khoản" #txtSearch1 (keyup)="searchUser(txtSearch1.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm mã loại" #txtSearch2 (keyup)="searchPassword(txtSearch2.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm tài khoản" #txtSearch3 (keyup)="searchPhone(txtSearch3.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm mật khẩu" #txtSearch4 (keyup)="searchUser(txtSearch4.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm số điện thoại" #txtSearch5 (keyup)="searchPassword(txtSearch5.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm kiếm mã tài khoản" #txtSearch (keyup)="searchMataikhoan(txtSearch.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm kiếm mã loại" #txtSearch1 (keyup)="searchMaloai(txtSearch1.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm kiếm tên người dùng" #txtSearch2 (keyup)="searchTen(txtSearch2.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm kiếm số điện thoại" #txtSearch3 (keyup)="searchSodienthoai(txtSearch3.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm kiếm ngày sinh" #txtSearch4 (keyup)="searchNgaysinh(txtSearch4.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm kiếm địa chỉ" #txtSearch5 (keyup)="searchDiachi(txtSearch5.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm kiếm tài khoản" #txtSearch7 (keyup)="searchTaikhoan(txtSearch7.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm kiếm mật khẩu" #txtSearch8 (keyup)="searchMatkhau(txtSearch8.value)"></td>
         <tr>
+          <th>Username</th>
+          <th>Loại</th>
           <th>Tên</th>
-          <th>Mã tài khoản</th>
-          <th>Mã loại</th>
+          <th>Số điện thoại</th>
+          <th>Ngày sinh</th>
+          <th>Địa chỉ</th>
+          <th>Giới tính</th>
           <th>Tài khoản</th>
           <th>Mật khẩu</th>
-          <th>Số điện thoại</th>
-          <th>Giới tính</th>
           <th>Hành động</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let nguoidungList of NguoidungList; let i = index">
-          <td>{{nguoidungList.name}}</td>
-          <td>{{nguoidungList.user}}</td>
-          <td>{{nguoidungList.password}}</td>
-          <td>{{nguoidungList.phone}}</td>
-          <td>{{nguoidungList.gender}}</td>
+          <td>{{nguoidungList.userName}}</td>
+          <td>{{nguoidungList.role}}</td>
+          <td>{{nguoidungList.ten}}</td>
+          <td>{{nguoidungList.soDienThoai}}</td>
+          <td>{{nguoidungList.ngaySinh}}</td>
+          <td>{{nguoidungList.diaChi}}</td>
+          <td>{{nguoidungList.gioiTinh}}</td>
+          <td>{{nguoidungList.userName}}</td>
+          <td>*******</td>
           <td>
             <button type="button" class="btn btn-danger" (click)="removeNguoidung(i)" [disabled]="isDisable">Xóa</button>
-            <button type="button" class="btn btn-success" (click)="removeNguoidung(i)" [disabled]="isDisable">Edit</button>
+            <button type="button" class="btn btn-success" routerLink="/add">Edit</button>
           </td>
+        </tr>
         </tbody>
       </table>
     </div>

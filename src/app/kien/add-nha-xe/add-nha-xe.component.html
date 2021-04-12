@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quản lý</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<form method="post" role="form">
+  <div class="form-group">
+    <label>Mã xe</label>
+    <input type="email" class="form-control" placeholder="Nhập mã xe" [(ngModel)]="nhaxe.maNhaXe"[ngModelOptions]="{standalone: true}">
+  </div>
+  <div class="form-group">
+    <label>Tên nhà xe</label>
+    <input type="email" class="form-control" placeholder="Nhập tên nhà xe" [(ngModel)]="nhaxe.tenNhaXe"[ngModelOptions]="{standalone: true}">
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="addnhaxe() ">Lưu</button>
+  <button type="button" class="btn btn-secondary" routerLink="/qlnhaxe" >Thoát</button>
+</form>
+</body>
+</html>
+

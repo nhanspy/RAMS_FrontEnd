@@ -24,8 +24,12 @@ export class QlNhaXeComponent implements OnInit {
   // tslint:disable-next-line:variable-name
   constructor(private _qlNhaXeService: QlNhaXeService) {}
   ngOnInit(): void {
-    // this._qlNhaXeService.getAll().subscribe()
-    // this.nhaxeListroot = this._qlNhaXeService.nhaxeList;
+    this._qlNhaXeService.getAll().subscribe(data => {
+      this.nhaxeList = data;
+      this.nhaxeListroot = data;
+    }, error => {
+      console.log(error);
+    });
   }
   get nhaxeName(): string {
     return this._nhaxeName;

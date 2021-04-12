@@ -81,17 +81,17 @@
         <div class="row">
           <div class="col-sm-8"><h2>Quản lý tài khoản nhà xe</h2></div>
           <div class="col-sm-4">
-            <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Thêm mới</button>
+            <button routerLink="/addnhaxe" type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Thêm mới</button>
           </div><br><br><br>
           <div class="row">
             <div class="col-lg-4">
-              <a href="" >Quản lý tài khoản người dùng</a>
+              <a routerLink="/qlnguoidung" >Quản lý tài khoản người dùng</a>
             </div>
             <div class="col-lg-4">
-              <a href="" >Quản lý tài khoản nhà xe</a>
+              <a routerLink="/qlnhaxe" >Quản lý tài khoản nhà xe</a>
             </div>
             <div class="col-lg-4">
-              <a href="" >Quản lý tuyến xe</a>
+              <a routerLink="/qltuyenxe" >Quản lý tuyến xe</a>
             </div>
           </div>
 
@@ -99,8 +99,8 @@
       </div>
       <table class="table table-striped">
         <thead>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm tên nhà xe" #txtSearch (keyup)="searchManhaxe(txtSearch.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm tên người dùng" #txtSearch1 (keyup)="searchTennhaxe(txtSearch1.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm kiếm mã nhà xe" #txtSearch (keyup)="searchManhaxe(txtSearch.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm kiếm tên nhà xe" #txtSearch1 (keyup)="searchTennhaxe(txtSearch1.value)"></td>
         <tr>
           <th>Mã nhà xe</th>
           <th>Tên nhà xe</th>
@@ -109,11 +109,11 @@
         </thead>
         <tbody>
         <tr *ngFor="let nhaxeList of nhaxeList; let i = index">
-          <td>{{nhaxeList.tenNhaXe}}</td>
           <td>{{nhaxeList.maNhaXe}}</td>
+          <td>{{nhaxeList.tenNhaXe}}</td>
           <td>
             <button type="button" class="btn btn-danger" (click)="removenhaxe(i)" [disabled]="isDisable">Xóa</button>
-<!--            <button type="button" class="btn btn-success" (click)="removeNguoidung(i)" [disabled]="isDisable">Edit</button>-->
+            <button type="button" class="btn btn-success" (click)="(i)" [disabled]="isDisable">Edit</button>
           </td>
         </tbody>
       </table>
