@@ -1,37 +1,49 @@
 export class Nguoidung {
   // tslint:disable-next-line:variable-name
-  private _name: string;
+  private _userName: string;
   // tslint:disable-next-line:variable-name
-  private _user: string;
+  private _email: string;
   // tslint:disable-next-line:variable-name
   private _password: string;
   // tslint:disable-next-line:variable-name
-  private _phone: string;
+  private _ten: string;
   // tslint:disable-next-line:variable-name
-  private _gender: string;
+  private _soDienThoai: string;
+  // tslint:disable-next-line:variable-name
+  private _diaChi: string;
+  // tslint:disable-next-line:variable-name
+  private _ngaySinh: string;
+  // tslint:disable-next-line:variable-name
+  private _gioiTinh: boolean;
+  // tslint:disable-next-line:variable-name
+  private _role: string;
 
-  constructor(name: string, user: string, password: string, phone: string, gender: string) {
-    this._name = name;
-    this._user = user;
+  constructor(userName: string, email: string, password: string, ten: string, soDienThoai: string, diaChi: string, ngaySinh: string, gioiTinh: boolean, role: string) {
+    this._userName = userName;
+    this._email = email;
     this._password = password;
-    this._phone = phone;
-    this._gender = gender;
+    this._ten = ten;
+    this._soDienThoai = soDienThoai;
+    this._diaChi = diaChi;
+    this._ngaySinh = ngaySinh;
+    this._gioiTinh = gioiTinh;
+    this._role = role;
   }
 
-  get name(): string {
-    return this._name;
+  get userName(): string {
+    return this._userName;
   }
 
-  set name(value: string) {
-    this._name = value;
+  set userName(value: string) {
+    this._userName = value;
   }
 
-  get user(): string {
-    return this._user;
+  get email(): string {
+    return this._email;
   }
 
-  set user(value: string) {
-    this._user = value;
+  set email(value: string) {
+    this._email = value;
   }
 
   get password(): string {
@@ -42,19 +54,51 @@ export class Nguoidung {
     this._password = value;
   }
 
-  get phone(): string {
-    return this._phone;
+  get ten(): string {
+    return this._ten;
   }
 
-  set phone(value: string) {
-    this._phone = value;
+  set ten(value: string) {
+    this._ten = value;
   }
 
-  get gender(): string {
-    return this._gender;
+  get soDienThoai(): string {
+    return this._soDienThoai;
   }
 
-  set gender(value: string) {
-    this._gender = value;
+  set soDienThoai(value: string) {
+    this._soDienThoai = value;
+  }
+
+  get diaChi(): string {
+    return this._diaChi;
+  }
+
+  set diaChi(value: string) {
+    this._diaChi = value;
+  }
+
+  get ngaySinh(): string {
+    return this._ngaySinh;
+  }
+
+  set ngaySinh(value: string) {
+    this._ngaySinh = value;
+  }
+
+  get gioiTinh(): boolean {
+    return this._gioiTinh;
+  }
+
+  set gioiTinh(value: boolean) {
+    this._gioiTinh = value;
+  }
+
+  get role(): string {
+    return this._role;
+  }
+
+  set role(value: string) {
+    this._role = value;
   }
 }

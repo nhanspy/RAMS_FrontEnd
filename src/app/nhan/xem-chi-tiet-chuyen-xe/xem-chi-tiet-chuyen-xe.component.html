@@ -42,26 +42,19 @@
     <div data-v-2d892928="" class="col-sm-12 col-xs-12 col-ms-12 half col-lg-5 col-md-5">
       <div data-v-9ebeba40="" data-v-2d892928="" class="info-container">
         <div data-v-9ebeba40="" class="title one-way-title">
-          <span data-v-9ebeba40="">18:00</span>
-          18/03/2021
+          {{ngay}}
         </div>
-        <div data-v-9ebeba40="" class="route-name">TP.Đà Nẵng ⇒ Quảng Bình</div>
-        <div data-v-9ebeba40="" class="route-list">
+        <div data-v-9ebeba40="" class="route-name">{{tinhDi.tenTinh}} ⇒ {{tinhDen.tenTinh}}</div>
+        <div data-v-9ebeba40="" class="route-list" >
           <div data-v-9ebeba40="" class="station-select-title">Chọn bến xe</div>
-          <div data-v-9ebeba40="" class="route-info">
-            <div data-v-9ebeba40="" class="route-info-name">BX.Trung tâm Đà Nẵng ⇒ BX.Lệ Thủy</div>
-            <span data-v-9ebeba40="">120.000</span>
-            <input data-v-9ebeba40="" type="radio" name="selectedRoute" required="required" class="route-select-checkbox" value="[object Object]" />
-          </div>
-          <div data-v-9ebeba40="" class="route-info">
-            <div data-v-9ebeba40="" class="route-info-name">BX.Trung tâm Đà Nẵng ⇒ BX.Đồng Hới</div>
-            <span data-v-9ebeba40="">140.000</span>
-            <input data-v-9ebeba40="" type="radio" name="selectedRoute" required="required" class="route-select-checkbox" value="[object Object]" />
-          </div>
-          <div data-v-9ebeba40="" class="route-info">
-            <div data-v-9ebeba40="" class="route-info-name">BX.Trung tâm Đà Nẵng ⇒ BX.Ba Đồn</div>
-            <span data-v-9ebeba40="">160.000</span>
-            <input data-v-9ebeba40="" type="radio" name="selectedRoute" required="required" class="route-select-checkbox" value="[object Object]" />
+          <div data-v-9ebeba40="" class="route-info" >
+            <ul style="list-style-type: none">
+              <li *ngFor="let chuyenXe1 of benDiBenDens" data-v-9ebeba40="" class="route-info">
+                <div data-v-9ebeba40="" class="route-info-name">Bx.{{chuyenXe1.benDi.tenBen}} ⇒ Bx.{{chuyenXe1.benDen.tenBen}}</div>
+                <span data-v-9ebeba40=""></span>
+                <input data-v-9ebeba40="" type="radio" (change)="handleChange(chuyenXe1)" [(ngModel)]="benDiBenDen" name="selectedRoute" required="required" class="route-select-checkbox" [value]="chuyenXe1" />
+              </li>
+            </ul>
           </div>
         </div>
         <div data-v-9ebeba40="" class="alert alert-info" style="display: none;">
@@ -70,41 +63,24 @@
         <div data-v-9ebeba40="">
           <div data-v-9ebeba40="" class="start-time">
             <div data-v-9ebeba40="" class="start-time-title">Chọn nhà xe</div>
-            <select data-v-9ebeba40="" class="time-select">
-              <optgroup data-v-9ebeba40="" label="Nhà xe" class="time-group-1">
-                <option data-v-9ebeba40="" value="[object Object]">
-                  Trung Tín
-                </option>
-                <option data-v-9ebeba40="" value="[object Object]">
-                  Lâm Huề
-                </option>
-                <option data-v-9ebeba40="" value="[object Object]">
-                  Nam Hà
-                </option>
-                <option data-v-9ebeba40="" value="[object Object]">
-                  Hải Hà
+            <select data-v-9ebeba40="" class="time-select" [ngModel]="chuyenXe" (ngModelChange)="onChangeChuyenXe($event)">
+              <optgroup data-v-9ebeba40="" label="Nhà xe" class="time-group-1" >
+                <option data-v-9ebeba40="" value="[object Object]" [ngValue]="chuyenXe" *ngFor="let chuyenXe of chuyenXeTheoBenDiBenBenDens">
+                  {{chuyenXe.xe.nhaXe.tenNhaXe}}
                 </option>
               </optgroup>
             </select>
+<!--            {{chuyenXe | json}}-->
           </div>
           <div data-v-9ebeba40="" class="pick-up">
             <div data-v-9ebeba40="" class="pick-up-title">Giờ chạy</div>
             <div data-v-9ebeba40="" class="alert alert-info" style="display: none;">
               <p style="text-align: center;">Không cón xe nào</p>
             </div>
-            <select data-v-9ebeba40="" class="time-select">
+            <select data-v-9ebeba40="" class="time-select" [ngModel]="chuyenXe" (ngModelChange)="onChangeTheoThoiGian($event)">
               <optgroup data-v-9ebeba40="" label="Giờ chạy" class="time-group-1">
-                <option data-v-9ebeba40="" value="[object Object]">
-                  5:00
-                </option>
-                <option data-v-9ebeba40="" value="[object Object]">
-                  11:00
-                </option>
-                <option data-v-9ebeba40="" value="[object Object]">
-                  15:30
-                </option>
-                <option data-v-9ebeba40="" value="[object Object]">
-                  21:00
+                <option data-v-9ebeba40="" value="[object Object]"  [ngValue]="chuyenXe" *ngFor="let chuyenXe of chuyenXeTheoTinhVaNhaXes">
+                  {{chuyenXe.thoiGian}}
                 </option>
               </optgroup>
             </select>
@@ -2051,7 +2027,7 @@
               </tr>
               <tr data-v-489ca06a="" class="hide">
                 <td data-v-489ca06a="" class="">
-                  <svg data-v-28788e28="" data-v-489ca06a="" xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" class="seat hidden animated-background" pos="55">
+                  <svg data-v-28788e28="" data-v-489ca06a="" xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" class="seat hidden animated-background " pos="55">
                     <g data-v-28788e28="" fill="none" fill-rule="evenodd">
                       <g data-v-28788e28="" class="disabled">
                         <path
@@ -2193,20 +2169,11 @@
     </div>
   </div>
 </div>
-<script>
-  $(document).ready(function(){
-    $(".title").click(function(){
-      $(this).hide();
-      console.log("thao dien");
-    });
-  });
-</script>
 <!-- Optional JavaScript -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>>
 </body>
 </html>

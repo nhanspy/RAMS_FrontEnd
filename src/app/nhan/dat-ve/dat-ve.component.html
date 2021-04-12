@@ -32,12 +32,6 @@
           CHỌN GHẾ
         </div>
       </div>
-      <!--            <div data-v-5747e235="" class="current-step">-->
-      <!--                <div data-v-5747e235="" class="text">3</div>-->
-      <!--                <div data-v-5747e235="" class="active-title" style="display: none;">-->
-      <!--                    THÔNG TIN KHÁCH HÀNG-->
-      <!--                </div>-->
-      <!--            </div>-->
       <div data-v-5747e235="" class="next-step">
         <div data-v-5747e235="" class="text">3</div>
         <div data-v-5747e235="" class="active-title" style="">
@@ -57,17 +51,17 @@
               <div data-v-561fbfed="" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-ms-12">
                 <div data-v-561fbfed="" class="col-xs-12 field">
                   <div data-v-561fbfed="" class="col-xs-4 sub-tit">Họ tên:</div>
-                  <div data-v-561fbfed="" class="col-xs-8">Tran Nhan</div>
+                  <div data-v-561fbfed="" class="col-xs-8">{{veXe.userNguoiDung.username}}</div>
                 </div>
                 <div data-v-561fbfed="" class="col-xs-12 field">
                   <div data-v-561fbfed="" class="col-xs-4 sub-tit">Số điện thoại:</div>
-                  <div data-v-561fbfed="" class="col-xs-8">0941371807</div>
+                  <div data-v-561fbfed="" class="col-xs-8">{{veXe.userNguoiDung.soDienThoai}}</div>
                 </div>
               </div>
               <div data-v-561fbfed="" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-ms-12">
                 <div data-v-561fbfed="" class="col-xs-12 field">
                   <div data-v-561fbfed="" class="col-xs-4 sub-tit">Email:</div>
-                  <div data-v-561fbfed="" class="col-xs-8">nhan0095@gmail.com</div>
+                  <div data-v-561fbfed="" class="col-xs-8">{{veXe.userNguoiDung.email}}</div>
                 </div>
                 <!---->
               </div>
@@ -84,14 +78,14 @@
               <div data-v-62d3bf2a="" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-ms-12">
                 <div data-v-62d3bf2a="" class="col-xs-12 field">
                   <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Tuyến xe:</div>
-                  <div data-v-62d3bf2a="" class="col-xs-8"><span data-v-62d3bf2a="">BX.Đà Nẵng ⇒ BX.Lệ Thủy</span></div>
+                  <div data-v-62d3bf2a="" class="col-xs-8"><span data-v-62d3bf2a="">BX.{{veXe.chuyenXe.benDi}} ⇒ BX.{{veXe.chuyenXe.benDen}}</span></div>
                 </div>
                 <div data-v-62d3bf2a="" class="col-xs-12 field">
                   <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Thời gian:</div>
-                  <div data-v-62d3bf2a="" class="col-xs-8"><span data-v-62d3bf2a="" class="orange-value green">20:00 18/03/2021</span></div>
+                  <div data-v-62d3bf2a="" class="col-xs-8"><span data-v-62d3bf2a="" class="orange-value green">{{veXe.thoiGian}}</span></div>
                 </div>
                 <div data-v-62d3bf2a="" class="col-xs-12 field">
-                  <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Điểm lên xe:</div>
+                  <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Điểm di:</div>
                   <div data-v-62d3bf2a="" class="col-xs-8">
                     <p data-v-62d3bf2a="">BX.Đà Nẵng</p>
                     <p data-v-62d3bf2a="" class="address">Tôn Đức Thắng, Hoà Minh, Liên Chiểu, Đà Nẵng 550000</p>
@@ -106,17 +100,10 @@
                 <div data-v-62d3bf2a="" class="col-xs-12 field">
                   <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Số ghế:</div>
                   <div data-v-62d3bf2a="" class="col-xs-8 orange-value green">
-                                        <span data-v-62d3bf2a="">
-                                            <!---->
-                                            A16
-                                        </span>
-                    <span data-v-62d3bf2a="">
-                                            <span data-v-62d3bf2a="">,</span>
-                                            A17
-                                        </span>
+                    <span data-v-62d3bf2a="">{{veXe.ghe.maGhe}}</span>
+                    <span data-v-62d3bf2a="">{{veXe.ghe.maGhe}}</span>
                   </div>
                 </div>
-                <!---->
                 <div data-v-62d3bf2a="" class="col-xs-12 field"></div>
               </div>
             </div>

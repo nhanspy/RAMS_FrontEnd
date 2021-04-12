@@ -5,18 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Quản lý</title>
-
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
-
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
   <style type="text/css">
     .example{
       margin: 40px;
@@ -70,15 +60,7 @@
       margin: 0 5px;
       min-width: 24px;
     }
-    table.table td a.add {
-      color: #27C46B;
-    }
-    table.table td a.edit {
-      color: #FFC107;
-    }
-    table.table td a.delete {
-      color: #E34724;
-    }
+
     table.table td i {
       font-size: 19px;
     }
@@ -88,75 +70,8 @@
       position: relative;
       top: 3px;
     }
-    table.table .form-control {
-      height: 32px;
-      line-height: 32px;
-      box-shadow: none;
-      border-radius: 2px;
-    }
-    table.table .form-control.error {
-      border-color: #f50000;
-    }
-    table.table td .add {
-      display: none;
-    }
   </style>
-  <script>
-    $(document).ready(function(){
-      $('[data-toggle="tooltip"]').tooltip();
-      var actions = $("table td:last-child").html();
-      // hiện thông tin khi thêm hàng mới
-      $(".add-new").click(function(){
-        $(this).attr("disabled", "disabled");
-        var index = $("table tbody tr:last-child").index();
-        var row = '<tr>' +
-          '<td><input type="text" class="form-control" name="bienso" id="bienso"></td>' +
-          '<td><input type="text" class="form-control" name="bendi" id="bendi"></td>' +
-          '<td><input type="text" class="form-control" name="benden" id="benden"></td>' +
-          '<td><input type="text" class="form-control" name="thoigian" id="thoigian"></td>' +
-          '<td>' + actions + '</td>' +
-          '</tr>';
-        $("table").append(row);
-        $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
-        $('[data-toggle="tooltip"]').tooltip();
-      });
-      // thêm 1 hàng khi ấn click thêm mới
-      $(document).on("click", ".add", function(){
-        var empty = false;
-        var input = $(this).parents("tr").find('input[type="text"]');
-        input.each(function(){
-            if(!$(this).val()){
-              $(this).addClass("error");
-              empty = true;
-            } else{
-              $(this).removeClass("error");
-            }
-          }
-        );
-        $(this).parents("tr").find(".error").first().focus();
-        if(!empty){
-          input.each(function(){
-            $(this).parent("td").html($(this).val());
-          });
-          $(this).parents("tr").find(".add, .edit").toggle();
-          $(".add-new").removeAttr("disabled");
-        }
-      });
-      // chỉnh sửa hàng khi ấn click sửa
-      $(document).on("click", ".edit", function(){
-        $(this).parents("tr").find("td:not(:last-child)").each(function(){
-          $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
-        });
-        $(this).parents("tr").find(".add, .edit").toggle();
-        $(".add-new").attr("disabled", "disabled");
-      });
-      // xóa hàng khi ấn click xóa
-      $(document).on("click", ".delete", function(){
-        $(this).parents("tr").remove();
-        $(".add-new").removeAttr("disabled");
-      });
-    });
-  </script>
+
 </head>
 <body>
 <div class="container">
@@ -164,36 +79,32 @@
     <div class="table-wrapper">
       <div class="table-title">
         <div class="row">
-          <div class="col-sm-8"><h2>Quản lý tài tuyến xe</h2></div>
+          <div class="col-sm-8"><h2>Quản lý tuyến xe</h2></div>
           <div class="col-sm-4">
-            <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Thêm mới</button>
-          </div>
-          <div style="margin-left: 600px">
-            <input type="text" placeholder="Tìm kiếm..."/>
-            <button>Tìm kiếm</button>
-          </div>
+            <button routerLink="/addtuyenxe" type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Thêm mới</button>
+          </div><br><br><br>
           <div class="row">
             <div class="col-lg-4">
-              <a href="" >Quản lý tài khoản người dùng</a>
+              <a routerLink="/qlnguoidung" >Quản lý tài khoản người dùng</a>
             </div>
-            <div class="col-lg-6">
-              <a href="" >Quản lý tài khoản nhà xe</a>
+            <div class="col-lg-4">
+              <a routerLink="/qlnhaxe" >Quản lý tài khoản nhà xe</a>
             </div>
-            <div class="col-lg-2">
-              <a href="" >Quản lý tuyến xe</a>
+            <div class="col-lg-4">
+              <a routerLink="/qltuyenxe" >Quản lý tuyến xe</a>
             </div>
-          </div><br>
-          <form action="date">
-            <label for="birthdaytime"></label>
-            <input type="date" id="birthdaytime" name="birthdaytime">
-            <input type="submit">
-          </form>
+          </div>
+
         </div>
       </div>
       <table class="table table-striped">
         <thead>
+        <td><input type="text" class="form-control" placeholder="Tìm kiếm mã xe" #txtSearch (keyup)="searchBienso(txtSearch.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm kiếm bến đi" #txtSearch1 (keyup)="searchBendi(txtSearch1.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm kiếm bến đến" #txtSearch2 (keyup)="searchBenden(txtSearch2.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm kiếm thời gian" #txtSearch3 (keyup)="searchThoigian(txtSearch3.value)"></td>
         <tr>
-          <th>Biển số xe</th>
+          <th>Mã xe</th>
           <th>Bến đi</th>
           <th>Bến đến</th>
           <th>Thời gian</th>
@@ -201,59 +112,20 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>81M28480</td>
-          <td>Gia Lai</td>
-          <td>Đà Nẵng</td>
-          <td>19h00</td>
+        <tr *ngFor="let tuyenxeList of tuyenxeList; let i = index">
+          <td>{{tuyenxeList.maXe}}</td>
+          <td>{{tuyenxeList.benDi}}</td>
+          <td>{{tuyenxeList.benDen}}</td>
+          <td>{{tuyenxeList.thoiGian}}</td>
           <td>
-            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+            <button type="button" class="btn btn-danger" (click)="removetuyenxe(i)" [disabled]="isDisable">Xóa</button>
+            <button type="button" class="btn btn-success" (click)="(i)" [disabled]="isDisable">Edit</button>
           </td>
-        </tr>
-        <tr>
-          <td>43Z25890</td>
-          <td>Hà Nội</td>
-          <td>Gia Lai</td>
-          <td>19h00</td>
-          <td>
-            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-          </td>
-        </tr>
-        <tr>
-          <td>77H45788</td>
-          <td>Bình Định</td>
-          <td>Đà Nẵng</td>
-          <td>19h00</td>
-          <td>
-            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-          </td>
-        </tr>
-        <tr>
-          <td>73K34567</td>
-          <td>Quảng Bình</td>
-          <td>Đà Nẵng</td>
-          <td>19h00</td>
-          <td>
-            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-          </td>
-        </tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
 </body>
 </html>
 

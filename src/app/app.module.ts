@@ -19,10 +19,6 @@ import { QlNhaXeComponent } from './kien/ql-nha-xe/ql-nha-xe.component';
         QlTuyenXeComponent,
         QlNhaXeComponent
     ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
   providers: [],
   bootstrap: [AppComponent]
 })
