@@ -19,24 +19,22 @@ export class QlNguoiDungComponent implements OnInit {
   isDisable = false;
   NguoidungList: User[] = [];
   NguoidungListroot: User[] = [];
-// @ts-ignore
-  keywordMataikhoan: string;
-// @ts-ignore
-  keywordMaloai: string;
-// @ts-ignore
+  // @ts-ignore
+  keywordUsername: string;
+  // @ts-ignore
+  keywordRole: string;
+  // @ts-ignore
   keywordTen: string;
-// @ts-ignore
+  // @ts-ignore
   keywordSodienthoai: string;
-// @ts-ignore
+  // @ts-ignore
   keywordNgaysinh: string;
   // @ts-ignore
   keywordDaichi: string;
-// @ts-ignore
+  // @ts-ignore
   keywordGioitinh: string;
   // @ts-ignore
-  keywordTaikhoan: string;
-  // @ts-ignore
-  keywordMatkhau: string;
+  keywordEmail: string;
   // @ts-ignore
   // tslint:disable-next-line:variable-name
   private _NguoidungName: string;
@@ -44,10 +42,11 @@ export class QlNguoiDungComponent implements OnInit {
   // tslint:disable-next-line:variable-name
   constructor(private _qlNguoiDungService: QlNguoiDungService) {
     this._qlNguoiDungService.getAll().subscribe(data => {
+      console.log(data);
       this.NguoidungList = data;
       this.NguoidungListroot = data;
-      // @ts-ignore
     }, error => {
+      console.log(123);
       console.log(error);
     });
   }
@@ -59,22 +58,32 @@ export class QlNguoiDungComponent implements OnInit {
     this._NguoidungName = value;
   }
   // tslint:disable-next-line:typedef
-  removeNguoidung(index: number){
-    this.NguoidungList.splice(index, 1);
+  removeNguoidung(index: number, id: number){
+    let cf = confirm('Ban co muon xoa!');
+    if (cf) {
+    this._qlNguoiDungService.delete(id).subscribe(
+      data => {
+        console.log(data);
+        if (data == null) { this.NguoidungList.splice(index, 1); }
+      }, error => {
+        console.log(error);
+      }
+    );
+    }
   }
   // tslint:disable-next-line:typedef
   search() {
     let dem = 0;
     this.NguoidungList = this.NguoidungListroot;
-    // if (this.keywordMataikhoan) {
-    //   this.NguoidungList = this.NguoidungList.filter(item => {
-    //     return item.maTaiKhoan.includes(this.keywordMataikhoan);
-    //   });
-    //   dem++;
-    // }
-    if (this.keywordMaloai) {
+    if (this.keywordUsername) {
       this.NguoidungList = this.NguoidungList.filter(item => {
-        return item.role.includes(this.keywordMaloai);
+        return item.username.includes(this.keywordUsername);
+      });
+      dem++;
+    }
+    if (this.keywordRole) {
+      this.NguoidungList = this.NguoidungList.filter(item => {
+        return item.roles.name.includes(this.keywordRole);
       });
       dem++;
     }
@@ -102,15 +111,9 @@ export class QlNguoiDungComponent implements OnInit {
       });
       dem++;
     }
-    if (this.keywordTaikhoan) {
+    if (this.keywordEmail) {
       this.NguoidungList = this.NguoidungList.filter(item => {
-        return item.userName.includes(this.keywordTaikhoan);
-      });
-      dem++;
-    }
-    if (this.keywordMatkhau) {
-      this.NguoidungList = this.NguoidungList.filter(item => {
-        return item.password.includes(this.keywordMatkhau);
+        return item.username.includes(this.keywordEmail);
       });
       dem++;
     }
@@ -120,14 +123,14 @@ export class QlNguoiDungComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  searchMataikhoan(value: string){
-    this.keywordMataikhoan = value;
+  searchUsername(value: string){
+    this.keywordUsername = value;
     this.search();
   }
 
   // tslint:disable-next-line:typedef
-  searchMaloai(value: string){
-    this.keywordMaloai = value;
+  searchRole(value: string){
+    this.keywordRole = value;
     this.search();
   }
   // tslint:disable-next-line:typedef
@@ -152,13 +155,14 @@ export class QlNguoiDungComponent implements OnInit {
     this.search();
   }
   // tslint:disable-next-line:typedef
-  searchTaikhoan(value: string){
-    this.keywordTaikhoan = value;
+  searchEmail(value: string){
+    this.keywordEmail = value;
     this.search();
   }
+
   // tslint:disable-next-line:typedef
-  searchMatkhau(value: string){
-    this.keywordMatkhau = value;
+  searchGioiTinh(value: string){
+    this.keywordGioitinh = value;
     this.search();
   }
 }

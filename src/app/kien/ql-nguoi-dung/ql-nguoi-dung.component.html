@@ -99,40 +99,40 @@
       </div>
       <table class="table table-striped">
         <thead>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm mã tài khoản" #txtSearch (keyup)="searchMataikhoan(txtSearch.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm mã loại" #txtSearch1 (keyup)="searchMaloai(txtSearch1.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm tên người dùng" #txtSearch2 (keyup)="searchTen(txtSearch2.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm số điện thoại" #txtSearch3 (keyup)="searchSodienthoai(txtSearch3.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm ngày sinh" #txtSearch4 (keyup)="searchNgaysinh(txtSearch4.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm địa chỉ" #txtSearch5 (keyup)="searchDiachi(txtSearch5.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm tài khoản" #txtSearch7 (keyup)="searchTaikhoan(txtSearch7.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm mật khẩu" #txtSearch8 (keyup)="searchMatkhau(txtSearch8.value)"></td>
+        <tr>
+          <td><input type="text" class="form-control" placeholder="user" #txtSearch (keyup)="searchUsername(txtSearch.value)"></td>
+          <td><input type="text" class="form-control" placeholder="role" #txtSearch1 (keyup)="searchRole(txtSearch1.value)"></td>
+          <td><input type="text" class="form-control" placeholder="Tên" #txtSearch2 (keyup)="searchTen(txtSearch2.value)"></td>
+          <td width="200px"><input type="text" class="form-control" placeholder="Email" #txtSearch3 (keyup)="searchEmail(txtSearch3.value)"></td>
+          <td><input type="text" class="form-control" placeholder="So dien thoai" #txtSearch4 (keyup)="searchSodienthoai(txtSearch4.value)"></td>
+          <td><input type="text" class="form-control" placeholder="Ngay sinh̉" #txtSearch5 (keyup)="searchNgaysinh(txtSearch5.value)"></td>
+          <td><input type="text" class="form-control" placeholder="Dia chi" #txtSearch7 (keyup)="searchDiachi(txtSearch7.value)"></td>
+          <td><input type="text" class="form-control" placeholder="Gioi tinh" #txtSearch8 (keyup)="searchGioiTinh(txtSearch8.value)"></td>
+        </tr>
         <tr>
           <th>Username</th>
           <th>Loại</th>
           <th>Tên</th>
+          <th>Email</th>
           <th>Số điện thoại</th>
           <th>Ngày sinh</th>
           <th>Địa chỉ</th>
           <th>Giới tính</th>
-          <th>Tài khoản</th>
-          <th>Mật khẩu</th>
-          <th>Hành động</th>
+          <th >Hành động</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let nguoidungList of NguoidungList; let i = index">
           <td>{{nguoidungList.username}}</td>
-          <td>{{nguoidungList.roles}}</td>
+          <td>{{nguoidungList.roles.name}}</td>
           <td>{{nguoidungList.ten}}</td>
+          <td>{{nguoidungList.email}}</td>
           <td>{{nguoidungList.soDienThoai}}</td>
           <td>{{nguoidungList.ngaySinh}}</td>
           <td>{{nguoidungList.diaChi}}</td>
           <td>{{nguoidungList.gioiTinh}}</td>
-<!--          <td>{{nguoidungList.userName}}</td>-->
-          <td>*******</td>
-          <td>
-            <button type="button" class="btn btn-danger" (click)="removeNguoidung(i)" [disabled]="isDisable">Xóa</button>
+          <td >
+            <button type="button" class="btn btn-danger" (click)="removeNguoidung(i, nguoidungList.id)" [disabled]="isDisable">Xóa</button>
             <button type="button" class="btn btn-success" routerLink="/add">Edit</button>
           </td>
         </tr>

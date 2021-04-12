@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Nguoidung} from '../../kien/model/Nguoidung';
+import {User} from '../../nhan/Models/User.class';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -10,17 +11,17 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class QlNguoiDungService {
-  private baseURLget = 'http://192.168.1.23:8080/api/v1/user';
-  private baseURL = 'http://192.168.1.23:8080/api/auth/signupNguoiDung';
+  private baseURLget = 'http://localhost:8080/api/v1/user';
+  private baseURL = 'http://localhost:8080/api/auth/signupNguoiDung';
   constructor(private http: HttpClient) {
   }
-    getAll(): Observable<Nguoidung[]> {
-      return this.http.get<Nguoidung[]>(this.baseURLget);
+  getAll(): Observable<any> {
+    return this.http.get(this.baseURLget);
   }
-  //   // @ts-ignore
-  //   delete(username): Observable<any> {
-  //     return this.http.delete(this.baseURL + '/' + username);
-  // }
+    // @ts-ignore
+    delete(id: int): Observable<any> {
+      return this.http.delete(this.baseURLget + '/' + id);
+  }
 
     // @ts-ignore
     create(data): Observable<any>{

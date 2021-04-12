@@ -6,6 +6,7 @@ import {DatVeComponent} from './nhan/dat-ve/dat-ve.component';
 import {QlNguoiDungComponent} from './kien/ql-nguoi-dung/ql-nguoi-dung.component';
 import {QlNhaXeComponent} from './kien/ql-nha-xe/ql-nha-xe.component';
 import {QlTuyenXeComponent} from './kien/ql-tuyen-xe/ql-tuyen-xe.component';
+import {AddNguoidungComponent} from './kien/add-nguoidung/add-nguoidung.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dangnhap', pathMatch: 'full'},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'qlnguoidung', component: QlNguoiDungComponent},
   {path: 'qlnhaxe', component: QlNhaXeComponent},
   {path: 'qltuyenxe', component: QlTuyenXeComponent},
+  {path: 'addnguoidung', component: AddNguoidungComponent},
 ];
 
 @NgModule({

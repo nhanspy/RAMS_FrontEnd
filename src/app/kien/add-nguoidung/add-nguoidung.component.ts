@@ -26,6 +26,7 @@ export class AddNguoidungComponent implements OnInit {
     // @ts-ignore
     console.log(this.user);
     this.qlNguoiDungService.create(this.user).subscribe(response => {
+      alert('Them thanh cong!');
       console.log(response);
     },
       // @ts-ignore
