@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Nguoidung} from '../model/Nguoidung';
 import {QlNguoiDungService} from '../../Services/kien-s/ql-nguoi-dung.service';
 import {Subscription} from 'rxjs';
+import {User} from '../../nhan/Models/User.class';
 
 @Component({
   selector: 'app-ql-nguoi-dung',
@@ -15,10 +15,10 @@ export class QlNguoiDungComponent implements OnInit {
   // tslint:disable-next-line:typedef
   // @ts-ignore
   public subscription: Subscription;
-  public nguoidung: Nguoidung[] = [];
+  public nguoidung: User[] = [];
   isDisable = false;
-  NguoidungList: Nguoidung[] = [];
-  NguoidungListroot: Nguoidung[] = [];
+  NguoidungList: User[] = [];
+  NguoidungListroot: User[] = [];
 // @ts-ignore
   keywordMataikhoan: string;
 // @ts-ignore

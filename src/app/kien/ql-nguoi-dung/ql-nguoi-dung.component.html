@@ -122,14 +122,14 @@
         </thead>
         <tbody>
         <tr *ngFor="let nguoidungList of NguoidungList; let i = index">
-          <td>{{nguoidungList.userName}}</td>
-          <td>{{nguoidungList.role}}</td>
+          <td>{{nguoidungList.username}}</td>
+          <td>{{nguoidungList.roles}}</td>
           <td>{{nguoidungList.ten}}</td>
           <td>{{nguoidungList.soDienThoai}}</td>
           <td>{{nguoidungList.ngaySinh}}</td>
           <td>{{nguoidungList.diaChi}}</td>
           <td>{{nguoidungList.gioiTinh}}</td>
-          <td>{{nguoidungList.userName}}</td>
+<!--          <td>{{nguoidungList.userName}}</td>-->
           <td>*******</td>
           <td>
             <button type="button" class="btn btn-danger" (click)="removeNguoidung(i)" [disabled]="isDisable">Xóa</button>
