@@ -14,6 +14,12 @@ export class TimKiemTuyenComponent implements OnInit {
   tinhthanhlist: TinhThanh [] = [];
   // @ts-ignore
   tinhthanh: TinhThanh;
+  // @ts-ignore
+  getbendi: string;
+  // @ts-ignore
+  getbenden: string;
+  // @ts-ignore
+  getthoigian: string;
 
   constructor(private xemLichSuService: XemLichSuService) {
   }
@@ -26,6 +32,12 @@ export class TimKiemTuyenComponent implements OnInit {
     }, error => {
       console.log('loi' + error);
     });
+  }
 
+  selecttinhthanh(tinhthanh: string) {
+    console.log("the selected value is " + tinhthanh);
+  }
+  selectthoigian(thoigian: string) {
+    console.log("the selected value is " + thoigian);
   }
 }

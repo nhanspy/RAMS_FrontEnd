@@ -10,9 +10,9 @@ import { XemLichSuComponent } from './trong/xem-lich-su/xem-lich-su.component';
 import { QlNguoiDungComponent } from './kien/ql-nguoi-dung/ql-nguoi-dung.component';
 import { QlTuyenXeComponent } from './kien/ql-tuyen-xe/ql-tuyen-xe.component';
 import { QlNhaXeComponent } from './kien/ql-nha-xe/ql-nha-xe.component';
-import {FormsModule} from '@angular/forms';
+// import {FormsModule} from '@angular/forms';
 import {DropDownListModule} from '@syncfusion/ej2-angular-dropdowns';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { TimKiemTuyenComponent } from './trong/tim-kiem-tuyen/tim-kiem-tuyen.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,6 +21,7 @@ import {DangNhapComponent} from './thao/dang-nhap/dang-nhap.component';
 import {KiemTraVeComponent} from './thao/kiem-tra-ve/kiem-tra-ve.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {TestRoutingComponent} from './trong/test-routing/test-routing.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     DangNhapComponent,
     KiemTraVeComponent,
     XemLichSuComponent,
-    TimKiemTuyenComponent
+    TimKiemTuyenComponent,
+    TestRoutingComponent
   ],
     imports: [
         BrowserModule,

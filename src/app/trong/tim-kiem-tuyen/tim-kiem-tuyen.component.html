@@ -41,30 +41,18 @@
               <div data-v-c5ae3bdc="" data-v-3ceb75b5="" class="auto-complete-place-container place-select-from">
                 <label data-v-c5ae3bdc="" class="title">Điểm đi</label>
                 <div class="form-group">
-                  <select style="border-radius: 100px" class="form-control" id="college" name="college_name" required >
-                    <option *ngFor="let thing of tinhthanhlist" value="college">{{thing.tenTinh}}</option>
-                    <!--                    <option value="others">Others- Please Specify Below</option>-->
-                    <!--                    <span>{{thing.name}}</span>-->
+                  <select style="border-radius: 100px" class="form-control" [ngModel]="getbendi" name="college_name" required #mySelect
+                          (change)='selecttinhthanh(mySelect.value)'>
+                    <option class="option" *ngFor="let thing of tinhthanhlist" [value]="thing.tenTinh">{{thing.tenTinh}}</option>
                   </select>
                 </div>
-<!--                <form class="example-form">-->
-<!--                  <mat-form-field class="example-full-width">-->
-<!--                    <mat-label>Number</mat-label>-->
-<!--                    <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" ]>-->
-<!--                    <mat-autocomplete #auto="matAutocomplete">-->
-<!--                      <mat-option *ngFor="let option of options" [value]="option">{{option}}-->
-<!--                      </mat-option>-->
-<!--                    </mat-autocomplete>-->
-<!--                  </mat-form-field>-->
-<!--                  -->
-<!--                </form>-->
               </div>
               <img data-v-3ceb75b5="" alt="change" class="change-img center lazyLoad isLoaded" src="/assets/trong/img/swaps.971b609.png.png" />
               <div data-v-c5ae3bdc="" data-v-3ceb75b5="" class="auto-complete-place-container">
-                <label data-v-c5ae3bdc="" class="title disabled">Điểm đến</label>
+                <label data-v-c5ae3bdc="" class="title">Điểm đến</label>
                 <div class="form-group">
-                  <select style="border-radius: 100px" class="form-control" id="college2" name="college2_name" required>
-                    <option *ngFor="let thing of tinhthanhlist" value="college">{{thing.tenTinh}}</option>
+                  <select style="border-radius: 100px" class="form-control" [ngModel]="getbenden"  name="college2_name" required #mySelect1 (change)='selecttinhthanh(mySelect1.value)'>
+                    <option *ngFor="let thing of tinhthanhlist" [value]="thing.tenTinh">{{thing.tenTinh}}</option>
                   </select>
                 </div>
               </div>
@@ -72,8 +60,7 @@
             <div class="inner-form col-3 col-sm" style="margin: 0; width: 250px">
               <form action="">
                 <label for="birthdaytime" style="color: #555">Chọn ngày đi:</label>
-                <input class="choices__input" type="date" id="birthdaytime" name="birthdaytime" value="2021-01-01">
-                <!--                        <input class="btn-search btn" type="submit">-->
+                <input style="border-radius: 100px" class="choices__input" type="date" id="birthdaytime" [ngModel]="getthoigian" name="birthdaytime" value="2021-01-01" #mySelect2 (change)='selectthoigian(mySelect2.value)'>
               </form>
             </div>
           </div>
@@ -82,15 +69,10 @@
             TÌM CHUYẾN XE
           </a>
         </div>
-        <div data-v-7f47ef51="" data-v-57f2fc3b="" class="promotion-banner-container">
-          <div data-v-7f47ef51="" role="region" id="carousel-1" aria-busy="false" class="carousel slide">
-          </div>
-        </div>
       </div>
     </div>
   </div>
 </div>
 </body>
-
 </html>
 

@@ -19,12 +19,12 @@ export class XemLichSuService {
   }
   // tslint:disable-next-line:typedef
   getXeTheoChuyenXe(chuyenXe: ChuyenXe) {
-    return this.httpClient.get(baseURL + '/' + 'xe/' + chuyenXe.maXe);
+    return this.httpClient      .get(baseURL + '/' + 'xe/' + chuyenXe.maXe);
   }
 
   // tslint:disable-next-line:typedef
-  getNhaXeTheoXe(xe: Xe) {
-    return this.httpClient.get(baseURL + '/' + 'nhaxe/' + xe.maNhaXe);
+  getNhaXe(xe: Xe): Observable<any> {
+    return this.httpClient.get(baseURL + '/' + 'nhaxe/');
   }
   getTinhThanh(tinhThanh: TinhThanh): Observable<any>{
     return this.httpClient.get(baseURL + '/' + 'tinhthanh');

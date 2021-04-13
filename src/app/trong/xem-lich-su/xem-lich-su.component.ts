@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {XemLichSu} from '../Model/xem-lich-su';
 import {ChuyenXe} from '../../nhan/Models/ChuyenXe.class';
 import {XemLichSuService} from '../Services/xem-lich-su.service';
+
 
 
 @Component({
@@ -9,7 +10,7 @@ import {XemLichSuService} from '../Services/xem-lich-su.service';
   templateUrl: './xem-lich-su.component.html',
   styleUrls: ['./xem-lich-su.component.css']
 })
-export class XemLichSuComponent implements OnInit {
+export class XemLichSuComponent implements OnInit, OnChanges {
   xemlichsulist: ChuyenXe[] = [];
   xemlichsulistRoot: ChuyenXe[] = [];
   // @ts-ignore
@@ -37,6 +38,10 @@ export class XemLichSuComponent implements OnInit {
   constructor(private xemLichSuService: XemLichSuService) {
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+        throw new Error('Method not implemented.');
+    }
+
   ngOnInit(): void {
     // this.xemlichsulist = this.xemLichSu2Service.xemlichsulist;
     this.xemLichSuService.readAll().subscribe(data => {
@@ -62,6 +67,13 @@ export class XemLichSuComponent implements OnInit {
     }, error => {
       console.log('loi me roi: ' + error);
     });
+    // @ts-ignore
+    // this.xemLichSuService.getNhaXe().subscribe(data => {
+    //   this.nhaxelist = data;
+    // }, error => {
+    //   console.log('loi' + error);
+    // });
+
 
     // console.log(this.xemLichSuService.getXeTheoChuyenXe(this.xemlichsulist[0]));
   }
