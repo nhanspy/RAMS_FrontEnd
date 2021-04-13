@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {Nguoidung} from '../model/Nguoidung';
+import {Component, OnInit} from '@angular/core';
 import {QlNguoiDungService} from '../../Services/kien-s/ql-nguoi-dung.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {SignupRequest} from '../../nhan/Models/SignupRequest.class';
 
 @Component({
   selector: 'app-add-nguoidung',
@@ -11,31 +11,34 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class AddNguoidungComponent implements OnInit {
   // @ts-ignore
-  user: Nguoidung;
+  user: SignupRequest;
+
   constructor(private qlNguoiDungService: QlNguoiDungService,
               private route: ActivatedRoute,
               private router: Router) {
-}
+  }
 
   ngOnInit(): void {
     // @ts-ignore
-    this.user = new Nguoidung();
+    this.user = new SignupRequest();
   }
+
   // tslint:disable-next-line:typedef
-  add(){
+  add() {
     // @ts-ignore
     console.log(this.user);
     this.qlNguoiDungService.create(this.user).subscribe(response => {
-      alert('Them thanh cong!');
-      console.log(response);
-    },
+        alert('Thêm thành công!!');
+        console.log(response);
+      },
       // @ts-ignore
-    error => {
+      error => {
         console.log(error);
-    });
+      });
   }
+
   // tslint:disable-next-line:typedef
-  onSubmit(){
+  onSubmit() {
     this.add();
-}
+  }
 }

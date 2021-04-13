@@ -59,7 +59,7 @@ export class QlNguoiDungComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   removeNguoidung(index: number, id: number){
-    let cf = confirm('Ban co muon xoa!');
+    let cf = confirm('Bạn có muốn xóa hay không??');
     if (cf) {
     this._qlNguoiDungService.delete(id).subscribe(
       data => {

@@ -10,13 +10,17 @@ export class User {
   // @ts-ignore
   ten: string;
   // @ts-ignore
+  password: string;
+  // @ts-ignore
   soDienThoai: string;
   // @ts-ignore
   ngaySinh: string;
   // @ts-ignore
   diaChi: string;
-  // @ts-ignore
-  gioiTinh: boolean;
+  // // @ts-ignore
+  // gioiTinh: boolean;
   // @ts-ignore
   roles: Role;
+
+
 }

@@ -108,12 +108,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let nhaxeList of nhaxeList; let i = index">
+        <tr *ngFor="let nhaxeList of nhaxeList, let i = index">
           <td>{{nhaxeList.maNhaXe}}</td>
           <td>{{nhaxeList.tenNhaXe}}</td>
           <td>
-            <button type="button" class="btn btn-danger" (click)="removenhaxe(i)" [disabled]="isDisable">Xóa</button>
-            <button type="button" class="btn btn-success" (click)="(i)" [disabled]="isDisable">Edit</button>
+            <button type="button" class="btn btn-danger" (click)="removeNhaxe(keywordManhaxe, nhaxeList.maNhaXe)" [disabled]="isDisable">Xóa</button>
+<!--            <button type="button" class="btn btn-success">Edit</button>-->
           </td>
         </tbody>
       </table>

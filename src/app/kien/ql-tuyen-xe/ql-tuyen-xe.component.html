@@ -99,7 +99,7 @@
       </div>
       <table class="table table-striped">
         <thead>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm mã xe" #txtSearch (keyup)="searchBienso(txtSearch.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm kiếm mã xe" #txtSearch (keyup)="searchMaxe(txtSearch.value)"></td>
         <td><input type="text" class="form-control" placeholder="Tìm kiếm bến đi" #txtSearch1 (keyup)="searchBendi(txtSearch1.value)"></td>
         <td><input type="text" class="form-control" placeholder="Tìm kiếm bến đến" #txtSearch2 (keyup)="searchBenden(txtSearch2.value)"></td>
         <td><input type="text" class="form-control" placeholder="Tìm kiếm thời gian" #txtSearch3 (keyup)="searchThoigian(txtSearch3.value)"></td>
@@ -112,14 +112,14 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let tuyenxeList of tuyenxeList; let i = index">
-          <td>{{tuyenxeList.maXe}}</td>
-          <td>{{tuyenxeList.benDi}}</td>
-          <td>{{tuyenxeList.benDen}}</td>
+        <tr *ngFor="let tuyenxeList of chuyenXeList; let i = index">
+          <td>{{tuyenxeList.maChuyen}}</td>
+          <td>{{tuyenxeList.benDi.tenBen}}</td>
+          <td>{{tuyenxeList.benDen.tenBen}}</td>
           <td>{{tuyenxeList.thoiGian}}</td>
           <td>
-            <button type="button" class="btn btn-danger" (click)="removetuyenxe(i)" [disabled]="isDisable">Xóa</button>
-            <button type="button" class="btn btn-success" (click)="(i)" [disabled]="isDisable">Edit</button>
+            <button type="button" class="btn btn-danger" (click)="removeChuyenxe(keywordMaxe, tuyenxeList.maChuyen)" [disabled]="isDisable">Xóa</button>
+<!--            <button type="button" class="btn btn-success">Edit</button>-->
           </td>
         </tbody>
       </table>

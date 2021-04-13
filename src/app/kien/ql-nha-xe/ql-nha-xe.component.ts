@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-// @ts-ignore
-import {Nhaxe} from '../model/nhaxe';
-// @ts-ignore
 import {QlNhaXeService} from '../../Services/kien-s/ql-nha-xe.service';
+import {Subscription} from 'rxjs';
+import {NhaXe} from '../../nhan/Models/NhaXe.class';
+
 
 @Component({
   selector: 'app-ql-nha-xe',
@@ -11,13 +11,15 @@ import {QlNhaXeService} from '../../Services/kien-s/ql-nha-xe.service';
 })
 export class QlNhaXeComponent implements OnInit {
   isDisable = false;
-  nhaxeList: Nhaxe[] = [];
-  nhaxeListroot: Nhaxe[] = [];
+  nhaxeList: NhaXe[] = [];
+  nhaxeListroot: NhaXe[] = [];
 // @ts-ignore
   keywordManhaxe: string;
 // @ts-ignore
   keywordTennhaxe: string;
-
+  // @ts-ignore
+  public subcription: Subscription;
+  public nhaxe: NhaXe[] = [];
 // @ts-ignore
   // tslint:disable-next-line:variable-name
   private _nhaxeName: string;
@@ -28,6 +30,7 @@ export class QlNhaXeComponent implements OnInit {
       this.nhaxeList = data;
       this.nhaxeListroot = data;
     }, error => {
+      console.log(123);
       console.log(error);
     });
   }
@@ -39,8 +42,19 @@ export class QlNhaXeComponent implements OnInit {
     this._nhaxeName = value;
   }
   // tslint:disable-next-line:typedef
-  removenhaxe(index: number){
-    this.nhaxeList.splice(index, 1);
+  removeNhaxe(index: string, maNhaxe: string){
+    let cf1 = confirm('Bạn có muốn xóa hay không??');
+    if (cf1) {
+      this._qlNhaXeService.delete(maNhaxe).subscribe(
+        data => {
+          console.log(data);
+          if (data == null) { // @ts-ignore
+            this.nhaxeList.splice(index, 1); }
+        }, error => {
+          console.log(error);
+        }
+      );
+    }
   }
 
   // tslint:disable-next-line:typedef

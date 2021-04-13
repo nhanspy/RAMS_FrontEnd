@@ -11,19 +11,19 @@
 <form method="post" role="form" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label>Username</label>
-    <input type="text" class="form-control" maxlength="20" placeholder="Nhập Username" [(ngModel)]="user.userName"[ngModelOptions]="{standalone: true}">
+    <input type="text" class="form-control" maxlength="20" placeholder="Nhập Username" [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}" name="userName">
   </div>
-  <div class="form-group">
-    <label>Loại</label>
-    <input type="text" class="form-control" placeholder="Nhập loại" [(ngModel)]="user.role"[ngModelOptions]="{standalone: true}">
-  </div>
+  <!--  <div class="form-group">-->
+  <!--    <label>Loại</label>-->
+  <!--    <input type="text" class="form-control" placeholder="Nhập loại" [(ngModel)]="user.role"[ngModelOptions]="{standalone: true}">-->
+  <!--  </div>-->
   <div class="form-group">
     <label>Tên</label>
     <input type="text" class="form-control" maxlength="20" placeholder="Nhập tên" [(ngModel)]="user.ten"[ngModelOptions]="{standalone: true}">
   </div>
   <div class="form-group">
     <label>Số điện thoại</label>
-    <input type="text" maxlength="10" class="form-control" placeholder="Nhập số điện thoại" [(ngModel)]="user.soDienThoai"[ngModelOptions]="{standalone: true}">
+    <input type="number" maxlength="10" class="form-control" placeholder="Nhập số điện thoại" [(ngModel)]="user.soDienThoai"[ngModelOptions]="{standalone: true}">
   </div>
   <div class="form-group">
     <label>Ngày sinh</label>
@@ -31,22 +31,22 @@
   </div>
   <div class="form-group">
     <label>Địa chỉ</label>
-    <input type="number" class="form-control" placeholder="Nhập địa chỉ" [(ngModel)]="user.diaChi"[ngModelOptions]="{standalone: true}">
+    <input type="text" class="form-control" placeholder="Nhập địa chỉ" [(ngModel)]="user.diaChi"[ngModelOptions]="{standalone: true}">
   </div>
-  <div class="form-group">
-    <label>Giới tính</label>
-    <input type="text" class="form-control" maxlength="5" placeholder="Nhập giới tính" [(ngModel)]="user.gioiTinh"[ngModelOptions]="{standalone: true}">
-  </div>
+  <!--  <div class="form-group">-->
+  <!--    <label>Giới tính</label>-->
+  <!--    <input type="text" class="form-control" maxlength="5" placeholder="Nhập giới tính" [(ngModel)]="user.gioiTinh"[ngModelOptions]="{standalone: true}">-->
+  <!--  </div>-->
   <div class="form-group">
     <label>Email</label>
-    <input type="text" class="form-control" maxlength="20" placeholder="Nhập email" [(ngModel)]="user.email"[ngModelOptions]="{standalone: true}">
+    <input type="text" class="form-control" maxlength="40" placeholder="Nhập email" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}">
   </div>
   <div class="form-group">
     <label>Mật khẩu</label>
     <input type="password" class="form-control" maxlength="20" placeholder="Nhập mat khau" [(ngModel)]="user.password"[ngModelOptions]="{standalone: true}">
   </div>
   <button type="submit" class="btn btn-primary" >Lưu</button>
-<button type="button" class="btn btn-secondary" routerLink="/qlnguoidung" >Thoát</button>
+  <button type="button" class="btn btn-secondary" routerLink="/qlnguoidung" >Thoát</button>
 </form>
 </body>
 </html>

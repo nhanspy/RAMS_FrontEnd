@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Nguoidung} from '../../kien/model/Nguoidung';
-import {User} from '../../nhan/Models/User.class';
+import {SignupRequest} from '../../nhan/Models/SignupRequest.class';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -25,11 +24,8 @@ export class QlNguoiDungService {
 
     // @ts-ignore
     create(data): Observable<any>{
-      return this.http.post<Nguoidung>(this.baseURL, {
-        username: data.userName,
-        email: data.email,
-        password: data.password
-      }, httpOptions);
+      console.log(data);
+      return this.http.post<SignupRequest>(this.baseURL, data);
     }
 
     // @ts-ignore

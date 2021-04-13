@@ -1,36 +1,45 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Tuyenxe} from '../../kien/model/tuyenxe';
+import {FormChuyenXe} from '../../kien/model/FormChuyenXe';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 @Injectable({
   providedIn: 'root'
 })
 export class QlTuyenXeService {
-  private baseURL = 'http://192.168.1.23:8080/api/v1/user';
-
+  private baseURLget = 'http://localhost:8080/api/v1/chuyenxe';
+  private baseURL = 'http://localhost:8080/api/v1/chuyenxe';
   constructor(private http: HttpClient) {
   }
-
-  findAll(): Observable<Tuyenxe[]> {
-    return this.http.get<Tuyenxe[]>(this.baseURL);
+  getAll(): Observable<any> {
+    return this.http.get(this.baseURLget);
   }
   // @ts-ignore
-  delete(maXe): Observable<any> {
-    return this.http.delete(`${'http://localhost:8080/student/delete'}/${maXe}`);
-  }
-
-  // @ts-ignore
-  create(data): Observable<any>{
-    return this.http.post<Tuyenxe>('http://localhost:8080/student/add', data);
+  delete(maChuyen: string): Observable<any> {
+    return this.http.delete(this.baseURLget + '/' + maChuyen);
   }
 
   // @ts-ignore
-  update(maXe, data): Observable<any> {
-    return this.http.put(`${'http://localhost:8080/student/'}/${maXe}`, data);
+  create(data: FormChuyenXe): Observable<any>{
+    console.log(data);
+    return this.http.post<FormChuyenXe>(this.baseURL, {
+      maChuyen: data.maChuyen,
+      xe: data.xe,
+      thoiGian: data.thoiGian,
+      benDen: data.benDen,
+      benDi: data.benDi,
+    }, httpOptions);
   }
   // @ts-ignore
-  get(maXe): Observable<any> {
-    return this.http.get(`${'http://localhost:8080/student/'}/${maXe}`);
+  update(thoiGian, data): Observable<any> {
+    return this.http.put(this.baseURL + '/' + thoiGian, data);
   }
+  // @ts-ignore
+  get(thoiGian): Observable<any> {
+    return this.http.get(this.baseURLget + '/' + thoiGian);
+  }
+
 }
