@@ -19,4 +19,6 @@ export class User {
   gioiTinh: boolean;
   // @ts-ignore
   roles: Role;
+  // @ts-ignore
+  password: Role;
 }
