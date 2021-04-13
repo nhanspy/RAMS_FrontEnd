@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'qltuyenxe', component: QlTuyenXeComponent},
   {path: 'dangky', component: DangKyComponent},
   {path: 'dangnhap', component: DangNhapComponent},
-  {path: 'kiemtrathongtin', component: KiemTraVeComponent},
+  {path: 'kiemtra', component: KiemTraVeComponent},
 ];
 
 @NgModule({

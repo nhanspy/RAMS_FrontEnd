@@ -11,6 +11,7 @@ import { DatVeComponent } from './nhan/dat-ve/dat-ve.component';
 import { QlNguoiDungComponent } from './kien/ql-nguoi-dung/ql-nguoi-dung.component';
 import { QlTuyenXeComponent } from './kien/ql-tuyen-xe/ql-tuyen-xe.component';
 import { QlNhaXeComponent } from './kien/ql-nha-xe/ql-nha-xe.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { QlNhaXeComponent } from './kien/ql-nha-xe/ql-nha-xe.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
