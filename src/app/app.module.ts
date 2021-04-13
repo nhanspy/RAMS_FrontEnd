@@ -22,6 +22,8 @@ import {KiemTraVeComponent} from './thao/kiem-tra-ve/kiem-tra-ve.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {TestRoutingComponent} from './trong/test-routing/test-routing.component';
+import { HeaderComponent } from './trong/header/header.component';
+import { FooterComponent } from './trong/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import {TestRoutingComponent} from './trong/test-routing/test-routing.component'
     KiemTraVeComponent,
     XemLichSuComponent,
     TimKiemTuyenComponent,
-    TestRoutingComponent
+    TestRoutingComponent,
+    HeaderComponent,
+    FooterComponent
   ],
     imports: [
         BrowserModule,

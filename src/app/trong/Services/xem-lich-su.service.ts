@@ -19,7 +19,7 @@ export class XemLichSuService {
   }
   // tslint:disable-next-line:typedef
   getXeTheoChuyenXe(chuyenXe: ChuyenXe) {
-    return this.httpClient      .get(baseURL + '/' + 'xe/' + chuyenXe.maXe);
+    return this.httpClient.get(baseURL + '/' + 'xe/' + chuyenXe.maXe);
   }
 
   // tslint:disable-next-line:typedef
