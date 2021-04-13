@@ -30,24 +30,14 @@ export class XemLichSu {
   set thoiGian(value: string) {
     this._thoiGian = value;
   }
-
-  get giaThanh(): string {
-    return this._giaThanh;
-  }
-
-  set giaThanh(value: string) {
-    this._giaThanh = value;
-  }
-  constructor(tenNhaXe: string, benDi: string, benDen: string, thoiGian: string, giaThanh: string) {
+  constructor(tenNhaXe: string, benDi: string, benDen: string, thoiGian: string) {
     this._tenNhaXe = tenNhaXe;
     this._benDi = benDi;
     this._benDen = benDen;
     this._thoiGian = thoiGian;
-    this._giaThanh = giaThanh;
   }
   private _tenNhaXe: string;
   private _benDi: string;
   private _benDen: string;
   private _thoiGian: string;
-  private _giaThanh: string;
 }

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="/assets/trong/css/fubus.css">
+  <link rel="stylesheet" href="/assets/trong/css/add.css">
+
+</head>
+<body>
+<div id="__nuxt">
+  <!---->
+  <div id="__layout">
+    <div class="default-layout-container">
+      <noscript><iframe data-src="https://www.googletagmanager.com/ns.html?id=GTM-5TJW4VC" height="0" width="0" style="display: none; visibility: hidden;" class="lazyLoad"></iframe></noscript>
+      <div data-v-5778dee1="" id="page-head" class="top-bar" style="top: 0px;">
+        <div data-v-5778dee1="" class="nav-container">
+          <img src="assets/trong/img/bus.png" height="74" width="75"/>
+          <div data-v-5778dee1="" id="nav">
+            <!--fragment#7c31e8fd6a#head-->
+            <a data-v-5778dee1="" href="/" aria-current="page" class="active-link nuxt-link-active" fragment="7c31e8fd6a">Trang Chủ</a>
+            <!--fragment#7c31e8fd6a#tail--><!--fragment#3083ef46f2#head-->
+            <a data-v-5778dee1="" href="" class="" fragment="3083ef46f2">Tìm Kiếm</a>
+            <!--fragment#3083ef46f2#tail--><!--fragment#bc84f0e32d#head-->
+            <a data-v-5778dee1="" href="" class="" fragment="bc84f0e32d">Đăng Nhập</a>
+            <!--fragment#bc84f0e32d#tail--><!--fragment#486084a227#head-->
+            <a data-v-5778dee1="" href="" class="" fragment="584f0fa80e">Đăng Kí Người Dùng</a>
+            <!--fragment#584f0fa80e#tail--><!--fragment#c46fd79155#head-->
+            <a data-v-5778dee1="" href="" class="" fragment="febbfc792a">Đăng Kí Nhà Xe</a>
+            <!--fragment#febbfc792a#tail-->
+          </div>
+        </div>
+      </div>
+      <div data-v-57f2fc3b="" class="index">
+        <div data-v-3ceb75b5="" data-v-57f2fc3b="" class="book-ticket-container">
+          <div data-v-3ceb75b5="" class="booking-select-box-container">
+            <div data-v-3ceb75b5="" class="place-select-container">
+              <div data-v-c5ae3bdc="" data-v-3ceb75b5="" class="auto-complete-place-container place-select-from">
+                <label data-v-c5ae3bdc="" class="title">Điểm đi</label>
+                <div class="form-group">
+                  <select style="border-radius: 100px" class="form-control" id="college" name="college_name" required >
+                    <option *ngFor="let thing of tinhthanhlist" value="college">{{thing.tenTinh}}</option>
+                    <!--                    <option value="others">Others- Please Specify Below</option>-->
+                    <!--                    <span>{{thing.name}}</span>-->
+                  </select>
+                </div>
+<!--                <form class="example-form">-->
+<!--                  <mat-form-field class="example-full-width">-->
+<!--                    <mat-label>Number</mat-label>-->
+<!--                    <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" ]>-->
+<!--                    <mat-autocomplete #auto="matAutocomplete">-->
+<!--                      <mat-option *ngFor="let option of options" [value]="option">{{option}}-->
+<!--                      </mat-option>-->
+<!--                    </mat-autocomplete>-->
+<!--                  </mat-form-field>-->
+<!--                  -->
+<!--                </form>-->
+              </div>
+              <img data-v-3ceb75b5="" alt="change" class="change-img center lazyLoad isLoaded" src="/assets/trong/img/swaps.971b609.png.png" />
+              <div data-v-c5ae3bdc="" data-v-3ceb75b5="" class="auto-complete-place-container">
+                <label data-v-c5ae3bdc="" class="title disabled">Điểm đến</label>
+                <div class="form-group">
+                  <select style="border-radius: 100px" class="form-control" id="college2" name="college2_name" required>
+                    <option *ngFor="let thing of tinhthanhlist" value="college">{{thing.tenTinh}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="inner-form col-3 col-sm" style="margin: 0; width: 250px">
+              <form action="">
+                <label for="birthdaytime" style="color: #555">Chọn ngày đi:</label>
+                <input class="choices__input" type="date" id="birthdaytime" name="birthdaytime" value="2021-01-01">
+                <!--                        <input class="btn-search btn" type="submit">-->
+              </form>
+            </div>
+          </div>
+          <a data-v-3ceb75b5="" class="buy-btn btn" href="/" style="text-decoration: none">
+            <i data-v-3ceb75b5="" class="fa fa-search buy-icon"></i>
+            TÌM CHUYẾN XE
+          </a>
+        </div>
+        <div data-v-7f47ef51="" data-v-57f2fc3b="" class="promotion-banner-container">
+          <div data-v-7f47ef51="" role="region" id="carousel-1" aria-busy="false" class="carousel slide">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
+
