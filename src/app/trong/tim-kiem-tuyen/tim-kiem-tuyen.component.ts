@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit,Input} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -15,11 +15,11 @@ export class TimKiemTuyenComponent implements OnInit {
   // @ts-ignore
   tinhthanh: TinhThanh;
   // @ts-ignore
-  getbendi: string;
+  @Input() getbendi: string;
   // @ts-ignore
-  getbenden: string;
+  @Input() getbenden: string;
   // @ts-ignore
-  getthoigian: string;
+  @Input() getthoigian: string;
 
   constructor(private xemLichSuService: XemLichSuService) {
   }

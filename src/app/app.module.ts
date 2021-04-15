@@ -24,6 +24,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {TestRoutingComponent} from './trong/test-routing/test-routing.component';
 import { HeaderComponent } from './trong/header/header.component';
 import { FooterComponent } from './trong/footer/footer.component';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import { FooterComponent } from './trong/footer/footer.component';
         MatAutocompleteModule,
         BrowserAnimationsModule,
         MatFormFieldModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        IvyCarouselModule
     ],
   providers: [
     XemChiTietChuyenXeService
