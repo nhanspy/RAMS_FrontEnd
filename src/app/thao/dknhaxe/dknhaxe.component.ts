@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../_services/auth.service';
+import {AuthService} from "../_services/auth.service";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-dknhaxe',
+  templateUrl: './dknhaxe.component.html',
+  styleUrls: ['./dknhaxe.component.css']
 })
-export class RegisterComponent implements OnInit {
-
+export class DKNHaxeComponent implements OnInit {
   form: any = {};
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService) { }
+
+  constructor( private authService: AuthService) { }
 
   ngOnInit(): void {
   }
-  onSubmit(): void {
-    this.authService.register(this.form).subscribe(
+  inSubmit(): void {
+    this.authService.dangky(this.form).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;
