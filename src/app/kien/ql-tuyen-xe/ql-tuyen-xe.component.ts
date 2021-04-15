@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {QlTuyenXeService} from '../../Services/kien-s/ql-tuyen-xe.service';
-import {Subscription} from 'rxjs';
 import {ChuyenXe} from '../../nhan/Models/ChuyenXe.class';
+import {Ben} from '../../nhan/Models/Ben.class';
 
 @Component({
   selector: 'app-ql-tuyen-xe',
@@ -12,6 +12,8 @@ export class QlTuyenXeComponent implements OnInit {
   isDisable = false;
   chuyenXeList: ChuyenXe[] = [];
   chuyenXeListRoot: ChuyenXe[] = [];
+  benXeList: Ben[] = [];
+  form: any;
 // @ts-ignore
   keywordMaxe: string;
 // @ts-ignore
@@ -21,30 +23,72 @@ export class QlTuyenXeComponent implements OnInit {
   // @ts-ignore
   keywordThoigian: string;
   // @ts-ignore
-  public subcription: Subscription;
-  public chyenxe: ChuyenXe[] = [];
-// @ts-ignore
   // tslint:disable-next-line:variable-name
-  private _chuyenXeName: string;
-  // tslint:disable-next-line:variable-name
-  constructor(private _qlTuyenXeService: QlTuyenXeService) {}
-  ngOnInit(): void {
-    // @ts-ignore
+  constructor(private _qlTuyenXeService: QlTuyenXeService) {
     this._qlTuyenXeService.getAll().subscribe(data => {
+      console.log(data);
       this.chuyenXeList = data;
       this.chuyenXeListRoot = data;
-      // @ts-ignore
     }, error => {
       console.log(123);
       console.log(error);
     });
-  }
-  get tuyenxeName(): string {
-    return this._chuyenXeName;
-  }
 
-  set tuyenxeName(value: string) {
-    this._chuyenXeName = value;
+    this._qlTuyenXeService.getAllBenXe().subscribe(
+      data => {
+        this.benXeList = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+  // @ts-ignore
+  enableEditchuyenxe = false;
+  enableEditIndexchuyenxe = -1;
+  enableAddNewchuyenxe = -1;
+  // @ts-ignore
+  chuyenXes: ChuyenXe;
+  // @ts-ignore
+  chuyenXePush: ChuyenXe;
+  // @ts-ignore
+  ngOnInit(): void {
+    // @ts-ignore
+    this.chuyenXes = new ChuyenXe();
+  }
+  // tslint:disable-next-line:typedef
+  addchuyenxe() {
+    // @ts-ignore
+    console.log(this.chuyenXes);
+    this._qlTuyenXeService.create(this.chuyenXes).subscribe(response => {
+        alert('Thêm thành công!!');
+        console.log(response);
+      },
+      // @ts-ignore
+      error => {
+        console.log(error);
+      });
+  }
+  // tslint:disable-next-line:typedef
+  onSubmit() {
+    console.log(123);
+    console.log(this.chuyenXes)
+    this.addchuyenxe();
+  }
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  editchuyenxe(e, i) {
+
+    // @ts-ignore
+    this.chuyenXePush = new ChuyenXe();
+    this.enableEditchuyenxe = true;
+    this.enableEditIndexchuyenxe = i;
+    console.log(this.chuyenXes);
+  }
+  // tslint:disable-next-line:typedef
+  new(){
+    // @ts-ignore
+    this.chuyenXes = new ChuyenXe();
   }
   // tslint:disable-next-line:typedef
   removeChuyenxe(index: string, maChuyen: string){
@@ -61,7 +105,6 @@ export class QlTuyenXeComponent implements OnInit {
       );
     }
   }
-
   // tslint:disable-next-line:typedef
   search() {
     let dem = 0;
@@ -116,4 +159,52 @@ export class QlTuyenXeComponent implements OnInit {
     this.keywordThoigian = value;
     this.search();
   }
+
+  // tslint:disable-next-line:typedef
+  view(event: string){
+
+    // @ts-ignore
+    this.chuyenXePush.benDi = this.benXeList.filter(item => {
+      return item.maBen === event;
+    })[0];
+    this.setUp();
+    console.log(event);
+    console.log(this.chuyenXePush);
+    console.log(this.chuyenXes);
+  }
+
+  // tslint:disable-next-line:typedef
+  view2(event: string){
+    // @ts-ignore
+    this.chuyenXePush.benDen = this.benXeList.filter(item => {
+      return item.maBen === event;
+    })[0];
+    console.log(event);
+    this.setUp();
+    console.log(this.chuyenXePush);
+    console.log(this.chuyenXes);
+  }
+// tslint:disable-next-line:typedef
+  setUp(){
+    this.chuyenXePush.maChuyen = this.chuyenXes.maChuyen;
+    this.chuyenXePush.thoiGian = this.chuyenXes.thoiGian;
+    this.chuyenXePush.veXe = this.chuyenXes.veXe;
+    this.chuyenXePush.xe = this.chuyenXes.xe;
+    this.chuyenXePush.benDi = this.chuyenXes.benDi;
+    this.chuyenXePush.benDen = this.chuyenXes.benDen;
+  }
+
+  // tslint:disable-next-line:typedef
+  view3(){
+    console.log(this.chuyenXes);
+  }
+
+  // tslint:disable-next-line:typedef
+  setBenDi(value: any){
+    console.log(value.target);
+    this.chuyenXePush.benDen = this.benXeList.filter(item => {
+      return item.maBen === value;
+    })[0];
+  }
+
 }

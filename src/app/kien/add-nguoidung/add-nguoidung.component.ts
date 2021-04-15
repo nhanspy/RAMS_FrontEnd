@@ -13,16 +13,11 @@ export class AddNguoidungComponent implements OnInit {
   // @ts-ignore
   user: SignupRequest;
 
-  constructor(private qlNguoiDungService: QlNguoiDungService,
-              private route: ActivatedRoute,
-              private router: Router) {
-  }
-
+  constructor(private qlNguoiDungService: QlNguoiDungService) {}
   ngOnInit(): void {
     // @ts-ignore
     this.user = new SignupRequest();
   }
-
   // tslint:disable-next-line:typedef
   add() {
     // @ts-ignore
@@ -36,7 +31,6 @@ export class AddNguoidungComponent implements OnInit {
         console.log(error);
       });
   }
-
   // tslint:disable-next-line:typedef
   onSubmit() {
     this.add();

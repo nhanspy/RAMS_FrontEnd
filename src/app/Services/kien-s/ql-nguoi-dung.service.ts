@@ -21,13 +21,11 @@ export class QlNguoiDungService {
     delete(id: int): Observable<any> {
       return this.http.delete(this.baseURLget + '/' + id);
   }
-
     // @ts-ignore
     create(data): Observable<any>{
       console.log(data);
       return this.http.post<SignupRequest>(this.baseURL, data);
     }
-
     // @ts-ignore
     update(username, data): Observable<any> {
       return this.http.put(this.baseURL + '/' + username, data);

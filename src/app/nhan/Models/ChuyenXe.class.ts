@@ -3,12 +3,19 @@ import {VeXe} from './VeXe.class';
 import {Xe} from './Xe.class';
 
 export class ChuyenXe {
+  // tslint:disable-next-line:variable-name
   private _maChuyen: string;
+  // tslint:disable-next-line:variable-name
   private _maXe: string;
+  // tslint:disable-next-line:variable-name
   private _thoiGian: string;
+  // tslint:disable-next-line:variable-name
   private _benDi: Ben;
+  // tslint:disable-next-line:variable-name
   private _benDen: Ben;
+  // tslint:disable-next-line:variable-name
   private _veXe: VeXe;
+  // tslint:disable-next-line:variable-name
   private _xe: Xe;
 
 

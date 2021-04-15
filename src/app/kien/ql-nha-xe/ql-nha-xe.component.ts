@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {QlNhaXeService} from '../../Services/kien-s/ql-nha-xe.service';
-import {Subscription} from 'rxjs';
 import {NhaXe} from '../../nhan/Models/NhaXe.class';
-
 
 @Component({
   selector: 'app-ql-nha-xe',
@@ -17,29 +15,58 @@ export class QlNhaXeComponent implements OnInit {
   keywordManhaxe: string;
 // @ts-ignore
   keywordTennhaxe: string;
-  // @ts-ignore
-  public subcription: Subscription;
-  public nhaxe: NhaXe[] = [];
-// @ts-ignore
   // tslint:disable-next-line:variable-name
-  private _nhaxeName: string;
-  // tslint:disable-next-line:variable-name
-  constructor(private _qlNhaXeService: QlNhaXeService) {}
-  ngOnInit(): void {
+  constructor(private _qlNhaXeService: QlNhaXeService) {
     this._qlNhaXeService.getAll().subscribe(data => {
-      this.nhaxeList = data;
-      this.nhaxeListroot = data;
-    }, error => {
-      console.log(123);
-      console.log(error);
-    });
+    console.log(data);
+    this.nhaxeList = data;
+    this.nhaxeListroot = data;
+  }, error => {
+    console.log(123);
+    console.log(error);
+  });
   }
-  get nhaxeName(): string {
-    return this._nhaxeName;
+  // @ts-ignore
+  enableEditnhaxe = false;
+  enableEditIndexnhaxe = -1;
+  enableAddNewnhaxe = -1;
+  // @ts-ignore
+  nhaXe: NhaXe;
+  // @ts-ignore
+  ngOnInit(): void {
+    // @ts-ignore
+    this.nhaXe = new NhaXe();
   }
-
-  set nhaxeName(value: string) {
-    this._nhaxeName = value;
+  // tslint:disable-next-line:typedef
+  addnhaxe() {
+    // @ts-ignore
+    console.log(this.nhaXe);
+    this._qlNhaXeService.create(this.nhaXe).subscribe(response => {
+        alert('Thêm thành công!!');
+        console.log(response);
+      },
+      // @ts-ignore
+      error => {
+        console.log(error);
+      });
+  }
+  // tslint:disable-next-line:typedef
+  onSubmit() {
+    console.log(123);
+    console.log(this.nhaXe)
+    this.addnhaxe();
+  }
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  editNhaxe(e, i) {
+    this.enableEditnhaxe = true;
+    this.enableEditIndexnhaxe = i;
+    console.log(i, e);
+  }
+  // tslint:disable-next-line:typedef
+  new(){
+    // @ts-ignore
+    this.nhaXe = new NhaXe();
   }
   // tslint:disable-next-line:typedef
   removeNhaxe(index: string, maNhaxe: string){
@@ -56,7 +83,6 @@ export class QlNhaXeComponent implements OnInit {
       );
     }
   }
-
   // tslint:disable-next-line:typedef
   search() {
     let dem = 0;

@@ -13,6 +13,4 @@ export class SignupRequest {
   ngaySinh: string;
 // @ts-ignore
   diaChi: string;
-// @ts-ignore
-  gioiTinh: string;
 }

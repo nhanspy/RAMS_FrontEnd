@@ -29,7 +29,6 @@ export class QlNhaXeService {
       tenNhaXe: data.tenNhaXe
     }, httpOptions);
   }
-
   // @ts-ignore
   update(tenNhaxe, data): Observable<any> {
     return this.http.put(this.baseURL + '/' + tenNhaxe, data);

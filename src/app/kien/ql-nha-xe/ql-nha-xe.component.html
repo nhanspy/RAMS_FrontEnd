@@ -71,7 +71,6 @@
       top: 3px;
     }
   </style>
-
 </head>
 <body>
 <div class="container">
@@ -81,7 +80,7 @@
         <div class="row">
           <div class="col-sm-8"><h2>Quản lý tài khoản nhà xe</h2></div>
           <div class="col-sm-4">
-            <button routerLink="/addnhaxe" type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Thêm mới</button>
+            <button (click)="new(); enableAddNewnhaxe = enableAddNewnhaxe*-1" type="button" class="btn btn-info add-new" ><i class="fa fa-plus"></i> Thêm mới</button>
           </div><br><br><br>
           <div class="row">
             <div class="col-lg-4">
@@ -94,7 +93,6 @@
               <a routerLink="/qltuyenxe" >Quản lý tuyến xe</a>
             </div>
           </div>
-
         </div>
       </div>
       <table class="table table-striped">
@@ -108,13 +106,21 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let nhaxeList of nhaxeList, let i = index">
+        <tr *ngIf="enableAddNewnhaxe == 1">
+          <td ><input type="text" class="form-control" [(ngModel)]="nhaXe.maNhaXe" [ngModelOptions]="{standalone: true}"></td>
+          <td ><input type="text" class="form-control"  [(ngModel)]="nhaXe.tenNhaXe" [ngModelOptions]="{standalone: true}"></td>
+          <td >
+            <button (click)="onSubmit()" type="submit" class="btn btn-primary">Lưu</button>
+            <button (click)="enableAddNewnhaxe = -1;" type="button" class="btn btn-info" ng-click="cancel()">Hủy</button>
+          </td>
+        </tr>
+        <tr *ngFor="let nhaxeList of nhaxeList; let i = index">
           <td>{{nhaxeList.maNhaXe}}</td>
           <td>{{nhaxeList.tenNhaXe}}</td>
           <td>
+            <button type="button" class="btn btn-success" (click)="editNhaxe($event, i); nhaXe=nhaxeList;enableAddNewnhaxe=1 ">Sửa</button>
             <button type="button" class="btn btn-danger" (click)="removeNhaxe(keywordManhaxe, nhaxeList.maNhaXe)" [disabled]="isDisable">Xóa</button>
-<!--            <button type="button" class="btn btn-success">Edit</button>-->
-          </td>
+        </td>
         </tbody>
       </table>
     </div>

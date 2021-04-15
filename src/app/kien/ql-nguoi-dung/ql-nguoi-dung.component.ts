@@ -1,21 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {QlNguoiDungService} from '../../Services/kien-s/ql-nguoi-dung.service';
-import {Subscription} from 'rxjs';
 import {User} from '../../nhan/Models/User.class';
+import {SignupRequest} from '../../nhan/Models/SignupRequest.class';
 
+// @ts-ignore
 @Component({
   selector: 'app-ql-nguoi-dung',
   templateUrl: './ql-nguoi-dung.component.html',
   styleUrls: ['./ql-nguoi-dung.component.css']
 })
-
-
 // @ts-ignore
 export class QlNguoiDungComponent implements OnInit {
-  // tslint:disable-next-line:typedef
   // @ts-ignore
-  public subscription: Subscription;
-  public nguoidung: User[] = [];
+  user: SignupRequest;
   isDisable = false;
   NguoidungList: User[] = [];
   NguoidungListroot: User[] = [];
@@ -38,7 +35,6 @@ export class QlNguoiDungComponent implements OnInit {
   // @ts-ignore
   // tslint:disable-next-line:variable-name
   private _NguoidungName: string;
-
   // tslint:disable-next-line:variable-name
   constructor(private _qlNguoiDungService: QlNguoiDungService) {
     this._qlNguoiDungService.getAll().subscribe(data => {
@@ -53,9 +49,46 @@ export class QlNguoiDungComponent implements OnInit {
   get NguoidungName(): string {
     return this._NguoidungName;
   }
-
   set NguoidungName(value: string) {
     this._NguoidungName = value;
+  }
+  enableEdit = false;
+  enableEditIndex = -1;
+  enableAddNew = -1;
+  // @ts-ignore
+  nguoiDung: User;
+  ngOnInit(): void {
+    // @ts-ignore
+    this.user = new SignupRequest();
+  }
+  // tslint:disable-next-line:typedef
+  addnguoidung() {
+    // @ts-ignore
+    console.log(this.user);
+    this._qlNguoiDungService.create(this.user).subscribe(response => {
+        alert('Thêm thành công!!');
+        console.log(response);
+      },
+      // @ts-ignore
+      error => {
+        console.log(error);
+      });
+  }
+  // tslint:disable-next-line:typedef
+  onSubmit() {
+    this.addnguoidung();
+  }
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  editNguoidung(e, i) {
+    this.enableEdit = true;
+    this.enableEditIndex = i;
+    console.log(i, e);
+  }
+  // tslint:disable-next-line:typedef
+  new(){
+    // @ts-ignore
+    this.nguoiDung = new User();
   }
   // tslint:disable-next-line:typedef
   removeNguoidung(index: number, id: number){
@@ -121,13 +154,11 @@ export class QlNguoiDungComponent implements OnInit {
       this.NguoidungList = this.NguoidungListroot;
     }
   }
-
   // tslint:disable-next-line:typedef
   searchUsername(value: string){
     this.keywordUsername = value;
     this.search();
   }
-
   // tslint:disable-next-line:typedef
   searchRole(value: string){
     this.keywordRole = value;
@@ -138,7 +169,6 @@ export class QlNguoiDungComponent implements OnInit {
     this.keywordTen = value;
     this.search();
   }
-
   // tslint:disable-next-line:typedef
   searchSodienthoai(value: string){
     this.keywordSodienthoai = value;
@@ -157,12 +187,6 @@ export class QlNguoiDungComponent implements OnInit {
   // tslint:disable-next-line:typedef
   searchEmail(value: string){
     this.keywordEmail = value;
-    this.search();
-  }
-
-  // tslint:disable-next-line:typedef
-  searchGioiTinh(value: string){
-    this.keywordGioitinh = value;
     this.search();
   }
 }

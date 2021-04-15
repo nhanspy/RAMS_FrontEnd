@@ -79,10 +79,8 @@
         <div class="row">
           <div class="col-sm-8"><h2>Quản lý tài khoản người dùng</h2></div>
           <div class="col-sm-4">
-            <button type="button" class="btn btn-info add-new" routerLink="/addnguoidung"><i class="fa fa-plus"></i> Thêm mới</button>
-          </div><br><br>
-          <div style="margin-left: 600px">
-          </div><br>
+            <button (click)="new(); enableAddNew=enableAddNew*-1" type="button" class="btn btn-info add-new" ><i class="fa fa-plus"></i> Thêm mới</button>
+          </div><br><br><br>
           <div class="row">
             <div class="col-lg-4">
               <a routerLink="/qlnguoidung" >Quản lý tài khoản người dùng</a>
@@ -94,53 +92,57 @@
               <a routerLink="/qltuyenxe" >Quản lý tuyến xe</a>
             </div>
           </div><br>
-
         </div>
       </div>
       <table class="table table-striped">
         <thead>
         <tr>
           <td><input type="text" class="form-control" placeholder="Tìm người dùng" #txtSearch (keyup)="searchUsername(txtSearch.value)"></td>
-<!--          <td><input type="text" class="form-control" placeholder="Tìm loại" #txtSearch1 (keyup)="searchRole(txtSearch1.value)"></td>-->
           <td><input type="text" class="form-control" placeholder="Tìm tên" #txtSearch2 (keyup)="searchTen(txtSearch2.value)"></td>
           <td width="200px"><input type="text" class="form-control" placeholder="Tìm email" #txtSearch3 (keyup)="searchEmail(txtSearch3.value)"></td>
           <td><input type="text" class="form-control" placeholder="Tìm SĐT" #txtSearch4 (keyup)="searchSodienthoai(txtSearch4.value)"></td>
           <td><input type="text" class="form-control" placeholder="Tìm ngày sinh̉" #txtSearch5 (keyup)="searchNgaysinh(txtSearch5.value)"></td>
           <td><input type="text" class="form-control" placeholder="Tìm địa chỉ" #txtSearch7 (keyup)="searchDiachi(txtSearch7.value)"></td>
-<!--          <td><input type="text" class="form-control" placeholder="Tìm giới tính" #txtSearch8 (keyup)="searchGioiTinh(txtSearch8.value)"></td>-->
         </tr>
         <tr>
           <th>Username</th>
-<!--          <th>Loại</th>-->
           <th>Tên</th>
           <th>Email</th>
           <th>Số điện thoại</th>
           <th>Ngày sinh</th>
           <th>Địa chỉ</th>
-<!--          <th>Giới tính</th>-->
           <th >Hành động</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let nguoidungList of NguoidungList; let i = index">
-          <td>{{nguoidungList.username}}</td>
-<!--          <td>{{nguoidungList.roles.name}}</td>-->
-          <td>{{nguoidungList.ten}}</td>
-          <td>{{nguoidungList.email}}</td>
-          <td>{{nguoidungList.soDienThoai}}</td>
-          <td>{{nguoidungList.ngaySinh}}</td>
-          <td>{{nguoidungList.diaChi}}</td>
-<!--          <td>{{nguoidungList.gioiTinh}}</td>-->
+        <tr *ngIf="enableAddNew == 1">
+          <td ><input type="text" class="form-control"  [(ngModel)]="nguoiDung.username" [ngModelOptions]="{standalone: true}"></td>
+          <td ><input type="text" class="form-control"  [(ngModel)]="nguoiDung.ten" [ngModelOptions]="{standalone: true}"></td>
+          <td ><input type="text" class="form-control"  [(ngModel)]="nguoiDung.email" [ngModelOptions]="{standalone: true}"></td>
+          <td ><input type="text" class="form-control"  [(ngModel)]="nguoiDung.soDienThoai" [ngModelOptions]="{standalone: true}"></td>
+          <td ><input type="text" class="form-control"  [(ngModel)]="nguoiDung.ngaySinh" [ngModelOptions]="{standalone: true}"></td>
+          <td ><input type="text" class="form-control"  [(ngModel)]="nguoiDung.diaChi" [ngModelOptions]="{standalone: true}"></td>
           <td >
-            <button type="button" class="btn btn-danger" (click)="removeNguoidung(i, nguoidungList.id)" [disabled]="isDisable">Xóa</button>
-<!--            <button type="button" class="btn btn-success" routerLink="/add">Edit</button>-->
+            <button (click)="onSubmit()" type="submit" class="btn btn-primary">Lưu</button>
+            <button (click)="enableAddNew=-1;" type="button" class="btn btn-info" ng-click="cancel()">Hủy</button>
           </td>
+        </tr>
+          <tr *ngFor="let nguoidungList of NguoidungList; let i = index">
+            <td>{{nguoidungList.username}}</td>
+            <td>{{nguoidungList.ten}}</td>
+            <td>{{nguoidungList.email}}</td>
+            <td>{{nguoidungList.soDienThoai}}</td>
+            <td>{{nguoidungList.ngaySinh}}</td>
+            <td>{{nguoidungList.diaChi}}</td>
+            <td>
+              <button type="button" class="btn btn-success" (click)="editNguoidung($event, i); nguoiDung=nguoidungList;enableAddNew=1 ">Sửa</button>
+              <button type="button" class="btn btn-danger" (click)="removeNguoidung(i, nguoidungList.id)" [disabled]="isDisable">Xóa</button>
+            </td>
         </tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-
 </body>
 </html>
