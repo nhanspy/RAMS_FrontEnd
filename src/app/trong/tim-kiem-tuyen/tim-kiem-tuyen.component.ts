@@ -1,7 +1,4 @@
 import {Component, OnInit,Input} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
 import {TinhThanh} from "../Model/TinhThanh";
 import {XemLichSuService} from "../Services/xem-lich-su.service";
 

@@ -1,5 +1,4 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {XemLichSu} from '../Model/xem-lich-su';
 import {ChuyenXe} from '../../nhan/Models/ChuyenXe.class';
 import {XemLichSuService} from '../Services/xem-lich-su.service';
 
@@ -29,11 +28,6 @@ export class XemLichSuComponent implements OnInit, OnChanges {
   keywordMaXe: string | '';
   // @ts-ignore
   xe: Xe;
-  // @ts-ignore
-  tenNhaXe: string;
-  // @ts-ignore
-  nhaXe: NhaXe;
-  Data: any;
 
   constructor(private xemLichSuService: XemLichSuService) {
   }

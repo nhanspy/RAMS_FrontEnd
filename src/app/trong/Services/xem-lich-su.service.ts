@@ -17,15 +17,6 @@ export class XemLichSuService {
   readAll(): Observable<any>{
     return this.httpClient.get(baseURL + '/' + 'chuyenxe');// chua biet dung hay sai
   }
-  // tslint:disable-next-line:typedef
-  getXeTheoChuyenXe(chuyenXe: ChuyenXe) {
-    return this.httpClient.get(baseURL + '/' + 'xe/' + chuyenXe.maXe);
-  }
-
-  // tslint:disable-next-line:typedef
-  getNhaXe(xe: Xe): Observable<any> {
-    return this.httpClient.get(baseURL + '/' + 'nhaxe/');
-  }
   getTinhThanh(tinhThanh: TinhThanh): Observable<any>{
     return this.httpClient.get(baseURL + '/' + 'tinhthanh');
   }

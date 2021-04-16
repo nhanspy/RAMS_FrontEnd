@@ -42,7 +42,7 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     TimKiemTuyenComponent,
     TestRoutingComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
     imports: [
         BrowserModule,
