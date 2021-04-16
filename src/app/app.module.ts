@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {KiemTraVeComponent} from './thao/kiem-tra-ve/kiem-tra-ve.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {RegisterComponent} from "./thao/register/register.component";
 import {LoginComponent} from "./thao/login/login.component";
@@ -15,6 +15,8 @@ import {BoardUserComponent} from "./thao/board-user/board-user.component";
 import {TestComponent} from "./thao/test/test.component";
 import {APP_BASE_HREF} from "@angular/common";
 import {authInterceptorProviders} from "./thao/_helpers/auth.interceptor";
+import { DKNHaxeComponent } from './thao/dknhaxe/dknhaxe.component';
+import { HeaderComponent } from './thao/header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,13 +28,16 @@ import {authInterceptorProviders} from "./thao/_helpers/auth.interceptor";
     BoardModeratorComponent,
     BoardUserComponent,
     TestComponent,
-    KiemTraVeComponent
-  ],
+    KiemTraVeComponent,
+    DKNHaxeComponent,
+    HeaderComponent,
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [{provide: APP_BASE_HREF, useValue: '/'}, authInterceptorProviders],
   bootstrap: [AppComponent]

@@ -12,6 +12,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+  private httpOptions: any;
 
   constructor(private http: HttpClient) { }
 
@@ -45,5 +46,29 @@ export class AuthService {
     // }, httpOptions);
     console.log(user);
     return  this.http.post(AUTH_API + 'signupNhaXe', user);
+  }
+  resetPassword(email: string): Observable<any> {
+    console.log(email)
+    return this.http.post(AUTH_API + 'reset-password', {
+      email: email,
+    }, this.httpOptions);
+  }
+  verify(code: string): Observable<any>{
+    console.log(code);
+    return this.http.post(AUTH_API + 'verify', {
+      code: code
+    }, this.httpOptions);
+  }
+
+  verifyPassword(code: string): Observable<any> {
+    return this.http.post(AUTH_API + 'verify-password', {
+      code: code
+    }, this.httpOptions);
+  }
+  doResetPassword(password: string, code: string): Observable<any> {
+    return this.http.post(AUTH_API + 'do-reset-password', {
+      password: password,
+      code: code
+    }, this.httpOptions);
   }
 }
