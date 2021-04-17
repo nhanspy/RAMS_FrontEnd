@@ -43,4 +43,15 @@ export class QlTuyenXeService {
   get(thoiGian): Observable<any> {
     return this.http.get(this.baseURLget + '/' + thoiGian);
   }
+
+  save(data: ChuyenXe): Observable<any>{
+    console.log(data);
+    return this.http.post(this.baseURL, {
+      maChuyen: data.maChuyen,
+      thoiGian: data.thoiGian,
+      benDi: data.benDi,
+      benDen: data.benDen,
+      xe: data.xe
+    } );
+  }
 }

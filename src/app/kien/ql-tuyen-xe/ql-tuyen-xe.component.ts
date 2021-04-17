@@ -59,10 +59,18 @@ export class QlTuyenXeComponent implements OnInit {
   // tslint:disable-next-line:typedef
   addchuyenxe() {
     // @ts-ignore
-    console.log(this.chuyenXes);
-    this._qlTuyenXeService.create(this.chuyenXes).subscribe(response => {
+    console.log(this.chuyenXePush);
+    this._qlTuyenXeService.save(this.chuyenXePush).subscribe(response => {
         alert('Thêm thành công!!');
         console.log(response);
+        this._qlTuyenXeService.getAll().subscribe(data => {
+          console.log(data);
+          this.chuyenXeList = data;
+          this.chuyenXeListRoot = data;
+        }, error => {
+          console.log(123);
+          console.log(error);
+        });
       },
       // @ts-ignore
       error => {
@@ -72,23 +80,31 @@ export class QlTuyenXeComponent implements OnInit {
   // tslint:disable-next-line:typedef
   onSubmit() {
     console.log(123);
-    console.log(this.chuyenXes)
+    console.log(this.chuyenXes);
     this.addchuyenxe();
+
   }
   // @ts-ignore
   // tslint:disable-next-line:typedef
-  editchuyenxe(e, i) {
+  editchuyenxe(tuyenXe: ChuyenXe, i: number) {
 
     // @ts-ignore
     this.chuyenXePush = new ChuyenXe();
+    console.log(this.chuyenXePush);
+    // @ts-ignore
+    this.chuyenXePush.maChuyen = tuyenXe.maChuyen;
+    this.chuyenXePush.thoiGian = tuyenXe.thoiGian;
+    this.chuyenXePush.xe = tuyenXe.xe;
+    this.chuyenXePush.benDi = tuyenXe.benDi;
+    this.chuyenXePush.benDen = tuyenXe.benDen;
     this.enableEditchuyenxe = true;
     this.enableEditIndexchuyenxe = i;
-    console.log(this.chuyenXes);
+    console.log(this.chuyenXePush);
   }
   // tslint:disable-next-line:typedef
   new(){
     // @ts-ignore
-    this.chuyenXes = new ChuyenXe();
+    this.chuyenXePush = new ChuyenXe();
   }
   // tslint:disable-next-line:typedef
   removeChuyenxe(index: string, maChuyen: string){
@@ -161,16 +177,16 @@ export class QlTuyenXeComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  view(event: string){
-
-    // @ts-ignore
-    this.chuyenXePush.benDi = this.benXeList.filter(item => {
-      return item.maBen === event;
-    })[0];
-    this.setUp();
+  view(event: any){
     console.log(event);
-    console.log(this.chuyenXePush);
-    console.log(this.chuyenXes);
+    // @ts-ignore
+    // this.chuyenXePush.benDi = this.benXeList.filter(item => {
+    //   return item.maBen === event;
+    // })[0];
+    // this.setUp();
+    // console.log(event);
+    // console.log(this.chuyenXePush);
+    // console.log(this.chuyenXes);
   }
 
   // tslint:disable-next-line:typedef
@@ -180,23 +196,15 @@ export class QlTuyenXeComponent implements OnInit {
       return item.maBen === event;
     })[0];
     console.log(event);
-    this.setUp();
     console.log(this.chuyenXePush);
     console.log(this.chuyenXes);
   }
-// tslint:disable-next-line:typedef
-  setUp(){
-    this.chuyenXePush.maChuyen = this.chuyenXes.maChuyen;
-    this.chuyenXePush.thoiGian = this.chuyenXes.thoiGian;
-    this.chuyenXePush.veXe = this.chuyenXes.veXe;
-    this.chuyenXePush.xe = this.chuyenXes.xe;
-    this.chuyenXePush.benDi = this.chuyenXes.benDi;
-    this.chuyenXePush.benDen = this.chuyenXes.benDen;
-  }
 
   // tslint:disable-next-line:typedef
-  view3(){
-    console.log(this.chuyenXes);
+  cancelbutton(){
+    console.log(this.chuyenXePush);
+    // @ts-ignore
+    this.chuyenXePush = new ChuyenXe();
   }
 
   // tslint:disable-next-line:typedef
