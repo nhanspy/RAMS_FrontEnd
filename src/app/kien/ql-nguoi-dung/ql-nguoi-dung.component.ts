@@ -59,15 +59,22 @@ export class QlNguoiDungComponent implements OnInit {
   nguoiDung: User;
   ngOnInit(): void {
     // @ts-ignore
-    this.user = new SignupRequest();
+    this.user = new User();
   }
   // tslint:disable-next-line:typedef
   addnguoidung() {
     // @ts-ignore
-    console.log(this.user);
-    this._qlNguoiDungService.create(this.user).subscribe(response => {
-        alert('Thêm thành công!!');
-        console.log(response);
+    console.log(this.nguoiDung);
+    this._qlNguoiDungService.create(this.nguoiDung).subscribe(response => {
+        alert('Lưu thành công!!');
+        this._qlNguoiDungService.getAll().subscribe(data => {
+          console.log(data);
+          this.NguoidungList = data;
+          this.NguoidungListroot = data;
+        }, error => {
+          console.log(123);
+          console.log(error);
+        });
       },
       // @ts-ignore
       error => {

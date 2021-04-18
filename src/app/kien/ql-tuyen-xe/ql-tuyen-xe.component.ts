@@ -17,11 +17,17 @@ export class QlTuyenXeComponent implements OnInit {
 // @ts-ignore
   keywordMaxe: string;
 // @ts-ignore
-  keywordBendi: string;
+  keywordBendi: Ben;
 // @ts-ignore
-  keywordBenden: string;
+  keywordBenden: Ben;
+
+//   // @ts-ignore
+//   keywordBendi: string;
+// // @ts-ignore
+//   keywordBenden: string;
   // @ts-ignore
   keywordThoigian: string;
+
   // @ts-ignore
   // tslint:disable-next-line:variable-name
   constructor(private _qlTuyenXeService: QlTuyenXeService) {
@@ -127,21 +133,21 @@ export class QlTuyenXeComponent implements OnInit {
     this.chuyenXeList = this.chuyenXeListRoot;
     if (this.keywordMaxe) {
       this.chuyenXeList = this.chuyenXeList.filter(item => {
-        return item.maXe.includes(this.keywordMaxe);
+        return item.maChuyen.includes(this.keywordMaxe);
       });
       dem++;
     }
     if (this.keywordBendi) {
       this.chuyenXeList = this.chuyenXeList.filter(item => {
         // @ts-ignore
-        return item.benDi.includes(this.keywordBendi);
+        return item.benDi.maBen.includes(this.keywordBendi.maBen);
       });
       dem++;
     }
     if (this.keywordBenden) {
       this.chuyenXeList = this.chuyenXeList.filter(item => {
         // @ts-ignore
-        return item.benDen.includes(this.keywordBenden);
+        return item.benDen.maBen.includes(this.keywordBenden.maBen);
       });
       dem++;
     }
@@ -157,17 +163,20 @@ export class QlTuyenXeComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   searchMaxe(value: string){
+    // console.log(value);
     this.keywordMaxe = value;
     this.search();
   }
   // tslint:disable-next-line:typedef
-  searchBendi(value: string){
-    this.keywordBendi = value;
+  searchBendi(benDi: any){
+    console.log(this.keywordBendi);
+    // this.keywordBendi = value;
     this.search();
   }
   // tslint:disable-next-line:typedef
-  searchBenden(value: string){
-    this.keywordBenden = value;
+  searchBenden(benDen: any){
+    // this.keywordBenden = value;
+    console.log(this.keywordBenden);
     this.search();
   }
   // tslint:disable-next-line:typedef

@@ -24,7 +24,16 @@ export class QlNguoiDungService {
     // @ts-ignore
     create(data): Observable<any>{
       console.log(data);
-      return this.http.post<SignupRequest>(this.baseURL, data);
+      return this.http.post<SignupRequest>(this.baseURLget, {
+        id: data.id,
+        username: data.username,
+        ten: data.ten,
+        email: data.email,
+        soDienThoai: data.soDienThoai,
+        ngaySinh: data.ngaySinh,
+        diaChi: data.diaChi,
+        password: '12345678'
+      });
     }
     // @ts-ignore
     update(username, data): Observable<any> {

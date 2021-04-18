@@ -99,8 +99,20 @@
       <table class="table table-striped">
         <thead>
         <td><input type="text" class="form-control" placeholder="Tìm kiếm mã xe" #txtSearch (keyup)="searchMaxe(txtSearch.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm bến đi" #txtSearch1 (keyup)="searchBendi(txtSearch1.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm kiếm bến đến" #txtSearch2 (keyup)="searchBenden(txtSearch2.value)"></td>
+<!--        <td><input type="text" class="form-control" placeholder="Tìm kiếm bến đi" #txtSearch1 (keyup)="searchBendi(txtSearch1.value)"></td>-->
+<!--        <td><input type="text" class="form-control" placeholder="Tìm kiếm bến đến" #txtSearch2 (keyup)="searchBenden(txtSearch2.value)"></td>-->
+        <td>
+          <select class="form-select" class="form-control" aria-label="Default select example" [(ngModel)]="keywordBendi" (change)="searchBendi($event)">
+            <option [ngValue]="null" >Tất cả</option>
+            <option *ngFor="let benXe of benXeList" [ngValue]="benXe" >{{benXe.tenBen}}</option>
+          </select>
+        </td>
+        <td>
+          <select class="form-select" class="form-control" aria-label="Default select example" [(ngModel)]="keywordBenden" (change)="searchBenden($event)">
+            <option [ngValue]="null" >Tất cả</option>
+            <option *ngFor="let benXe of benXeList" [ngValue]="benXe" >{{benXe.tenBen}}</option>
+          </select>
+        </td>
         <td><input type="text" class="form-control" placeholder="Tìm kiếm thời gian" #txtSearch3 (keyup)="searchThoigian(txtSearch3.value)"></td>
         <tr>
           <th>Mã xe</th>
