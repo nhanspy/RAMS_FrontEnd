@@ -24,6 +24,9 @@ export class QlNguoiDungService {
     // @ts-ignore
     create(data): Observable<any>{
       console.log(data);
+      if (!data.password){
+        data.password = '12345678';
+      }
       return this.http.post<SignupRequest>(this.baseURLget, {
         id: data.id,
         username: data.username,
@@ -32,7 +35,8 @@ export class QlNguoiDungService {
         soDienThoai: data.soDienThoai,
         ngaySinh: data.ngaySinh,
         diaChi: data.diaChi,
-        password: '12345678'
+        // tslint:disable-next-line:no-bitwise
+        password: data.password
       });
     }
     // @ts-ignore
