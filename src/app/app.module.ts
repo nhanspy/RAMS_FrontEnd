@@ -14,6 +14,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AddNguoidungComponent } from './kien/add-nguoidung/add-nguoidung.component';
 import { AddNhaXeComponent } from './kien/add-nha-xe/add-nha-xe.component';
 import { AddTuyenXeComponent } from './kien/add-tuyen-xe/add-tuyen-xe.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -33,13 +34,14 @@ import { AddTuyenXeComponent } from './kien/add-tuyen-xe/add-tuyen-xe.component'
         AddNhaXeComponent,
         AddTuyenXeComponent,
     ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxPaginationModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

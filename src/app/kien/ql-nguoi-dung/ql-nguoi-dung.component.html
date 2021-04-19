@@ -91,8 +91,8 @@
             <div class="col-lg-4">
               <a routerLink="/qltuyenxe" >Quản lý tuyến xe</a>
             </div>
-          </div><br>
-        </div>
+          </div>
+      </div>
       </div>
       <table class="table table-striped">
         <thead>
@@ -127,7 +127,7 @@
             <button (click)="enableAddNew=-1;" type="button" class="btn btn-info" ng-click="cancel()">Hủy</button>
           </td>
         </tr>
-          <tr *ngFor="let nguoidungList of NguoidungList; let i = index">
+          <tr *ngFor="let nguoidungList of NguoidungList | paginate: { id: 'listing_pagination',itemsPerPage: 5,currentPage: page, totalItems: totalRec}; let i = index">
             <td>{{nguoidungList.username}}</td>
             <td>{{nguoidungList.ten}}</td>
             <td>{{nguoidungList.email}}</td>
@@ -141,6 +141,9 @@
         </tr>
         </tbody>
       </table>
+      <div>
+        <pagination-controls style="text-align: right"  id="listing_pagination" (pageChange)="page = $event"></pagination-controls>
+      </div>
     </div>
   </div>
 </div>

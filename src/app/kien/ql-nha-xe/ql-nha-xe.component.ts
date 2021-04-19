@@ -8,6 +8,9 @@ import {NhaXe} from '../../nhan/Models/NhaXe.class';
   styleUrls: ['./ql-nha-xe.component.css']
 })
 export class QlNhaXeComponent implements OnInit {
+  // @ts-ignore
+  totalRec: string;
+  page: number = 1;
   isDisable = false;
   nhaxeList: NhaXe[] = [];
   nhaxeListroot: NhaXe[] = [];

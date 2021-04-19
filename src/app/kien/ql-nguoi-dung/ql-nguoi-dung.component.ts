@@ -12,6 +12,9 @@ import {SignupRequest} from '../../nhan/Models/SignupRequest.class';
 // @ts-ignore
 export class QlNguoiDungComponent implements OnInit {
   // @ts-ignore
+  totalRec: string;
+  page: number = 1;
+  // @ts-ignore
   user: SignupRequest;
   isDisable = false;
   NguoidungList: User[] = [];

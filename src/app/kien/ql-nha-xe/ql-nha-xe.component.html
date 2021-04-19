@@ -114,7 +114,7 @@
             <button (click)="enableAddNewnhaxe = -1;" type="button" class="btn btn-info" ng-click="cancel()">Hủy</button>
           </td>
         </tr>
-        <tr *ngFor="let nhaxeList of nhaxeList; let i = index">
+        <tr *ngFor="let nhaxeList of nhaxeList | paginate: { id: 'listing_pagination',itemsPerPage: 5,currentPage: page, totalItems: totalRec}; let i = index">
           <td>{{nhaxeList.maNhaXe}}</td>
           <td>{{nhaxeList.tenNhaXe}}</td>
           <td>
@@ -123,6 +123,9 @@
         </td>
         </tbody>
       </table>
+      <div>
+        <pagination-controls style="text-align: right"  id="listing_pagination" (pageChange)="page = $event"></pagination-controls>
+      </div>
     </div>
   </div>
 </div>

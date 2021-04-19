@@ -9,6 +9,9 @@ import {Ben} from '../../nhan/Models/Ben.class';
   styleUrls: ['./ql-tuyen-xe.component.css']
 })
 export class QlTuyenXeComponent implements OnInit {
+  // @ts-ignore
+  totalRec: string;
+  page: number = 1;
   isDisable = false;
   chuyenXeList: ChuyenXe[] = [];
   chuyenXeListRoot: ChuyenXe[] = [];

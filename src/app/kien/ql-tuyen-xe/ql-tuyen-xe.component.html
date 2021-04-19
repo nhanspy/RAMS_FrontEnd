@@ -141,7 +141,7 @@
             <button (click)="enableAddNewchuyenxe = -1;cancelbutton()" type="button" class="btn btn-info" ng-click="cancel()">Hủy</button>
           </td>
         </tr>
-        <tr *ngFor="let tuyenxeList of chuyenXeList; let i = index">
+        <tr *ngFor="let tuyenxeList of chuyenXeList | paginate: { id: 'listing_pagination',itemsPerPage: 5,currentPage: page, totalItems: totalRec}; let i = index">
           <td>{{tuyenxeList.maChuyen}}</td>
           <td>{{tuyenxeList.benDi.tenBen}}</td>
           <td>{{tuyenxeList.benDen.tenBen}}</td>
@@ -152,6 +152,9 @@
           </td>
         </tbody>
       </table>
+      <div>
+        <pagination-controls style="text-align: right"  id="listing_pagination" (pageChange)="page = $event"></pagination-controls>
+      </div>
     </div>
   </div>
 </div>
