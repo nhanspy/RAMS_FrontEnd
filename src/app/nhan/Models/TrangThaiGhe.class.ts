@@ -1,10 +1,14 @@
+import {Ghe} from './Ghe.class';
+
 export class TrangThaiGhe {
   private _maTrangThai: string;
   private _tenTrangThai: string;
+  private _ghe: Ghe;
 
-  constructor(maTrangThai: string, tenTrangThai: string) {
+  constructor(maTrangThai: string, tenTrangThai: string, ghe: Ghe) {
     this._maTrangThai = maTrangThai;
     this._tenTrangThai = tenTrangThai;
+    this._ghe = ghe;
   }
 
   get maTrangThai(): string {
@@ -21,5 +25,13 @@ export class TrangThaiGhe {
 
   set tenTrangThai(value: string) {
     this._tenTrangThai = value;
+  }
+
+  get ghe(): Ghe {
+    return this._ghe;
+  }
+
+  set ghe(value: Ghe) {
+    this._ghe = value;
   }
 }

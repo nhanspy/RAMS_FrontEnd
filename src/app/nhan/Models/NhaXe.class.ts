@@ -1,11 +1,14 @@
-export class NhanXe {
+import {Xe} from './Xe.class';
+
+export class NhaXe {
   private _maNhaXe: string;
   private _tenNhaXe: string;
+  private _xe: Xe;
 
-
-  constructor(maNhaXe: string, tenNhaXe: string) {
+  constructor(maNhaXe: string, tenNhaXe: string, xe: Xe) {
     this._maNhaXe = maNhaXe;
     this._tenNhaXe = tenNhaXe;
+    this._xe = xe;
   }
 
   get maNhaXe(): string {
@@ -22,5 +25,13 @@ export class NhanXe {
 
   set tenNhaXe(value: string) {
     this._tenNhaXe = value;
+  }
+
+  get xe(): Xe {
+    return this._xe;
+  }
+
+  set xe(value: Xe) {
+    this._xe = value;
   }
 }
