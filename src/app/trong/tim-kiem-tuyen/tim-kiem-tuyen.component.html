@@ -18,13 +18,7 @@
 <div id="__nuxt">
   <!---->
   <div id="__layout">
-    <div style="background: linear-gradient(
-				to right,
-				#f5ce62,
-				#e43603,
-				#fa7199,
-				#e85a19
-				);" class="default-layout-container">
+    <div style="background: lightblue" class="default-layout-container">
       <noscript><iframe data-src="https://www.googletagmanager.com/ns.html?id=GTM-5TJW4VC" height="0" width="0" style="display: none; visibility: hidden;" class="lazyLoad"></iframe></noscript>
 <!--      <div data-v-5778dee1="" id="page-head" class="top-bar" style="top: 0px;">-->
 <!--        <div data-v-5778dee1="" class="nav-container">-->
@@ -70,8 +64,11 @@
             </div>
             <div class="inner-form col-3 col-sm" style="margin: 0; width: 250px">
               <form action="">
-                <label for="birthdaytime" style="color: #555">Chọn ngày đi:</label>
-                <input style="border-radius: 100px" class="choices__input" type="date" id="birthdaytime" [ngModel]="getthoigian" name="birthdaytime" value="2021-01-01" #mySelect2 (change)='selectthoigian(mySelect2.value)'>
+                <a style="font-size: 13pt; font-family: Tahoma">
+                  <label  for="birthdaytime" style="color: #555">Chọn ngày đi:</label>
+                  <input style="border-radius: 100px" class="choices__input" type="date" id="birthdaytime" [ngModel]="getthoigian" name="birthdaytime" value="2021-01-01" #mySelect2 (change)='selectthoigian(mySelect2.value)'>
+                </a>
+
               </form>
             </div>
           </div>
