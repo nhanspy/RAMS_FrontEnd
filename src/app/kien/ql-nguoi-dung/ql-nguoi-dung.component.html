@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quản lý</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style type="text/css">
+    .example{
+      margin: 40px;
+    }
+  </style>
+  <style>
+    body {
+      color: #404E67;
+      background: #F5F7FA;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .table-title {
+      padding-bottom: 10px;
+      margin: 0 0 10px;
+    }
+    .table-title h2 {
+      margin: 6px 0 0;
+      font-size: 22px;
+    }
+    .table-title .add-new {
+      float: right;
+      height: 30px;
+      font-weight: bold;
+      font-size: 12px;
+      text-shadow: none;
+      min-width: 100px;
+      border-radius: 50px;
+      line-height: 13px;
+    }
+    .table-title .add-new i {
+      margin-right: 4px;
+    }
+    table.table {
+      table-layout: fixed;
+    }
+    table.table tr th, table.table tr td {
+      border-color: #e9e9e9;
+    }
+    table.table th i {
+      font-size: 13px;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+    table.table th:last-child {
+      width: 100px;
+    }
+    table.table td a {
+      cursor: pointer;
+      display: inline-block;
+      margin: 0 5px;
+      min-width: 24px;
+    }
+    table.table td i {
+      font-size: 19px;
+    }
+    table.table td a.add i {
+      font-size: 24px;
+      margin-right: -1px;
+      position: relative;
+      top: 3px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="example">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-8"><h2>Quản lý tài khoản người dùng</h2></div>
+          <div class="col-sm-4">
+            <button (click)="new(); enableAddNew=enableAddNew*-1" type="button" class="btn btn-info add-new" ><i class="fa fa-plus"></i> Thêm mới</button>
+          </div><br><br><br>
+          <div class="row">
+            <div class="col-lg-4">
+              <a routerLink="/qlnguoidung" >Quản lý tài khoản người dùng</a>
+            </div>
+            <div class="col-lg-4">
+              <a routerLink="/qlnhaxe" >Quản lý tài khoản nhà xe</a>
+            </div>
+            <div class="col-lg-4">
+              <a routerLink="/qltuyenxe" >Quản lý tuyến xe</a>
+            </div>
+          </div><br>
+        </div>
+      </div>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <td><input type="text" class="form-control" placeholder="Tìm người dùng" #txtSearch (keyup)="searchUsername(txtSearch.value)"></td>
+          <td><input type="text" class="form-control" placeholder="Tìm tên" #txtSearch2 (keyup)="searchTen(txtSearch2.value)"></td>
+          <td width="200px"><input type="text" class="form-control" placeholder="Tìm email" #txtSearch3 (keyup)="searchEmail(txtSearch3.value)"></td>
+          <td><input type="text" class="form-control" placeholder="Tìm SĐT" #txtSearch4 (keyup)="searchSodienthoai(txtSearch4.value)"></td>
+          <td><input type="text" class="form-control" placeholder="Tìm ngày sinh̉" #txtSearch5 (keyup)="searchNgaysinh(txtSearch5.value)"></td>
+          <td><input type="text" class="form-control" placeholder="Tìm địa chỉ" #txtSearch7 (keyup)="searchDiachi(txtSearch7.value)"></td>
+        </tr>
+        <tr>
+          <th>Username</th>
+          <th>Tên</th>
+          <th>Email</th>
+          <th>Số điện thoại</th>
+          <th>Ngày sinh</th>
+          <th>Địa chỉ</th>
+          <th >Hành động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="enableAddNew == 1">
+          <td ><input type="text" class="form-control"  [(ngModel)]="nguoiDung.username" [ngModelOptions]="{standalone: true}"></td>
+          <td ><input type="text" class="form-control"  [(ngModel)]="nguoiDung.ten" [ngModelOptions]="{standalone: true}"></td>
+          <td ><input type="text" class="form-control"  [(ngModel)]="nguoiDung.email" [ngModelOptions]="{standalone: true}"></td>
+          <td ><input type="text" class="form-control"  [(ngModel)]="nguoiDung.soDienThoai" [ngModelOptions]="{standalone: true}"></td>
+          <td ><input type="text" class="form-control"  [(ngModel)]="nguoiDung.ngaySinh" [ngModelOptions]="{standalone: true}"></td>
+          <td ><input type="text" class="form-control"  [(ngModel)]="nguoiDung.diaChi" [ngModelOptions]="{standalone: true}"></td>
+          <td >
+            <button (click)="onSubmit()" type="submit" class="btn btn-primary">Lưu</button>
+            <button (click)="enableAddNew=-1;" type="button" class="btn btn-info" ng-click="cancel()">Hủy</button>
+          </td>
+        </tr>
+          <tr *ngFor="let nguoidungList of NguoidungList; let i = index">
+            <td>{{nguoidungList.username}}</td>
+            <td>{{nguoidungList.ten}}</td>
+            <td>{{nguoidungList.email}}</td>
+            <td>{{nguoidungList.soDienThoai}}</td>
+            <td>{{nguoidungList.ngaySinh}}</td>
+            <td>{{nguoidungList.diaChi}}</td>
+            <td>
+              <button type="button" class="btn btn-success" (click)="editNguoidung($event, i); nguoiDung=nguoidungList;enableAddNew=1 ">Sửa</button>
+              <button type="button" class="btn btn-danger" (click)="removeNguoidung(i, nguoidungList.id)" [disabled]="isDisable">Xóa</button>
+            </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>
