@@ -7,7 +7,8 @@ import {XemLichSuService} from '../Services/xem-lich-su.service';
 @Component({
   selector: 'app-xem-lich-su',
   templateUrl: './xem-lich-su.component.html',
-  styleUrls: ['./xem-lich-su.component.css']
+  styleUrls: ['./xem-lich-su.component.css',
+  '../../../assets/trong/css/style.css']
 })
 export class XemLichSuComponent implements OnInit, OnChanges {
   xemlichsulist: ChuyenXe[] = [];

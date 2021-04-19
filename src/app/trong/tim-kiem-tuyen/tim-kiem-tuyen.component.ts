@@ -5,7 +5,9 @@ import {XemLichSuService} from "../Services/xem-lich-su.service";
 @Component({
   selector: 'app-tim-kiem-tuyen',
   templateUrl: './tim-kiem-tuyen.component.html',
-  styleUrls: ['./tim-kiem-tuyen.component.css']
+  styleUrls: ['./tim-kiem-tuyen.component.css',
+  '../../../assets/trong/css/fubus.css',
+  '../../../assets/trong/css/add.css']
 })
 export class TimKiemTuyenComponent implements OnInit {
   tinhthanhlist: TinhThanh [] = [];
