@@ -10,7 +10,7 @@ export class VeXe {
   private _thoiGian: string;
   // @ts-ignore
   // tslint:disable-next-line:variable-name
-  private _giaTien: string;
+  private _giaTien: number;
   // @ts-ignore
   // tslint:disable-next-line:variable-name
   private _ghe: Ghe;
@@ -24,7 +24,7 @@ export class VeXe {
   // tslint:disable-next-line:variable-name
   private _userNhaXe: User;
 
-  constructor(maVe: string, thoiGian: string, giaTien: string, ghe: Ghe, chuyenXe: ChuyenXe) {
+  constructor(maVe: string, thoiGian: string, giaTien: number, ghe: Ghe, chuyenXe: ChuyenXe) {
     this._maVe = maVe;
     this._thoiGian = thoiGian;
     this._giaTien = giaTien;
@@ -64,11 +64,12 @@ export class VeXe {
     this._thoiGian = value;
   }
 
-  get giaTien(): string {
+
+  get giaTien(): number {
     return this._giaTien;
   }
 
-  set giaTien(value: string) {
+  set giaTien(value: number) {
     this._giaTien = value;
   }
 

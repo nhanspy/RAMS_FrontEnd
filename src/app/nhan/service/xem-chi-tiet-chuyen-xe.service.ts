@@ -17,10 +17,24 @@ export class XemChiTietChuyenXeService {
   // @ts-ignore
   bensResult: Ben[];
 
-  getChuyen(): Observable<any> {
+  getChuyen(ngay: string): Observable<any> {
     // @ts-ignore
-    return this._httpClient.get(baseURL + '/chuyenxe');
+    return this._httpClient.get(baseURL + '/chuyenxe/ngay/' + ngay);
   }
+
+  getNhaXe(): Observable<any> {
+    // @ts-ignore
+    return this._httpClient.get(baseURL + '/nhaxe');
+  }
+
+  getGhe(maXe: string): Observable<any>{
+    return this._httpClient.get(baseURL + '/ghe/xe/' + maXe);
+  }
+
+  getTrangThaiGhe(): Observable<any>{
+    return this._httpClient.get(baseURL + '/trangthaighe');
+  }
+
   getBenTheoTinh(tinhThanh: TinhThanh, bens: Ben[]): Ben[] {
     // tslint:disable-next-line:label-position no-unused-expression
     let dem = 1;
@@ -53,9 +67,5 @@ export class XemChiTietChuyenXeService {
   delete(id: string): Observable<any> {
     return this._httpClient.delete(`${baseURL}/${id}`);
   }
-
-  // searchByName(name): Observable<any> {
-  //   return this._httpClient.get(`${baseURL}?name=${name}`);
-  // }
 
 }

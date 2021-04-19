@@ -17,4 +17,17 @@ export class DatVeService {
   getById(id: string): Observable<any>{
     return this._httpClient.get(baseURL + '/vexe/' + id);
   }
+
+  postPayment(price: number): Observable<any> {
+
+    return this._httpClient.post(baseURL + '/pay', {
+      url: 'http://localhost:8080',
+      price
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  checkPayment(url: string){
+    return this._httpClient.get(url);
+  }
 }

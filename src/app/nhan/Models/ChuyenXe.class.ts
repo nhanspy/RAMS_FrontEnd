@@ -4,31 +4,29 @@ import {Xe} from './Xe.class';
 
 export class ChuyenXe {
   private _maChuyen: string;
-  private _maXe: string;
   private _thoiGian: string;
   private _benDi: Ben;
   private _benDen: Ben;
-  private _veXe: VeXe;
+  private _veXes: VeXe;
   private _xe: Xe;
 
 
-  constructor(maChuyen: string, maXe: string, thoiGian: string, benDi: Ben, benDen: Ben, veXe: VeXe, xe: Xe) {
+  constructor(maChuyen: string, thoiGian: string, benDi: Ben, benDen: Ben, veXe: VeXe, xe: Xe) {
     this._maChuyen = maChuyen;
-    this._maXe = maXe;
     this._thoiGian = thoiGian;
     this._benDi = benDi;
     this._benDen = benDen;
-    this._veXe = veXe;
+    this._veXes = veXe;
     this._xe = xe;
   }
 
 
   get veXe(): VeXe {
-    return this._veXe;
+    return this._veXes;
   }
 
   set veXe(value: VeXe) {
-    this._veXe = value;
+    this._veXes = value;
   }
 
   get xe(): Xe {
@@ -45,14 +43,6 @@ export class ChuyenXe {
 
   set maChuyen(value: string) {
     this._maChuyen = value;
-  }
-
-  get maXe(): string {
-    return this._maXe;
-  }
-
-  set maXe(value: string) {
-    this._maXe = value;
   }
 
   get thoiGian(): string {
