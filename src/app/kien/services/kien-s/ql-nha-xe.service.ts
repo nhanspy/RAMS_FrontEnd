@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Nhaxe} from '../../kien/model/nhaxe';
+import {NhaXe} from '../../nhan/Models/NhaXe.class';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -24,7 +24,7 @@ export class QlNhaXeService {
 
   // @ts-ignore
   create(data): Observable<any>{
-    return this.http.post<Nhaxe>(this.baseURL, {
+    return this.http.post<NhaXe>(this.baseURL, {
       maNhaXe: data.maNhaXe,
       tenNhaXe: data.tenNhaXe
     }, httpOptions);
