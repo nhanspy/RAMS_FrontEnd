@@ -72,7 +72,7 @@ img {
 /*--- end reset code ---*/
 
 body {
-  background:url(../../../assets/Thao/Images/3.jpg) no-repeat;
+  background:url("../../../assets/Thao/Images/3.jpg") no-repeat;
   background-attachment:fixed;
   background-position:center;
   background-size:cover;
@@ -99,7 +99,7 @@ h1.thao-w3ls {
 .thao-content-w3ls .thao-content-agile1 {
   width: 50%;
   float: left;
-  background: url(../../../assets/Thao/Images/3.jpg) no-repeat;
+  background: url("../../../assets/Thao/Images/3.jpg") no-repeat;
   background-position: center;
   background-size: cover;
   -webkit-background-size: cover;

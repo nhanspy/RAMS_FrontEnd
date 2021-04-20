@@ -13,12 +13,12 @@
           novalidate
     >
       <div class="thao-form-control thao-w3layouts">
-        <input type="text" id="tennx" name="tennx" placeholder="Tên nhà xe" title="Please enter your First Name"
+        <input type="text" id="tennx" name="tennx" placeholder="Họ tên" title="Please enter your First Name"
                [(ngModel)]="form.ten"
                required
-               maxlength="100"
-               #tennhaxe="ngModel">
-        <div class="alert-danger" *ngIf="s.submitted && tennhaxe.invalid">
+               #ten="ngModel">
+        <div class="alert-danger" *ngIf="s.submitted && ten.invalid">
+          <div *ngIf="ten.errors.required">Ho tên bắt buộc</div>
         </div>
       </div>
 
@@ -27,11 +27,14 @@
           type="text" id="tendn" name="tendn" placeholder="Tên đăng nhập" title="Please enter your "
           [(ngModel)]="form.username"
           required
-          minlength="3"
-          maxlength="20"
-          #username="ngModel"
+          minlength="6"
+          maxlength="30"
+          #tendangnhap="ngModel"
         >
-        <div class="alert-danger" *ngIf="s.submitted && username.invalid">
+        <div class="alert-danger" *ngIf="s.submitted && tendangnhap.invalid">
+          <div *ngIf="tendangnhap.errors.required">Tên đăng nhập bắt buộc</div>
+          <div *ngIf="tendangnhap.errors.minlengh">Tên đăng nhập tối thiểu 6 kí tự</div>
+          <div *ngIf="tendangnhap.errors.maxlengh">Tên đăng nhập tối đa 30 kí tự</div>
         </div>
       </div>
 
@@ -39,10 +42,15 @@
         <input type="password" id="password1" name="password" placeholder="Mật khẩu"
                [(ngModel)]="form.password"
                required
-               minlength="6"
-               #password="ngModel"
+               minlength="8"
+               maxlength="20"
+               #matkhau="ngModel"
         >
-        <div class="alert-danger" *ngIf="s.submitted && password.invalid">
+        <div class="alert-danger" *ngIf="s.submitted && matkhau.invalid">
+          <div *ngIf="matkhau.errors.required">Mật khẩu bắt buộc</div>
+          <div *ngIf="matkhau.errors.minlengh">Mật khẩu tối thiểu 8 kí tự</div>
+          <div *ngIf="matkhau.errors.maxlengh">Mật khẩu tối đa 20 kí tự</div>
+
         </div>
       </div>
 
@@ -58,6 +66,8 @@
                #soDienThoai="ngModel"
         >
         <div class="alert-danger" *ngIf="s.submitted && soDienThoai.invalid">
+          <div *ngIf="soDienThoai.errors.required">Số điện thoại bắt buộc</div>
+          <div *ngIf="soDienThoai.errors.maxlengh"> Số điện thoại tối đa 10 số</div>
         </div>
       </div>
 
@@ -69,6 +79,8 @@
                #email="ngModel"
         >
         <div class="alert-danger" *ngIf="s.submitted && email.invalid">
+          <div *ngIf="email.errors.required">Email bắt buộc</div>
+          <div *ngIf="email.errors.email"> Email không đúng với định dạng</div>
         </div>
       </div>
 
@@ -76,10 +88,10 @@
         <input type="text" id="diachi" name="diachi" placeholder="Địa chỉ"
                [(ngModel)]="form.diaChi"
                required
-               minlength="6"
                #dia_chi="ngModel"
         >
         <div class="alert-danger" *ngIf="s.submitted && dia_chi.invalid">
+          <div *ngIf="dia_chi.errors.required">Địa chỉ bắt buộc</div>
         </div>
       </div>
 

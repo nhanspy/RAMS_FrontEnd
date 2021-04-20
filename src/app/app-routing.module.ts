@@ -21,8 +21,8 @@ const routes: Routes = [
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
-  {path: 'password', component: ResetPasswordComponent},
-  {path: 'verifypass', component: VerifyResetPasswordComponent},
+  // {path: 'password', component: ResetPasswordComponent},
+  // {path: 'verifypass', component: VerifyResetPasswordComponent},
   {path: 'dangky', component: DangkyComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
