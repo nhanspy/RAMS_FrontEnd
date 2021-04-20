@@ -56,13 +56,16 @@
             <div class="inner-form col-3 col-sm" style="margin: 0; width: 250px">
               <form action="">
                 <a style="font-size: 13pt; font-family: Tahoma">
-<!--                  <label  for="birthdaytime" style="color: #555">Chọn ngày đi:</label>-->
+                  <label   style="color: #555">Chọn ngày đi:</label>
 <!--                  <input style="border-radius: 100px" class="choices__input" type="date" id="birthdaytime" [ngModel]="getthoigian" name="birthdaytime" value="2021-01-01" #mySelect2 (change)='selectthoigian(mySelect2.value)'>-->
-                    <mat-form-field>
-                      <input  matInput [matDatepicker]="picker" [min]="minDate"  placeholder="Chọn ngày đi" [ngModel]="getthoigian" #mySelect2 (change)='selectthoigian(mySelect2.value)' >
-                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                      <mat-datepicker #picker ></mat-datepicker>
-                    </mat-form-field>
+<!--                    <mat-form-field>-->
+<!--                      <input  matInput [matDatepicker]="picker" [min]="minDate"  placeholder="Chọn ngày đi" [ngModel]="getthoigian" #mySelect2 (change)='selectthoigian(mySelect2.value)' >-->
+<!--                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--                      <mat-datepicker #picker ></mat-datepicker>-->
+<!--                    </mat-form-field>-->
+                  <input [(ngModel)]="getthoigian" [min]="localCompleteDate" type="datetime-local" name="date_start"
+                         required
+                         #date_start="ngModel"/>
                 </a>
               </form>
             </div>

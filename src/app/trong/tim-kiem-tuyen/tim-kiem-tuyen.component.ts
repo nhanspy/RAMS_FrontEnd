@@ -19,11 +19,19 @@ export class TimKiemTuyenComponent implements OnInit {
   @Input() getbenden: string;
   // @ts-ignore
   @Input() getthoigian: string;
-  minDate = new Date();
+  // minDate = new Date();
+  // @ts-ignore
+  check_Date=new Date();
+// @ts-ignore
+  localCompleteDate: string;
 
 
 
   constructor(private xemLichSuService: XemLichSuService) {
+    this.check_Date.setSeconds(0);
+    this.check_Date.setMilliseconds(0);
+    this.localCompleteDate = this.check_Date.toISOString();
+    this.localCompleteDate = this.localCompleteDate.substring(0, this.localCompleteDate.length - 1);
   }
 
   // tslint:disable-next-line:typedef
