@@ -29,30 +29,41 @@
             <div data-v-3ceb75b5="" class="place-select-container">
               <div data-v-c5ae3bdc="" data-v-3ceb75b5="" class="auto-complete-place-container place-select-from">
                 <label data-v-c5ae3bdc="" class="title">Điểm đi</label>
-                <div class="form-group">
-                  <select style="border-radius: 100px" class="form-control" [ngModel]="getbendi" name="college_name" required #mySelect
-                          (change)='selecttinhthanh(mySelect.value)'>
+                <div class="form-group" [class.has-error] = "bendi.touched && bendi.invalid">
+                  <select id="college_name"  style="border-radius: 100px" class= "form-control" [ngModel]="getbendi" name="college_name" required #bendi = "ngModel"
+                          #mySelect (change)='selecttinhthanh(mySelect.value)'>
                     <option class="option" *ngFor="let thing of tinhthanhlist" [value]="thing.tenTinh">{{thing.tenTinh}}</option>
                   </select>
+                  <span style="color: red" class="help-block" *ngIf="bendi.touched && bendi.invalid">
+                    Bạn cần phải chọn điểm đi!
+                  </span>
+
                 </div>
               </div>
               <img data-v-3ceb75b5="" alt="change" class="change-img center lazyLoad isLoaded" src="/assets/trong/img/swaps.971b609.png.png" />
               <div data-v-c5ae3bdc="" data-v-3ceb75b5="" class="auto-complete-place-container">
                 <label data-v-c5ae3bdc="" class="title">Điểm đến</label>
-                <div class="form-group">
-                  <select style="border-radius: 100px" class="form-control" [ngModel]="getbenden"  name="college2_name" required #mySelect1 (change)='selecttinhthanh(mySelect1.value)'>
+                <div class="form-group" [class.has-error] = "benden.touched && benden.invalid">
+                  <select style="border-radius: 100px" class="form-control" [ngModel]="getbenden"  name="college2_name" required #benden = "ngModel" #mySelect1 (change)='selecttinhthanh(mySelect1.value)'>
                     <option *ngFor="let thing of tinhthanhlist" [value]="thing.tenTinh">{{thing.tenTinh}}</option>
                   </select>
+                  <span style="color: red" class="help-block" *ngIf="benden.touched && benden.invalid">
+                    Bạn cần phải chọn điểm đến!
+                  </span>
                 </div>
               </div>
             </div>
             <div class="inner-form col-3 col-sm" style="margin: 0; width: 250px">
               <form action="">
                 <a style="font-size: 13pt; font-family: Tahoma">
-                  <label  for="birthdaytime" style="color: #555">Chọn ngày đi:</label>
-                  <input style="border-radius: 100px" class="choices__input" type="date" id="birthdaytime" [ngModel]="getthoigian" name="birthdaytime" value="2021-01-01" #mySelect2 (change)='selectthoigian(mySelect2.value)'>
+<!--                  <label  for="birthdaytime" style="color: #555">Chọn ngày đi:</label>-->
+<!--                  <input style="border-radius: 100px" class="choices__input" type="date" id="birthdaytime" [ngModel]="getthoigian" name="birthdaytime" value="2021-01-01" #mySelect2 (change)='selectthoigian(mySelect2.value)'>-->
+                    <mat-form-field>
+                      <input  matInput [matDatepicker]="picker" [min]="minDate"  placeholder="Chọn ngày đi" [ngModel]="getthoigian" #mySelect2 (change)='selectthoigian(mySelect2.value)' >
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker ></mat-datepicker>
+                    </mat-form-field>
                 </a>
-
               </form>
             </div>
           </div>

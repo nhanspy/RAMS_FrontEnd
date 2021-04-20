@@ -19,6 +19,9 @@ export class TimKiemTuyenComponent implements OnInit {
   @Input() getbenden: string;
   // @ts-ignore
   @Input() getthoigian: string;
+  minDate = new Date();
+
+
 
   constructor(private xemLichSuService: XemLichSuService) {
   }
@@ -39,4 +42,5 @@ export class TimKiemTuyenComponent implements OnInit {
   selectthoigian(thoigian: string) {
     console.log("the selected value is " + thoigian);
   }
+
 }

@@ -25,6 +25,9 @@ import {TestRoutingComponent} from './trong/test-routing/test-routing.component'
 import { HeaderComponent } from './trong/header/header.component';
 import { FooterComponent } from './trong/footer/footer.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
 
 
 @NgModule({
@@ -55,7 +58,10 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
         BrowserAnimationsModule,
         MatFormFieldModule,
         NgxPaginationModule,
-        IvyCarouselModule
+        IvyCarouselModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatInputModule
     ],
   providers: [
     XemChiTietChuyenXeService
