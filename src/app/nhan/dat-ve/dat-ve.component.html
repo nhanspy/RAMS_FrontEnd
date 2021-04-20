@@ -1,17 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Thông tin mua vé</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="/assets/nhan/css/css.css">
-</head>
-<body>
 <div data-v-511c74d1="">
   <div data-v-5747e235="" data-v-511c74d1="" class="container step-line">
     <div data-v-5747e235="" class="line">
@@ -78,16 +65,16 @@
               <div data-v-62d3bf2a="" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-ms-12">
                 <div data-v-62d3bf2a="" class="col-xs-12 field">
                   <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Tuyến xe:</div>
-                  <div data-v-62d3bf2a="" class="col-xs-8"><span data-v-62d3bf2a="">BX.{{veXe.chuyenXe.benDi.tenBen}} ⇒ BX.{{veXe.chuyenXe.benDen.tenBen}}</span></div>
+                  <div data-v-62d3bf2a="" class="col-xs-8"><span data-v-62d3bf2a="">BX.{{chuyenXe.benDi.tenBen}} ⇒ BX.{{chuyenXe.benDen.tenBen}}</span></div>
                 </div>
                 <div data-v-62d3bf2a="" class="col-xs-12 field">
                   <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Thời gian:</div>
-                  <div data-v-62d3bf2a="" class="col-xs-8"><span data-v-62d3bf2a="" class="orange-value green">{{veXe.thoiGian}}</span></div>
+                  <div data-v-62d3bf2a="" class="col-xs-8"><span data-v-62d3bf2a="" class="orange-value green">{{chuyenXe.thoiGian}}</span></div>
                 </div>
                 <div data-v-62d3bf2a="" class="col-xs-12 field">
                   <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Điểm di:</div>
                   <div data-v-62d3bf2a="" class="col-xs-8">
-                    <p data-v-62d3bf2a="">{{veXe.chuyenXe.benDi.tenBen}}</p>
+                    <p data-v-62d3bf2a="">{{chuyenXe.benDi.tenBen}}</p>
 <!--                    <p data-v-62d3bf2a="" class="address">Tôn Đức Thắng, Hoà Minh, Liên Chiểu, Đà Nẵng 550000</p>-->
                   </div>
                 </div>
@@ -95,12 +82,12 @@
               <div data-v-62d3bf2a="" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-ms-12">
                 <div data-v-62d3bf2a="" class="col-xs-12 field">
                   <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Số lượng ghế:</div>
-                  <div data-v-62d3bf2a="" class="col-xs-8">2</div>
+                  <div data-v-62d3bf2a="" class="col-xs-8">{{tongGheDaChon}}</div>
                 </div>
                 <div data-v-62d3bf2a="" class="col-xs-12 field">
                   <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Số ghế:</div>
                   <div data-v-62d3bf2a="" class="col-xs-8 orange-value green">
-                    <span data-v-62d3bf2a="">{{veXe.ghe.maGhe}}</span>
+                    <span data-v-62d3bf2a="">{{strGheDaChon}}</span>
 <!--                    <span data-v-62d3bf2a="">{{veXe.ghe.maGhe}}</span>-->
                   </div>
                 </div>
@@ -113,7 +100,7 @@
         <div data-v-c6c11ca6="" fragment="408cfda16a" class="footer-bar">
           <div data-v-c6c11ca6="" class="total-info">
             <p data-v-c6c11ca6="" class="footer-title">TỔNG TIỀN</p>
-            <p data-v-c6c11ca6="" class="footer-price">{{veXe.giaTien}} <sup data-v-c6c11ca6="">₫</sup></p>
+            <p data-v-c6c11ca6="" class="footer-price">{{tongTien}} <sup data-v-c6c11ca6="">₫</sup></p>
           </div>
         </div>
       </div>
@@ -149,7 +136,7 @@
   </div>
   <div data-v-7d8bce1e="" data-v-511c74d1="" class="booking-nav-buttons">
     <div data-v-7d8bce1e="" class="left-btns">
-      <a href="xemthongtinxe.html">
+      <a (click)="backClicked()">
         <button data-v-7d8bce1e="" class="back-btn" href="xemthongtinxe.html">
           <img
             data-v-7d8bce1e=""
@@ -171,17 +158,3 @@
     </div>
   </div>
 </div>
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-</body>
-</html>

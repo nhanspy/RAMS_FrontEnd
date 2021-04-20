@@ -6,15 +6,21 @@ import {Ben} from '../Models/Ben.class';
 import {NhaXe} from '../Models/NhaXe.class';
 import {Ghe} from '../Models/Ghe.class';
 import {TrangThaiGhe} from '../Models/TrangThaiGhe.class';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-xem-chi-tiet-chuyen-xe',
   templateUrl: './xem-chi-tiet-chuyen-xe.component.html',
-  styleUrls: ['./xem-chi-tiet-chuyen-xe.component.css']
+  styleUrls: ['./xem-chi-tiet-chuyen-xe.component.css', '../../../assets/nhan/css/css.css']
 })
 export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
 
-  constructor(private xemChiTietChuyenXeService: XemChiTietChuyenXeService) {
+  constructor(private xemChiTietChuyenXeService: XemChiTietChuyenXeService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private _location: Location
+  ) {
   }
 
   // @ts-ignore
@@ -37,7 +43,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
   benDiBenDen: ChuyenXe = new ChuyenXe();
   nhaXes: NhaXe[] = [];
   // @ts-ignore
-  ngay: string;
+  ngay = '2021-04-08';
   // @ts-ignore
   nhaXe: NhaXe;
   trangThaiGhes: TrangThaiGhe[] = [];
@@ -60,13 +66,14 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
   strGheDaChon = '';
 
   ngOnInit(): void {
+    this.init();
     this.getTinh();
     this.getBen();
     this.getChuyen();
     this.getNhaXe();
     this.getTrangThaiGhe();
-    this.maChuyenXe = 'mcx01';
     this.ngay = '2021-04-08';
+    this.maChuyenXe = 'mcx01';
     console.log('=============');
   }
 
@@ -100,7 +107,6 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
   }
 
   getTinh(): void{
-    console.log(1);
     this.xemChiTietChuyenXeService.getTinhTheoMaTinh(this.maTinhDi).subscribe(
       data => {
         this.tinhDi = data;
@@ -133,7 +139,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
           return item.tinhThanh.maTinh === this.maTinhDen;
         }
       );
-      console.log(this.benDens);
+      // console.log(this.benDens);
       this.getChuyen();
     },
       error => {
@@ -153,27 +159,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
   }
 
   getChuyenTheoTinhDiTinhDen(): void{
-    // @ts-ignore
-    Array.prototype.inArray = function(comparer) {
-      for (let i = 0; i < this.length; i++) {
-        if (comparer(this[i])) { return true; }
-      }
-      return false;
-    };
 
-// adds an element to the array if it does not already exist using a comparer
-// function
-    // @ts-ignore
-    Array.prototype.pushIfNotExist = function(element, comparer) {
-      // @ts-ignore
-      if (!this.inArray(comparer)) {
-        this.push(element);
-      }
-    };
-    console.log(999);
-    console.log(this.chuyenXes);
-    console.log(this.benDis);
-    console.log(this.benDens);
     this.chuyenXes.forEach(chuyenXe => {
       this.benDis.forEach(benDi => {
         this.benDens.forEach(benDen => {
@@ -193,7 +179,8 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
   }
 
-  onChangeChuyenXe(value: NhaXe): void{
+  onChangeChuyenXe(): void{
+    this.chuyenXeTheoTinhVaNhaXes = [];
     this.chuyenXeTheoTinhVaNhaXes = this.chuyenXeTheoBenDiBenBenDens;
     if (this.nhaXe !== undefined) {
       this.chuyenXeTheoTinhVaNhaXes = this.chuyenXeTheoBenDiBenBenDens.slice().filter(
@@ -209,56 +196,110 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
         }
       );
     }
-    console.log(this.chuyenXeTheoTinhVaNhaXes);
+    // console.log(this.chuyenXeTheoTinhVaNhaXes);
+    this.onChangeTheoThoiGian();
   }
 
-  onChangeTheoThoiGian(value: ChuyenXe): void {
-    console.log(this.chuyenXe);
+  onChangeTheoThoiGian(): void {
     this.getGhe();
   }
 
   getGhe(): void {
-    this.xemChiTietChuyenXeService.getGhe(this.chuyenXe.xe.maXe).subscribe(
-      data => {
-        this.ghes = data;
-        this.gheDaChons = this.ghes.slice().filter(
-          item => {
-            if (item.trangThaiGhe.maTrangThai === 'mttg02'){
-              item.daChon = true;
-              return true;
+    this.ghes = [];
+    this.gheDaChons = [];
+    this.newGhesTang1 = [];
+    this.newGhesTang2 = [];
+    if (this.chuyenXe) {
+      this.xemChiTietChuyenXeService.getGhe(this.chuyenXe.xe.maXe).subscribe(
+        data => {
+          this.ghes = data;
+          this.gheDaChons = this.ghes.slice().filter(
+            item => {
+              if (item.trangThaiGhe.maTrangThai === 'mttg02'){
+                item.daChon = true;
+                return true;
+              }
+              return false;
             }
-            return false;
-          }
-        );
-        console.log(this.gheDaChons);
+          );
+          // console.log(this.gheDaChons);
 
-        this.ghesTang1 = this.ghes.slice().filter(
-          item => {
-            return item.tang === 1;
-          }
-        );
-        this.ghesTang2 = this.ghes.slice().filter(
-          item => {
-            return item.tang === 2;
-          }
-        );
-        // @ts-ignore
-        this.ghes.sort((a, b) => {
-          return a.soGhe > b.soGhe;
-        });
-        while (this.ghesTang1.length) {
+          this.ghesTang1 = this.ghes.slice().filter(
+            item => {
+              return item.tang === 1;
+            }
+          );
+          this.ghesTang2 = this.ghes.slice().filter(
+            item => {
+              return item.tang === 2;
+            }
+          );
           // @ts-ignore
-          this.newGhesTang1.push(this.ghesTang1.splice(0, 3));
+          this.ghes.sort((a, b) => {
+            return a.soGhe > b.soGhe;
+          });
+          while (this.ghesTang1.length) {
+            // @ts-ignore
+            this.newGhesTang1.push(this.ghesTang1.splice(0, 3));
+          }
+          while (this.ghesTang2.length) {
+            // @ts-ignore
+            this.newGhesTang2.push(this.ghesTang2.splice(0, 3));
+          }
+          this.setTongTien();
+        }, error => {
+          console.log(error);
         }
-        while (this.ghesTang2.length) {
+      );
+    }
+  }
+
+  getGheKhongGoiDB(): void {
+    this.newGhesTang1 = [];
+    this.newGhesTang2 = [];
+    if (this.chuyenXe) {
+      // this.xemChiTietChuyenXeService.getGhe(this.chuyenXe.xe.maXe).subscribe(
+      //   data => {
+      //     this.ghes = data;
+          this.gheDaChons = this.ghes.slice().filter(
+            item => {
+              if (item.trangThaiGhe.maTrangThai === 'mttg02'){
+                item.daChon = true;
+                return true;
+              }
+              return false;
+            }
+          );
+          // console.log(this.gheDaChons);
+
+          this.ghesTang1 = this.ghes.slice().filter(
+            item => {
+              return item.tang === 1;
+            }
+          );
+          this.ghesTang2 = this.ghes.slice().filter(
+            item => {
+              return item.tang === 2;
+            }
+          );
           // @ts-ignore
-          this.newGhesTang2.push(this.ghesTang2.splice(0, 3));
-        }
-        this.setTongTien();
-      }, error => {
-        console.log(error);
-      }
-    );
+          this.ghes.sort((a, b) => {
+            return a.soGhe > b.soGhe;
+          });
+          while (this.ghesTang1.length) {
+            // @ts-ignore
+            this.newGhesTang1.push(this.ghesTang1.splice(0, 3));
+          }
+          while (this.ghesTang2.length) {
+            // @ts-ignore
+            this.newGhesTang2.push(this.ghesTang2.splice(0, 3));
+          }
+          this.setTongTien();
+      //   }, error => {
+      //     console.log(error);
+      //   }
+      // );
+    }
   }
 
   handleChange(value: ChuyenXe): void {
@@ -274,27 +315,53 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
 
   onChangeBenDi(value: Ben): void{
     this.filterChuyenXeTheoBen();
+    if (this.chuyenXeTheoBenDiBenBenDens) {
+      this.chuyenXe = this.chuyenXeTheoBenDiBenBenDens[0];
+    } else {
+      // @ts-ignore
+      // this.chuyenXe = undefined;
+    }
+    this.getGhe();
   }
   onChangeBenDen(value: Ben): void{
     this.filterChuyenXeTheoBen();
+    if (this.chuyenXeTheoBenDiBenBenDens) {
+      this.chuyenXe = this.chuyenXeTheoBenDiBenBenDens[0];
+    } else {
+      // @ts-ignore
+      // this.chuyenXe = undefined;
+    }
+    this.getGhe();
+    // if (this.nhaXesTheoBenDiBenDen) {
+    //   // @ts-ignore
+    //   this.nhaXe = null;
+    //   this.nhaXe = this.nhaXesTheoBenDiBenDen[0];
+    //   this.onChangeChuyenXe();
+    //   this.onChangeTheoThoiGian();
+    // }
+
   }
 
   filterChuyenXeTheoBen(): void{
-    // if (this.benDi !== undefined) {
-    this.chuyenXeTheoBenDiBenBenDens = this.chuyenXes.slice();
+    // // @ts-ignore
+    // this.chuyenXe = new ChuyenXe();
     if (this.benDi !== undefined) {
-      this.chuyenXeTheoBenDiBenBenDens = this.chuyenXeTheoBenDiBenBenDens.slice().filter(
-        item => {
-          const a = item.benDi.maBen;
-          const b = this.benDi.maBen;
+      // console.log(this.chuyenXes);
+      this.chuyenXeTheoBenDiBenBenDens = this.chuyenXes.slice();
+      if (this.benDi !== undefined) {
+        this.chuyenXeTheoBenDiBenBenDens = this.chuyenXeTheoBenDiBenBenDens.slice().filter(
+          item => {
+            const a = item.benDi.maBen;
+            const b = this.benDi.maBen;
 
-          if (a === b) {
-            return true;
-          } else {
-            return false;
+            if (a === b) {
+              return true;
+            } else {
+              return false;
+            }
           }
-        }
-      );
+        );
+      }
     }
     if (this.benDen !== undefined) {
       this.chuyenXeTheoBenDiBenBenDens = this.chuyenXeTheoBenDiBenBenDens.slice().filter(
@@ -309,6 +376,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
           }
         }
       );
+      this.onChangeChuyenXe();
     }
 
     this.nhaXesTheoBenDiBenDen = this.nhaXes.slice();
@@ -327,9 +395,6 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
         return result;
       }
     );
-    console.log(this.nhaXesTheoBenDiBenDen);
-
-    console.log(this.chuyenXeTheoBenDiBenBenDens);
   }
 
   private getNhaXe(): void {
@@ -362,6 +427,59 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
         }
       }
     );
-    console.log(this.gheDaChons);
+    // console.log(this.gheDaChons);
+    if (this.chuyenXe) {
+      localStorage.setItem('chuyenXe', JSON.stringify(this.chuyenXe));
+    }
+    if (this.gheDaChons) {
+      localStorage.setItem('gheDaChons', JSON.stringify(this.gheDaChons));
+    }
+    if (this.newGhesTang1) {
+      localStorage.setItem('newGhesTang1', JSON.stringify(this.newGhesTang1));
+    }
+    if (this.newGhesTang2) {
+      localStorage.setItem('newGhesTang2', JSON.stringify(this.newGhesTang2));
+    }
+    if (this.ghes) {
+      localStorage.setItem('ghes', JSON.stringify(this.ghes));
+    }
+  }
+
+  private init(): void {
+    this.activatedRoute.queryParams.subscribe(
+      data => {
+        this.maTinhDi = data.maTinhDi;
+        this.maTinhDen = data.maTinhDen;
+        this.ngay = data.ngay;
+        // console.log(data.ngay);
+      }
+    );
+    if (localStorage.getItem('chuyenXe')) {
+      // @ts-ignore
+      this.chuyenXe = JSON.parse(localStorage.getItem('chuyenXe'));
+      console.log(this.chuyenXe);
+      // this.getGhe();
+    }
+    if (localStorage.getItem('gheDaChons')) {
+      // @ts-ignore
+      this.gheDaChons = JSON.parse(localStorage.getItem('gheDaChons'));
+    }
+    if (localStorage.getItem('ghes')) {
+      // @ts-ignore
+      this.ghes = JSON.parse(localStorage.getItem('ghes'));
+    }
+    if (localStorage.getItem('newGhesTang1')) {
+      // @ts-ignore
+      this.newGhesTang1 = JSON.parse(localStorage.getItem('newGhesTang1'));
+    }
+    if (localStorage.getItem('newGhesTang2')) {
+      // @ts-ignore
+      this.newGhesTang2 = JSON.parse(localStorage.getItem('newGhesTang2'));
+    }
+    this.getGheKhongGoiDB();
+  }
+
+  backClicked(): void {
+    this._location.back();
   }
 }

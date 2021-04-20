@@ -12,6 +12,18 @@ import {QlTuyenXeComponent} from './kien/ql-tuyen-xe/ql-tuyen-xe.component';
 import {QlNhaXeComponent} from './kien/ql-nha-xe/ql-nha-xe.component';
 import {DatVeComponent} from './nhan/dat-ve/dat-ve.component';
 import {XemChiTietChuyenXeComponent} from './nhan/xem-chi-tiet-chuyen-xe/xem-chi-tiet-chuyen-xe.component';
+import {XemLichSuComponent} from './trong/xem-lich-su/xem-lich-su.component';
+import {TimKiemTuyenComponent} from './trong/tim-kiem-tuyen/tim-kiem-tuyen.component';
+import {TestRoutingComponent} from './trong/test-routing/test-routing.component';
+import {HeaderComponent} from './trong/header/header.component';
+import {FooterComponent} from './trong/footer/footer.component';
+import { TestFubusComponent } from './nhan/test-fubus/test-fubus.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { XuatVeComponent } from './nhan/xuat-ve/xuat-ve.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +33,26 @@ import {XemChiTietChuyenXeComponent} from './nhan/xem-chi-tiet-chuyen-xe/xem-chi
     XemChiTietChuyenXeComponent,
     QlNguoiDungComponent,
     QlTuyenXeComponent,
-    QlNhaXeComponent
+    QlNhaXeComponent,
+    XemLichSuComponent,
+    TimKiemTuyenComponent,
+    TestRoutingComponent,
+    HeaderComponent,
+    FooterComponent,
+    TestFubusComponent,
+    XuatVeComponent,
   ],
     imports: [
       BrowserModule,
       AppRoutingModule,
       HttpClientModule,
       FormsModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      MatAutocompleteModule,
+      BrowserAnimationsModule,
+      MatFormFieldModule,
+      NgxPaginationModule,
+      IvyCarouselModule
     ],
 
   providers: [
