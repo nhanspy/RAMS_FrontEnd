@@ -21,11 +21,14 @@
  }
   .card-signin .card-body {
     padding: 2rem;
+    background: linear-gradient(to right, #4adb2b, #acff1a);
   }
 
   .form-signin {
     width: 100%;
     text-align: center;
+
+    border: 50px;
   }
 
   .form-signin .btn {
@@ -107,7 +110,7 @@
 
   .btn-facebook {
     color: white;
-    background-color: pink;
+    background-color: #ff6e9c;
     margin-top: 30px ;
   }
   a{

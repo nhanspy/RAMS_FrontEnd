@@ -31,5 +31,4 @@ export class DangkyComponent implements OnInit {
       }
     );
   }
-
 }
