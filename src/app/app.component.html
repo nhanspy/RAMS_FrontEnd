@@ -11,7 +11,7 @@
 
   <div id="app">
   <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">bezKoder</a>
+    <a href="#" class="navbar-brand">Trang chủ</a>
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
         <a href="/home" class="nav-link" routerLink="home">Home </a>
@@ -36,18 +36,12 @@
           Đăng ký
         </button>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="/register" routerLink="register">Đăng ký người dùng</a>
-          <a class="dropdown-item" href="/dangky"  routerLink="dangky">Đăng ký nhà xe</a>
+          <a class="dropdown-item" href="/register" routerLink="register">Người dùng</a>
+          <a class="dropdown-item" href="/dangky"  routerLink="dangky">Nhà xe</a>
         </div>
       </div>
-<!--      <li class="nav-item">-->
-<!--        <a href="/dangky" class="nav-link" routerLink="dangky">Đăng ký nhà xe</a>-->
-<!--      </li>-->
-<!--      <li class="nav-item">-->
-<!--        <a href="/register" class="nav-link" routerLink="register">Đăng ký người dùng</a>-->
-<!--      </li>-->
       <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Login</a>
+        <a href="/login" class="nav-link" routerLink="login">Đăng nhập</a>
       </li>
     </ul>
 
@@ -56,12 +50,15 @@
         <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
       </li>
       <li class="nav-item">
-        <a href class="nav-link" (click)="logout()">LogOut</a>
+        <a href class="nav-link" (click)="logout()">Đăng xuất</a>
       </li>
     </ul>
   </nav>
 
   <div class="container">
+<!--    <app-reset-password></app-reset-password>-->
     <router-outlet></router-outlet>
+    <app-footer></app-footer>
+<!--    <app-reset-password></app-reset-password>-->
   </div>
 </div>

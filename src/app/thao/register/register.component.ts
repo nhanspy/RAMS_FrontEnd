@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import {LoadcssService} from "../_services/loadcss.service";
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,9 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private loadcssService: LoadcssService) {
+    this.loadcssService.loadCss('assets/Thao/css/DangKy.css');
+  }
 
   ngOnInit(): void {
   }

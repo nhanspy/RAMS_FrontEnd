@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {User} from "../../nhan/Models/User.class";
 
 const AUTH_API = 'http://localhost:8080/api/auth/';
+const AUTH_API1 = 'http://localhost:8080/api/public/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -49,24 +50,24 @@ export class AuthService {
   }
   resetPassword(email: string): Observable<any> {
     console.log(email)
-    return this.http.post(AUTH_API + 'reset-password', {
+    return this.http.post(AUTH_API1 + 'reset-password', {
       email: email,
     }, this.httpOptions);
   }
   verify(code: string): Observable<any>{
     console.log(code);
-    return this.http.post(AUTH_API + 'verify', {
+    return this.http.post(AUTH_API1 + 'verify', {
       code: code
     }, this.httpOptions);
   }
 
   verifyPassword(code: string): Observable<any> {
-    return this.http.post(AUTH_API + 'verify-password', {
+    return this.http.post(AUTH_API1 + 'verify-password', {
       code: code
     }, this.httpOptions);
   }
   doResetPassword(password: string, code: string): Observable<any> {
-    return this.http.post(AUTH_API + 'do-reset-password', {
+    return this.http.post(AUTH_API1 + 'do-reset-password', {
       password: password,
       code: code
     }, this.httpOptions);

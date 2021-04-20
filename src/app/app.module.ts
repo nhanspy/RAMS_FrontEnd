@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {KiemTraVeComponent} from './thao/kiem-tra-ve/kiem-tra-ve.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {RegisterComponent} from "./thao/register/register.component";
 import {LoginComponent} from "./thao/login/login.component";
@@ -17,6 +17,10 @@ import {APP_BASE_HREF} from "@angular/common";
 import {authInterceptorProviders} from "./thao/_helpers/auth.interceptor";
 import { DKNHaxeComponent } from './thao/dknhaxe/dknhaxe.component';
 import { HeaderComponent } from './thao/header/header.component';
+import {ResetPasswordComponent} from "./thao/reset-password/reset-password.component";
+import {VerifyResetPasswordComponent} from "./thao/verify-reset-password/verify-reset-password.component";
+import {ToastrModule} from "ngx-toastr";
+import { FooterComponent } from './thao/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,16 +32,20 @@ import { HeaderComponent } from './thao/header/header.component';
     BoardModeratorComponent,
     BoardUserComponent,
     TestComponent,
+    ResetPasswordComponent,
+    VerifyResetPasswordComponent,
     KiemTraVeComponent,
     DKNHaxeComponent,
     HeaderComponent,
+    FooterComponent,
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [{provide: APP_BASE_HREF, useValue: '/'}, authInterceptorProviders],
   bootstrap: [AppComponent]
