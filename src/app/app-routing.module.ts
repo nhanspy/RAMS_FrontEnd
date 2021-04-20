@@ -8,9 +8,9 @@ import {ProfileComponent} from "./thao/profile/profile.component";
 import {BoardUserComponent} from "./thao/board-user/board-user.component";
 import {BoardModeratorComponent} from "./thao/board-moderator/board-moderator.component";
 import {BoardAdminComponent} from "./thao/board-admin/board-admin.component";
-import {DKNHaxeComponent} from "./thao/dknhaxe/dknhaxe.component";
 import {ResetPasswordComponent} from "./thao/reset-password/reset-password.component";
 import {VerifyResetPasswordComponent} from "./thao/verify-reset-password/verify-reset-password.component";
+import {DangkyComponent} from "./thao/dangky/dangky.component";
 
 const routes: Routes = [
   {path: 'kiemtra', component: KiemTraVeComponent},
@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'admin', component: BoardAdminComponent },
   {path: 'password', component: ResetPasswordComponent},
   {path: 'verifypass', component: VerifyResetPasswordComponent},
-  {path: 'dangky', component: DKNHaxeComponent},
+  {path: 'dangky', component: DangkyComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

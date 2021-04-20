@@ -49,5 +49,12 @@ export class LoginComponent implements OnInit {
   reloadPage(): void {
     window.location.reload();
   }
+  // validation_messages = {
+  //   'password': [
+  //     {type: 'required', message: 'Trường này không được để trống!'},
+  //     {type: 'minlength', message: 'Mật khẩu cần nhiều hơn 8 ký tự'},
+  //     {type: 'maxlength', message: 'Mật khẩu chỉ được ít hơn 32 ký tự'},
+  //   ]
+  // };
 
 }

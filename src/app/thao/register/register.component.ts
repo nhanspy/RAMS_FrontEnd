@@ -5,7 +5,7 @@ import {LoadcssService} from "../_services/loadcss.service";
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css', '../../../assets/Thao/css/DangKy.css']
 })
 export class RegisterComponent implements OnInit {
 
@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   errorMessage = '';
 
   constructor(private authService: AuthService, private loadcssService: LoadcssService) {
-    this.loadcssService.loadCss('assets/Thao/css/DangKy.css');
+   // this.loadcssService.loadCss('assets/Thao/css/DangKy.css');
   }
 
   ngOnInit(): void {

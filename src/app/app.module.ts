@@ -15,12 +15,13 @@ import {BoardUserComponent} from "./thao/board-user/board-user.component";
 import {TestComponent} from "./thao/test/test.component";
 import {APP_BASE_HREF} from "@angular/common";
 import {authInterceptorProviders} from "./thao/_helpers/auth.interceptor";
-import { DKNHaxeComponent } from './thao/dknhaxe/dknhaxe.component';
 import { HeaderComponent } from './thao/header/header.component';
 import {ResetPasswordComponent} from "./thao/reset-password/reset-password.component";
 import {VerifyResetPasswordComponent} from "./thao/verify-reset-password/verify-reset-password.component";
 import {ToastrModule} from "ngx-toastr";
 import { FooterComponent } from './thao/footer/footer.component';
+// @ts-ignore
+import { DangkyComponent } from './thao/dangky/dangky.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,9 +36,10 @@ import { FooterComponent } from './thao/footer/footer.component';
     ResetPasswordComponent,
     VerifyResetPasswordComponent,
     KiemTraVeComponent,
-    DKNHaxeComponent,
     HeaderComponent,
+    DangkyComponent,
     FooterComponent,
+    DangkyComponent,
    ],
   imports: [
     BrowserModule,
@@ -45,7 +47,7 @@ import { FooterComponent } from './thao/footer/footer.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   providers: [{provide: APP_BASE_HREF, useValue: '/'}, authInterceptorProviders],
   bootstrap: [AppComponent]

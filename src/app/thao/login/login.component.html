@@ -18,7 +18,7 @@
                 required
                 #username="ngModel"
                 type="text" id="" class="form-control" placeholder="Tài Khoản" required autofocus>
-              <label for="username"  role="alert"
+              <label role="alert"
                      *ngIf="f.submitted && username.invalid">Tài Khoản bắt buộc</label>
             </div>
             <div class="form-label-group">
@@ -35,6 +35,7 @@
 <!--                Password must be at least 50 characters-->
 <!--              </div>-->
             </div>
+
 
             <div class="custom-control custom-checkbox mb-3">
               <input type="checkbox" class="custom-control-input" id="customCheck1">

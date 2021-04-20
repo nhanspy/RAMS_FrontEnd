@@ -1,0 +1,98 @@
+<h1 class="thao-w3ls" style="color: black">ĐĂNG KÝ</h1>
+<div data-ahihi class="thao-content-w3ls">
+  <div class="thao-content-agile1">
+    <h2 class="thao-agileits1">Official</h2>
+    <p class="thao-agileits2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </div>
+  <div class="thao-content-agile2">
+    <form action="#" method="post"
+          *ngIf="!isSuccessful"
+          name="form"
+          (ngSubmit)="s.form.valid && onSubmittt()"
+          #s="ngForm"
+          novalidate
+    >
+      <div class="thao-form-control thao-w3layouts">
+        <input type="text" id="tennx" name="tennx" placeholder="Tên nhà xe" title="Please enter your First Name"
+               [(ngModel)]="form.ten"
+               required
+               maxlength="100"
+               #tennhaxe="ngModel">
+        <div class="alert-danger" *ngIf="s.submitted && tennhaxe.invalid">
+        </div>
+      </div>
+
+      <div class="thao-form-control thao-w3layouts">
+        <input
+          type="text" id="tendn" name="tendn" placeholder="Tên đăng nhập" title="Please enter your "
+          [(ngModel)]="form.username"
+          required
+          minlength="3"
+          maxlength="20"
+          #username="ngModel"
+         >
+        <div class="alert-danger" *ngIf="s.submitted && username.invalid">
+        </div>
+      </div>
+
+      <div class="thao-form-control thao-w3layouts">
+        <input type="password" id="password1" name="password" placeholder="Mật khẩu"
+             [(ngModel)]="form.password"
+             required
+             minlength="6"
+             #password="ngModel"
+        >
+        <div class="alert-danger" *ngIf="s.submitted && password.invalid">
+        </div>
+      </div>
+
+<!--      <div class="thao-form-control thao-w3layouts">-->
+<!--        <input type="password" id="password2" name="password" placeholder="Nhập lại mật khẩu" title="Please enter a valid email">-->
+<!--      </div>-->
+
+      <div class="thao-form-control thao-w3layouts">
+        <input type="tel" id="sodt" name="sodt" placeholder="Số điện thoại"
+               [(ngModel)]="form.soDienThoai"
+               required
+               maxlength="10"
+               #soDienThoai="ngModel"
+        >
+        <div class="alert-danger" *ngIf="s.submitted && soDienThoai.invalid">
+        </div>
+      </div>
+
+      <div class="thao-form-control thao-w3layouts">
+        <input type="email" id="email" name="email" placeholder="Email"
+               [(ngModel)]="form.email"
+               required
+               email
+               #email="ngModel"
+        >
+        <div class="alert-danger" *ngIf="s.submitted && email.invalid">
+        </div>
+      </div>
+
+      <div class="thao-form-control thao-w3layouts">
+        <input type="text" id="diachi" name="diachi" placeholder="Địa chỉ"
+               [(ngModel)]="form.diaChi"
+               required
+               minlength="6"
+               #dia_chi="ngModel"
+        >
+        <div class="alert-danger" *ngIf="s.submitted && dia_chi.invalid">
+        </div>
+      </div>
+
+      <input type="submit" class="thao-register" value="Đăng ký">
+      <div class="alert alert-warning" *ngIf="s.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+    </form>
+  </div>
+  <div class="thao-clear"></div>
+</div>
+<div class="alert alert-success" *ngIf="isSuccessful">
+  Your registration is successful!</div>
+
+
+
