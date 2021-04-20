@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {QlNguoiDungService} from '../../Services/kien-s/ql-nguoi-dung.service';
 import {User} from '../../nhan/Models/User.class';
 import {SignupRequest} from '../../nhan/Models/SignupRequest.class';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 // @ts-ignore
 @Component({
@@ -11,6 +12,8 @@ import {SignupRequest} from '../../nhan/Models/SignupRequest.class';
 })
 // @ts-ignore
 export class QlNguoiDungComponent implements OnInit {
+  // @ts-ignore
+  formCreate: FormGroup;
   // @ts-ignore
   totalRec: string;
   page: number = 1;
@@ -63,6 +66,14 @@ export class QlNguoiDungComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     this.user = new User();
+    this.formCreate = new FormGroup({
+      username: new FormControl('',[Validators.required, Validators.maxLength(10), Validators.minLength(3)]),
+      tennguoidung: new FormControl('',[Validators.required, Validators.maxLength(10), Validators.minLength(3)]),
+      email: new FormControl('', [Validators.pattern(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/), Validators.required]),
+      phone: new FormControl('', [Validators.required, Validators.pattern('(0)[35789][0-9]{8}')]),
+      dateOfBirth: new FormControl('', [Validators.required]),
+      address: new FormControl('', [Validators.required]),
+    });
   }
   // tslint:disable-next-line:typedef
   addnguoidung() {

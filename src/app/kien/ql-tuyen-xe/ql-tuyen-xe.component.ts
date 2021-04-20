@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {QlTuyenXeService} from '../../Services/kien-s/ql-tuyen-xe.service';
 import {ChuyenXe} from '../../nhan/Models/ChuyenXe.class';
 import {Ben} from '../../nhan/Models/Ben.class';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-ql-tuyen-xe',
@@ -33,7 +34,8 @@ export class QlTuyenXeComponent implements OnInit {
 
   // @ts-ignore
   // tslint:disable-next-line:variable-name
-  constructor(private _qlTuyenXeService: QlTuyenXeService) {
+  constructor(private _qlTuyenXeService: QlTuyenXeService,
+              private router: Router) {
     this._qlTuyenXeService.getAll().subscribe(data => {
       console.log(data);
       this.chuyenXeList = data;

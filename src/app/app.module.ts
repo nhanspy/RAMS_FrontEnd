@@ -32,7 +32,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
         // TimKiemComponent,
         AddNguoidungComponent,
         AddNhaXeComponent,
-        AddTuyenXeComponent,
+        AddTuyenXeComponent
     ],
   imports: [
     BrowserModule,

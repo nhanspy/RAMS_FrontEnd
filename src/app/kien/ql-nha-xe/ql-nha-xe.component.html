@@ -72,6 +72,7 @@
     }
   </style>
 </head>
+<html>
 <body>
 <div class="container">
   <div class="example">
@@ -124,7 +125,7 @@
         </tbody>
       </table>
       <div>
-        <pagination-controls style="text-align: right"  id="listing_pagination" (pageChange)="page = $event"></pagination-controls>
+        <pagination-controls style="text-align: right" previousLabel="Trước" nextLabel="Sau" id="listing_pagination" (pageChange)="page = $event"></pagination-controls>
       </div>
     </div>
   </div>

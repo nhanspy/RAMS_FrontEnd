@@ -11,7 +11,7 @@ import {AddNhaXeComponent} from './kien/add-nha-xe/add-nha-xe.component';
 import {AddTuyenXeComponent} from './kien/add-tuyen-xe/add-tuyen-xe.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'dangnhap', pathMatch: 'full'},
+  {path: '', redirectTo: 'qlnguoidung', pathMatch: 'full'},
   {path: 'chitiet', component: XemChiTietChuyenXeComponent},
   {path: 'lichsuchuyen', component: XemLichSuChuyenXeComponent},
   {path: 'datve', component: DatVeComponent},
