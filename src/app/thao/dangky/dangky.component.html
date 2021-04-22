@@ -5,106 +5,79 @@
     <p class="thao-agileits2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
   </div>
   <div class="thao-content-agile2">
-    <form action="#" method="post"
-          *ngIf="!isSuccessful"
-          name="form"
-          (ngSubmit)="s.form.valid && onSubmittt()"
-          #s="ngForm"
-          novalidate
-    >
+    <form  [formGroup]="formdknhaxe" (ngSubmit)="onSubmit()" action="#" method="post">
       <div class="thao-form-control thao-w3layouts">
-        <input type="text" id="tennx" name="tennx" placeholder="Tên nhà xe" title="Please enter your First Name"
-               [(ngModel)]="form.ten"
-               required
-               #tennhaxe="ngModel">
-        <div class="alert-danger" *ngIf="s.submitted && tennhaxe.invalid">
-          <div *ngIf="tennhaxe.errors.required">Ho tên bắt buộc</div>
+        <input type="text" id="tennx" placeholder="Tên nhà xe" formControlName="tennx">
+        <div *ngFor="let validation of validation_messages.tennx">
+          <small class="text-danger"
+                 *ngIf="formdknhaxe.get('tennx')!.hasError(validation.type) && formdknhaxe.get('tennx')!.touched">
+            {{validation.message}}</small>
         </div>
       </div>
 
       <div class="thao-form-control thao-w3layouts">
         <input
-          type="text" id="tendn" name="tendn" placeholder="Tên đăng nhập" title="Please enter your "
-          [(ngModel)]="form.username"
-          required
-          minlength="6"
-          maxlength="30"
-          #tendangnhap="ngModel"
-         >
-        <div class="alert-danger" *ngIf="s.submitted && tendangnhap.invalid">
-          <div *ngIf="tendangnhap.errors.required">Tên đăng nhập bắt buộc</div>
-          <div *ngIf="tendangnhap.errors.minlengh">Tên đăng nhập tối thiểu 6 kí tự</div>
-          <div *ngIf="tendangnhap.errors.maxlengh">Tên đăng nhập tối đa 30 kí tự</div>
+          type="text" id="tendn"  placeholder="Tên đăng nhập" title="Please enter your " formControlName="username">
+        <div *ngFor="let validation of validation_messages.username">
+          <small class="text-danger"
+                 *ngIf="formdknhaxe.get('username')!.hasError(validation.type) && formdknhaxe.get('username')!.touched">
+            {{validation.message}}</small>
         </div>
       </div>
 
       <div class="thao-form-control thao-w3layouts">
-        <input type="password" id="password1" name="password" placeholder="Mật khẩu"
-             [(ngModel)]="form.password"
-             required
-             minlength="8"
-               maxlength="20"
-             #matkhau="ngModel"
-        >
-        <div class="alert-danger" *ngIf="s.submitted && matkhau.invalid">
-          <div *ngIf="matkhau.errors.required">Mật khẩu bắt buộc</div>
-          <div *ngIf="matkhau.errors.minlengh">Mật khẩu tối thiểu 8 kí tự</div>
-          <div *ngIf="matkhau.errors.maxlengh">Mật khẩu tối đa 20 kí tự</div>
-
-        </div>
-      </div>
-
-<!--      <div class="thao-form-control thao-w3layouts">-->
-<!--        <input type="password" id="password2" name="password" placeholder="Nhập lại mật khẩu" title="Please enter a valid email">-->
-<!--      </div>-->
-
-      <div class="thao-form-control thao-w3layouts">
-        <input type="tel" id="sodt" name="sodt" placeholder="Số điện thoại"
-               [(ngModel)]="form.soDienThoai"
-               required
-               maxlength="10"
-               #soDienThoai="ngModel"
-        >
-        <div class="alert-danger" *ngIf="s.submitted && soDienThoai.invalid">
-          <div *ngIf="soDienThoai.errors.required">Số điện thoại bắt buộc</div>
-          <div *ngIf="soDienThoai.errors.maxlengh"> Số điện thoại tối đa 10 số</div>
+        <input type="password" id="password1"  placeholder="Mật khẩu" formControlName="password">
+        <div *ngFor="let validation of validation_messages.password">
+          <small class="text-danger"
+                 *ngIf="formdknhaxe.get('password')!.hasError(validation.type) && formdknhaxe.get('password')!.touched">
+            {{validation.message}}</small>
         </div>
       </div>
 
       <div class="thao-form-control thao-w3layouts">
-        <input type="email" id="email" name="email" placeholder="Email"
-               [(ngModel)]="form.email"
-               required
-               email
-               #email="ngModel"
-        >
-        <div class="alert-danger" *ngIf="s.submitted && email.invalid">
-          <div *ngIf="email.errors.required">Email bắt buộc</div>
-          <div *ngIf="email.errors.email"> Email không đúng với định dạng</div>
+        <input type="password" id="password2"  placeholder="Nhập lại mật khẩu" formControlName="re_password">
+        <div *ngFor="let validation of validation_messages.re_password">
+          <small class="text-danger"
+                 *ngIf="formdknhaxe.get('re_password')!.hasError(validation.type) && formdknhaxe.get('re_password')!.touched">
+            {{validation.message}}</small>
         </div>
       </div>
 
       <div class="thao-form-control thao-w3layouts">
-        <input type="text" id="diachi" name="diachi" placeholder="Địa chỉ"
-               [(ngModel)]="form.diaChi"
-               required
-               #dia_chi="ngModel"
-        >
-        <div class="alert-danger" *ngIf="s.submitted && dia_chi.invalid">
-          <div *ngIf="dia_chi.errors.required">Địa chỉ bắt buộc</div>
+        <input type="tel" id="sodt"  placeholder="Số điện thoại" formControlName="phone">
+        <div *ngFor="let validation of validation_messages.phone">
+          <small class="text-danger"
+                 *ngIf="formdknhaxe.get('phone')!.hasError(validation.type) && formdknhaxe.get('phone')!.touched">
+            {{validation.message}}</small>
         </div>
       </div>
 
-      <input type="submit" class="thao-register" value="Đăng ký">
-      <div class="alert alert-warning" *ngIf="s.submitted && isSignUpFailed">
-        Signup failed!<br />{{ errorMessage }}
+      <div class="thao-form-control thao-w3layouts">
+        <input type="email" id="email"  placeholder="Email" formControlName="email">
+        <div *ngFor="let validation of validation_messages.email">
+          <small class="text-danger"
+                 *ngIf="formdknhaxe.get('email')!.hasError(validation.type) && formdknhaxe.get('email')!.touched">
+            {{validation.message}}</small>
+        </div>
       </div>
+
+      <div class="thao-form-control thao-w3layouts">
+        <input type="text" id="diachi" placeholder="Địa chỉ" formControlName="address">
+        <div *ngFor="let validation of validation_messages.address">
+          <small class="text-danger"
+                 *ngIf="formdknhaxe.get('address')!.hasError(validation.type) && formdknhaxe.get('address')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+
+      <div class="custom-control custom-checkbox">
+      </div>
+      <label class="hvr-sweep-to-right">
+        <input type="submit" value="Đăng ký">
+      </label>
     </form>
+  <p>Bạn đã có tài khoản? <a href="/login">Đăng nhập</a></p>
+    <div class="thao-clear">
+    </div>
   </div>
-  <div class="thao-clear"></div>
 </div>
-<div class="alert alert-success" *ngIf="isSuccessful">
-  Your registration is successful!</div>
-
-
-

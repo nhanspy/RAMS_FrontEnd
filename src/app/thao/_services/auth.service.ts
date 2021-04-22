@@ -37,16 +37,16 @@ export class AuthService {
     return  this.http.post(AUTH_API + 'signupNguoiDung', user);
   }
   dangky(user: User): Observable<any> {
-    // return this.http.post(AUTH_API + 'signupNhaxe', {
-    //   ten: user.ten,
-    //   username: user.username,
-    //   password: user.password,
-    //   soDienThoai: user.soDienThoai,
-    //   email: user.email,
-    //   dia_chi: user.diaChi,
-    // }, httpOptions);
-    console.log(user);
-    return  this.http.post(AUTH_API + 'signupNhaXe', user);
+    return this.http.post(AUTH_API + 'signupNhaxe', {
+      ten: user.ten,
+      username: user.username,
+      password: user.password,
+      soDienThoai: user.soDienThoai,
+      email: user.email,
+      dia_chi: user.diaChi,
+    }, httpOptions);
+    // console.log(user);
+    // return  this.http.post(AUTH_API + 'signupNhaXe', user);
   }
   resetPassword(email: string): Observable<any> {
     console.log(email)
