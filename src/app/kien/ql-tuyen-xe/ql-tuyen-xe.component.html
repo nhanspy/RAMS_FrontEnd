@@ -98,8 +98,6 @@
       <table class="table table-striped">
         <thead>
         <td><input type="text" class="form-control" placeholder="Tìm kiếm mã xe" #txtSearch (keyup)="searchMaxe(txtSearch.value)"></td>
-<!--        <td><input type="text" class="form-control" placeholder="Tìm kiếm bến đi" #txtSearch1 (keyup)="searchBendi(txtSearch1.value)"></td>-->
-<!--        <td><input type="text" class="form-control" placeholder="Tìm kiếm bến đến" #txtSearch2 (keyup)="searchBenden(txtSearch2.value)"></td>-->
         <td>
           <select class="form-select" class="form-control" aria-label="Default select example" [(ngModel)]="keywordBendi" (change)="searchBendi($event)">
             <option [ngValue]="null" >Tất cả</option>
@@ -123,7 +121,19 @@
         </thead>
         <tbody>
         <tr *ngIf="enableAddNewchuyenxe == 1">
-          <td ><input type="text" class="form-control" [(ngModel)]="chuyenXePush.maChuyen" [ngModelOptions]="{standalone: true}" ></td>
+          <td >
+            <div class="form-group">
+              <input type="text" class="form-control" id="maChuyen"
+                     required
+                     minlength="5"
+                     [(ngModel)]="chuyenXePush.maChuyen" name="maChuyen"
+                     #maChuyen="ngModel">
+              <div [hidden]="maChuyen.valid || maChuyen.pristine"
+                   class="alert alert-danger">
+                <div [hidden]="!maChuyen.hasError('required')">Mã xe không được để trống</div>
+                <div [hidden]="!maChuyen.hasError('minlength')">Mã xe ít nhất là 5 ký tự</div>
+              </div>
+            </div>
           <td>
             <select class="form-select" class="form-control" aria-label="Default select example" [(ngModel)]="chuyenXePush.benDi">
               <option *ngFor="let benXe of benXeList" [ngValue]="benXe" >{{benXe.tenBen}}</option>
@@ -134,7 +144,8 @@
               <option *ngFor="let benXe of benXeList" [ngValue]="benXe" >{{benXe.tenBen}}</option>
             </select>
           </td>
-          <td ><input type="text" maxlength="10" class="form-control"  [(ngModel)]="chuyenXePush.thoiGian" [ngModelOptions]="{standalone: true}"></td>
+          <td >
+            <input type="text" maxlength="10" class="form-control"  [(ngModel)]="chuyenXePush.thoiGian" [ngModelOptions]="{standalone: true}"></td>
           <td >
             <button (click)="onSubmit();" type="submit" class="btn btn-primary" >Lưu</button>
             <button (click)="enableAddNewchuyenxe = -1;cancelbutton()" type="button" class="btn btn-info" ng-click="cancel()">Hủy</button>

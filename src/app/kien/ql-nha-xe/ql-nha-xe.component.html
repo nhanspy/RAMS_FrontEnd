@@ -108,8 +108,32 @@
         </thead>
         <tbody>
         <tr *ngIf="enableAddNewnhaxe == 1">
-          <td ><input type="text" class="form-control" [(ngModel)]="nhaXe.maNhaXe" [ngModelOptions]="{standalone: true}"></td>
-          <td ><input type="text" class="form-control"  [(ngModel)]="nhaXe.tenNhaXe" [ngModelOptions]="{standalone: true}"></td>
+          <td>
+            <div class="form-group">
+              <input type="text" class="form-control" id="ten"
+                     required
+                     minlength="5"
+                     [(ngModel)]="nhaXe.maNhaXe" name="ten"
+                     #maNhaXe="ngModel">
+              <div [hidden]="maNhaXe.valid || maNhaXe.pristine"
+                   class="alert alert-danger">
+                <div [hidden]="!maNhaXe.hasError('required')">Mã nhà xe không được để trống</div>
+                <div [hidden]="!maNhaXe.hasError('minlength')">Mã nhà xe phải ít nhất 5 ký tự</div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              <input type="text" class="form-control" id="tenNhaXe"
+                     required
+                     [(ngModel)]="nhaXe.tenNhaXe" name="tenNhaXe"
+                     #tenNhaXe="ngModel">
+              <div [hidden]="tenNhaXe.valid || tenNhaXe.pristine"
+                   class="alert alert-danger">
+                <div [hidden]="!tenNhaXe.hasError('required')">Tên nhà xe không được để trống</div>
+              </div>
+            </div>
+          </td>
           <td >
             <button (click)="onSubmit()" type="submit" class="btn btn-primary">Lưu</button>
             <button (click)="enableAddNewnhaxe = -1;" type="button" class="btn btn-info" ng-click="cancel()">Hủy</button>
