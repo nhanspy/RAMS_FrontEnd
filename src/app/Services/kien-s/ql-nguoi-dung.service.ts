@@ -35,7 +35,6 @@ export class QlNguoiDungService {
         soDienThoai: data.soDienThoai,
         ngaySinh: data.ngaySinh,
         diaChi: data.diaChi,
-        // tslint:disable-next-line:no-bitwise
         password: data.password
       });
     }

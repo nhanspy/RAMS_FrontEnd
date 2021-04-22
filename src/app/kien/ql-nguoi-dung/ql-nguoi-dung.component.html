@@ -135,73 +135,99 @@
         </thead>
         <tbody>
         <tr *ngIf="enableAddNew == 1">
-          <form [formGroup]="formCreate" (ngSubmit)="onSubmit()">
             <td>
-              <input formControlName="username" id="nguoidung" type="text" class="form-control">
-              <p *ngIf="formCreate.controls.username.errors?.required" class="text-danger">
-                Username không được để trống.
-              </p>
-              <p *ngIf="formCreate.controls.username.errors?.maxlength" class="text-danger">
-                Username không được quá 10 ký tự.
-              </p>
-              <p *ngIf="formCreate.controls.username.errors?.minlength" class="text-danger">
-                Username phải ít có nhất 3 ký tự.
-              </p>
+              <div class="form-group">
+                <input type="text" class="form-control" id="username"
+                       required
+                       [(ngModel)]="nguoiDung.username" name="username"
+                       #username="ngModel">
+                <div [hidden]="username.valid || username.pristine"
+                     class="alert alert-danger">
+                  <div [hidden]="!username.hasError('required')">Tên người dùng không được để trống</div>
+                </div>
+              </div>
             </td>
 
             <td>
-              <input formControlName="tennguoidung" id="tennguoidung" type="text" class="form-control">
-              <p *ngIf="formCreate.controls.tennguoidung.errors?.required" class="text-danger">
-                Tên không được để trống.
-              </p>
-              <p *ngIf="formCreate.controls.tennguoidung.errors?.maxlength" class="text-danger">
-                Tên không được quá 10 ký tự.
-              </p>
-              <p *ngIf="formCreate.controls.tennguoidung.errors?.minlength" class="text-danger">
-                Tên phải ít có nhất 3 ký tự.
-              </p>
+              <div class="form-group">
+                <input type="text" class="form-control" id="ten"
+                       required
+                       minlength="2"
+                       pattern="[a-zA-Z][a-zA-Z ]+"
+                       [(ngModel)]="nguoiDung.ten" name="ten"
+                       #ten="ngModel">
+                <div [hidden]="ten.valid || ten.pristine"
+                     class="alert alert-danger">
+                  <div [hidden]="!ten.hasError('required')">Tên không được để trống</div>
+                  <div [hidden]="!ten.hasError('minlength')">Tên phải ít nhất 2 ký tự</div>
+                  <div [hidden]="!ten.hasError('pattern')">Tên chỉ được phép nhập kí tự chữ</div>
+                </div>
+              </div>
             </td>
 
             <td>
-              <input formControlName="email" id="email" type="text" class="form-control">
-              <p *ngIf="formCreate.controls.tennguoidung.errors?.required" class="text-danger">
-                Email không được để trống.
-              </p>
-              <p *ngIf="formCreate.controls.tennguoidung.errors?.parttern" class="text-danger">
-                Email nhập không đúng định dạng.
-              </p>
+              <div class="form-group">
+                <input type="text" class="form-control" id="email"
+                       required
+                       pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                       [(ngModel)]="nguoiDung.email" name="email"
+                       #email="ngModel">
+                <div [hidden]="email.valid || email.pristine"
+                     class="alert alert-danger">
+                  <div [hidden]="!email.hasError('required')">Email không được để trống</div>
+                  <div [hidden]="!email.hasError('pattern')">Email sai định dạng. Ví dụ: abc@gmail.com</div>
+                </div>
+              </div>
             </td>
 
             <td>
-              <input formControlName="phone" id="phone" type="text" class="form-control">
-              <p *ngIf="formCreate.controls.phone.errors?.required" class="text-danger">
-                Số điện thoại không được để trống.
-              </p>
-              <p *ngIf="formCreate.controls.phone.errors?.parttern" class="text-danger">
-                Số điện thoại nhập không đúng định dạng.
-              </p>
+              <div class="form-group">
+              <input type="text" class="form-control" id="soDienThoai"
+                     required
+                     maxlength="10"
+                     minlength="10"
+                     pattern="[0-9]*"
+                     [(ngModel)]="nguoiDung.soDienThoai" name="soDienThoai"
+                     #soDienThoai="ngModel">
+              <div [hidden]="soDienThoai.valid || soDienThoai.pristine"
+                   class="alert alert-danger">
+                <div [hidden]="!soDienThoai.hasError('required')">Số điện thoại không được để trống</div>
+                <div [hidden]="!soDienThoai.hasError('maxlength')">Số điện thoại là 10 chữ số</div>
+                <div [hidden]="!soDienThoai.hasError('minlength')">Số điện thoại là 10 chữ số</div>
+                <div [hidden]="!soDienThoai.hasError('pattern')">Số điện thoại chỉ được phép nhập số</div>
+              </div>
+            </div>
             </td>
 
             <td>
-              <input formControlName="ngaysinh" id="ngaysinh" type="text" class="form-control">
-              <p *ngIf="formCreate.controls.dateOfBirth.errors?.required" class="text-danger">
-                Ngày sinh không được để trống.
-              </p>
+              <div class="form-group">
+                <input type="text" class="form-control" id="ngaySinh"
+                       required
+                       [(ngModel)]="nguoiDung.ngaySinh" name="ngaySinh"
+                       #ngaySinh="ngModel">
+                <div [hidden]="ngaySinh.valid || ngaySinh.pristine"
+                     class="alert alert-danger">
+                  <div [hidden]="!ngaySinh.hasError('required')">Ngày sinh không được để trống</div>
+                </div>
+              </div>
             </td>
+          <td>
+            <div class="form-group">
+              <input type="text" class="form-control" id="diaChi"
+                     required
+                     [(ngModel)]="nguoiDung.diaChi" name="diaChi"
+                     #diaChi="ngModel">
+              <div [hidden]="diaChi.valid || diaChi.pristine"
+                   class="alert alert-danger">
+                <div [hidden]="!diaChi.hasError('required')">Địa chỉ không được để trống</div>
+              </div>
+            </div>
+          </td>
 
             <td>
-              <input formControlName="address" id="address" type="text" class="form-control">
-              <p *ngIf="formCreate.controls.address.errors?.required" class="text-danger">
-                Địa chỉ không được để trống.
-              </p>
-            </td>
-
-            <td>
-              <button [disabled]="formCreate.invalid"  type="submit" class="btn btn-primary">Lưu
-              </button>
+              <button type="submit" (click)="onSubmit()" class="btn btn-primary">Lưu</button>
               <button (click)="enableAddNew=-1;" type="button" class="btn btn-info" ng-click="cancel()">Hủy</button>
             </td>
-          </form>
         </tr>
         <tr
           *ngFor="let nguoidungList of NguoidungList | paginate: { id: 'listing_pagination1',itemsPerPage: 5,currentPage: page, totalItems: totalRec}, let i = index">
@@ -222,8 +248,7 @@
         </tbody>
       </table>
       <div>
-        <pagination-controls style="text-align: right" previousLabel="Trước" nextLabel="Sau" id="listing_pagination1"
-                             (pageChange)="page = $event"></pagination-controls>
+        <pagination-controls style="text-align: right" previousLabel="Trước" nextLabel="Sau" id="listing_pagination1" (pageChange)="page = $event"></pagination-controls>
       </div>
     </div>
   </div>
