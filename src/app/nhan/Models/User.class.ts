@@ -14,6 +14,8 @@ export class User {
   // @ts-ignore
   ngaySinh: string;
   // @ts-ignore
+  re_password: string;
+  // @ts-ignore
   diaChi: string;
   // @ts-ignore
   gioiTinh: boolean;

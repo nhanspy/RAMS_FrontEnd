@@ -1,68 +1,66 @@
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DangKy</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-   <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--  <title>DangKy</title>-->
+<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+<!--  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+<!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
+<!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+<!--  <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>-->
 
-</head>
+<!--</head>-->
 
-  <div id="app">
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">Trang chủ</a>
-    <ul class="navbar-nav mr-auto" routerLinkActive="active">
-      <li class="nav-item">
-        <a href="/home" class="nav-link" routerLink="home">Home </a>
-      </li>
-      <li class="nav-item">
-        <a href="/kiemtra" class="nav-link" routerLink="kiemtra">Kiểm tra vé </a>
-      </li>
-      <li class="nav-item" *ngIf="showAdminBoard">
-        <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
-      </li>
-      <li class="nav-item" *ngIf="showModeratorBoard">
-        <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
-      </li>
-      <li class="nav-item">
-        <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
-      </li>
-    </ul>
+<!--<div id="app">-->
+<!--  <nav class="navbar navbar-expand navbar-dark bg-dark">-->
+<!--    <a href="#" class="navbar-brand">Trang chủ</a>-->
+<!--    <ul class="navbar-nav mr-auto" routerLinkActive="active">-->
+<!--      <li class="nav-item">-->
+<!--        <a href="/home" class="nav-link" routerLink="home">Home </a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a href="/kiemtra" class="nav-link" routerLink="kiemtra">Kiểm tra vé </a>-->
+<!--      </li>-->
+<!--      <li class="nav-item" *ngIf="showAdminBoard">-->
+<!--        <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item" *ngIf="showModeratorBoard">-->
+<!--        <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>-->
+<!--      </li>-->
+<!--    </ul>-->
 
-    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-      <div class="btn-group">
-        <a href="/" type="button" class="btn  dropdown-toggle"  style="color: white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Đăng ký
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="/register" routerLink="register">Người dùng</a>
-          <a class="dropdown-item" href="/dangky"  routerLink="dangky">Nhà xe</a>
-        </div>
-      </div>
-      <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Đăng nhập</a>
-      </li>
-    </ul>
+<!--    <ul class="navbar-nav ml-auto">-->
+<!--      <div class="btn-group">-->
+<!--        <a href="/" type="button" class="btn  dropdown-toggle"  style="color: white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--          Đăng ký-->
+<!--        </a>-->
+<!--        <div class="dropdown-menu">-->
+<!--          <a class="dropdown-item" href="/dangkyuser" routerLink="dangkyuser">Người dùng</a>-->
+<!--          <a class="dropdown-item" href="/dangkynx"  routerLink="dangkynx">Nhà xe</a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <li class="nav-item">-->
+<!--        <a href="/login" class="nav-link" routerLink="login">Đăng nhập</a>-->
+<!--      </li>-->
+<!--    </ul>-->
 
-    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-      <li class="nav-item">
-        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
-      </li>
-      <li class="nav-item">
-        <a href class="nav-link" (click)="logout()">Đăng xuất</a>
-      </li>
-    </ul>
-  </nav>
+<!--    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">-->
+<!--      <li class="nav-item">-->
+<!--        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a href class="nav-link" (click)="logout()">Đăng xuất</a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </nav>-->
 
-  <div class="container">
-<!--    <app-reset-password></app-reset-password>-->
-<!--    <app-dangky></app-dangky>-->
-    <router-outlet></router-outlet>
-<!--    <app-footer></app-footer>-->
-<!--    <app-reset-password></app-reset-password>-->
-  </div>
-</div>
-
+<!--  <div class="container">-->
+<!--    <router-outlet></router-outlet>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<app-dang-ky></app-dang-ky>-->
+<!--<app-dang-nhap></app-dang-nhap>-->
+<router-outlet></router-outlet>

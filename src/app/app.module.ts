@@ -4,8 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {KiemTraVeComponent} from './thao/kiem-tra-ve/kiem-tra-ve.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {RegisterComponent} from "./thao/register/register.component";
-import {LoginComponent} from "./thao/login/login.component";
 import {HomeComponent} from "./thao/home/home.component";
 import {ProfileComponent} from "./thao/profile/profile.component";
 import {BoardAdminComponent} from "./thao/board-admin/board-admin.component";
@@ -16,17 +14,16 @@ import {APP_BASE_HREF} from "@angular/common";
 import {authInterceptorProviders} from "./thao/_helpers/auth.interceptor";
 import { HeaderComponent } from './thao/header/header.component';
 import { FooterComponent } from './thao/footer/footer.component';
-import { DangkyComponent } from './thao/dangky/dangky.component';
-import {FormsModule} from "@angular/forms";
+import {FormGroupDirective, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {VerifyResetPasswordComponent} from "./thao/verify-reset-password/verify-reset-password.component";
 import {ResetPasswordComponent} from "./thao/reset-password/reset-password.component";
-import { QuenmatkhauComponent } from './thao/quenmatkhau/quenmatkhau.component';
-import { DoimatkhauComponent } from './thao/doimatkhau/doimatkhau.component';
+import {ToastrModule} from "ngx-toastr";
+import { DangNhapComponent } from './thao/dang-nhap/dang-nhap.component';
+import { DangKyComponent } from './thao/dang-ky/dang-ky.component';
+import { DangkyuserComponent } from './thao/dangkyuser/dangkyuser.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
     HomeComponent,
     ProfileComponent,
     BoardAdminComponent,
@@ -37,17 +34,22 @@ import { DoimatkhauComponent } from './thao/doimatkhau/doimatkhau.component';
     VerifyResetPasswordComponent,
     KiemTraVeComponent,
     HeaderComponent,
-    DangkyComponent,
     FooterComponent,
-    DangkyComponent,
-    QuenmatkhauComponent,
-    DoimatkhauComponent,
+    DangNhapComponent,
+    DangKyComponent,
+    DangkyuserComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [{provide: APP_BASE_HREF, useValue: '/'}, authInterceptorProviders],
   bootstrap: [AppComponent]

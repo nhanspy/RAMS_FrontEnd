@@ -106,7 +106,7 @@ h1.thao-w3ls {
   -moz-background-size: cover;
   -o-background-size: cover;
   -ms-background-size: cover;
-  height: 555px;
+  height: 593px;
 }
 h2.thao-agileits1 {
   font-size: 40px;
@@ -120,7 +120,7 @@ h2.thao-agileits1 {
 p.thao-agileits2 {
   font-size: 15px;
   font-weight: normal;
-  color: #fff;
+  color:#fff;
   text-align: center;
   text-transform: capitalize;
 }
@@ -128,6 +128,7 @@ p.thao-agileits2 {
   width: 50%;
   float: left;
   padding: 25px 0 0;
+  background: #424242;
 }
 input#tendn, input#tennx, input#password1, input#password2, input#email, input#diachi, input#sodt {
   width:300px;
@@ -462,5 +463,8 @@ p.thao-copyright a:hover {
   }
   p.thao-copyright {
     font-size: 13px;
+  }
+  p{
+    color: #fff;
   }
 }
