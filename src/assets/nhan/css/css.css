@@ -4418,7 +4418,7 @@ body,
 div,
 p,
 span {
-    font-family: SFProText;
+    font-family: inherit;
 }
 button:focus {
     outline: none !important;
@@ -4528,20 +4528,20 @@ blockquote {
     }
 }
 @font-face {
-    font-family: "SFProText";
-    src: url(/_nuxt/fonts/SFProText.85bd46c.ttf);
+    font-family: "inherit";
+    src: url(/_nuxt/fonts/inherit.85bd46c.ttf);
     font-weight: 400;
     font-display: swap;
 }
 @font-face {
-    font-family: "SFProText";
-    src: url(/_nuxt/fonts/SFProText-Bold.d6079ef.ttf);
+    font-family: "inherit";
+    src: url(/_nuxt/fonts/inherit-Bold.d6079ef.ttf);
     font-weight: 700;
     font-display: swap;
 }
 @font-face {
-    font-family: "SFProText";
-    src: url(/_nuxt/fonts/SFProText-Heavy.6c49879.ttf);
+    font-family: "inherit";
+    src: url(/_nuxt/fonts/inherit-Heavy.6c49879.ttf);
     font-weight: 900;
     font-display: swap;
 }
@@ -31403,7 +31403,7 @@ table tr[data-v-5778dee1] {
 }
 .left-content-title[data-v-c4787510],
 .phoneNumber[data-v-c4787510] {
-    font-family: SFProText;
+    font-family: inherit;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
@@ -31430,7 +31430,7 @@ table tr[data-v-5778dee1] {
     white-space: nowrap;
 }
 .content-title[data-v-c4787510] {
-    font-family: SFProText;
+    font-family: inherit;
     font-size: 12px;
     font-weight: 700;
     font-stretch: normal;
@@ -31627,7 +31627,7 @@ a.app-CHPlay[data-v-c4787510] {
     line-height: normal;
     letter-spacing: normal;
     font-weight: 400;
-    font-family: SFProText;
+    font-family: inherit;
     font-size: 14px;
     top: 100%;
     position: -webkit-sticky;
@@ -31693,7 +31693,7 @@ a.app-CHPlay[data-v-c4787510] {
     transition: 0.3s ease-out;
 }
 .message-text[data-v-27e39dc8] {
-    font-family: SFProText;
+    font-family: inherit;
     background: none;
     border: none;
     color: #fff;
@@ -37334,7 +37334,7 @@ p.copyrights[data-v-2f77b3aa] {
 
 .step-line[data-v-5747e235] {
     max-width: 860px;
-    font-family: SFProText;
+    font-family: inherit;
     font-size: 14px;
     font-stretch: normal;
     font-style: normal;
@@ -37434,7 +37434,7 @@ p.copyrights[data-v-2f77b3aa] {
 }
 
 .booking-nav-buttons[data-v-7d8bce1e] {
-    font-family: SFProText;
+    font-family: inherit;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
@@ -37926,7 +37926,7 @@ input:checked + .slider:before {
 
 .route-info[data-v-9fe206be] {
     width: 100%;
-    font-family: SFProText;
+    font-family: inherit;
     font-weight: 400;
     font-stretch: normal;
     font-style: normal;
@@ -37947,7 +37947,7 @@ input:checked + .slider:before {
     color: #f15a24;
 }
 .time-distance[data-v-9fe206be] {
-    font-family: SFProText;
+    font-family: inherit;
     font-size: 15px;
     color: #637280;
     line-height: 8px;
@@ -37972,7 +37972,7 @@ input:checked + .slider:before {
 
 .boarding-point-container[data-v-996c45f4] {
     width: 100%;
-    font-family: SFProText;
+    font-family: inherit;
     font-weight: 400;
     font-stretch: normal;
     font-style: normal;
@@ -37990,7 +37990,7 @@ input:checked + .slider:before {
 
 .shuttle-service-container[data-v-abfa2920] {
     width: 100%;
-    font-family: SFProText;
+    font-family: inherit;
     font-weight: 400;
     font-stretch: normal;
     font-style: normal;
@@ -38072,7 +38072,7 @@ input:checked + .slider:before {
     }
 }
 .title[data-v-9ebeba40] {
-    font-family: SFProText;
+    font-family: inherit;
     font-size: 16px;
     font-weight: 700;
     font-stretch: normal;
@@ -38088,7 +38088,7 @@ input:checked + .slider:before {
     color: #f15a24;
 }
 .route-name[data-v-9ebeba40] {
-    font-family: SFProText;
+    font-family: inherit;
     font-size: 16px;
     font-weight: 700;
     font-stretch: normal;
@@ -38163,7 +38163,7 @@ input:checked + .slider:before {
 }
 .route-info-name[data-v-9ebeba40],
 .route-price[data-v-9ebeba40] {
-    font-family: SFProText;
+    font-family: inherit;
     font-size: 15px;
     font-weight: 400;
     font-stretch: normal;
@@ -38356,7 +38356,7 @@ td[data-v-489ca06a] {
 .title[data-v-489ca06a] {
     width: 45px;
     height: 14px;
-    font-family: SFProText;
+    font-family: inherit;
     font-size: 12px;
     font-weight: 700;
     font-stretch: normal;
@@ -38386,7 +38386,7 @@ td[data-v-489ca06a] {
 }
 .title[data-v-76009edb] {
     height: 19px;
-    font-family: SFProText;
+    font-family: inherit;
     font-size: 16px;
     font-weight: 700;
     font-stretch: normal;
@@ -38452,7 +38452,7 @@ td[data-v-489ca06a] {
     justify-content: space-evenly;
 }
 .footer .title[data-v-76009edb] {
-    font-family: SFProText;
+    font-family: inherit;
     font-size: 14px;
     font-weight: 500;
     font-stretch: normal;
@@ -38480,7 +38480,7 @@ td[data-v-489ca06a] {
 }
 .selected-list[data-v-76009edb],
 .total-price-text[data-v-76009edb] {
-    font-family: SFProText;
+    font-family: inherit;
     font-size: 16px;
     font-weight: 900;
     font-stretch: normal;
@@ -38549,7 +38549,7 @@ td[data-v-97a6b034] {
     border-radius: 8px;
     border: 1px solid #ebedee;
     background-color: #f8f9f9;
-    font-family: SFProText;
+    font-family: inherit;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
@@ -38618,7 +38618,7 @@ td[data-v-97a6b034] {
     margin: 16px 8px 16px 16px;
 }
 .term-text[data-v-46797034] {
-    font-family: SFProText;
+    font-family: inherit;
     font-size: 15px;
     font-weight: 400;
     font-stretch: normal;
@@ -38654,7 +38654,7 @@ span.wrong[data-v-46797034] {
     border-radius: 8px;
     border: 1px solid #dce1e6;
     background-color: #f6f6f6;
-    font-family: SFProText;
+    font-family: inherit;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
@@ -38743,7 +38743,7 @@ span.wrong[data-v-ca6ea784] {
     font-style: normal;
     line-height: normal;
     letter-spacing: normal;
-    font-family: SFProText;
+    font-family: inherit;
     margin-bottom: 16px;
 }
 @media (max-width: 936px) {
@@ -38791,7 +38791,7 @@ span.wrong[data-v-ca6ea784] {
 .customer-info-container[data-v-561fbfed],
 .title-bar[data-v-561fbfed] {
     width: 100%;
-    font-family: SFProText;
+    font-family: inherit;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
@@ -38831,7 +38831,7 @@ span.wrong[data-v-ca6ea784] {
 .ticket-info-container[data-v-62d3bf2a],
 .title-bar[data-v-62d3bf2a] {
     width: 100%;
-    font-family: SFProText;
+    font-family: inherit;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
@@ -38914,7 +38914,7 @@ td[data-v-6605f2cf] {
 .ticket-info-container[data-v-6605f2cf],
 .title-bar[data-v-6605f2cf] {
     width: 100%;
-    font-family: SFProText;
+    font-family: inherit;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
@@ -39026,7 +39026,7 @@ td[data-v-6605f2cf] {
     border: 1px solid #dce1e6;
     background-color: #fff;
     position: relative;
-    font-family: SFProText;
+    font-family: inherit;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
@@ -40563,7 +40563,7 @@ b-carousel-slide[data-v-7f47ef51] {
 .title[data-v-aac5370e] {
     text-align: right;
     width: inherit;
-    font-family: SFProText;
+    font-family: inherit;
     font-size: 20px;
     font-weight: 900;
     font-stretch: normal;
@@ -40703,7 +40703,7 @@ img[data-v-aac5370e] {
 }
 .common-routes-container[data-v-7ea45558] {
     width: 100%;
-    font-family: SFProText;
+    font-family: inherit;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
@@ -40901,7 +40901,7 @@ img[data-v-302932a8] {
     align-items: center;
     display: flex;
     flex-direction: column;
-    font-family: SFProText;
+    font-family: inherit;
     font-weight: 400;
     font-stretch: normal;
     font-style: normal;
@@ -40972,7 +40972,7 @@ img[data-v-302932a8] {
     width: 296px;
     border: none;
     background: none !important;
-    font-family: SFProText;
+    font-family: inherit;
     font-weight: 400;
     font-stretch: normal;
     font-style: normal;
@@ -41330,7 +41330,7 @@ div[data-v-62c8fe4c] {
     background-color: #fff7f5;
 }
 .text[data-v-62c8fe4c] {
-    font-family: SFProText;
+    font-family: inherit;
     font-size: 16px;
     font-weight: 600;
     font-stretch: normal;
@@ -41559,7 +41559,7 @@ button[data-v-62c8fe4c] {
     text-overflow: ellipsis;
 }
 .item-more[data-v-60a4e22c] {
-    font-family: SFProText;
+    font-family: inherit;
     font-style: italic;
     color: #637280;
     border-bottom: 2px solid #637280;
@@ -41680,7 +41680,7 @@ button[data-v-62c8fe4c] {
     color: #141414;
 }
 .item-more[data-v-22e198e8] {
-    font-family: SFProText;
+    font-family: inherit;
     font-style: italic;
     color: #637280;
     border-bottom: 2px solid #637280;
@@ -41715,7 +41715,7 @@ button[data-v-62c8fe4c] {
     color: #141414;
 }
 .item-more[data-v-f7b94018] {
-    font-family: SFProText;
+    font-family: inherit;
     font-style: italic;
     color: #637280;
     border-bottom: 2px solid #637280;
@@ -41827,7 +41827,7 @@ td[data-v-68219e9e] {
     margin-bottom: 10px;
 }
 .title[data-v-370c635d] {
-    font-family: SFProText;
+    font-family: inherit;
     font-size: 22px;
     font-weight: 700;
     font-stretch: normal;

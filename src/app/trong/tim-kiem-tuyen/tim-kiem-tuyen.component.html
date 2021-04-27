@@ -2,7 +2,7 @@
 <div id="__nuxt">
   <!---->
   <div id="__layout">
-    <div style="background: lightblue" class="default-layout-container">
+    <div style="background-image: url('../assets/img/bg8.jpg')" class="default-layout-container">
       <noscript><iframe data-src="https://www.googletagmanager.com/ns.html?id=GTM-5TJW4VC" height="0" width="0" style="display: none; visibility: hidden;" class="lazyLoad"></iframe></noscript>
 <!--      <div data-v-5778dee1="" id="page-head" class="top-bar" style="top: 0px;">-->
 <!--        <div data-v-5778dee1="" class="nav-container">-->
@@ -30,7 +30,7 @@
               <div data-v-c5ae3bdc="" data-v-3ceb75b5="" class="auto-complete-place-container place-select-from">
                 <label data-v-c5ae3bdc="" class="title">Điểm đi</label>
                 <div class="form-group" [class.has-error] = "bendi.touched && bendi.invalid">
-                  <select id="college_name"  style="border-radius: 100px" class= "form-control" [ngModel]="getbendi" name="college_name" required #bendi = "ngModel"
+                  <select id="college_name"   class= "form-control" [ngModel]="getbendi" name="college_name" required #bendi = "ngModel"
                           #mySelect (change)='selecttinhthanh(mySelect.value)'>
                     <option class="option" *ngFor="let thing of tinhthanhlist" [value]="thing.tenTinh">{{thing.tenTinh}}</option>
                   </select>
@@ -44,7 +44,7 @@
               <div data-v-c5ae3bdc="" data-v-3ceb75b5="" class="auto-complete-place-container">
                 <label data-v-c5ae3bdc="" class="title">Điểm đến</label>
                 <div class="form-group" [class.has-error] = "benden.touched && benden.invalid">
-                  <select style="border-radius: 100px" class="form-control" [ngModel]="getbenden"  name="college2_name" required #benden = "ngModel" #mySelect1 (change)='selecttinhthanh(mySelect1.value)'>
+                  <select  class="form-control" [ngModel]="getbenden"  name="college2_name" required #benden = "ngModel" #mySelect1 (change)='selecttinhthanh(mySelect1.value)'>
                     <option *ngFor="let thing of tinhthanhlist" [value]="thing.tenTinh">{{thing.tenTinh}}</option>
                   </select>
                   <span style="color: red" class="help-block" *ngIf="benden.touched && benden.invalid">
@@ -52,60 +52,44 @@
                   </span>
                 </div>
               </div>
+              <div style="margin-left: 1px" data-v-c5ae3bdc="" data-v-3ceb75b5="" class="auto-complete-place-container">
+                <label data-v-c5ae3bdc="" class="title">Chọn ngày đi:</label>
+                <div class="form-group" >
+<!--                  <div  class="form-control">-->
+                    <input class="form-control" [(ngModel)]="getthoigian" min="{{date|date:'yyyy-MM-dd'}}" type="date" name="date_start"
+                           required
+                           #date_start="ngModel"/>
+                    <!--                  <input type="date" min="{{date|date:'yyyy-MM-dd'}}" name="date" [(ngModel)]="getthoigian"  class="form-control" required-->
+                    <!--                         #date_start="ngModel"> -->
+<!--                  </div>-->
+                </div>
+
+              </div>
             </div>
-            <div class="inner-form col-3 col-sm" style="margin: 0; width: 250px">
-              <form action="">
-                <a style="font-size: 13pt; font-family: Tahoma">
-                  <label   style="color: #555">Chọn ngày đi:</label>
-<!--                  <input style="border-radius: 100px" class="choices__input" type="date" id="birthdaytime" [ngModel]="getthoigian" name="birthdaytime" value="2021-01-01" #mySelect2 (change)='selectthoigian(mySelect2.value)'>-->
-<!--                    <mat-form-field>-->
-<!--                      <input  matInput [matDatepicker]="picker" [min]="minDate"  placeholder="Chọn ngày đi" [ngModel]="getthoigian" #mySelect2 (change)='selectthoigian(mySelect2.value)' >-->
-<!--                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
-<!--                      <mat-datepicker #picker ></mat-datepicker>-->
-<!--                    </mat-form-field>-->
-                  <input [(ngModel)]="getthoigian" [min]="localCompleteDate" type="datetime-local" name="date_start"
-                         required
-                         #date_start="ngModel"/>
-                </a>
-              </form>
-            </div>
+<!--            <div class="inner-form col-3 col-sm" style="margin: 0; width: 250px">-->
+<!--              <form action="">-->
+<!--                <a style="font-size: 13pt; font-family: inherit">-->
+<!--                  <label>Chọn ngày đi:</label>-->
+<!--&lt;!&ndash;                  <input style="border-radius: 100px" class="choices__input" type="date" id="birthdaytime" [ngModel]="getthoigian" name="birthdaytime" value="2021-01-01" #mySelect2 (change)='selectthoigian(mySelect2.value)'>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <mat-form-field>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <input  matInput [matDatepicker]="picker" [min]="minDate"  placeholder="Chọn ngày đi" [ngModel]="getthoigian" #mySelect2 (change)='selectthoigian(mySelect2.value)' >&ndash;&gt;-->
+<!--&lt;!&ndash;                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <mat-datepicker #picker ></mat-datepicker>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </mat-form-field>&ndash;&gt;-->
+<!--                  <input [(ngModel)]="getthoigian" min="{{date|date:'yyyy-MM-dd'}}" type="date" name="date_start"-->
+<!--                         required-->
+<!--                         #date_start="ngModel"/>-->
+<!--&lt;!&ndash;                  <input type="date" min="{{date|date:'yyyy-MM-dd'}}" name="date" [(ngModel)]="getthoigian"  class="form-control" required&ndash;&gt;-->
+<!--&lt;!&ndash;                         #date_start="ngModel"> &ndash;&gt;-->
+<!--                </a>-->
+<!--              </form>-->
+<!--            </div>-->
           </div>
           <a data-v-3ceb75b5="" class="buy-btn btn" href="/" style="text-decoration: none">
-            <i data-v-3ceb75b5="" class="fa fa-search buy-icon"></i>
+            <i style="font-family: inherit !important;" data-v-3ceb75b5="" class="fa fa-search buy-icon"></i>
             TÌM CHUYẾN XE
           </a>
         </div>
-      </div>
-
-      <div id="demo" class="carousel slide" data-ride="carousel">
-
-        <!-- Indicators -->
-        <ul class="carousel-indicators">
-          <li data-target="#demo" data-slide-to="0" class="active"></li>
-          <li data-target="#demo" data-slide-to="1"></li>
-          <li data-target="#demo" data-slide-to="2"></li>
-        </ul>
-
-        <!-- The slideshow -->
-        <div style="width: 1535.2px; height: 750px" class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="assets/trong/img/bus1.jpg">
-          </div>
-          <div class="carousel-item">
-            <img src="assets/trong/img/bus3.jpg">
-          </div>
-          <div class="carousel-item">
-            <img src="assets/trong/img/bus4.jpg">
-          </div>
-        </div>
-
-        <!-- Left and right controls -->
-        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </a>
       </div>
     </div>
   </div>

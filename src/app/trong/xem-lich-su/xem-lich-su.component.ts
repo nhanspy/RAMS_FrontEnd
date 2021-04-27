@@ -16,7 +16,7 @@ export class XemLichSuComponent implements OnInit, OnChanges {
   // @ts-ignore
   totalRec: string;
   page: number = 1;
-  Title = 'Xem lịch sử tuyến xe';
+  Title = 'XEM LỊCH SỬ TUYẾN XE';
   // @ts-ignore
   keywordMaChuyen: string | '';
   // @ts-ignore

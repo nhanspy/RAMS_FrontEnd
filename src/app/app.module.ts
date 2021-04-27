@@ -21,13 +21,13 @@ import {DangNhapComponent} from './thao/dang-nhap/dang-nhap.component';
 import {KiemTraVeComponent} from './thao/kiem-tra-ve/kiem-tra-ve.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {TestRoutingComponent} from './trong/test-routing/test-routing.component';
 import { HeaderComponent } from './trong/header/header.component';
 import { FooterComponent } from './trong/footer/footer.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
+import { TestComponent } from './trong/test/test.component';
 
 
 @NgModule({
@@ -43,9 +43,9 @@ import {MatInputModule} from '@angular/material/input';
     KiemTraVeComponent,
     XemLichSuComponent,
     TimKiemTuyenComponent,
-    TestRoutingComponent,
     HeaderComponent,
     FooterComponent,
+    TestComponent,
   ],
     imports: [
         BrowserModule,
