@@ -12,9 +12,9 @@ import {Location} from '@angular/common';
 @Component({
   selector: 'app-xem-chi-tiet-chuyen-xe',
   templateUrl: './xem-chi-tiet-chuyen-xe.component.html',
-  styleUrls: ['./xem-chi-tiet-chuyen-xe.component.css', '../../../assets/nhan/css/css.css']
+  styleUrls: ['./xem-chi-tiet-chuyen-xe.component.css', '../../../assets/nhan/css/css.css', '../../../assets/css/material-kit.css?v=2.1.1']
 })
-export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
+export class XemChiTietChuyenXeComponent implements OnInit {
 
   constructor(private xemChiTietChuyenXeService: XemChiTietChuyenXeService,
               private activatedRoute: ActivatedRoute,
@@ -35,6 +35,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
   benDis: Ben[] = [];
   benDens: Ben[] = [];
   chuyenXes: ChuyenXe[] = [];
+  chuyenXesRoot: ChuyenXe[] = [];
   chuyenXeTheoTinhs: ChuyenXe[] = [];
   chuyenXeTheoBenDiBenBenDens: ChuyenXe[] = [];
   chuyenXeTheoTinhVaNhaXes: ChuyenXe[] = [];
@@ -77,6 +78,16 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
     console.log('=============');
   }
 
+  //load lại hết
+  loadChuyenXe(){
+    this.filterChuyenXeTheoBen();
+    this.onChangeChuyenXeKhiChonNhaXe();
+    this.onChangeTheoThoiGian();
+  }
+
+  // thay đổi tên trạng thái ghế
+  // thay đổi trạng thái chọn ghế
+  // tính tổng tiền
   chonGhe(ghe: Ghe): void{
     if (ghe.trangThaiGhe.maTrangThai === 'mttg01') {
       ghe.trangThaiGhe = this.trangThaiGhes[2];
@@ -106,6 +117,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
     this.strGheDaChon = this.strGheDaChon.substring(0, this.strGheDaChon.length - 2);
   }
 
+  //Lấy tỉnh đi tỉnh đến theo mã tỉnh
   getTinh(): void{
     this.xemChiTietChuyenXeService.getTinhTheoMaTinh(this.maTinhDi).subscribe(
       data => {
@@ -126,6 +138,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
     );
   }
 
+  //lấy bến theo mã tỉnh
   getBen(): void {
     this.xemChiTietChuyenXeService.getBen().subscribe(data => {
       this.bens = data;
@@ -139,18 +152,18 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
           return item.tinhThanh.maTinh === this.maTinhDen;
         }
       );
-      // console.log(this.benDens);
       this.getChuyen();
     },
-      error => {
-        console.log(error);
-      });
+    error => {
+      console.log(error);
+    });
   }
 
+  //Lấy chuyến xe theo ngày
   getChuyen(): void{
     this.xemChiTietChuyenXeService.getChuyen(this.ngay).subscribe(
       data => {
-        this.chuyenXes = data;
+        this.chuyenXesRoot = data;
       },
       error => {
         console.log(error);
@@ -158,33 +171,13 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
     );
   }
 
-  getChuyenTheoTinhDiTinhDen(): void{
-
-    this.chuyenXes.forEach(chuyenXe => {
-      this.benDis.forEach(benDi => {
-        this.benDens.forEach(benDen => {
-          if ((chuyenXe.benDi.maBen === benDi.maBen && chuyenXe.benDen.maBen === benDen.maBen)) {
-            // console.log(chuyenXe.benDi.maBen + ' -- ' + chuyenXe.benDen.maBen + ' -- ' + benDi.maBen + '--' + benDen.maBen);
-            this.chuyenXeTheoTinhs.push(chuyenXe);
-            // @ts-ignore
-            this.benDiBenDens.pushIfNotExist(chuyenXe, e => {
-              return chuyenXe.benDi.maBen === e.benDi.maBen && chuyenXe.benDen.maBen === e.benDen.maBen;
-            });
-          }
-        });
-      });
-    });
-  }
-
-  ngAfterViewInit(): void {
-  }
-
-  onChangeChuyenXe(): void{
-    this.chuyenXeTheoTinhVaNhaXes = [];
-    this.chuyenXeTheoTinhVaNhaXes = this.chuyenXeTheoBenDiBenBenDens;
+  onChangeChuyenXeKhiChonNhaXe(): void{
+    this.chuyenXeTheoTinhVaNhaXes = this.chuyenXes.slice();
     if (this.nhaXe !== undefined) {
       this.chuyenXeTheoTinhVaNhaXes = this.chuyenXeTheoBenDiBenBenDens.slice().filter(
         item => {
+
+          //Lọc theo ma nhà xe
           const a = item.xe.nhaXe.maNhaXe;
           const b = this.nhaXe.maNhaXe;
 
@@ -196,25 +189,34 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
         }
       );
     }
-    // console.log(this.chuyenXeTheoTinhVaNhaXes);
-    this.onChangeTheoThoiGian();
+    if (this.chuyenXeTheoTinhVaNhaXes) {
+      this.chuyenXes = this.chuyenXeTheoTinhVaNhaXes.slice();
+      this.getGhe();
+    }
+    this.capNhatCacTruong();
   }
 
   onChangeTheoThoiGian(): void {
     this.getGhe();
+    this.capNhatCacTruong();
   }
 
+  // get ghế theo sơ đồ giường 2 tầng
   getGhe(): void {
+    //init
     this.ghes = [];
     this.gheDaChons = [];
     this.newGhesTang1 = [];
     this.newGhesTang2 = [];
-    if (this.chuyenXe) {
-      this.xemChiTietChuyenXeService.getGhe(this.chuyenXe.xe.maXe).subscribe(
+    //lấy tất cả ghế
+    if (this.chuyenXes) {
+      this.xemChiTietChuyenXeService.getGhe(this.chuyenXes[0].xe.maXe).subscribe(
         data => {
           this.ghes = data;
+          //lấy ghế đã chọn cho tính tiền
           this.gheDaChons = this.ghes.slice().filter(
             item => {
+              //set đã chọn cho ghế
               if (item.trangThaiGhe.maTrangThai === 'mttg02'){
                 item.daChon = true;
                 return true;
@@ -222,22 +224,25 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
               return false;
             }
           );
-          // console.log(this.gheDaChons);
 
+          //lấy ghế tầng 1
           this.ghesTang1 = this.ghes.slice().filter(
             item => {
               return item.tang === 1;
             }
           );
+          //lấy ghế tầng 2
           this.ghesTang2 = this.ghes.slice().filter(
             item => {
               return item.tang === 2;
             }
           );
+          // Sắp xếp ghế
           // @ts-ignore
-          this.ghes.sort((a, b) => {
+          this.ghes.sort((a: Ghe, b: Ghe) => {
             return a.soGhe > b.soGhe;
           });
+          // chuyển số ghế sang mảng 2 chiều tại biến newGhesTang*
           while (this.ghesTang1.length) {
             // @ts-ignore
             this.newGhesTang1.push(this.ghesTang1.splice(0, 3));
@@ -246,6 +251,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
             // @ts-ignore
             this.newGhesTang2.push(this.ghesTang2.splice(0, 3));
           }
+          // Tính tổng tiền
           this.setTongTien();
         }, error => {
           console.log(error);
@@ -258,9 +264,6 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
     this.newGhesTang1 = [];
     this.newGhesTang2 = [];
     if (this.chuyenXe) {
-      // this.xemChiTietChuyenXeService.getGhe(this.chuyenXe.xe.maXe).subscribe(
-      //   data => {
-      //     this.ghes = data;
           this.gheDaChons = this.ghes.slice().filter(
             item => {
               if (item.trangThaiGhe.maTrangThai === 'mttg02'){
@@ -270,7 +273,6 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
               return false;
             }
           );
-          // console.log(this.gheDaChons);
 
           this.ghesTang1 = this.ghes.slice().filter(
             item => {
@@ -295,80 +297,47 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
             this.newGhesTang2.push(this.ghesTang2.splice(0, 3));
           }
           this.setTongTien();
-      //   }, error => {
-      //     console.log(error);
-      //   }
-      // );
     }
   }
 
-  handleChange(value: ChuyenXe): void {
-    // @ts-ignore
-    this.benDiBenDen = value;
-    this.chuyenXeTheoBenDiBenBenDens = [];
-    this.chuyenXeTheoTinhs.forEach(chuyenXe => {
-      if (chuyenXe.benDi.maBen === this.benDiBenDen.benDi.maBen && chuyenXe.benDen.maBen === this.benDiBenDen.benDen.maBen) {
-        this.chuyenXeTheoBenDiBenBenDens.push(chuyenXe);
-      }
-    });
-  }
-
-  onChangeBenDi(value: Ben): void{
+  onChangeBenDi(): void{
+    // this.loadChuyenXe();
     this.filterChuyenXeTheoBen();
     if (this.chuyenXeTheoBenDiBenBenDens) {
-      this.chuyenXe = this.chuyenXeTheoBenDiBenBenDens[0];
-    } else {
-      // @ts-ignore
-      // this.chuyenXe = undefined;
+      this.chuyenXes = this.chuyenXeTheoBenDiBenBenDens.slice();
+      this.getGhe();
+      this.capNhatCacTruong();
     }
-    this.getGhe();
   }
-  onChangeBenDen(value: Ben): void{
+
+  capNhatCacTruong(): void {
+    if (this.chuyenXes) {
+      this.benDi = this.chuyenXes[0].benDi;
+      this.benDen = this.chuyenXes[0].benDen;
+      this.nhaXe = this.chuyenXes[0].xe.nhaXe;
+      this.chuyenXe = this.chuyenXes[0];
+    }
+  }
+
+  onChangeBenDen(): void{
+    // this.loadChuyenXe();
     this.filterChuyenXeTheoBen();
     if (this.chuyenXeTheoBenDiBenBenDens) {
-      this.chuyenXe = this.chuyenXeTheoBenDiBenBenDens[0];
-    } else {
-      // @ts-ignore
-      // this.chuyenXe = undefined;
+      this.chuyenXes = this.chuyenXeTheoBenDiBenBenDens.slice();
+      this.getGhe();
+      this.capNhatCacTruong();
     }
-    this.getGhe();
-    // if (this.nhaXesTheoBenDiBenDen) {
-    //   // @ts-ignore
-    //   this.nhaXe = null;
-    //   this.nhaXe = this.nhaXesTheoBenDiBenDen[0];
-    //   this.onChangeChuyenXe();
-    //   this.onChangeTheoThoiGian();
-    // }
-
   }
 
+  // lọc chuyến xe theo các bến đã chọn
   filterChuyenXeTheoBen(): void{
-    // // @ts-ignore
-    // this.chuyenXe = new ChuyenXe();
+    this.chuyenXeTheoBenDiBenBenDens = this.chuyenXesRoot.slice();
     if (this.benDi !== undefined) {
-      // console.log(this.chuyenXes);
-      this.chuyenXeTheoBenDiBenBenDens = this.chuyenXes.slice();
-      if (this.benDi !== undefined) {
-        this.chuyenXeTheoBenDiBenBenDens = this.chuyenXeTheoBenDiBenBenDens.slice().filter(
-          item => {
-            const a = item.benDi.maBen;
-            const b = this.benDi.maBen;
-
-            if (a === b) {
-              return true;
-            } else {
-              return false;
-            }
-          }
-        );
-      }
-    }
-    if (this.benDen !== undefined) {
+      //lọc theo mã bến đi
       this.chuyenXeTheoBenDiBenBenDens = this.chuyenXeTheoBenDiBenBenDens.slice().filter(
         item => {
-          const a = item.benDen.maBen;
-          const b = this.benDen.maBen;
-
+          const a = item.benDi.maBen;
+          const b = this.benDi.maBen;
           if (a === b) {
             return true;
           } else {
@@ -376,7 +345,21 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
           }
         }
       );
-      this.onChangeChuyenXe();
+    }
+    if (this.benDen !== undefined) {
+      //lọc theo mã bến đến
+      this.chuyenXeTheoBenDiBenBenDens = this.chuyenXeTheoBenDiBenBenDens.slice().filter(
+        item => {
+          const a = item.benDen.maBen;
+          const b = this.benDen.maBen;
+          if (a === b) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      );
+      // this.onChangeChuyenXeKhiChonNhaXe();
     }
 
     this.nhaXesTheoBenDiBenDen = this.nhaXes.slice();
@@ -397,6 +380,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
     );
   }
 
+  //lấy tất cả nhà xe
   private getNhaXe(): void {
     this.xemChiTietChuyenXeService.getNhaXe().subscribe(
       data => {
@@ -407,6 +391,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
     );
   }
 
+  //lấy tất cả trạng thái ghế
   private getTrangThaiGhe(): void {
     this.xemChiTietChuyenXeService.getTrangThaiGhe().subscribe(
       data => {
@@ -419,6 +404,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
   }
 
   tiepTuc(): void {
+    // lưu vào session
     this.gheDaChons = [];
     this.ghes.forEach(
       item => {
@@ -427,7 +413,6 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
         }
       }
     );
-    // console.log(this.gheDaChons);
     if (this.chuyenXe) {
       localStorage.setItem('chuyenXe', JSON.stringify(this.chuyenXe));
     }
@@ -446,19 +431,19 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
   }
 
   private init(): void {
+    //Lay dữ liệu từ trang tìm kiếm
     this.activatedRoute.queryParams.subscribe(
       data => {
         this.maTinhDi = data.maTinhDi;
         this.maTinhDen = data.maTinhDen;
         this.ngay = data.ngay;
-        // console.log(data.ngay);
       }
     );
+    //lấy dữ liệu từ session nếu có
     if (localStorage.getItem('chuyenXe')) {
       // @ts-ignore
       this.chuyenXe = JSON.parse(localStorage.getItem('chuyenXe'));
       console.log(this.chuyenXe);
-      // this.getGhe();
     }
     if (localStorage.getItem('gheDaChons')) {
       // @ts-ignore
@@ -479,6 +464,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
     this.getGheKhongGoiDB();
   }
 
+  // nút trở về
   backClicked(): void {
     this._location.back();
   }

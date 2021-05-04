@@ -8,7 +8,7 @@ import {Location} from '@angular/common';
 @Component({
   selector: 'app-dat-ve',
   templateUrl: './dat-ve.component.html',
-  styleUrls: ['./dat-ve.component.css',  '../../../assets/nhan/css/css.css']
+  styleUrls: ['./dat-ve.component.css',  '../../../assets/nhan/css/css.css', '../../../assets/css/material-kit.css?v=2.1.1']
 })
 export class DatVeComponent implements OnInit {
 

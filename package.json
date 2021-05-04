@@ -24,6 +24,7 @@
     "@material/form-field": "^11.0.0",
     "angular-responsive-carousel": "^2.0.2",
     "bootstrap": "^4.6.0",
+    "bootstrap-select": "^1.13.18",
     "enhanced-resolve": "^3.3.0",
     "jquery": "^3.6.0",
     "ngx-pagination": "^5.0.0",

@@ -24,6 +24,7 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { XuatVeComponent } from './nhan/xuat-ve/xuat-ve.component';
+import { NewTemplateComponent } from './nhan/new-template/new-template.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { XuatVeComponent } from './nhan/xuat-ve/xuat-ve.component';
     FooterComponent,
     TestFubusComponent,
     XuatVeComponent,
+    NewTemplateComponent,
   ],
     imports: [
       BrowserModule,
