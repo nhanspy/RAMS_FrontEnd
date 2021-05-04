@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { KiemTraVeComponent } from './kiem-tra-ve.component';
+import {KiemTraVeComponent} from './kiem-tra-ve.component';
 
 describe('KiemTraVeComponent', () => {
   let component: KiemTraVeComponent;
@@ -8,9 +8,9 @@ describe('KiemTraVeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KiemTraVeComponent ]
+      declarations: [KiemTraVeComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

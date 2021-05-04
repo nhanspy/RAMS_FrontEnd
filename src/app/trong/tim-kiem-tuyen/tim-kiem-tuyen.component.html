@@ -1,27 +1,29 @@
-
 <div id="__nuxt">
   <!---->
   <div id="__layout">
-    <div style="background-image: url('../assets/img/bg8.jpg')" class="default-layout-container">
-      <noscript><iframe data-src="https://www.googletagmanager.com/ns.html?id=GTM-5TJW4VC" height="0" width="0" style="display: none; visibility: hidden;" class="lazyLoad"></iframe></noscript>
-<!--      <div data-v-5778dee1="" id="page-head" class="top-bar" style="top: 0px;">-->
-<!--        <div data-v-5778dee1="" class="nav-container">-->
-<!--          <img src="assets/trong/img/bus.png" height="74" width="75"/>-->
-<!--          <div data-v-5778dee1="" id="nav">-->
-<!--            &lt;!&ndash;fragment#7c31e8fd6a#head&ndash;&gt;-->
-<!--            <a data-v-5778dee1="" href="/" aria-current="page" class="active-link nuxt-link-active" fragment="7c31e8fd6a">Trang Chủ</a>-->
-<!--            &lt;!&ndash;fragment#7c31e8fd6a#tail&ndash;&gt;&lt;!&ndash;fragment#3083ef46f2#head&ndash;&gt;-->
-<!--            <a data-v-5778dee1="" href="" class="" fragment="3083ef46f2">Tìm Kiếm</a>-->
-<!--            &lt;!&ndash;fragment#3083ef46f2#tail&ndash;&gt;&lt;!&ndash;fragment#bc84f0e32d#head&ndash;&gt;-->
-<!--            <a data-v-5778dee1="" href="" class="" fragment="bc84f0e32d">Đăng Nhập</a>-->
-<!--            &lt;!&ndash;fragment#bc84f0e32d#tail&ndash;&gt;&lt;!&ndash;fragment#486084a227#head&ndash;&gt;-->
-<!--            <a data-v-5778dee1="" href="" class="" fragment="584f0fa80e">Đăng Kí Người Dùng</a>-->
-<!--            &lt;!&ndash;fragment#584f0fa80e#tail&ndash;&gt;&lt;!&ndash;fragment#c46fd79155#head&ndash;&gt;-->
-<!--            <a data-v-5778dee1="" href="" class="" fragment="febbfc792a">Đăng Kí Nhà Xe</a>-->
-<!--            &lt;!&ndash;fragment#febbfc792a#tail&ndash;&gt;-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
+    <div style="background-image: url('../assets/trong/img/bus3.jpg') " class="default-layout-container">
+      <noscript>
+        <iframe data-src="https://www.googletagmanager.com/ns.html?id=GTM-5TJW4VC" height="0" width="0"
+                style="display: none; visibility: hidden;" class="lazyLoad"></iframe>
+      </noscript>
+      <!--      <div data-v-5778dee1="" id="page-head" class="top-bar" style="top: 0px;">-->
+      <!--        <div data-v-5778dee1="" class="nav-container">-->
+      <!--          <img src="assets/trong/img/bus.png" height="74" width="75"/>-->
+      <!--          <div data-v-5778dee1="" id="nav">-->
+      <!--            &lt;!&ndash;fragment#7c31e8fd6a#head&ndash;&gt;-->
+      <!--            <a data-v-5778dee1="" href="/" aria-current="page" class="active-link nuxt-link-active" fragment="7c31e8fd6a">Trang Chủ</a>-->
+      <!--            &lt;!&ndash;fragment#7c31e8fd6a#tail&ndash;&gt;&lt;!&ndash;fragment#3083ef46f2#head&ndash;&gt;-->
+      <!--            <a data-v-5778dee1="" href="" class="" fragment="3083ef46f2">Tìm Kiếm</a>-->
+      <!--            &lt;!&ndash;fragment#3083ef46f2#tail&ndash;&gt;&lt;!&ndash;fragment#bc84f0e32d#head&ndash;&gt;-->
+      <!--            <a data-v-5778dee1="" href="" class="" fragment="bc84f0e32d">Đăng Nhập</a>-->
+      <!--            &lt;!&ndash;fragment#bc84f0e32d#tail&ndash;&gt;&lt;!&ndash;fragment#486084a227#head&ndash;&gt;-->
+      <!--            <a data-v-5778dee1="" href="" class="" fragment="584f0fa80e">Đăng Kí Người Dùng</a>-->
+      <!--            &lt;!&ndash;fragment#584f0fa80e#tail&ndash;&gt;&lt;!&ndash;fragment#c46fd79155#head&ndash;&gt;-->
+      <!--            <a data-v-5778dee1="" href="" class="" fragment="febbfc792a">Đăng Kí Nhà Xe</a>-->
+      <!--            &lt;!&ndash;fragment#febbfc792a#tail&ndash;&gt;-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
 
       <div style="margin: 100px" data-v-57f2fc3b="" class="index">
         <div data-v-3ceb75b5="" data-v-57f2fc3b="" class="book-ticket-container">
@@ -29,10 +31,13 @@
             <div data-v-3ceb75b5="" class="place-select-container">
               <div data-v-c5ae3bdc="" data-v-3ceb75b5="" class="auto-complete-place-container place-select-from">
                 <label data-v-c5ae3bdc="" class="title">Điểm đi</label>
-                <div class="form-group" [class.has-error] = "bendi.touched && bendi.invalid">
-                  <select id="college_name"   class= "form-control" [ngModel]="getbendi" name="college_name" required #bendi = "ngModel"
+                <div class="form-group" [class.has-error]="bendi.touched && bendi.invalid">
+                  <select id="college_name" class="form-control" [ngModel]="getbendi" name="college_name" required
+                          #bendi="ngModel"
                           #mySelect (change)='selecttinhthanh(mySelect.value)'>
-                    <option class="option" *ngFor="let thing of tinhthanhlist" [value]="thing.tenTinh">{{thing.tenTinh}}</option>
+                    <option class="option" *ngFor="let thing of tinhthanhlist" [value]="thing.tenTinh">
+                      {{thing.tenTinh}}
+                    </option>
                   </select>
                   <span style="color: red" class="help-block" *ngIf="bendi.touched && bendi.invalid">
                     Bạn cần phải chọn điểm đi!
@@ -40,11 +45,13 @@
 
                 </div>
               </div>
-              <img data-v-3ceb75b5="" alt="change" class="change-img center lazyLoad isLoaded" src="/assets/trong/img/swaps.971b609.png.png" />
+              <img data-v-3ceb75b5="" alt="change" class="change-img center lazyLoad isLoaded"
+                   src="/assets/trong/img/swaps.971b609.png.png"/>
               <div data-v-c5ae3bdc="" data-v-3ceb75b5="" class="auto-complete-place-container">
                 <label data-v-c5ae3bdc="" class="title">Điểm đến</label>
-                <div class="form-group" [class.has-error] = "benden.touched && benden.invalid">
-                  <select  class="form-control" [ngModel]="getbenden"  name="college2_name" required #benden = "ngModel" #mySelect1 (change)='selecttinhthanh(mySelect1.value)'>
+                <div class="form-group" [class.has-error]="benden.touched && benden.invalid">
+                  <select class="form-control" [ngModel]="getbenden" name="college2_name" required #benden="ngModel"
+                          #mySelect1 (change)='selecttinhthanh(mySelect1.value)'>
                     <option *ngFor="let thing of tinhthanhlist" [value]="thing.tenTinh">{{thing.tenTinh}}</option>
                   </select>
                   <span style="color: red" class="help-block" *ngIf="benden.touched && benden.invalid">
@@ -54,36 +61,37 @@
               </div>
               <div style="margin-left: 1px" data-v-c5ae3bdc="" data-v-3ceb75b5="" class="auto-complete-place-container">
                 <label data-v-c5ae3bdc="" class="title">Chọn ngày đi:</label>
-                <div class="form-group" >
-<!--                  <div  class="form-control">-->
-                    <input class="form-control" [(ngModel)]="getthoigian" min="{{date|date:'yyyy-MM-dd'}}" type="date" name="date_start"
-                           required
-                           #date_start="ngModel"/>
-                    <!--                  <input type="date" min="{{date|date:'yyyy-MM-dd'}}" name="date" [(ngModel)]="getthoigian"  class="form-control" required-->
-                    <!--                         #date_start="ngModel"> -->
-<!--                  </div>-->
+                <div class="form-group">
+                  <!--                  <div  class="form-control">-->
+                  <input class="form-control" [(ngModel)]="getthoigian" min="{{date|date:'yyyy-MM-dd'}}" type="date"
+                         name="date_start"
+                         required
+                         #date_start="ngModel"/>
+                  <!--                  <input type="date" min="{{date|date:'yyyy-MM-dd'}}" name="date" [(ngModel)]="getthoigian"  class="form-control" required-->
+                  <!--                         #date_start="ngModel"> -->
+                  <!--                  </div>-->
                 </div>
 
               </div>
             </div>
-<!--            <div class="inner-form col-3 col-sm" style="margin: 0; width: 250px">-->
-<!--              <form action="">-->
-<!--                <a style="font-size: 13pt; font-family: inherit">-->
-<!--                  <label>Chọn ngày đi:</label>-->
-<!--&lt;!&ndash;                  <input style="border-radius: 100px" class="choices__input" type="date" id="birthdaytime" [ngModel]="getthoigian" name="birthdaytime" value="2021-01-01" #mySelect2 (change)='selectthoigian(mySelect2.value)'>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <mat-form-field>&ndash;&gt;-->
-<!--&lt;!&ndash;                      <input  matInput [matDatepicker]="picker" [min]="minDate"  placeholder="Chọn ngày đi" [ngModel]="getthoigian" #mySelect2 (change)='selectthoigian(mySelect2.value)' >&ndash;&gt;-->
-<!--&lt;!&ndash;                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>&ndash;&gt;-->
-<!--&lt;!&ndash;                      <mat-datepicker #picker ></mat-datepicker>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </mat-form-field>&ndash;&gt;-->
-<!--                  <input [(ngModel)]="getthoigian" min="{{date|date:'yyyy-MM-dd'}}" type="date" name="date_start"-->
-<!--                         required-->
-<!--                         #date_start="ngModel"/>-->
-<!--&lt;!&ndash;                  <input type="date" min="{{date|date:'yyyy-MM-dd'}}" name="date" [(ngModel)]="getthoigian"  class="form-control" required&ndash;&gt;-->
-<!--&lt;!&ndash;                         #date_start="ngModel"> &ndash;&gt;-->
-<!--                </a>-->
-<!--              </form>-->
-<!--            </div>-->
+            <!--            <div class="inner-form col-3 col-sm" style="margin: 0; width: 250px">-->
+            <!--              <form action="">-->
+            <!--                <a style="font-size: 13pt; font-family: inherit">-->
+            <!--                  <label>Chọn ngày đi:</label>-->
+            <!--&lt;!&ndash;                  <input style="border-radius: 100px" class="choices__input" type="date" id="birthdaytime" [ngModel]="getthoigian" name="birthdaytime" value="2021-01-01" #mySelect2 (change)='selectthoigian(mySelect2.value)'>&ndash;&gt;-->
+            <!--&lt;!&ndash;                    <mat-form-field>&ndash;&gt;-->
+            <!--&lt;!&ndash;                      <input  matInput [matDatepicker]="picker" [min]="minDate"  placeholder="Chọn ngày đi" [ngModel]="getthoigian" #mySelect2 (change)='selectthoigian(mySelect2.value)' >&ndash;&gt;-->
+            <!--&lt;!&ndash;                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>&ndash;&gt;-->
+            <!--&lt;!&ndash;                      <mat-datepicker #picker ></mat-datepicker>&ndash;&gt;-->
+            <!--&lt;!&ndash;                    </mat-form-field>&ndash;&gt;-->
+            <!--                  <input [(ngModel)]="getthoigian" min="{{date|date:'yyyy-MM-dd'}}" type="date" name="date_start"-->
+            <!--                         required-->
+            <!--                         #date_start="ngModel"/>-->
+            <!--&lt;!&ndash;                  <input type="date" min="{{date|date:'yyyy-MM-dd'}}" name="date" [(ngModel)]="getthoigian"  class="form-control" required&ndash;&gt;-->
+            <!--&lt;!&ndash;                         #date_start="ngModel"> &ndash;&gt;-->
+            <!--                </a>-->
+            <!--              </form>-->
+            <!--            </div>-->
           </div>
           <a data-v-3ceb75b5="" class="buy-btn btn" href="/" style="text-decoration: none">
             <i style="font-family: inherit !important;" data-v-3ceb75b5="" class="fa fa-search buy-icon"></i>

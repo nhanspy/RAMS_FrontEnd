@@ -1,9 +1,12 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+
 @Injectable({
   providedIn: 'root'
 })
 export class LoadcssServices {
-  constructor() { }
+  constructor() {
+  }
+
   // tslint:disable-next-line:typedef
   loadddCss(src: string) {
     const css = document.createElement('link');
@@ -11,6 +14,7 @@ export class LoadcssServices {
     document.getElementsByTagName('head')[0].appendChild(css);
     css.href = src;
   }
+
   // tslint:disable-next-line:typedef
   loadScript(src: string) {
     const script = document.createElement('script');

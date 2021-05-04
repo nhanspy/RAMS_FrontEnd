@@ -1,4 +1,3 @@
-
 <body>
 <section>
   <!--for demo wrap-->
@@ -8,15 +7,21 @@
       <thead>
       <tr>
         <td></td>
-        <td><input type="text" class="form-control" placeholder="Tìm theo chuyến xe" #txtSearch (keyup)="searchMaChuyen(txtSearch.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm theo tên nhà xe" #txtSearch4 (keyup)="searchMaXe(txtSearch4.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm theo bến đi" #txtSearch1 (keyup)="searchBenDi(txtSearch1.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm theo bến đến" #txtSearch2 (keyup)="searchBenDen(txtSearch2.value)"></td>
-        <td><input type="text" class="form-control" placeholder="Tìm theo thời gian" #txtSearch3 (keyup)="searchThoiGian(txtSearch3.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm theo chuyến xe" #txtSearch
+                   (keyup)="searchMaChuyen(txtSearch.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm theo tên nhà xe" #txtSearch4
+                   (keyup)="searchMaXe(txtSearch4.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm theo bến đi" #txtSearch1
+                   (keyup)="searchBenDi(txtSearch1.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm theo bến đến" #txtSearch2
+                   (keyup)="searchBenDen(txtSearch2.value)"></td>
+        <td><input type="text" class="form-control" placeholder="Tìm theo thời gian" #txtSearch3
+                   (keyup)="searchThoiGian(txtSearch3.value)"></td>
       </tr>
       <tr class="filters">
         <th style="width: 5%"><input type="text" class="form-control" placeholder="#" disabled></th>
-        <th><input style="text-align: center" type="text" class="form-control" placeholder="Tên chuyến xe" disabled></th>
+        <th><input style="text-align: center" type="text" class="form-control" placeholder="Tên chuyến xe" disabled>
+        </th>
         <th><input style="text-align: center" type="text" class="form-control" placeholder="Tên nhà xe" disabled></th>
         <th><input style="text-align: center" type="text" class="form-control" placeholder="Bến đi" disabled></th>
         <th><input style="text-align: center" type="text" class="form-control" placeholder="Bến đến" disabled></th>
@@ -52,9 +57,9 @@
       </ng-template>
     </table>
   </div>
-<!--  <div>-->
-<!--    <pagination-controls previousLabel="Trước" nextLabel="Sau" style="text-align: right"  id="listing_pagination" (pageChange)="page = $event"></pagination-controls>-->
-<!--  </div>-->
+  <!--  <div>-->
+  <!--    <pagination-controls previousLabel="Trước" nextLabel="Sau" style="text-align: right"  id="listing_pagination" (pageChange)="page = $event"></pagination-controls>-->
+  <!--  </div>-->
 </section>
 </body>
 

@@ -1,6 +1,6 @@
 materialKitDemo = {
 
-  initContactUsMap: function() {
+  initContactUsMap: function () {
     var myLatlng = new google.maps.LatLng(44.433530, 26.093928);
     var mapOptions = {
       zoom: 14,
@@ -101,7 +101,7 @@ materialKitDemo = {
     marker.setMap(map);
   },
 
-  initContactUs2Map: function() {
+  initContactUs2Map: function () {
     var lat = 44.433530;
     var long = 26.093928;
 
@@ -209,8 +209,8 @@ materialKitDemo = {
     marker.setMap(map);
   },
 
-  presentationAnimations: function() {
-    $(function() {
+  presentationAnimations: function () {
+    $(function () {
 
       var $window = $(window),
         isTouch = Modernizr.touch;
@@ -223,7 +223,7 @@ materialKitDemo = {
 
       function revealAnimation() {
         // Showed...
-        $(".add-animation:not(.animated)").each(function() {
+        $(".add-animation:not(.animated)").each(function () {
           var $this = $(this),
             offsetTop = $this.offset().top,
             scrolled = $window.scrollTop(),
@@ -233,7 +233,7 @@ materialKitDemo = {
           }
         });
         // Hidden...
-        $(".add-animation.animated").each(function(index) {
+        $(".add-animation.animated").each(function (index) {
           var $this = $(this),
             offsetTop = $this.offset().top;
           scrolled = $window.scrollTop(),

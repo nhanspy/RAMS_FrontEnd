@@ -47,7 +47,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
     console.log('=============');
   }
 
-  getTinh(): void{
+  getTinh(): void {
     console.log(1);
     this.xemChiTietChuyenXeService.getTinhTheoMaTinh('mt01').subscribe(
       data => {
@@ -72,19 +72,19 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
   getBen(): void {
     console.log(2);
     this.xemChiTietChuyenXeService.getBen().subscribe(data => {
-      this.bens = data;
-      this.benDis = this.bens.slice();
-      this.benDis = this.xemChiTietChuyenXeService.getBenTheoTinh(this.tinhDi, this.benDis);
-      this.benDens = this.bens.slice();
-      this.benDens = this.xemChiTietChuyenXeService.getBenTheoTinh(this.tinhDen, this.benDens);
-      this.getChuyen();
-    },
+        this.bens = data;
+        this.benDis = this.bens.slice();
+        this.benDis = this.xemChiTietChuyenXeService.getBenTheoTinh(this.tinhDi, this.benDis);
+        this.benDens = this.bens.slice();
+        this.benDens = this.xemChiTietChuyenXeService.getBenTheoTinh(this.tinhDen, this.benDens);
+        this.getChuyen();
+      },
       error => {
         console.log(error);
       });
   }
 
-  getChuyen(): void{
+  getChuyen(): void {
     console.log(3);
     this.xemChiTietChuyenXeService.getChuyen().subscribe(
       data => {
@@ -98,11 +98,11 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
     );
   }
 
-  getChuyenTheoTinhDiTinhDen(): void{
+  getChuyenTheoTinhDiTinhDen(): void {
     // @ts-ignore
-    Array.prototype.inArray = function(comparer) {
-      for(var i=0; i < this.length; i++) {
-        if(comparer(this[i])) return true;
+    Array.prototype.inArray = function (comparer) {
+      for (var i = 0; i < this.length; i++) {
+        if (comparer(this[i])) return true;
       }
       return false;
     };
@@ -110,7 +110,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
 // adds an element to the array if it does not already exist using a comparer
 // function
     // @ts-ignore
-    Array.prototype.pushIfNotExist = function(element, comparer) {
+    Array.prototype.pushIfNotExist = function (element, comparer) {
       // @ts-ignore
       if (!this.inArray(comparer)) {
         this.push(element);
@@ -142,7 +142,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
     // this.getChuyenTheoTinhDiTinhDen();
   }
 
-  onChangeChuyenXe(value: ChuyenXe): void{
+  onChangeChuyenXe(value: ChuyenXe): void {
     this.nhanXe = value.xe.nhaXe;
     this.chuyenXeTheoTinhVaNhaXes = [];
     this.chuyenXeTheoTinhs.forEach(chuyenXe => {

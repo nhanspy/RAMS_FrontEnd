@@ -1,4 +1,4 @@
-import {Component, OnInit,Input} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {TinhThanh} from "../Model/TinhThanh";
 import {XemLichSuService} from "../Services/xem-lich-su.service";
 
@@ -6,8 +6,8 @@ import {XemLichSuService} from "../Services/xem-lich-su.service";
   selector: 'app-tim-kiem-tuyen',
   templateUrl: './tim-kiem-tuyen.component.html',
   styleUrls: ['./tim-kiem-tuyen.component.css',
-  '../../../assets/trong/css/fubus.css',
-  '../../../assets/trong/css/add.css']
+    '../../../assets/trong/css/fubus.css',
+    '../../../assets/trong/css/add.css']
 })
 export class TimKiemTuyenComponent implements OnInit {
   tinhthanhlist: TinhThanh [] = [];
@@ -24,8 +24,7 @@ export class TimKiemTuyenComponent implements OnInit {
   // check_Date=new Date();
 // @ts-ignore
   localCompleteDate: string;
-  date:Date=new Date();
-
+  date: Date = new Date();
 
 
   constructor(private xemLichSuService: XemLichSuService) {
@@ -48,6 +47,7 @@ export class TimKiemTuyenComponent implements OnInit {
   selecttinhthanh(tinhthanh: string) {
     console.log("the selected value is " + tinhthanh);
   }
+
   selectthoigian(thoigian: string) {
     console.log("the selected value is " + thoigian);
   }

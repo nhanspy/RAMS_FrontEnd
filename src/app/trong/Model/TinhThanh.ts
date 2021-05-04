@@ -3,6 +3,7 @@ export class TinhThanh {
     this.maTinh = maTinh;
     this.tenTinh = tenTinh;
   }
+
   maTinh: string;
   tenTinh: string;
 }

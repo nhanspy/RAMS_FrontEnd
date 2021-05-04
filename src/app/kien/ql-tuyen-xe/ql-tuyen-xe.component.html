@@ -18,7 +18,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <style type="text/css">
-    .example{
+    .example {
       margin: 40px;
     }
   </style>
@@ -33,10 +33,12 @@
       padding-bottom: 10px;
       margin: 0 0 10px;
     }
+
     .table-title h2 {
       margin: 6px 0 0;
       font-size: 22px;
     }
+
     .table-title .add-new {
       float: right;
       height: 30px;
@@ -47,66 +49,80 @@
       border-radius: 50px;
       line-height: 13px;
     }
+
     .table-title .add-new i {
       margin-right: 4px;
     }
+
     table.table {
       table-layout: fixed;
     }
+
     table.table tr th, table.table tr td {
       border-color: #e9e9e9;
     }
+
     table.table th i {
       font-size: 13px;
       margin: 0 5px;
       cursor: pointer;
     }
+
     table.table th:last-child {
       width: 100px;
     }
+
     table.table td a {
       cursor: pointer;
       display: inline-block;
       margin: 0 5px;
       min-width: 24px;
     }
+
     table.table td a.add {
       color: #27C46B;
     }
+
     table.table td a.edit {
       color: #FFC107;
     }
+
     table.table td a.delete {
       color: #E34724;
     }
+
     table.table td i {
       font-size: 19px;
     }
+
     table.table td a.add i {
       font-size: 24px;
       margin-right: -1px;
       position: relative;
       top: 3px;
     }
+
     table.table .form-control {
       height: 32px;
       line-height: 32px;
       box-shadow: none;
       border-radius: 2px;
     }
+
     table.table .form-control.error {
       border-color: #f50000;
     }
+
     table.table td .add {
       display: none;
     }
   </style>
   <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
       $('[data-toggle="tooltip"]').tooltip();
       var actions = $("table td:last-child").html();
       // hiện thông tin khi thêm hàng mới
-      $(".add-new").click(function(){
+      $(".add-new").click(function () {
         $(this).attr("disabled", "disabled");
         var index = $("table tbody tr:last-child").index();
         var row = '<tr>' +
@@ -121,21 +137,21 @@
         $('[data-toggle="tooltip"]').tooltip();
       });
       // thêm 1 hàng khi ấn click thêm mới
-      $(document).on("click", ".add", function(){
+      $(document).on("click", ".add", function () {
         var empty = false;
         var input = $(this).parents("tr").find('input[type="text"]');
-        input.each(function(){
-            if(!$(this).val()){
+        input.each(function () {
+            if (!$(this).val()) {
               $(this).addClass("error");
               empty = true;
-            } else{
+            } else {
               $(this).removeClass("error");
             }
           }
         );
         $(this).parents("tr").find(".error").first().focus();
-        if(!empty){
-          input.each(function(){
+        if (!empty) {
+          input.each(function () {
             $(this).parent("td").html($(this).val());
           });
           $(this).parents("tr").find(".add, .edit").toggle();
@@ -143,15 +159,15 @@
         }
       });
       // chỉnh sửa hàng khi ấn click sửa
-      $(document).on("click", ".edit", function(){
-        $(this).parents("tr").find("td:not(:last-child)").each(function(){
+      $(document).on("click", ".edit", function () {
+        $(this).parents("tr").find("td:not(:last-child)").each(function () {
           $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
         });
         $(this).parents("tr").find(".add, .edit").toggle();
         $(".add-new").attr("disabled", "disabled");
       });
       // xóa hàng khi ấn click xóa
-      $(document).on("click", ".delete", function(){
+      $(document).on("click", ".delete", function () {
         $(this).parents("tr").remove();
         $(".add-new").removeAttr("disabled");
       });
@@ -174,15 +190,16 @@
           </div>
           <div class="row">
             <div class="col-lg-4">
-              <a href="" >Quản lý tài khoản người dùng</a>
+              <a href="">Quản lý tài khoản người dùng</a>
             </div>
             <div class="col-lg-6">
-              <a href="" >Quản lý tài khoản nhà xe</a>
+              <a href="">Quản lý tài khoản nhà xe</a>
             </div>
             <div class="col-lg-2">
-              <a href="" >Quản lý tuyến xe</a>
+              <a href="">Quản lý tuyến xe</a>
             </div>
-          </div><br>
+          </div>
+          <br>
           <form action="date">
             <label for="birthdaytime"></label>
             <input type="date" id="birthdaytime" name="birthdaytime">
@@ -250,9 +267,15 @@
     </div>
   </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>

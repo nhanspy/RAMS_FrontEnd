@@ -246,16 +246,16 @@ Modules - reusable parts of our design
   transform: scale(1);
 }
 
-.touch #cd-vertical-nav.open+.cd-nav-trigger {
+.touch #cd-vertical-nav.open + .cd-nav-trigger {
   background-color: transparent;
 }
 
-.touch #cd-vertical-nav.open+.cd-nav-trigger span {
+.touch #cd-vertical-nav.open + .cd-nav-trigger span {
   background-color: rgba(62, 57, 71, 0);
 }
 
-.touch #cd-vertical-nav.open+.cd-nav-trigger span::before,
-.touch #cd-vertical-nav.open+.cd-nav-trigger span::after {
+.touch #cd-vertical-nav.open + .cd-nav-trigger span::before,
+.touch #cd-vertical-nav.open + .cd-nav-trigger span::after {
   background-color: #3e3947;
   height: 3px;
   width: 20px;
@@ -263,7 +263,7 @@ Modules - reusable parts of our design
   left: -8px;
 }
 
-.touch #cd-vertical-nav.open+.cd-nav-trigger span::before {
+.touch #cd-vertical-nav.open + .cd-nav-trigger span::before {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
@@ -272,7 +272,7 @@ Modules - reusable parts of our design
   top: 1px;
 }
 
-.touch #cd-vertical-nav.open+.cd-nav-trigger span::after {
+.touch #cd-vertical-nav.open + .cd-nav-trigger span::after {
   -webkit-transform: rotate(135deg);
   -moz-transform: rotate(135deg);
   -ms-transform: rotate(135deg);

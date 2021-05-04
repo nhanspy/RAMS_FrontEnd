@@ -64,17 +64,22 @@
       <thead>
       <tr>
         <td></td>
-        <td><input style="text-align: center" type="text" class="form-control" placeholder="Tìm theo chuyến xe" #txtSearch (keyup)="searchMaChuyen(txtSearch.value)"></td>
-        <td><input style="text-align: center" type="text" class="form-control" placeholder="Tìm theo tên nhà xe" #txtSearch4 (keyup)="searchMaXe(txtSearch4.value)"></td>
-        <td><input style="text-align: center" type="text" class="form-control" placeholder="Tìm theo bến đi" #txtSearch1 (keyup)="searchBenDi(txtSearch1.value)"></td>
-        <td><input style="text-align: center" type="text" class="form-control" placeholder="Tìm theo bến đến" #txtSearch2 (keyup)="searchBenDen(txtSearch2.value)"></td>
-        <td><input style="text-align: center" type="text" class="form-control" placeholder="Tìm theo thời gian" #txtSearch3 (keyup)="searchThoiGian(txtSearch3.value)"></td>
+        <td><input style="text-align: center" type="text" class="form-control" placeholder="Tìm theo chuyến xe"
+                   #txtSearch (keyup)="searchMaChuyen(txtSearch.value)"></td>
+        <td><input style="text-align: center" type="text" class="form-control" placeholder="Tìm theo tên nhà xe"
+                   #txtSearch4 (keyup)="searchMaXe(txtSearch4.value)"></td>
+        <td><input style="text-align: center" type="text" class="form-control" placeholder="Tìm theo bến đi" #txtSearch1
+                   (keyup)="searchBenDi(txtSearch1.value)"></td>
+        <td><input style="text-align: center" type="text" class="form-control" placeholder="Tìm theo bến đến"
+                   #txtSearch2 (keyup)="searchBenDen(txtSearch2.value)"></td>
+        <td><input style="text-align: center" type="text" class="form-control" placeholder="Tìm theo thời gian"
+                   #txtSearch3 (keyup)="searchThoiGian(txtSearch3.value)"></td>
       </tr>
       <tr class="filters">
         <th>#</th>
-        <th><label style="text-align: center" >Tên chuyến xe</label></th>
-        <th><label style="text-align: center" >Tên nhà xe</label></th>
-        <th><label style="text-align: center" >Bến đi</label></th>
+        <th><label style="text-align: center">Tên chuyến xe</label></th>
+        <th><label style="text-align: center">Tên nhà xe</label></th>
+        <th><label style="text-align: center">Bến đi</label></th>
         <th><label style="text-align: center">Bến đến</label></th>
         <th><label style="text-align: center">Thời gian</label></th>
       </tr>
@@ -108,9 +113,10 @@
       </ng-template>
     </table>
   </div>
-    <div style="margin-bottom: -1em">
-      <pagination-controls style="margin-bottom: -1em" previousLabel="Trước" nextLabel="Sau" style="text-align: right"  id="listing_pagination" (pageChange)="page = $event"></pagination-controls>
-    </div>
+  <div style="margin-bottom: -1em">
+    <pagination-controls style="margin-bottom: -1em" previousLabel="Trước" nextLabel="Sau" style="text-align: right"
+                         id="listing_pagination" (pageChange)="page = $event"></pagination-controls>
+  </div>
 </section>
 </body>
 

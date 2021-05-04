@@ -7,6 +7,7 @@ export class XemLichSu {
     this.thoiGian = thoiGian;
     this.giaThanh = giaThanh;
   }
+
   id: number;
   tenNhaXe: string;
   benDi: string;

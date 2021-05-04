@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DatVeService} from '../service/dat-ve.service';
 import {VeXe} from '../Models/VeXe.class';
 
