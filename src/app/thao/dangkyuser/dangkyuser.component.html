@@ -89,7 +89,7 @@
 
         <form [formGroup]="formRegnx" (ngSubmit)="onSubmitt()" name="form" class="form" method="" action="" >
           <div class="card card-login card-hidden">
-            <h2 style="text-align: center">Đăng ký</h2>
+            <h2 style="text-align: center">Đăng ký người dùng</h2>
             <div class="social text-center">
               <button class="btn btn-just-icon btn-round btn-twitter">
                 <i class="fa fa-twitter"></i>
@@ -159,8 +159,10 @@
                       <span class="input-group-text">
                         <i class="material-icons">phone</i>
                       </span>
+
+
                   </div>
-                  <input formControlName="soDienThoai"  type="text" class="form-control" placeholder="Số điện thoại">
+                  <input formControlName="soDienThoai"  type="text" class="form-control" placeholder="Số điện thoại"  >
                   <div *ngFor="let validation of validation_messages.soDienThoai">
                     <small class="text-danger"
                            *ngIf="formRegnx.get('soDienThoai')!.hasError(validation.type) && formRegnx.get('soDienThoai')!.touched">
@@ -213,36 +215,6 @@
       </div>
     </div>
   </div>
-  <footer class="footer">
-    <div class="container">
-      <nav class="float-left">
-        <ul>
-          <li>
-            <a href="https://www.creative-tim.com">
-              Creative Tim
-            </a>
-          </li>
-          <li>
-            <a href="https://creative-tim.com/presentation">
-              About Us
-            </a>
-          </li>
-          <li>
-            <a href="http://blog.creative-tim.com">
-              Blog
-            </a>
-          </li>
-          <li>
-            <a href="https://www.creative-tim.com/license">
-              Licenses
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <div class="copyright float-right">
-      </div>
-    </div>
-  </footer>
 </div>
 </body>
 </html>

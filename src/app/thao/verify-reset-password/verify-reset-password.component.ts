@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../_services/auth.service";
 import {ToastrService} from "ngx-toastr";
+import {TokenStorageService} from "../_services/token-storage.service";
 
 
 @Component({
@@ -24,6 +25,7 @@ export class VerifyResetPasswordComponent implements OnInit {
     private route: ActivatedRoute,
               private authService: AuthService,
               private formBuilder: FormBuilder,
+              private tokenStorage: TokenStorageService,
               private toaster: ToastrService,
               private router: Router
   ) { }
@@ -62,7 +64,7 @@ export class VerifyResetPasswordComponent implements OnInit {
       });
       this.authService.doResetPassword(this.formGroup.value.newPassword, this.code).subscribe(data => {
         this.toaster.success('Mật khẩu đã được thay đổi!', "Thành công");
-        this.router.navigateByUrl("/")
+        this.router.navigateByUrl("/dangnhap")
       })
     } else {
       this.toaster.error("Trường nhập lại mật khẩu và mật khẩu không giống nhau!", "Lỗi: ", {

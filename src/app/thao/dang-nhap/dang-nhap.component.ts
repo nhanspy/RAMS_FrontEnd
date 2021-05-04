@@ -37,7 +37,7 @@ export class DangNhapComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.router.navigate(['home']);
+        this.router.navigate(['quenmatkhau']);
       },
       err => {
         this.errorMessage = err.error.message;
