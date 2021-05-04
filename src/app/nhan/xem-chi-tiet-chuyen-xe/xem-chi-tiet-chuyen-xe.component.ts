@@ -6,15 +6,21 @@ import {Ben} from '../Models/Ben.class';
 import {NhaXe} from '../Models/NhaXe.class';
 import {Ghe} from '../Models/Ghe.class';
 import {TrangThaiGhe} from '../Models/TrangThaiGhe.class';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-xem-chi-tiet-chuyen-xe',
   templateUrl: './xem-chi-tiet-chuyen-xe.component.html',
-  styleUrls: ['./xem-chi-tiet-chuyen-xe.component.css']
+  styleUrls: ['./xem-chi-tiet-chuyen-xe.component.css', '../../../assets/nhan/css/css.css', '../../../assets/css/material-kit.css?v=2.1.1']
 })
-export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
+export class XemChiTietChuyenXeComponent implements OnInit {
 
-  constructor(private xemChiTietChuyenXeService: XemChiTietChuyenXeService) {
+  constructor(private xemChiTietChuyenXeService: XemChiTietChuyenXeService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private _location: Location
+  ) {
   }
 
   // @ts-ignore
@@ -29,6 +35,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
   benDis: Ben[] = [];
   benDens: Ben[] = [];
   chuyenXes: ChuyenXe[] = [];
+  chuyenXesRoot: ChuyenXe[] = [];
   chuyenXeTheoTinhs: ChuyenXe[] = [];
   chuyenXeTheoBenDiBenBenDens: ChuyenXe[] = [];
   chuyenXeTheoTinhVaNhaXes: ChuyenXe[] = [];
@@ -37,7 +44,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
   benDiBenDen: ChuyenXe = new ChuyenXe();
   nhaXes: NhaXe[] = [];
   // @ts-ignore
-  ngay: string;
+  ngay = '2021-04-08';
   // @ts-ignore
   nhaXe: NhaXe;
   trangThaiGhes: TrangThaiGhe[] = [];
@@ -60,16 +67,27 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
   strGheDaChon = '';
 
   ngOnInit(): void {
+    this.init();
     this.getTinh();
     this.getBen();
     this.getChuyen();
     this.getNhaXe();
     this.getTrangThaiGhe();
-    this.maChuyenXe = 'mcx01';
     this.ngay = '2021-04-08';
+    this.maChuyenXe = 'mcx01';
     console.log('=============');
   }
 
+  //load lại hết
+  loadChuyenXe(){
+    this.filterChuyenXeTheoBen();
+    this.onChangeChuyenXeKhiChonNhaXe();
+    this.onChangeTheoThoiGian();
+  }
+
+  // thay đổi tên trạng thái ghế
+  // thay đổi trạng thái chọn ghế
+  // tính tổng tiền
   chonGhe(ghe: Ghe): void{
     if (ghe.trangThaiGhe.maTrangThai === 'mttg01') {
       ghe.trangThaiGhe = this.trangThaiGhes[2];
@@ -99,8 +117,8 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
     this.strGheDaChon = this.strGheDaChon.substring(0, this.strGheDaChon.length - 2);
   }
 
+  //Lấy tỉnh đi tỉnh đến theo mã tỉnh
   getTinh(): void{
-    console.log(1);
     this.xemChiTietChuyenXeService.getTinhTheoMaTinh(this.maTinhDi).subscribe(
       data => {
         this.tinhDi = data;
@@ -120,6 +138,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
     );
   }
 
+  //lấy bến theo mã tỉnh
   getBen(): void {
     this.xemChiTietChuyenXeService.getBen().subscribe(data => {
       this.bens = data;
@@ -133,18 +152,18 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
           return item.tinhThanh.maTinh === this.maTinhDen;
         }
       );
-      console.log(this.benDens);
       this.getChuyen();
     },
-      error => {
-        console.log(error);
-      });
+    error => {
+      console.log(error);
+    });
   }
 
+  //Lấy chuyến xe theo ngày
   getChuyen(): void{
     this.xemChiTietChuyenXeService.getChuyen(this.ngay).subscribe(
       data => {
-        this.chuyenXes = data;
+        this.chuyenXesRoot = data;
       },
       error => {
         console.log(error);
@@ -152,52 +171,13 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
     );
   }
 
-  getChuyenTheoTinhDiTinhDen(): void{
-    // @ts-ignore
-    Array.prototype.inArray = function(comparer) {
-      for (let i = 0; i < this.length; i++) {
-        if (comparer(this[i])) { return true; }
-      }
-      return false;
-    };
-
-// adds an element to the array if it does not already exist using a comparer
-// function
-    // @ts-ignore
-    Array.prototype.pushIfNotExist = function(element, comparer) {
-      // @ts-ignore
-      if (!this.inArray(comparer)) {
-        this.push(element);
-      }
-    };
-    console.log(999);
-    console.log(this.chuyenXes);
-    console.log(this.benDis);
-    console.log(this.benDens);
-    this.chuyenXes.forEach(chuyenXe => {
-      this.benDis.forEach(benDi => {
-        this.benDens.forEach(benDen => {
-          if ((chuyenXe.benDi.maBen === benDi.maBen && chuyenXe.benDen.maBen === benDen.maBen)) {
-            // console.log(chuyenXe.benDi.maBen + ' -- ' + chuyenXe.benDen.maBen + ' -- ' + benDi.maBen + '--' + benDen.maBen);
-            this.chuyenXeTheoTinhs.push(chuyenXe);
-            // @ts-ignore
-            this.benDiBenDens.pushIfNotExist(chuyenXe, e => {
-              return chuyenXe.benDi.maBen === e.benDi.maBen && chuyenXe.benDen.maBen === e.benDen.maBen;
-            });
-          }
-        });
-      });
-    });
-  }
-
-  ngAfterViewInit(): void {
-  }
-
-  onChangeChuyenXe(value: NhaXe): void{
-    this.chuyenXeTheoTinhVaNhaXes = this.chuyenXeTheoBenDiBenBenDens;
+  onChangeChuyenXeKhiChonNhaXe(): void{
+    this.chuyenXeTheoTinhVaNhaXes = this.chuyenXes.slice();
     if (this.nhaXe !== undefined) {
       this.chuyenXeTheoTinhVaNhaXes = this.chuyenXeTheoBenDiBenBenDens.slice().filter(
         item => {
+
+          //Lọc theo ma nhà xe
           const a = item.xe.nhaXe.maNhaXe;
           const b = this.nhaXe.maNhaXe;
 
@@ -209,85 +189,155 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
         }
       );
     }
-    console.log(this.chuyenXeTheoTinhVaNhaXes);
+    if (this.chuyenXeTheoTinhVaNhaXes) {
+      this.chuyenXes = this.chuyenXeTheoTinhVaNhaXes.slice();
+      this.getGhe();
+    }
+    this.capNhatCacTruong();
   }
 
-  onChangeTheoThoiGian(value: ChuyenXe): void {
-    console.log(this.chuyenXe);
+  onChangeTheoThoiGian(): void {
     this.getGhe();
+    this.capNhatCacTruong();
   }
 
+  // get ghế theo sơ đồ giường 2 tầng
   getGhe(): void {
-    this.xemChiTietChuyenXeService.getGhe(this.chuyenXe.xe.maXe).subscribe(
-      data => {
-        this.ghes = data;
-        this.gheDaChons = this.ghes.slice().filter(
-          item => {
-            if (item.trangThaiGhe.maTrangThai === 'mttg02'){
-              item.daChon = true;
-              return true;
+    //init
+    this.ghes = [];
+    this.gheDaChons = [];
+    this.newGhesTang1 = [];
+    this.newGhesTang2 = [];
+    //lấy tất cả ghế
+    if (this.chuyenXes) {
+      this.xemChiTietChuyenXeService.getGhe(this.chuyenXes[0].xe.maXe).subscribe(
+        data => {
+          this.ghes = data;
+          //lấy ghế đã chọn cho tính tiền
+          this.gheDaChons = this.ghes.slice().filter(
+            item => {
+              //set đã chọn cho ghế
+              if (item.trangThaiGhe.maTrangThai === 'mttg02'){
+                item.daChon = true;
+                return true;
+              }
+              return false;
             }
-            return false;
-          }
-        );
-        console.log(this.gheDaChons);
+          );
 
-        this.ghesTang1 = this.ghes.slice().filter(
-          item => {
-            return item.tang === 1;
-          }
-        );
-        this.ghesTang2 = this.ghes.slice().filter(
-          item => {
-            return item.tang === 2;
-          }
-        );
-        // @ts-ignore
-        this.ghes.sort((a, b) => {
-          return a.soGhe > b.soGhe;
-        });
-        while (this.ghesTang1.length) {
+          //lấy ghế tầng 1
+          this.ghesTang1 = this.ghes.slice().filter(
+            item => {
+              return item.tang === 1;
+            }
+          );
+          //lấy ghế tầng 2
+          this.ghesTang2 = this.ghes.slice().filter(
+            item => {
+              return item.tang === 2;
+            }
+          );
+          // Sắp xếp ghế
           // @ts-ignore
-          this.newGhesTang1.push(this.ghesTang1.splice(0, 3));
+          this.ghes.sort((a: Ghe, b: Ghe) => {
+            return a.soGhe > b.soGhe;
+          });
+          // chuyển số ghế sang mảng 2 chiều tại biến newGhesTang*
+          while (this.ghesTang1.length) {
+            // @ts-ignore
+            this.newGhesTang1.push(this.ghesTang1.splice(0, 3));
+          }
+          while (this.ghesTang2.length) {
+            // @ts-ignore
+            this.newGhesTang2.push(this.ghesTang2.splice(0, 3));
+          }
+          // Tính tổng tiền
+          this.setTongTien();
+        }, error => {
+          console.log(error);
         }
-        while (this.ghesTang2.length) {
+      );
+    }
+  }
+
+  getGheKhongGoiDB(): void {
+    this.newGhesTang1 = [];
+    this.newGhesTang2 = [];
+    if (this.chuyenXe) {
+          this.gheDaChons = this.ghes.slice().filter(
+            item => {
+              if (item.trangThaiGhe.maTrangThai === 'mttg02'){
+                item.daChon = true;
+                return true;
+              }
+              return false;
+            }
+          );
+
+          this.ghesTang1 = this.ghes.slice().filter(
+            item => {
+              return item.tang === 1;
+            }
+          );
+          this.ghesTang2 = this.ghes.slice().filter(
+            item => {
+              return item.tang === 2;
+            }
+          );
           // @ts-ignore
-          this.newGhesTang2.push(this.ghesTang2.splice(0, 3));
-        }
-        this.setTongTien();
-      }, error => {
-        console.log(error);
-      }
-    );
+          this.ghes.sort((a, b) => {
+            return a.soGhe > b.soGhe;
+          });
+          while (this.ghesTang1.length) {
+            // @ts-ignore
+            this.newGhesTang1.push(this.ghesTang1.splice(0, 3));
+          }
+          while (this.ghesTang2.length) {
+            // @ts-ignore
+            this.newGhesTang2.push(this.ghesTang2.splice(0, 3));
+          }
+          this.setTongTien();
+    }
   }
 
-  handleChange(value: ChuyenXe): void {
-    // @ts-ignore
-    this.benDiBenDen = value;
-    this.chuyenXeTheoBenDiBenBenDens = [];
-    this.chuyenXeTheoTinhs.forEach(chuyenXe => {
-      if (chuyenXe.benDi.maBen === this.benDiBenDen.benDi.maBen && chuyenXe.benDen.maBen === this.benDiBenDen.benDen.maBen) {
-        this.chuyenXeTheoBenDiBenBenDens.push(chuyenXe);
-      }
-    });
-  }
-
-  onChangeBenDi(value: Ben): void{
+  onChangeBenDi(): void{
+    // this.loadChuyenXe();
     this.filterChuyenXeTheoBen();
-  }
-  onChangeBenDen(value: Ben): void{
-    this.filterChuyenXeTheoBen();
+    if (this.chuyenXeTheoBenDiBenBenDens) {
+      this.chuyenXes = this.chuyenXeTheoBenDiBenBenDens.slice();
+      this.getGhe();
+      this.capNhatCacTruong();
+    }
   }
 
+  capNhatCacTruong(): void {
+    if (this.chuyenXes) {
+      this.benDi = this.chuyenXes[0].benDi;
+      this.benDen = this.chuyenXes[0].benDen;
+      this.nhaXe = this.chuyenXes[0].xe.nhaXe;
+      this.chuyenXe = this.chuyenXes[0];
+    }
+  }
+
+  onChangeBenDen(): void{
+    // this.loadChuyenXe();
+    this.filterChuyenXeTheoBen();
+    if (this.chuyenXeTheoBenDiBenBenDens) {
+      this.chuyenXes = this.chuyenXeTheoBenDiBenBenDens.slice();
+      this.getGhe();
+      this.capNhatCacTruong();
+    }
+  }
+
+  // lọc chuyến xe theo các bến đã chọn
   filterChuyenXeTheoBen(): void{
-    // if (this.benDi !== undefined) {
-    this.chuyenXeTheoBenDiBenBenDens = this.chuyenXes.slice();
+    this.chuyenXeTheoBenDiBenBenDens = this.chuyenXesRoot.slice();
     if (this.benDi !== undefined) {
+      //lọc theo mã bến đi
       this.chuyenXeTheoBenDiBenBenDens = this.chuyenXeTheoBenDiBenBenDens.slice().filter(
         item => {
           const a = item.benDi.maBen;
           const b = this.benDi.maBen;
-
           if (a === b) {
             return true;
           } else {
@@ -297,11 +347,11 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
       );
     }
     if (this.benDen !== undefined) {
+      //lọc theo mã bến đến
       this.chuyenXeTheoBenDiBenBenDens = this.chuyenXeTheoBenDiBenBenDens.slice().filter(
         item => {
           const a = item.benDen.maBen;
           const b = this.benDen.maBen;
-
           if (a === b) {
             return true;
           } else {
@@ -309,6 +359,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
           }
         }
       );
+      // this.onChangeChuyenXeKhiChonNhaXe();
     }
 
     this.nhaXesTheoBenDiBenDen = this.nhaXes.slice();
@@ -327,11 +378,9 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
         return result;
       }
     );
-    console.log(this.nhaXesTheoBenDiBenDen);
-
-    console.log(this.chuyenXeTheoBenDiBenBenDens);
   }
 
+  //lấy tất cả nhà xe
   private getNhaXe(): void {
     this.xemChiTietChuyenXeService.getNhaXe().subscribe(
       data => {
@@ -342,6 +391,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
     );
   }
 
+  //lấy tất cả trạng thái ghế
   private getTrangThaiGhe(): void {
     this.xemChiTietChuyenXeService.getTrangThaiGhe().subscribe(
       data => {
@@ -354,6 +404,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
   }
 
   tiepTuc(): void {
+    // lưu vào session
     this.gheDaChons = [];
     this.ghes.forEach(
       item => {
@@ -362,6 +413,59 @@ export class XemChiTietChuyenXeComponent implements OnInit, AfterViewInit {
         }
       }
     );
-    console.log(this.gheDaChons);
+    if (this.chuyenXe) {
+      localStorage.setItem('chuyenXe', JSON.stringify(this.chuyenXe));
+    }
+    if (this.gheDaChons) {
+      localStorage.setItem('gheDaChons', JSON.stringify(this.gheDaChons));
+    }
+    if (this.newGhesTang1) {
+      localStorage.setItem('newGhesTang1', JSON.stringify(this.newGhesTang1));
+    }
+    if (this.newGhesTang2) {
+      localStorage.setItem('newGhesTang2', JSON.stringify(this.newGhesTang2));
+    }
+    if (this.ghes) {
+      localStorage.setItem('ghes', JSON.stringify(this.ghes));
+    }
+  }
+
+  private init(): void {
+    //Lay dữ liệu từ trang tìm kiếm
+    this.activatedRoute.queryParams.subscribe(
+      data => {
+        this.maTinhDi = data.maTinhDi;
+        this.maTinhDen = data.maTinhDen;
+        this.ngay = data.ngay;
+      }
+    );
+    //lấy dữ liệu từ session nếu có
+    if (localStorage.getItem('chuyenXe')) {
+      // @ts-ignore
+      this.chuyenXe = JSON.parse(localStorage.getItem('chuyenXe'));
+      console.log(this.chuyenXe);
+    }
+    if (localStorage.getItem('gheDaChons')) {
+      // @ts-ignore
+      this.gheDaChons = JSON.parse(localStorage.getItem('gheDaChons'));
+    }
+    if (localStorage.getItem('ghes')) {
+      // @ts-ignore
+      this.ghes = JSON.parse(localStorage.getItem('ghes'));
+    }
+    if (localStorage.getItem('newGhesTang1')) {
+      // @ts-ignore
+      this.newGhesTang1 = JSON.parse(localStorage.getItem('newGhesTang1'));
+    }
+    if (localStorage.getItem('newGhesTang2')) {
+      // @ts-ignore
+      this.newGhesTang2 = JSON.parse(localStorage.getItem('newGhesTang2'));
+    }
+    this.getGheKhongGoiDB();
+  }
+
+  // nút trở về
+  backClicked(): void {
+    this._location.back();
   }
 }

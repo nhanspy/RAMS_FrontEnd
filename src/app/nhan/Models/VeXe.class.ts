@@ -3,33 +3,38 @@ import {ChuyenXe} from './ChuyenXe.class';
 import {User} from './User.class';
 
 export class VeXe {
-  // tslint:disable-next-line:variable-name
   private _maVe: string;
   // @ts-ignore
-  // tslint:disable-next-line:variable-name
   private _thoiGian: string;
   // @ts-ignore
-  // tslint:disable-next-line:variable-name
   private _giaTien: number;
   // @ts-ignore
-  // tslint:disable-next-line:variable-name
-  private _ghe: Ghe;
+  private _ghe: Ghe[];
   // @ts-ignore
-  // tslint:disable-next-line:variable-name
   private _chuyenXe: ChuyenXe;
   // @ts-ignore
-  // tslint:disable-next-line:variable-name
   private _userNguoiDung: User;
   // @ts-ignore
-  // tslint:disable-next-line:variable-name
   private _userNhaXe: User;
 
-  constructor(maVe: string, thoiGian: string, giaTien: number, ghe: Ghe, chuyenXe: ChuyenXe) {
+  // @ts-ignore
+  private _isThanhToan: boolean;
+
+  constructor(maVe: string, thoiGian: string, giaTien: number, ghe: Ghe[], chuyenXe: ChuyenXe, isThanhToan: boolean) {
     this._maVe = maVe;
     this._thoiGian = thoiGian;
     this._giaTien = giaTien;
     this._ghe = ghe;
     this._chuyenXe = chuyenXe;
+    this._isThanhToan = isThanhToan;
+  }
+
+  get isThanhToan(): boolean {
+    return this._isThanhToan;
+  }
+
+  set isThanhToan(value: boolean) {
+    this._isThanhToan = value;
   }
 
   get userNguoiDung(): User {
@@ -73,11 +78,11 @@ export class VeXe {
     this._giaTien = value;
   }
 
-  get ghe(): Ghe {
+  get ghe(): Ghe[] {
     return this._ghe;
   }
 
-  set ghe(value: Ghe) {
+  set ghe(value: Ghe[]) {
     this._ghe = value;
   }
 

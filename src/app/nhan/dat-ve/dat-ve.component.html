@@ -1,187 +1,170 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Thông tin mua vé</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="/assets/nhan/css/css.css">
-</head>
-<body>
-<div data-v-511c74d1="">
-  <div data-v-5747e235="" data-v-511c74d1="" class="container step-line">
-    <div data-v-5747e235="" class="line">
-      <div data-v-5747e235="" class="current-line"></div>
-      <div data-v-5747e235="" class="current-line"></div>
-      <!--            <div data-v-5747e235="" class="current-line"></div>-->
-    </div>
-    <div data-v-5747e235="" class="step-circles">
-      <div data-v-5747e235="" class="current-step">
-        <div data-v-5747e235="" class="text">1</div>
-        <div data-v-5747e235="" class="active-title" style="display: none;">
-          CHỌN TUYẾN
+<div class="page-header header-filter clear-filter" data-parallax="true" style="height: 30vh;background-image: url(&quot;./assets/img/bg2.jpg&quot;); transform: translate3d(0px, 11.6667px, 0px);">
+  <div class="container">
+    <div class="row" >
+      <div class="col-md-8 ml-auto mr-auto">
+        <div class="brand">
         </div>
       </div>
-      <div data-v-5747e235="" class="current-step">
-        <div data-v-5747e235="" class="text">2</div>
-        <div data-v-5747e235="" class="active-title" style="display: none;">
-          CHỌN GHẾ
-        </div>
-      </div>
-      <div data-v-5747e235="" class="next-step">
-        <div data-v-5747e235="" class="text">3</div>
-        <div data-v-5747e235="" class="active-title" style="">
-          THANH TOÁN
-        </div>
-      </div>
-    </div>
-  </div>
-  <div data-v-511c74d1="" class="child">
-    <div data-v-511c74d1="">
-      <div data-v-c6c11ca6="" id="ticket-infomation-container" class="buy-info-container">
-        <div data-v-c6c11ca6="" class="title-bar-bg"><p data-v-c6c11ca6="" class="title-txt">THÔNG TIN MUA VÉ</p></div>
-        <div data-v-561fbfed="" data-v-c6c11ca6="" class="customer-info-container">
-          <div data-v-561fbfed="" class="title-bar"><p data-v-561fbfed="" class="title-txt">Thông tin hành khách</p></div>
-          <div data-v-561fbfed="" class="container">
-            <div data-v-561fbfed="" class="row">
-              <div data-v-561fbfed="" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-ms-12">
-                <div data-v-561fbfed="" class="col-xs-12 field">
-                  <div data-v-561fbfed="" class="col-xs-4 sub-tit">Họ tên:</div>
-                  <div data-v-561fbfed="" class="col-xs-8">{{veXe.userNguoiDung.username}}</div>
-                </div>
-                <div data-v-561fbfed="" class="col-xs-12 field">
-                  <div data-v-561fbfed="" class="col-xs-4 sub-tit">Số điện thoại:</div>
-                  <div data-v-561fbfed="" class="col-xs-8">{{veXe.userNguoiDung.soDienThoai}}</div>
-                </div>
-              </div>
-              <div data-v-561fbfed="" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-ms-12">
-                <div data-v-561fbfed="" class="col-xs-12 field">
-                  <div data-v-561fbfed="" class="col-xs-4 sub-tit">Email:</div>
-                  <div data-v-561fbfed="" class="col-xs-8">{{veXe.userNguoiDung.email}}</div>
-                </div>
-                <!---->
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--fragment#408cfda16a#head-->
-        <div data-v-62d3bf2a="" data-v-c6c11ca6="" class="ticket-info-container" fragment="408cfda16a">
-          <div data-v-62d3bf2a="" class="title-bar">
-            <div data-v-62d3bf2a="" class="title-txt"><p data-v-62d3bf2a="">Thông tin vé</p></div>
-          </div>
-          <div data-v-62d3bf2a="" class="container">
-            <div data-v-62d3bf2a="" class="row">
-              <div data-v-62d3bf2a="" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-ms-12">
-                <div data-v-62d3bf2a="" class="col-xs-12 field">
-                  <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Tuyến xe:</div>
-                  <div data-v-62d3bf2a="" class="col-xs-8"><span data-v-62d3bf2a="">BX.{{veXe.chuyenXe.benDi.tenBen}} ⇒ BX.{{veXe.chuyenXe.benDen.tenBen}}</span></div>
-                </div>
-                <div data-v-62d3bf2a="" class="col-xs-12 field">
-                  <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Thời gian:</div>
-                  <div data-v-62d3bf2a="" class="col-xs-8"><span data-v-62d3bf2a="" class="orange-value green">{{veXe.thoiGian}}</span></div>
-                </div>
-                <div data-v-62d3bf2a="" class="col-xs-12 field">
-                  <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Điểm di:</div>
-                  <div data-v-62d3bf2a="" class="col-xs-8">
-                    <p data-v-62d3bf2a="">{{veXe.chuyenXe.benDi.tenBen}}</p>
-<!--                    <p data-v-62d3bf2a="" class="address">Tôn Đức Thắng, Hoà Minh, Liên Chiểu, Đà Nẵng 550000</p>-->
-                  </div>
-                </div>
-              </div>
-              <div data-v-62d3bf2a="" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-ms-12">
-                <div data-v-62d3bf2a="" class="col-xs-12 field">
-                  <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Số lượng ghế:</div>
-                  <div data-v-62d3bf2a="" class="col-xs-8">2</div>
-                </div>
-                <div data-v-62d3bf2a="" class="col-xs-12 field">
-                  <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Số ghế:</div>
-                  <div data-v-62d3bf2a="" class="col-xs-8 orange-value green">
-                    <span data-v-62d3bf2a="">{{veXe.ghe.maGhe}}</span>
-<!--                    <span data-v-62d3bf2a="">{{veXe.ghe.maGhe}}</span>-->
-                  </div>
-                </div>
-                <div data-v-62d3bf2a="" class="col-xs-12 field"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!---->
-        <div data-v-c6c11ca6="" fragment="408cfda16a" class="footer-bar">
-          <div data-v-c6c11ca6="" class="total-info">
-            <p data-v-c6c11ca6="" class="footer-title">TỔNG TIỀN</p>
-            <p data-v-c6c11ca6="" class="footer-price">{{veXe.giaTien}} <sup data-v-c6c11ca6="">₫</sup></p>
-          </div>
-        </div>
-      </div>
-      <div data-v-a30aa7c2="">
-        <div data-v-a30aa7c2="" class="title">CHỌN CÁCH THANH TOÁN</div>
-        <div data-v-a30aa7c2="" class="payment-item-list">
-          <div data-v-988311c2="" data-v-a30aa7c2="" class="payment-item-container">
-            <button data-v-988311c2="" class="selected">
-              <svg data-v-988311c2="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22" height="23" viewBox="0 0 22 23" class="check checked">
-                <defs data-v-988311c2=""><circle data-v-988311c2="" id="huxf6b78oa" cx="11" cy="11" r="11"></circle></defs>
-                <g data-v-988311c2="" fill="none" fill-rule="evenodd">
-                  <g data-v-988311c2="" transform="translate(-518 -791) translate(252 741) translate(0 43) translate(266 8)">
-                    <mask data-v-988311c2="" id="9unrvtawmb" fill="#fff"><use data-v-988311c2="" xlink:href="#huxf6b78oa"></use></mask>
-                    <use data-v-988311c2="" fill="#EF5222" fill-rule="nonzero" xlink:href="#huxf6b78oa"></use>
-                    <path data-v-988311c2="" fill-rule="nonzero" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 11.125L9.058 14.25 15.375 8" mask="url(#9unrvtawmb)"></path>
-                  </g>
-                </g>
-              </svg>
-              <svg data-v-988311c2="" xmlns="http://www.w3.org/2000/svg" width="22" height="23" viewBox="0 0 22 23" class="check not-check">
-                <g data-v-988311c2="" fill="none" fill-rule="evenodd" stroke-opacity=".63">
-                  <g data-v-988311c2="" fill-rule="nonzero" stroke="#637280" stroke-width="1.2">
-                    <g data-v-988311c2="" transform="translate(-838 -791) translate(252 741) translate(320 43) translate(266 8)"><circle data-v-988311c2="" cx="11" cy="11" r="10.4"></circle></g>
-                  </g>
-                </g>
-              </svg>
-              <div data-v-988311c2="" class="icons"><img data-v-988311c2="" src="/assets/nhan/imgs/paypal.png" alt="Paypal" class="icon lazyLoad" /></div>
-              <p data-v-988311c2="" class="text">Paypal</p>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div data-v-7d8bce1e="" data-v-511c74d1="" class="booking-nav-buttons">
-    <div data-v-7d8bce1e="" class="left-btns">
-      <a href="xemthongtinxe.html">
-        <button data-v-7d8bce1e="" class="back-btn" href="xemthongtinxe.html">
-          <img
-            data-v-7d8bce1e=""
-            alt="back"
-            class="icon lazyLoad isLoaded"
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAASKADAAQAAAABAAAASAAAAACQMUbvAAACSklEQVR4Ae3aT07CQBQGcKrAyh22cAiDngGix/BwHMOoW9eohygV1iRAqO/FEppaoJH58435utDpFN7M/CxD5zmtFg8KUIACFKAABShAAQpQgAIUoAAFKPCvBKKQRjMYDOLVavWofe52u5M0Tb9s9z8YoCRJbjebzVOe54miRFGUCtLQNtKl7b+AifiKs16vXyRWXIp3td1uZ8vl8q1UZ7x4YTyi4YAlnJ7h0I3CQQMdw5GPWKbzUKNRnvEiWKBjODLeebvdvrc9/6gr5CR9CqfT6YyzLHs/48Zo/FY4ICQcuDsIDQcKCBEHBggVBwIIGcc7EDqOV6AQcLwBhYKjQM4Xq3Ec38mqXBeedWurucuHQAU4dTh9UCxwnqVTQeAonjOgEHGcAYWK4wSo3+8nkib9lMbKyS5tWw+4OeenW/uf7X3RTkkygZpDrsWR+pGsyj/stGwmqot8UH6gq5F8Y7lo/0Dzzaqtd1CzfpL9m9V0p6d5Zn0mqrkGU2UdSLN+kv17kBHPa0YNj+Tsa17ulGHxn4nrGqhF8YA4rbnmtcoZkI4yRCSnQCEiOQcKDckLUEhI3oBCQfIKFAKSdyB0JAggZCQYIFQkKCBEJDggNCRIoBLSq5Tr8tfO1m6wQKeQig1UN7b3CFlPd+hA/3roHiBZ5Y/k/YtqDN3MudvxWr1m8hwaSAdaII2l+AvJJMShWPBA2nFBmmq+SD9Wu4FIWbcBT3bntn5Dz0HVQfvYSF7tA88pQAEKUIACFKAABShAAQpQgAIUoEDgAt/KjWWzclDJlgAAAABJRU5ErkJggg=="
-          />
-          QUAY LẠI
-        </button>
-      </a>
-      <!---->
-    </div>
-    <div data-v-7d8bce1e="" class="right-btns">
-      <!---->
-      <button data-v-7d8bce1e="" class="pay-btn" (click)="thanhToan()">
-        THANH TOÁN
-      </button>
-      <!---->
     </div>
   </div>
 </div>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-</body>
-</html>
+<div class="main main-raised">
+  <div class="section section-basic">
+    <div data-v-511c74d1="">
+<!--      <div data-v-5747e235="" data-v-511c74d1="" class="container step-line">-->
+<!--        <div data-v-5747e235="" class="line">-->
+<!--          <div data-v-5747e235="" class="current-line"></div>-->
+<!--          <div data-v-5747e235="" class="current-line"></div>-->
+<!--        </div>-->
+<!--        <div data-v-5747e235="" class="step-circles">-->
+<!--          <div data-v-5747e235="" class="current-step">-->
+<!--            <div data-v-5747e235="" class="text">1</div>-->
+<!--            <div data-v-5747e235="" class="active-title" style="display: none;">-->
+<!--              CHỌN TUYẾN-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div data-v-5747e235="" class="current-step">-->
+<!--            <div data-v-5747e235="" class="text">2</div>-->
+<!--            <div data-v-5747e235="" class="active-title" style="display: none;">-->
+<!--              CHỌN GHẾ-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div data-v-5747e235="" class="next-step">-->
+<!--            <div data-v-5747e235="" class="text">3</div>-->
+<!--            <div data-v-5747e235="" class="active-title" style="">-->
+<!--              THANH TOÁN-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+      <div data-v-511c74d1="" class="child">
+        <div data-v-511c74d1="">
+          <div data-v-c6c11ca6="" id="ticket-infomation-container" class="buy-info-container">
+            <div data-v-c6c11ca6="" class="title-bar-bg"><p data-v-c6c11ca6="" class="title-txt">THÔNG TIN MUA VÉ</p></div>
+            <div data-v-561fbfed="" data-v-c6c11ca6="" class="customer-info-container">
+              <div data-v-561fbfed="" class="title-bar"><p data-v-561fbfed="" class="title-txt">Thông tin hành khách</p></div>
+              <div data-v-561fbfed="" class="container">
+                <div data-v-561fbfed="" class="row">
+                  <div data-v-561fbfed="" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-ms-12">
+                    <div data-v-561fbfed="" class="col-xs-12 field">
+                      <div data-v-561fbfed="" class="col-xs-4 sub-tit">Họ tên:</div>
+                      <div data-v-561fbfed="" class="col-xs-8">{{veXe.userNguoiDung.username}}</div>
+                    </div>
+                    <div data-v-561fbfed="" class="col-xs-12 field">
+                      <div data-v-561fbfed="" class="col-xs-4 sub-tit">Số điện thoại:</div>
+                      <div data-v-561fbfed="" class="col-xs-8">{{veXe.userNguoiDung.soDienThoai}}</div>
+                    </div>
+                  </div>
+                  <div data-v-561fbfed="" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-ms-12">
+                    <div data-v-561fbfed="" class="col-xs-12 field">
+                      <div data-v-561fbfed="" class="col-xs-4 sub-tit">Email:</div>
+                      <div data-v-561fbfed="" class="col-xs-8">{{veXe.userNguoiDung.email}}</div>
+                    </div>
+                    <!---->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--fragment#408cfda16a#head-->
+            <div data-v-62d3bf2a="" data-v-c6c11ca6="" class="ticket-info-container" fragment="408cfda16a">
+              <div data-v-62d3bf2a="" class="title-bar">
+                <div data-v-62d3bf2a="" class="title-txt"><p data-v-62d3bf2a="">Thông tin vé</p></div>
+              </div>
+              <div data-v-62d3bf2a="" class="container">
+                <div data-v-62d3bf2a="" class="row">
+                  <div data-v-62d3bf2a="" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-ms-12">
+                    <div data-v-62d3bf2a="" class="col-xs-12 field">
+                      <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Tuyến xe:</div>
+                      <div data-v-62d3bf2a="" class="col-xs-8"><span data-v-62d3bf2a="">BX.{{chuyenXe.benDi.tenBen}} ⇒ BX.{{chuyenXe.benDen.tenBen}}</span></div>
+                    </div>
+                    <div data-v-62d3bf2a="" class="col-xs-12 field">
+                      <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Thời gian:</div>
+                      <div data-v-62d3bf2a="" class="col-xs-8"><span data-v-62d3bf2a="" class="orange-value green">{{chuyenXe.thoiGian}}</span></div>
+                    </div>
+                    <div data-v-62d3bf2a="" class="col-xs-12 field">
+                      <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Điểm di:</div>
+                      <div data-v-62d3bf2a="" class="col-xs-8">
+                        <p data-v-62d3bf2a="">{{chuyenXe.benDi.tenBen}}</p>
+    <!--                    <p data-v-62d3bf2a="" class="address">Tôn Đức Thắng, Hoà Minh, Liên Chiểu, Đà Nẵng 550000</p>-->
+                      </div>
+                    </div>
+                  </div>
+                  <div data-v-62d3bf2a="" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-ms-12">
+                    <div data-v-62d3bf2a="" class="col-xs-12 field">
+                      <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Số lượng ghế:</div>
+                      <div data-v-62d3bf2a="" class="col-xs-8">{{tongGheDaChon}}</div>
+                    </div>
+                    <div data-v-62d3bf2a="" class="col-xs-12 field">
+                      <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Số ghế:</div>
+                      <div data-v-62d3bf2a="" class="col-xs-8 orange-value green">
+                        <span data-v-62d3bf2a="">{{strGheDaChon}}</span>
+    <!--                    <span data-v-62d3bf2a="">{{veXe.ghe.maGhe}}</span>-->
+                      </div>
+                    </div>
+                    <div data-v-62d3bf2a="" class="col-xs-12 field"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!---->
+            <div data-v-c6c11ca6="" fragment="408cfda16a" class="footer-bar">
+              <div data-v-c6c11ca6="" class="total-info">
+                <p data-v-c6c11ca6="" class="footer-title">TỔNG TIỀN</p>
+                <p data-v-c6c11ca6="" class="footer-price">{{tongTien}} <sup data-v-c6c11ca6="">₫</sup></p>
+              </div>
+            </div>
+          </div>
+          <div data-v-a30aa7c2="">
+            <div data-v-a30aa7c2="" class="title">CHỌN CÁCH THANH TOÁN</div>
+            <div data-v-a30aa7c2="" class="payment-item-list">
+              <div data-v-988311c2="" data-v-a30aa7c2="" class="payment-item-container">
+                <button data-v-988311c2="" class="selected">
+                  <svg data-v-988311c2="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22" height="23" viewBox="0 0 22 23" class="check checked">
+                    <defs data-v-988311c2=""><circle data-v-988311c2="" id="huxf6b78oa" cx="11" cy="11" r="11"></circle></defs>
+                    <g data-v-988311c2="" fill="none" fill-rule="evenodd">
+                      <g data-v-988311c2="" transform="translate(-518 -791) translate(252 741) translate(0 43) translate(266 8)">
+                        <mask data-v-988311c2="" id="9unrvtawmb" fill="#fff"><use data-v-988311c2="" xlink:href="#huxf6b78oa"></use></mask>
+                        <use data-v-988311c2="" fill="#EF5222" fill-rule="nonzero" xlink:href="#huxf6b78oa"></use>
+                        <path data-v-988311c2="" fill-rule="nonzero" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 11.125L9.058 14.25 15.375 8" mask="url(#9unrvtawmb)"></path>
+                      </g>
+                    </g>
+                  </svg>
+                  <svg data-v-988311c2="" xmlns="http://www.w3.org/2000/svg" width="22" height="23" viewBox="0 0 22 23" class="check not-check">
+                    <g data-v-988311c2="" fill="none" fill-rule="evenodd" stroke-opacity=".63">
+                      <g data-v-988311c2="" fill-rule="nonzero" stroke="#637280" stroke-width="1.2">
+                        <g data-v-988311c2="" transform="translate(-838 -791) translate(252 741) translate(320 43) translate(266 8)"><circle data-v-988311c2="" cx="11" cy="11" r="10.4"></circle></g>
+                      </g>
+                    </g>
+                  </svg>
+                  <div data-v-988311c2="" class="icons"><img data-v-988311c2="" src="/assets/nhan/imgs/paypal.png" alt="Paypal" class="icon lazyLoad" /></div>
+                  <p data-v-988311c2="" class="text">Paypal</p>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-v-7d8bce1e="" data-v-511c74d1="" class="booking-nav-buttons">
+        <div data-v-7d8bce1e="" class="left-btns">
+          <a (click)="backClicked()">
+            <button data-v-7d8bce1e="" class="btn btn-danger" href="xemthongtinxe.html">
+              <img
+                data-v-7d8bce1e=""
+                alt="back"
+                class="icon lazyLoad isLoaded"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAASKADAAQAAAABAAAASAAAAACQMUbvAAACSklEQVR4Ae3aT07CQBQGcKrAyh22cAiDngGix/BwHMOoW9eohygV1iRAqO/FEppaoJH58435utDpFN7M/CxD5zmtFg8KUIACFKAABShAAQpQgAIUoAAFKPCvBKKQRjMYDOLVavWofe52u5M0Tb9s9z8YoCRJbjebzVOe54miRFGUCtLQNtKl7b+AifiKs16vXyRWXIp3td1uZ8vl8q1UZ7x4YTyi4YAlnJ7h0I3CQQMdw5GPWKbzUKNRnvEiWKBjODLeebvdvrc9/6gr5CR9CqfT6YyzLHs/48Zo/FY4ICQcuDsIDQcKCBEHBggVBwIIGcc7EDqOV6AQcLwBhYKjQM4Xq3Ec38mqXBeedWurucuHQAU4dTh9UCxwnqVTQeAonjOgEHGcAYWK4wSo3+8nkib9lMbKyS5tWw+4OeenW/uf7X3RTkkygZpDrsWR+pGsyj/stGwmqot8UH6gq5F8Y7lo/0Dzzaqtd1CzfpL9m9V0p6d5Zn0mqrkGU2UdSLN+kv17kBHPa0YNj+Tsa17ulGHxn4nrGqhF8YA4rbnmtcoZkI4yRCSnQCEiOQcKDckLUEhI3oBCQfIKFAKSdyB0JAggZCQYIFQkKCBEJDggNCRIoBLSq5Tr8tfO1m6wQKeQig1UN7b3CFlPd+hA/3roHiBZ5Y/k/YtqDN3MudvxWr1m8hwaSAdaII2l+AvJJMShWPBA2nFBmmq+SD9Wu4FIWbcBT3bntn5Dz0HVQfvYSF7tA88pQAEKUIACFKAABShAAQpQgAIUoEDgAt/KjWWzclDJlgAAAABJRU5ErkJggg=="
+              />
+              QUAY LẠI
+            </button>
+          </a>
+        </div>
+        <div data-v-7d8bce1e="" class="right-btns">
+          <button data-v-7d8bce1e="" class="btn btn-success" (click)="thanhToan()">
+            THANH TOÁN
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
