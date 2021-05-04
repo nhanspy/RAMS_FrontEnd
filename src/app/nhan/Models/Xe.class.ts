@@ -6,12 +6,12 @@ import {LoaiXe} from './LoaiXe.class';
 export class Xe {
   private _maXe: string;
   private _bienSoXe: string;
-  private _ghe: Ghe;
+  private _ghe: Ghe[];
   private _chuyenXe: ChuyenXe;
   private _nhaXe: NhaXe;
   private _loaiXe: LoaiXe;
 
-  constructor(maXe: string, bienSoXe: string, ghe: Ghe, chuyenXe: ChuyenXe, nhaXe: NhaXe, loaiXe: LoaiXe) {
+  constructor(maXe: string, bienSoXe: string, ghe: Ghe[], chuyenXe: ChuyenXe, nhaXe: NhaXe, loaiXe: LoaiXe) {
     this._maXe = maXe;
     this._bienSoXe = bienSoXe;
     this._ghe = ghe;
@@ -36,11 +36,11 @@ export class Xe {
     this._bienSoXe = value;
   }
 
-  get ghe(): Ghe {
+  get ghe(): Ghe[] {
     return this._ghe;
   }
 
-  set ghe(value: Ghe) {
+  set ghe(value: Ghe[]) {
     this._ghe = value;
   }
 

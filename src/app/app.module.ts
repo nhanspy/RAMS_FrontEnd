@@ -14,7 +14,6 @@ import {DatVeComponent} from './nhan/dat-ve/dat-ve.component';
 import {XemChiTietChuyenXeComponent} from './nhan/xem-chi-tiet-chuyen-xe/xem-chi-tiet-chuyen-xe.component';
 import {XemLichSuComponent} from './trong/xem-lich-su/xem-lich-su.component';
 import {TimKiemTuyenComponent} from './trong/tim-kiem-tuyen/tim-kiem-tuyen.component';
-import {TestRoutingComponent} from './trong/test-routing/test-routing.component';
 import {HeaderComponent} from './trong/header/header.component';
 import {FooterComponent} from './trong/footer/footer.component';
 import { TestFubusComponent } from './nhan/test-fubus/test-fubus.component';
@@ -25,6 +24,20 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { XuatVeComponent } from './nhan/xuat-ve/xuat-ve.component';
 import { NewTemplateComponent } from './nhan/new-template/new-template.component';
+import {HomeComponent} from './thao/home/home.component';
+import {ProfileComponent} from './thao/profile/profile.component';
+import {BoardAdminComponent} from './thao/board-admin/board-admin.component';
+import {BoardModeratorComponent} from './thao/board-moderator/board-moderator.component';
+import {BoardUserComponent} from './thao/board-user/board-user.component';
+import {ResetPasswordComponent} from './thao/reset-password/reset-password.component';
+import {VerifyResetPasswordComponent} from './thao/verify-reset-password/verify-reset-password.component';
+import {KiemTraVeComponent} from './thao/kiem-tra-ve/kiem-tra-ve.component';
+import {DangNhapComponent} from './thao/dang-nhap/dang-nhap.component';
+import {DangKyComponent} from './thao/dang-ky/dang-ky.component';
+import {DangkyuserComponent} from './thao/dangkyuser/dangkyuser.component';
+import {QuenmatkhauComponent} from './thao/quenmatkhau/quenmatkhau.component';
+import {DoimatkhauComponent} from './thao/doimatkhau/doimatkhau.component';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -37,12 +50,26 @@ import { NewTemplateComponent } from './nhan/new-template/new-template.component
     QlNhaXeComponent,
     XemLichSuComponent,
     TimKiemTuyenComponent,
-    TestRoutingComponent,
     HeaderComponent,
     FooterComponent,
     TestFubusComponent,
     XuatVeComponent,
     NewTemplateComponent,
+    HomeComponent,
+    ProfileComponent,
+    BoardAdminComponent,
+    BoardModeratorComponent,
+    BoardUserComponent,
+    ResetPasswordComponent,
+    VerifyResetPasswordComponent,
+    KiemTraVeComponent,
+    HeaderComponent,
+    FooterComponent,
+    DangNhapComponent,
+    DangKyComponent,
+    DangkyuserComponent,
+    QuenmatkhauComponent,
+    DoimatkhauComponent
   ],
     imports: [
       BrowserModule,
@@ -54,7 +81,9 @@ import { NewTemplateComponent } from './nhan/new-template/new-template.component
       BrowserAnimationsModule,
       MatFormFieldModule,
       NgxPaginationModule,
-      IvyCarouselModule
+      IvyCarouselModule,
+      AppRoutingModule,
+      ToastrModule.forRoot()
     ],
 
   providers: [

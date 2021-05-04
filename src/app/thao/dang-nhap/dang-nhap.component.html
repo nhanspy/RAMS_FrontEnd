@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Material Kit PRO by Creative Tim
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/css/material-kit.css">
+
+</head>
+
+<body class="login-page sidebar-collapse">
+<nav class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
+  <div class="container">
+    <div class="navbar-translate">
+      <a class="navbar-brand" href="https://demos.creative-tim.com/material-kit-pro/index.html">
+        Trang chủ</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="dropdown nav-item">
+          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+            <i class="material-icons">apps</i> Tìm kiếm
+          </a>
+          <div class="dropdown-menu dropdown-with-icons">
+            <a href="../presentation.html" class="dropdown-item">
+              <i class="material-icons">layers</i> Người dùng
+            </a>
+            <a href="../index.html" class="dropdown-item">
+              <i class="material-icons">line_style</i>Nhà xe
+            </a>
+          </div>
+        </li>
+        <li class="dropdown nav-item">
+          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+            <i class="material-icons">view_day</i> Quản lý
+          </a>
+          <div class="dropdown-menu dropdown-with-icons">
+            <a href="../sections.html#headers" class="dropdown-item">
+              <i class="material-icons">dns</i> Người dùng
+            </a>
+            <a href="../sections.html#features" class="dropdown-item">
+              <i class="material-icons">build</i> Nhà xe
+            </a>
+            <a href="../sections.html#blogs" class="dropdown-item">
+              <i class="material-icons">list</i> Ghế
+            </a>
+          </div>
+        </li>
+        <li class="dropdown nav-item">
+          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+            <i class="material-icons">view_carousel</i> Đặt vé
+          </a>
+          <div class="dropdown-menu dropdown-with-icons">
+            <a href="../examples/about-us.html" class="dropdown-item">
+              <i class="material-icons">account_balance</i> About Us
+            </a>
+            <a href="../examples/blog-post.html" class="dropdown-item">
+              <i class="material-icons">art_track</i> Blog Post
+            </a>
+          </div>
+        </li>
+        <li class="button-container nav-item iframe-extern">
+          <a href="https://www.creative-tim.com/product/material-kit-pro?ref=presentation" target="_blank" class="btn  btn-rose   btn-round btn-block">
+            <i class="material-icons">shopping_cart</i> Thanh toán
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="page-header header-filter" style="background-image: url('/assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+        <form name="form" class="form" method="" action="" (ngSubmit)="onSubmit()">
+          <div class="card card-login card-hidden">
+            <div class="card-header card-header-primary text-center">
+              <h4 class="card-title">Đăng nhập</h4>
+              <div class="social-line">
+                <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+                  <i class="fa fa-facebook-square"></i>
+                </a>
+<!--                <a href="#pablo" class="btn btn-just-icon btn-link btn-white">-->
+<!--                  <i class="fa fa-twitter"></i>-->
+<!--                </a>-->
+                <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+                  <i class="fa fa-google-plus"></i>
+                </a>
+              </div>
+            </div>
+            <div class="card-body " >
+              <p class="card-description text-center"></p>
+              <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">face</i>
+                      </span>
+                    </div>
+                    <input name="username" [(ngModel)]="form.username" type="text" class="form-control" placeholder="Tên đăng nhập">
+                  </div>
+                </span>
+              <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">lock_outline</i>
+                      </span>
+                    </div>
+                    <input name="password" [(ngModel)]="form.password" type="password" class="form-control" placeholder="Mật khẩu">
+                  </div>
+                </span>
+            </div>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="customCheck1">
+              <label style="padding-left: 20px" class="custom-control-label" for="customCheck1">Nhớ mật khẩu</label>
+              <a class="haha" routerLink="/password" >Quên mật khẩu</a>
+            </div>
+
+            <div class="card-footer justify-content-center">
+              <a>
+                <input  type="submit"  class="btn btn-rose btn-link btn-lg" value="Đăng nhập">
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

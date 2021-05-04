@@ -30,12 +30,14 @@ export class XemLichSu {
   set thoiGian(value: string) {
     this._thoiGian = value;
   }
+
   constructor(tenNhaXe: string, benDi: string, benDen: string, thoiGian: string) {
     this._tenNhaXe = tenNhaXe;
     this._benDi = benDi;
     this._benDen = benDen;
     this._thoiGian = thoiGian;
   }
+
   private _tenNhaXe: string;
   private _benDi: string;
   private _benDen: string;

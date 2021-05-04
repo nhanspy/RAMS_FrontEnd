@@ -53,4 +53,13 @@ export class DatVeService {
   updateGhe(strMaVe: String[]): Observable<any>{
     return this._httpClient.post(baseURL + '/ghe/updateGhe', strMaVe);
   }
+
+  // @ts-ignore
+  urlStr: string;
+  sendMail(mailSend: string, id: string){
+    this.urlStr = 'http://localhost:8080/send/' + id + '/' + mailSend;
+    console.log(this.urlStr);
+    // @ts-ignore
+    return this._httpClient.get(this.urlStr);
+  }
 }

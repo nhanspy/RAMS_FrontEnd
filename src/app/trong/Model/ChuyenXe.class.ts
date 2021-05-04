@@ -4,6 +4,7 @@ export class ChuyenXe {
   benDi: string;
   benDen: string;
   thoiGian: string;
+
   constructor(maChuyen: string, maXe: string, benDi: string, benDen: string, thoiGian: string) {
     this.maChuyen = maChuyen;
     this.maXe = maXe;

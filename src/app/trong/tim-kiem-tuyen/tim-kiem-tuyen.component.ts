@@ -1,27 +1,37 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {XemLichSuService} from '../Services/xem-lich-su.service';
-import {TinhThanh} from '../../nhan/Models/TinhThanh.class';
-import {ActivatedRoute, Router} from '@angular/router';
+import {TinhThanh} from "../Model/TinhThanh";
+import {XemLichSuService} from "../Services/xem-lich-su.service";
 
 @Component({
   selector: 'app-tim-kiem-tuyen',
   templateUrl: './tim-kiem-tuyen.component.html',
-  styleUrls: ['./tim-kiem-tuyen.component.css']
+  styleUrls: ['./tim-kiem-tuyen.component.css',
+    '../../../assets/trong/css/fubus.css',
+    '../../../assets/trong/css/add.css']
 })
 export class TimKiemTuyenComponent implements OnInit {
   tinhthanhlist: TinhThanh [] = [];
   // @ts-ignore
   tinhthanh: TinhThanh;
   // @ts-ignore
-  getbendi: string;
+  @Input() getbendi: string;
   // @ts-ignore
-  getbenden: string;
+  @Input() getbenden: string;
   // @ts-ignore
-  getthoigian: string;
+  @Input() getthoigian: string;
+  // minDate = new Date();
+  // @ts-ignore
+  // check_Date=new Date();
+// @ts-ignore
+  localCompleteDate: string;
+  date: Date = new Date();
 
-  constructor(
-    private xemLichSuService: XemLichSuService
-  ) {
+
+  constructor(private xemLichSuService: XemLichSuService) {
+    // this.check_Date.setSeconds(0);
+    // this.check_Date.setMilliseconds(0);
+    // this.localCompleteDate = this.check_Date.toISOString();
+    // this.localCompleteDate = this.localCompleteDate.substring(0, this.localCompleteDate.length - 1);
   }
 
   // tslint:disable-next-line:typedef
@@ -48,4 +58,5 @@ export class TimKiemTuyenComponent implements OnInit {
     this.getthoigian = thoigian;
     console.log('the selected value is ' + thoigian);
   }
+
 }

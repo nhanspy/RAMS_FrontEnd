@@ -5,6 +5,9 @@ import {Location} from '@angular/common';
 import {Ghe} from '../Models/Ghe.class';
 import {XemChiTietChuyenXeService} from '../service/xem-chi-tiet-chuyen-xe.service';
 import {ChuyenXe} from '../Models/ChuyenXe.class';
+import {AuthService} from '../service/auth.service';
+import {TokenStorageService} from '../service/token-storage.service';
+import {XuatVeService} from '../service/xuat-ve.service';
 
 @Component({
   selector: 'app-xuat-ve',
@@ -13,7 +16,7 @@ import {ChuyenXe} from '../Models/ChuyenXe.class';
 })
 export class XuatVeComponent implements OnInit {
 
-  constructor(private datVeService: DatVeService, private router: Router, private _location: Location, private xemChiTietChuyenXeService: XemChiTietChuyenXeService) { }
+  constructor(private xuatVeService: XuatVeService, private datVeService: DatVeService, private router: Router, private _location: Location, private xemChiTietChuyenXeService: XemChiTietChuyenXeService, private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
   // @ts-ignore
   maVe: String[];
@@ -28,8 +31,27 @@ export class XuatVeComponent implements OnInit {
   newGhesTang2: Ghe[] = [];
   // @ts-ignore
   chuyenXe: ChuyenXe;
+  isLoggedIn = false;
+  currentUser: any;
+  errorMessage = '';
+  roles: string[] = [];
 
   ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
+      this.currentUser = this.tokenStorage.getUser();
+      console.log(this.currentUser);
+      this.datVeService.sendMail(this.currentUser.email, 'thao_ngu').subscribe(
+        data => {
+          console.log(data);
+        }, error => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.router.navigate(['dangnhap']);
+    }
     this.init();
   }
 

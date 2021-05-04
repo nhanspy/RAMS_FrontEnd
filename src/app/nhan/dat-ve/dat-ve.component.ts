@@ -5,6 +5,8 @@ import {Router} from '@angular/router';
 import {ChuyenXe} from '../Models/ChuyenXe.class';
 import {Ghe} from '../Models/Ghe.class';
 import {Location} from '@angular/common';
+import {AuthService} from '../service/auth.service';
+import {TokenStorageService} from '../service/token-storage.service';
 @Component({
   selector: 'app-dat-ve',
   templateUrl: './dat-ve.component.html',
@@ -15,8 +17,12 @@ export class DatVeComponent implements OnInit {
   // @ts-ignore
   price: number;
   maVe = 'mv02';
+  isLoggedIn = false;
+  currentUser: any;
+  errorMessage = '';
+  roles: string[] = [];
   // tslint:disable-next-line:variable-name
-  constructor(private datVeService: DatVeService, private router: Router, private _location: Location) {
+  constructor(private datVeService: DatVeService, private router: Router, private _location: Location, private authService: AuthService, private tokenStorage: TokenStorageService) {
 
     this.datVeService.getById(this.maVe).subscribe(
       data => {
@@ -46,6 +52,16 @@ export class DatVeComponent implements OnInit {
   strGheDaChon: string;
 
   ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
+      this.currentUser = this.tokenStorage.getUser();
+      console.log(this.currentUser);
+      this.datVeService.sendMail(this.currentUser.email, 'thao ngu');
+    } else {
+      this.router.navigate(['dangnhap']);
+    }
+
     if (localStorage.getItem('chuyenXe')) {
       // @ts-ignore
       this.chuyenXe = JSON.parse(localStorage.getItem('chuyenXe'));
@@ -95,6 +111,10 @@ export class DatVeComponent implements OnInit {
   }
   backClicked(): void {
     this._location.back();
+  }
+  logout(): void {
+    this.tokenStorage.signOut();
+    window.location.reload();
   }
 
 }

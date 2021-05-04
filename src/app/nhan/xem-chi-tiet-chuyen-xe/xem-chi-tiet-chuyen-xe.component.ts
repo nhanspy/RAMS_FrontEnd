@@ -73,7 +73,7 @@ export class XemChiTietChuyenXeComponent implements OnInit {
     this.getChuyen();
     this.getNhaXe();
     this.getTrangThaiGhe();
-    this.ngay = '2021-04-08';
+    // this.ngay = '2021-04-08';
     this.maChuyenXe = 'mcx01';
     console.log('=============');
   }

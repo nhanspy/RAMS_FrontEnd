@@ -8,36 +8,10 @@
     </div>
   </div>
 </div>
-
+<button (click)="logout()">logout</button>
 <div class="main main-raised">
   <div class="section section-basic">
     <div data-v-511c74d1="">
-<!--      <div data-v-5747e235="" data-v-511c74d1="" class="container step-line">-->
-<!--        <div data-v-5747e235="" class="line">-->
-<!--          <div data-v-5747e235="" class="current-line"></div>-->
-<!--          <div data-v-5747e235="" class="current-line"></div>-->
-<!--        </div>-->
-<!--        <div data-v-5747e235="" class="step-circles">-->
-<!--          <div data-v-5747e235="" class="current-step">-->
-<!--            <div data-v-5747e235="" class="text">1</div>-->
-<!--            <div data-v-5747e235="" class="active-title" style="display: none;">-->
-<!--              CHỌN TUYẾN-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div data-v-5747e235="" class="current-step">-->
-<!--            <div data-v-5747e235="" class="text">2</div>-->
-<!--            <div data-v-5747e235="" class="active-title" style="display: none;">-->
-<!--              CHỌN GHẾ-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div data-v-5747e235="" class="next-step">-->
-<!--            <div data-v-5747e235="" class="text">3</div>-->
-<!--            <div data-v-5747e235="" class="active-title" style="">-->
-<!--              THANH TOÁN-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
       <div data-v-511c74d1="" class="child">
         <div data-v-511c74d1="">
           <div data-v-c6c11ca6="" id="ticket-infomation-container" class="buy-info-container">
@@ -49,17 +23,17 @@
                   <div data-v-561fbfed="" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-ms-12">
                     <div data-v-561fbfed="" class="col-xs-12 field">
                       <div data-v-561fbfed="" class="col-xs-4 sub-tit">Họ tên:</div>
-                      <div data-v-561fbfed="" class="col-xs-8">{{veXe.userNguoiDung.username}}</div>
+                      <div data-v-561fbfed="" class="col-xs-8">{{currentUser.username}}</div>
                     </div>
                     <div data-v-561fbfed="" class="col-xs-12 field">
                       <div data-v-561fbfed="" class="col-xs-4 sub-tit">Số điện thoại:</div>
-                      <div data-v-561fbfed="" class="col-xs-8">{{veXe.userNguoiDung.soDienThoai}}</div>
+                      <div data-v-561fbfed="" class="col-xs-8">{{currentUser.soDienThoai}}</div>
                     </div>
                   </div>
                   <div data-v-561fbfed="" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-ms-12">
                     <div data-v-561fbfed="" class="col-xs-12 field">
                       <div data-v-561fbfed="" class="col-xs-4 sub-tit">Email:</div>
-                      <div data-v-561fbfed="" class="col-xs-8">{{veXe.userNguoiDung.email}}</div>
+                      <div data-v-561fbfed="" class="col-xs-8">{{currentUser.email}}</div>
                     </div>
                     <!---->
                   </div>
@@ -80,7 +54,7 @@
                     </div>
                     <div data-v-62d3bf2a="" class="col-xs-12 field">
                       <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Thời gian:</div>
-                      <div data-v-62d3bf2a="" class="col-xs-8"><span data-v-62d3bf2a="" class="orange-value green">{{chuyenXe.thoiGian}}</span></div>
+                      <div data-v-62d3bf2a="" class="col-xs-8"><span data-v-62d3bf2a="" class="orange-value green">{{chuyenXe.thoiGian| date:'MM/dd/yyyy hh:mm'}}</span></div>
                     </div>
                     <div data-v-62d3bf2a="" class="col-xs-12 field">
                       <div data-v-62d3bf2a="" class="col-xs-4 sub-tit">Điểm di:</div>
