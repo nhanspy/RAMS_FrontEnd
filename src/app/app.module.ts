@@ -21,6 +21,8 @@ import {ToastrModule} from "ngx-toastr";
 import { DangNhapComponent } from './thao/dang-nhap/dang-nhap.component';
 import { DangKyComponent } from './thao/dang-ky/dang-ky.component';
 import { DangkyuserComponent } from './thao/dangkyuser/dangkyuser.component';
+import { QuenmatkhauComponent } from './thao/quenmatkhau/quenmatkhau.component';
+import { DoimatkhauComponent } from './thao/doimatkhau/doimatkhau.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,9 @@ import { DangkyuserComponent } from './thao/dangkyuser/dangkyuser.component';
     FooterComponent,
     DangNhapComponent,
     DangKyComponent,
-    DangkyuserComponent
+    DangkyuserComponent,
+    QuenmatkhauComponent,
+    DoimatkhauComponent
    ],
   imports: [
     BrowserModule,

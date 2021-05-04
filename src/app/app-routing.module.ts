@@ -11,6 +11,7 @@ import {VerifyResetPasswordComponent} from "./thao/verify-reset-password/verify-
 import {DangNhapComponent} from "./thao/dang-nhap/dang-nhap.component";
 import {DangKyComponent} from "./thao/dang-ky/dang-ky.component";
 import {DangkyuserComponent} from "./thao/dangkyuser/dangkyuser.component";
+import {QuenmatkhauComponent} from "./thao/quenmatkhau/quenmatkhau.component";
 
 const routes: Routes = [
   {path: 'kiemtra', component: KiemTraVeComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'verifypass', component: VerifyResetPasswordComponent},
   {path: 'dangnhap', component: DangNhapComponent},
   {path: 'nguoidung', component: DangkyuserComponent},
+  {path: 'quenmatkhau', component: QuenmatkhauComponent},
   {path: 'dangky', component: DangKyComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
