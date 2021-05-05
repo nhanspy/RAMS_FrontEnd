@@ -12,7 +12,7 @@ import {ToastrService} from "ngx-toastr";
 })
 export class DangKyComponent implements OnInit {
   // @ts-ignore
-  formRegnd: FormGroup;
+  formRegnx: FormGroup;
 
   constructor( private formBuild: FormBuilder,
                private tokenStorageService: TokenStorageService,
@@ -20,7 +20,7 @@ export class DangKyComponent implements OnInit {
                private router: Router,
                private toastr: ToastrService,
                private route: ActivatedRoute) {
-      this.formRegnd= this.formBuild.group({
+      this.formRegnx= this.formBuild.group({
         ten: ['',[Validators.required]],
         username: ['',[Validators.required]],
         password:['',[Validators.required,Validators.minLength(6),Validators.maxLength(20)]],
@@ -62,21 +62,22 @@ export class DangKyComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmitt(): void {
-    console.log(this.formRegnd.value);
+    console.log(this.formRegnx.value);
     {
-      if (this.checkPasswords(this.formRegnd)) {
+      if (this.checkPasswords(this.formRegnx)) {
         this.toastr.warning("Mật khẩu và xác nhận mật khẩu không giống nhau", "Warning:", {
           timeOut: 1500,
           extendedTimeOut: 1500
         })
-         // alert('Mật khẩu và xác nhận mật khẩu không giống nhau');
+         alert('Mật khẩu và xác nhận mật khẩu không giống nhau');
       } else {
-        this.authService.register(this.formRegnd.value).subscribe(
+        this.authService.register(this.formRegnx.value).subscribe(
           data => {
             this.toastr.success(data.message, "Hoàn tất ", {
               timeOut: 3500,
               extendedTimeOut: 1500
             });
+            alert('Đăng ký thành công');
             // this.router.navigate(['dangnhap']).then(() => {
             //   window.location.reload();
             // });
