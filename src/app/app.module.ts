@@ -15,19 +15,19 @@ import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        XemChiTietChuyenXeComponent,
-        DatVeComponent,
-        QlNguoiDungComponent,
-        QlTuyenXeComponent,
-        QlNhaXeComponent,
-        // DangKyComponent,
-        // DangNhapComponent,
-        // KiemTraVeComponent,
-        // XemLichSuComponent,
-        // TimKiemComponent,
-    ],
+  declarations: [
+    AppComponent,
+    XemChiTietChuyenXeComponent,
+    DatVeComponent,
+    QlNguoiDungComponent,
+    QlTuyenXeComponent,
+    QlNhaXeComponent,
+    // DangKyComponent,
+    // DangNhapComponent,
+    // KiemTraVeComponent,
+    // XemLichSuComponent,
+    // TimKiemComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

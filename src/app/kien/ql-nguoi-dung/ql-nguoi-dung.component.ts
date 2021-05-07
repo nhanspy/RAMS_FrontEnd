@@ -1,20 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {QlNguoiDungService} from '../../Services/kien-s/ql-nguoi-dung.service';
-import {User} from '../../nhan/Models/User.class';
-import {SignupRequest} from '../../nhan/Models/SignupRequest.class';
+import {QlNguoiDungService} from '../kien-s/ql-nguoi-dung.service';
+import {User} from '../Models/User.class';
+import {SignupRequest} from '../Models/SignupRequest.class';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {dateOfBirth} from './validator-customer/date-of-birth.validator';
 
-// @ts-ignore
 @Component({
   selector: 'app-ql-nguoi-dung',
   templateUrl: './ql-nguoi-dung.component.html',
-  styleUrls: ['./ql-nguoi-dung.component.css']
+  styleUrls: ['./ql-nguoi-dung.component.sass']
 })
-// @ts-ignore
 export class QlNguoiDungComponent implements OnInit {
-  editInfo = false;
-  // @ts-ignore
-  formCreate: FormGroup;
   // @ts-ignore
   totalRec: string;
   page: number = 1;
@@ -38,7 +34,11 @@ export class QlNguoiDungComponent implements OnInit {
   // @ts-ignore
   keywordGioitinh: string;
   // @ts-ignore
+  listError: any = "";
+  // @ts-ignore
   keywordEmail: string;
+  // @ts-ignore
+  nguoiDungForm: FormGroup;
   // @ts-ignore
   // tslint:disable-next-line:variable-name
   private _NguoidungName: string;
@@ -67,21 +67,24 @@ export class QlNguoiDungComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     this.user = new User();
-    // this.formCreate = new FormGroup({
-    //   username: new FormControl('',[Validators.required, Validators.maxLength(10), Validators.minLength(3)]),
-    //   tennguoidung: new FormControl('',[Validators.required, Validators.maxLength(10), Validators.minLength(3)]),
-    //   email: new FormControl('', [Validators.pattern(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/), Validators.required]),
-    //   phone: new FormControl('', [Validators.required, Validators.pattern('(0)[35789][0-9]{8}')]),
-    //   dateOfBirth: new FormControl('', [Validators.required]),
-    //   address: new FormControl('', [Validators.required]),
-    // });
+    this.nguoiDungForm = new FormGroup({
+      // tslint:disable-next-line:max-line-length
+      username: new FormControl('', [Validators.required, Validators.pattern('^[^\\d\\t` ~!@#$%^&*()_\\-+=|\\\\{}\\[\\]:;"\'<>,.?\/]{6,20}$')]),
+      // tslint:disable-next-line:max-line-length
+      ten: new FormControl('', [Validators.required, Validators.pattern('^[^\\d\\t`~!@#$%^&*()_\\-+=|\\\\{}\\[\\]:;"\'<>,.?\/]{3,15}$'), Validators.maxLength(15), Validators.minLength(3)]),
+      email: new FormControl('', [Validators.required, Validators.pattern('^[\\w-\\.]+@(?!.*gmai\\.com|mail|gmial|gail|gmil|gmal|gmaiil|gmeo|gmaill|gnail\\.com|gmail\\.con|outlook\\.com\\.vn|mytam\\.info|mytamentertainment\\.com|yhoo\\.com|yaho\\.com|yahu\\.com|gmail\\.com\\.vn|gamil\\.com|email\\.com.*)([\\w-]+\\.)+[\\w-]{2,4}$')]),
+      soDienThoai: new FormControl('', [Validators.pattern('^(\\+84|0)\\d{9,10}'), Validators.required]),
+      ngaySinh: new FormControl('', [Validators.required, dateOfBirth] ),
+      // diaChi: new FormControl('', [Validators.required]),
+      gioiTinh: new FormControl('', [Validators.required])
+    });
   }
   // tslint:disable-next-line:typedef
   addnguoidung() {
     // @ts-ignore
-    console.log(this.nguoiDung);
-    this._qlNguoiDungService.create(this.nguoiDung).subscribe(response => {
-        alert('Lưu thành công!!');
+    console.log(this.nguoiDungForm.value);
+    this._qlNguoiDungService.create(this.nguoiDungForm.value).subscribe(response => {
+        alert('Thêm thành công!!');
         this._qlNguoiDungService.getAll().subscribe(data => {
           console.log(data);
           this.NguoidungList = data;
@@ -106,9 +109,11 @@ export class QlNguoiDungComponent implements OnInit {
     this.enableEdit = true;
     this.enableEditIndex = i;
     this.enableAddNew = 1;
+
+    this.nguoiDungForm.patchValue(this.nguoiDung);
+    console.log(this.nguoiDungForm.value);
     console.log(i, e);
-    console.log(    this.enableAddNew
-    );
+    console.log(this.enableAddNew);
   }
   // tslint:disable-next-line:typedef
   new(){
@@ -119,14 +124,14 @@ export class QlNguoiDungComponent implements OnInit {
   removeNguoidung(index: number, id: number){
     let cf = confirm('Bạn có muốn xóa hay không??');
     if (cf) {
-    this._qlNguoiDungService.delete(id).subscribe(
-      data => {
-        console.log(data);
-        if (data == null) { this.NguoidungList.splice(index, 1); }
-      }, error => {
-        console.log(error);
-      }
-    );
+      this._qlNguoiDungService.delete(id).subscribe(
+        data => {
+          console.log(data);
+          if (data == null) { this.NguoidungList.splice(index, 1); }
+        }, error => {
+          console.log(error);
+        }
+      );
     }
   }
   // tslint:disable-next-line:typedef
@@ -215,4 +220,3 @@ export class QlNguoiDungComponent implements OnInit {
     this.search();
   }
 }
-
