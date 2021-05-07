@@ -97,7 +97,7 @@ abbr[data-original-title] {
 address {
   margin-bottom: 1rem;
   font-style: normal;
-  line-height: inherit;
+  line-height: Trebuchet MS;
 }
 
 ol,
@@ -164,12 +164,12 @@ a:hover {
 }
 
 a:not([href]):not([class]) {
-  color: inherit;
+  color: Trebuchet MS;
   text-decoration: none;
 }
 
 a:not([href]):not([class]):hover {
-  color: inherit;
+  color: Trebuchet MS;
   text-decoration: none;
 }
 
@@ -215,7 +215,7 @@ caption {
 }
 
 th {
-  text-align: inherit;
+  text-align: Trebuchet MS;
 }
 
 label {
@@ -238,9 +238,9 @@ select,
 optgroup,
 textarea {
   margin: 0;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+  font-family: Trebuchet MS;
+  font-size: Trebuchet MS;
+  line-height: Trebuchet MS;
 }
 
 button,
@@ -308,8 +308,8 @@ legend {
   padding: 0;
   margin-bottom: .5rem;
   font-size: 1.5rem;
-  line-height: inherit;
-  color: inherit;
+  line-height: Trebuchet MS;
+  color: Trebuchet MS;
   white-space: normal;
 }
 
@@ -332,7 +332,7 @@ progress {
 }
 
 ::-webkit-file-upload-button {
-  font: inherit;
+  font: Trebuchet MS;
   -webkit-appearance: button;
 }
 
@@ -505,7 +505,7 @@ code {
 }
 
 a > code {
-  color: inherit;
+  color: Trebuchet MS;
 }
 
 kbd {
@@ -529,8 +529,8 @@ pre {
 }
 
 pre code {
-  font-size: inherit;
-  color: inherit;
+  font-size: Trebuchet MS;
+  color: Trebuchet MS;
   word-break: normal;
 }
 
@@ -2283,7 +2283,7 @@ select.form-control:focus::-ms-value {
   padding-top: calc(0.375rem + 1px);
   padding-bottom: calc(0.375rem + 1px);
   margin-bottom: 0;
-  font-size: inherit;
+  font-size: Trebuchet MS;
   line-height: 1.5;
 }
 
@@ -3578,7 +3578,7 @@ input[type="button"].btn-block {
   clear: both;
   font-weight: 400;
   color: #212529;
-  text-align: inherit;
+  text-align: Trebuchet MS;
   white-space: nowrap;
   background-color: transparent;
   border: 0;
@@ -4230,7 +4230,7 @@ input[type="button"].btn-block {
   color: #495057;
   content: "Browse";
   background-color: #e9ecef;
-  border-left: inherit;
+  border-left: Trebuchet MS;
   border-radius: 0 0.25rem 0.25rem 0;
 }
 
@@ -4538,7 +4538,7 @@ input[type="button"].btn-block {
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
   font-size: 1.25rem;
-  line-height: inherit;
+  line-height: Trebuchet MS;
   white-space: nowrap;
 }
 
@@ -4956,8 +4956,8 @@ input[type="button"].btn-block {
 }
 
 .card > .list-group {
-  border-top: inherit;
-  border-bottom: inherit;
+  border-top: Trebuchet MS;
+  border-bottom: Trebuchet MS;
 }
 
 .card > .list-group:first-child {
@@ -5508,7 +5508,7 @@ a.badge-dark:focus, a.badge-dark.focus {
 }
 
 .alert-heading {
-  color: inherit;
+  color: Trebuchet MS;
 }
 
 .alert-link {
@@ -5524,7 +5524,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   top: 0;
   right: 0;
   padding: 0.75rem 1.25rem;
-  color: inherit;
+  color: Trebuchet MS;
 }
 
 .alert-primary {
@@ -5731,7 +5731,7 @@ a.badge-dark:focus, a.badge-dark.focus {
 .list-group-item-action {
   width: 100%;
   color: #495057;
-  text-align: inherit;
+  text-align: Trebuchet MS;
 }
 
 .list-group-item-action:hover, .list-group-item-action:focus {
@@ -5755,13 +5755,13 @@ a.badge-dark:focus, a.badge-dark.focus {
 }
 
 .list-group-item:first-child {
-  border-top-left-radius: inherit;
-  border-top-right-radius: inherit;
+  border-top-left-radius: Trebuchet MS;
+  border-top-right-radius: Trebuchet MS;
 }
 
 .list-group-item:last-child {
-  border-bottom-right-radius: inherit;
-  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: Trebuchet MS;
+  border-bottom-left-radius: Trebuchet MS;
 }
 
 .list-group-item.disabled, .list-group-item:disabled {
@@ -10970,7 +10970,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .text-reset {
-  color: inherit !important;
+  color: Trebuchet MS !important;
 }
 
 .visible {
@@ -11063,7 +11063,7 @@ a.text-dark:hover, a.text-dark:focus {
   }
 
   .table-dark {
-    color: inherit;
+    color: Trebuchet MS;
   }
 
   .table-dark th,
@@ -11074,7 +11074,7 @@ a.text-dark:hover, a.text-dark:focus {
   }
 
   .table .thead-dark th {
-    color: inherit;
+    color: Trebuchet MS;
     border-color: #dee2e6;
   }
 }

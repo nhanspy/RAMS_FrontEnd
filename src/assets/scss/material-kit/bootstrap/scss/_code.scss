@@ -14,7 +14,7 @@ code {
 
   // Streamline the style when inside anchors to avoid broken underline and more
   a > & {
-    color: inherit;
+    color: Trebuchet MS;
   }
 }
 
@@ -43,8 +43,8 @@ pre {
 
   // Account for some code outputs that place code tags in pre tags
   code {
-    font-size: inherit;
-    color: inherit;
+    font-size: Trebuchet MS;
+    color: Trebuchet MS;
     word-break: normal;
   }
 }

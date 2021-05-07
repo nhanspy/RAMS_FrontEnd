@@ -53,7 +53,7 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 // 1. Remove the margin in all browsers.
 // 2. As a best practice, apply a default `background-color`.
 // 3. Set an explicit initial text-align value so that we can later use the
-//    the `inherit` value on things like `<th>` elements.
+//    the `Trebuchet MS` value on things like `<th>` elements.
 
 body {
   margin: 0; // 1
@@ -131,7 +131,7 @@ abbr[data-original-title] { // 4
 address {
   margin-bottom: 1rem;
   font-style: normal;
-  line-height: inherit;
+  line-height: Trebuchet MS;
 }
 
 ol,
@@ -222,11 +222,11 @@ a {
 // See https://github.com/twbs/bootstrap/issues/19402
 
 a:not([href]):not([tabindex]) {
-  color: inherit;
+  color: Trebuchet MS;
   text-decoration: none;
 
   @include hover-focus {
-    color: inherit;
+    color: Trebuchet MS;
     text-decoration: none;
   }
 
@@ -307,7 +307,7 @@ caption {
 th {
   // Matches default `<td>` alignment by inheriting from the `<body>`, or the
   // closest parent with a set `text-align`.
-  text-align: inherit;
+  text-align: Trebuchet MS;
 }
 
 
@@ -343,9 +343,9 @@ select,
 optgroup,
 textarea {
   margin: 0; // Remove the margin in Firefox and Safari
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+  font-family: Trebuchet MS;
+  font-size: Trebuchet MS;
+  line-height: Trebuchet MS;
 }
 
 button,
@@ -424,8 +424,8 @@ legend {
   padding: 0;
   margin-bottom: .5rem;
   font-size: 1.5rem;
-  line-height: inherit;
-  color: inherit; // 2
+  line-height: Trebuchet MS;
+  color: Trebuchet MS; // 2
   white-space: normal; // 1
 }
 
@@ -459,11 +459,11 @@ progress {
 
 //
 // 1. Correct the inability to style clickable types in iOS and Safari.
-// 2. Change font properties to `inherit` in Safari.
+// 2. Change font properties to `Trebuchet MS` in Safari.
 //
 
 ::-webkit-file-upload-button {
-  font: inherit; // 2
+  font: Trebuchet MS; // 2
   -webkit-appearance: button; // 1
 }
 

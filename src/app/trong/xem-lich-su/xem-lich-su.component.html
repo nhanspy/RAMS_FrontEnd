@@ -1,6 +1,6 @@
 <!--<div style="text-align: center" class="container">-->
-<!--  <h1 style="text-align: center; font-family: inherit; width: 1110px; background: orange;margin: 30px">{{Title}}</h1>-->
-<!--    <div class="tbl-header" style="font-family: inherit" >-->
+<!--  <h1 style="text-align: center; font-family: Trebuchet MS; width: 1110px; background: orange;margin: 30px">{{Title}}</h1>-->
+<!--    <div class="tbl-header" style="font-family: Trebuchet MS" >-->
 <!--      <table class="table" >-->
 <!--        <thead>-->
 <!--        <tr>-->
@@ -14,7 +14,7 @@
 <!--        </thead>-->
 <!--      </table>-->
 <!--    </div>-->
-<!--    <div class="tbl-content" style="font-family: inherit" >-->
+<!--    <div class="tbl-content" style="font-family: Trebuchet MS" >-->
 <!--        <tr class="filters">-->
 <!--          <th style="width: 5%"><input type="text" class="form-control" placeholder="#" disabled></th>-->
 <!--          <th><input style="text-align: center" type="text" class="form-control" placeholder="Tên chuyến xe" disabled></th>-->
@@ -58,7 +58,7 @@
 <body>
 <section>
   <!--for demo wrap-->
-  <h1 style="text-align: center;padding-top: 20px; font-family: inherit">{{Title}}</h1>
+  <h1 style="text-align: center;padding-top: 20px; font-family: Trebuchet MS">{{Title}}</h1>
   <div class="tbl-header">
     <table cellpadding="0" cellspacing="0" border="0">
       <thead>
@@ -90,9 +90,10 @@
     <table cellpadding="0" cellspacing="0" border="0">
       <tbody *ngIf="xemlichsulist.length !=0;else elseBlock">
       <tr *ngFor="let xemLichSu of xemlichsulist | paginate: { id: 'listing_pagination',
-                                                      itemsPerPage: 6,
+                                                      itemsPerPage: pageSize,
                                                       currentPage: page,
-                                                      totalItems: totalRec}; let i = index">
+                                                      totalItems: count}; let i = index"[class.active]="i == currentIndex"
+          (click)="setActiveTutorial(xemLichSu, i)">
         <td>{{i+1}}</td>
         <td>{{xemLichSu.maChuyen}}</td>
         <td>{{xemLichSu.xe.nhaXe.tenNhaXe}}</td>
@@ -114,8 +115,13 @@
     </table>
   </div>
   <div style="margin-bottom: -1em">
-    <pagination-controls style="margin-bottom: -1em" previousLabel="Trước" nextLabel="Sau" style="text-align: right"
-                         id="listing_pagination" (pageChange)="page = $event"></pagination-controls>
+    <pagination-controls previousLabel="Trước" nextLabel="Sau" [responsive]="true" (pageChange)="handlePageChange($event)">
+    </pagination-controls>
+    <select (change)="handlePageSizeChange($event)">
+      <option *ngFor="let size of pageSizes" [ngValue]="size">
+        {{ size }}
+      </option>
+    </select>
   </div>
 </section>
 </body>

@@ -20,7 +20,7 @@
 .list-group-item-action {
   width: 100%; // For `<button>`s (anchors become 100% by default though)
   color: $list-group-action-color;
-  text-align: inherit; // For `<button>`s (anchors inherit)
+  text-align: Trebuchet MS; // For `<button>`s (anchors Trebuchet MS)
 
   // Hover state
   @include hover-focus {

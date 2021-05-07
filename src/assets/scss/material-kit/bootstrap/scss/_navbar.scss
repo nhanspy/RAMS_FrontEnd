@@ -45,7 +45,7 @@
   padding-bottom: $navbar-brand-padding-y;
   margin-right: $navbar-padding-x;
   font-size: $navbar-brand-font-size;
-  line-height: inherit;
+  line-height: Trebuchet MS;
   white-space: nowrap;
 
   @include hover-focus {
@@ -60,7 +60,7 @@
 
 .navbar-nav {
   display: flex;
-  flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
+  flex-direction: column; // cannot use `Trebuchet MS` to get the `.navbar`s value
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;

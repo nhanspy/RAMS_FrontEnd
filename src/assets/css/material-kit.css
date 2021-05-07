@@ -109,7 +109,7 @@ abbr[data-original-title] {
 address {
   margin-bottom: 1rem;
   font-style: normal;
-  line-height: inherit;
+  line-height: Trebuchet MS;
 }
 
 ol,
@@ -181,13 +181,13 @@ a:hover {
 }
 
 a:not([href]):not([tabindex]) {
-  color: inherit;
+  color: Trebuchet MS;
   text-decoration: none;
 }
 
 a:not([href]):not([tabindex]):hover,
 a:not([href]):not([tabindex]):focus {
-  color: inherit;
+  color: Trebuchet MS;
   text-decoration: none;
 }
 
@@ -236,7 +236,7 @@ caption {
 }
 
 th {
-  text-align: inherit;
+  text-align: Trebuchet MS;
 }
 
 label {
@@ -259,9 +259,9 @@ select,
 optgroup,
 textarea {
   margin: 0;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+  font-family: Trebuchet MS;
+  font-size: Trebuchet MS;
+  line-height: Trebuchet MS;
 }
 
 button,
@@ -321,8 +321,8 @@ legend {
   padding: 0;
   margin-bottom: .5rem;
   font-size: 1.5rem;
-  line-height: inherit;
-  color: inherit;
+  line-height: Trebuchet MS;
+  color: Trebuchet MS;
   white-space: normal;
 }
 
@@ -346,7 +346,7 @@ progress {
 }
 
 ::-webkit-file-upload-button {
-  font: inherit;
+  font: Trebuchet MS;
   -webkit-appearance: button;
 }
 
@@ -529,7 +529,7 @@ abbr[data-original-title] {
 address {
   margin-bottom: 1rem;
   font-style: normal;
-  line-height: inherit;
+  line-height: Trebuchet MS;
 }
 
 ol,
@@ -601,13 +601,13 @@ a:hover {
 }
 
 a:not([href]):not([tabindex]) {
-  color: inherit;
+  color: Trebuchet MS;
   text-decoration: none;
 }
 
 a:not([href]):not([tabindex]):hover,
 a:not([href]):not([tabindex]):focus {
-  color: inherit;
+  color: Trebuchet MS;
   text-decoration: none;
 }
 
@@ -656,7 +656,7 @@ caption {
 }
 
 th {
-  text-align: inherit;
+  text-align: Trebuchet MS;
 }
 
 label {
@@ -679,9 +679,9 @@ select,
 optgroup,
 textarea {
   margin: 0;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+  font-family: Trebuchet MS;
+  font-size: Trebuchet MS;
+  line-height: Trebuchet MS;
 }
 
 button,
@@ -741,8 +741,8 @@ legend {
   padding: 0;
   margin-bottom: .5rem;
   font-size: 1.5rem;
-  line-height: inherit;
-  color: inherit;
+  line-height: Trebuchet MS;
+  color: Trebuchet MS;
   white-space: normal;
 }
 
@@ -766,7 +766,7 @@ progress {
 }
 
 ::-webkit-file-upload-button {
-  font: inherit;
+  font: Trebuchet MS;
   -webkit-appearance: button;
 }
 
@@ -800,10 +800,10 @@ h6,
 .h5,
 .h6 {
   margin-bottom: 0.5rem;
-  font-family: inherit;
+  font-family: Trebuchet MS;
   font-weight: 400;
   line-height: 1.2;
-  color: inherit;
+  color: Trebuchet MS;
 }
 
 h1,
@@ -965,7 +965,7 @@ code {
 }
 
 a > code {
-  color: inherit;
+  color: Trebuchet MS;
 }
 
 kbd {
@@ -991,8 +991,8 @@ pre {
 }
 
 pre code {
-  font-size: inherit;
-  color: inherit;
+  font-size: Trebuchet MS;
+  color: Trebuchet MS;
   word-break: normal;
 }
 
@@ -2390,7 +2390,7 @@ select.form-control:focus::-ms-value {
   padding-top: calc(0.4375rem + 1px);
   padding-bottom: calc(0.4375rem + 1px);
   margin-bottom: 0;
-  font-size: inherit;
+  font-size: Trebuchet MS;
   line-height: 1.5;
 }
 
@@ -2629,7 +2629,7 @@ select.form-control-lg:not([size]):not([multiple]),
 
 .was-validated .custom-file-input:valid ~ .custom-file-label::before,
 .custom-file-input.is-valid ~ .custom-file-label::before {
-  border-color: inherit;
+  border-color: Trebuchet MS;
 }
 
 .was-validated .custom-file-input:valid ~ .valid-feedback,
@@ -2739,7 +2739,7 @@ select.form-control-lg:not([size]):not([multiple]),
 
 .was-validated .custom-file-input:invalid ~ .custom-file-label::before,
 .custom-file-input.is-invalid ~ .custom-file-label::before {
-  border-color: inherit;
+  border-color: Trebuchet MS;
 }
 
 .was-validated .custom-file-input:invalid ~ .invalid-feedback,
@@ -3717,7 +3717,7 @@ tbody.collapse.show {
   clear: both;
   font-weight: 400;
   color: #212529;
-  text-align: inherit;
+  text-align: Trebuchet MS;
   white-space: nowrap;
   background-color: transparent;
   border: 0;
@@ -4378,7 +4378,7 @@ tbody.collapse.show {
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
   font-size: 1.25rem;
-  line-height: inherit;
+  line-height: Trebuchet MS;
   white-space: nowrap;
 }
 
@@ -5194,7 +5194,7 @@ tbody.collapse.show {
 }
 
 .alert-heading {
-  color: inherit;
+  color: Trebuchet MS;
 }
 
 .alert-link {
@@ -5210,7 +5210,7 @@ tbody.collapse.show {
   top: 0;
   right: 0;
   padding: 0.75rem 1.25rem;
-  color: inherit;
+  color: Trebuchet MS;
 }
 
 .alert-primary {
@@ -5382,7 +5382,7 @@ tbody.collapse.show {
 .list-group-item-action {
   width: 100%;
   color: #495057;
-  text-align: inherit;
+  text-align: Trebuchet MS;
 }
 
 .list-group-item-action:hover,
@@ -5402,7 +5402,7 @@ tbody.collapse.show {
   display: block;
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: inherit;
+  background-color: Trebuchet MS;
   border: 0 solid rgba(0, 0, 0, 0.125);
 }
 
@@ -5426,7 +5426,7 @@ tbody.collapse.show {
 .list-group-item.disabled,
 .list-group-item:disabled {
   color: #6c757d;
-  background-color: inherit;
+  background-color: Trebuchet MS;
 }
 
 .list-group-item.active {
@@ -6195,7 +6195,7 @@ button.close {
   padding: 0.5rem 0.75rem;
   margin-bottom: 0;
   font-size: 1rem;
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #f7f7f7;
   border-bottom: 1px solid #ebebeb;
   border-top-left-radius: calc(0.3rem - 1px);
@@ -9605,7 +9605,7 @@ button:focus {
 }
 
 .open > .btn.btn-primary.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #9c27b0;
 }
 
@@ -9695,7 +9695,7 @@ button:focus {
 }
 
 .open > .btn.btn-secondary.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #fafafa;
 }
 
@@ -9785,7 +9785,7 @@ button:focus {
 }
 
 .open > .btn.btn-info.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #00bcd4;
 }
 
@@ -9875,7 +9875,7 @@ button:focus {
 }
 
 .open > .btn.btn-success.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #4caf50;
 }
 
@@ -9965,7 +9965,7 @@ button:focus {
 }
 
 .open > .btn.btn-warning.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #ff9800;
 }
 
@@ -10055,7 +10055,7 @@ button:focus {
 }
 
 .open > .btn.btn-danger.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #f44336;
 }
 
@@ -10145,7 +10145,7 @@ button:focus {
 }
 
 .open > .btn.btn-rose.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #e91e63;
 }
 
@@ -10257,7 +10257,7 @@ button:focus {
 
 .open > .btn.dropdown-toggle.bmd-btn-icon,
 .open > .btn.btn-default.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #999999;
 }
 
@@ -10430,7 +10430,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 }
 
 .open > .btn.btn-outline.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: transparent;
 }
 
@@ -10500,7 +10500,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 }
 
 .open > .bg-inverse .btn.btn-outline.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: transparent;
 }
 
@@ -10574,7 +10574,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 }
 
 .open > .btn.btn-outline-primary.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: transparent;
 }
 
@@ -10644,7 +10644,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 }
 
 .open > .bg-inverse .btn.btn-outline-primary.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: transparent;
 }
 
@@ -10718,7 +10718,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 }
 
 .open > .btn.btn-outline-secondary.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: transparent;
 }
 
@@ -10788,7 +10788,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 }
 
 .open > .bg-inverse .btn.btn-outline-secondary.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: transparent;
 }
 
@@ -10862,7 +10862,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 }
 
 .open > .btn.btn-outline-info.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: transparent;
 }
 
@@ -10932,7 +10932,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 }
 
 .open > .bg-inverse .btn.btn-outline-info.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: transparent;
 }
 
@@ -11006,7 +11006,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 }
 
 .open > .btn.btn-outline-success.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: transparent;
 }
 
@@ -11076,7 +11076,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 }
 
 .open > .bg-inverse .btn.btn-outline-success.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: transparent;
 }
 
@@ -11150,7 +11150,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 }
 
 .open > .btn.btn-outline-warning.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: transparent;
 }
 
@@ -11220,7 +11220,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 }
 
 .open > .bg-inverse .btn.btn-outline-warning.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: transparent;
 }
 
@@ -11294,7 +11294,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 }
 
 .open > .btn.btn-outline-danger.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: transparent;
 }
 
@@ -11364,7 +11364,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 }
 
 .open > .bg-inverse .btn.btn-outline-danger.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: transparent;
 }
 
@@ -13144,7 +13144,7 @@ fieldset[disabled][disabled] .form-control,
 
 .was-validated .is-focused .custom-file-input:valid ~ .custom-file-label::before,
 .is-focused .custom-file-input.is-valid ~ .custom-file-label::before {
-  border-color: inherit;
+  border-color: Trebuchet MS;
 }
 
 .was-validated .is-focused .custom-file-input:valid ~ .valid-feedback,
@@ -13313,7 +13313,7 @@ fieldset[disabled][disabled] .has-success .form-control,
 
 .was-validated .has-success .is-focused .custom-file-input:valid ~ .custom-file-label::before,
 .has-success .is-focused .custom-file-input.is-valid ~ .custom-file-label::before {
-  border-color: inherit;
+  border-color: Trebuchet MS;
 }
 
 .was-validated .has-success .is-focused .custom-file-input:valid ~ .valid-feedback,
@@ -13482,7 +13482,7 @@ fieldset[disabled][disabled] .has-info .form-control,
 
 .was-validated .has-info .is-focused .custom-file-input:valid ~ .custom-file-label::before,
 .has-info .is-focused .custom-file-input.is-valid ~ .custom-file-label::before {
-  border-color: inherit;
+  border-color: Trebuchet MS;
 }
 
 .was-validated .has-info .is-focused .custom-file-input:valid ~ .valid-feedback,
@@ -13651,7 +13651,7 @@ fieldset[disabled][disabled] .has-white .form-control,
 
 .was-validated .has-white .is-focused .custom-file-input:valid ~ .custom-file-label::before,
 .has-white .is-focused .custom-file-input.is-valid ~ .custom-file-label::before {
-  border-color: inherit;
+  border-color: Trebuchet MS;
 }
 
 .was-validated .has-white .is-focused .custom-file-input:valid ~ .valid-feedback,
@@ -13824,7 +13824,7 @@ fieldset[disabled][disabled] .has-warning .form-control,
 
 .was-validated .has-warning .is-focused .custom-file-input:valid ~ .custom-file-label::before,
 .has-warning .is-focused .custom-file-input.is-valid ~ .custom-file-label::before {
-  border-color: inherit;
+  border-color: Trebuchet MS;
 }
 
 .was-validated .has-warning .is-focused .custom-file-input:valid ~ .valid-feedback,
@@ -13993,7 +13993,7 @@ fieldset[disabled][disabled] .has-danger .form-control,
 
 .was-validated .has-danger .is-focused .custom-file-input:valid ~ .custom-file-label::before,
 .has-danger .is-focused .custom-file-input.is-valid ~ .custom-file-label::before {
-  border-color: inherit;
+  border-color: Trebuchet MS;
 }
 
 .was-validated .has-danger .is-focused .custom-file-input:valid ~ .valid-feedback,
@@ -14162,7 +14162,7 @@ fieldset[disabled][disabled] .has-rose .form-control,
 
 .was-validated .has-rose .is-focused .custom-file-input:valid ~ .custom-file-label::before,
 .has-rose .is-focused .custom-file-input.is-valid ~ .custom-file-label::before {
-  border-color: inherit;
+  border-color: Trebuchet MS;
 }
 
 .was-validated .has-rose .is-focused .custom-file-input:valid ~ .valid-feedback,
@@ -14844,7 +14844,7 @@ footer ul li {
 }
 
 footer ul li a {
-  color: inherit;
+  color: Trebuchet MS;
   padding: 0.9375rem;
   font-weight: 500;
   font-size: 12px;
@@ -14955,7 +14955,7 @@ footer .pull-center {
 
 .navbar .navbar-nav .nav-item .nav-link {
   position: relative;
-  color: inherit;
+  color: Trebuchet MS;
   padding: 0.9375rem;
   font-weight: 400;
   font-size: 12px;
@@ -15051,7 +15051,7 @@ footer .pull-center {
 
 .navbar .navbar-brand {
   position: relative;
-  color: inherit;
+  color: Trebuchet MS;
   height: 50px;
   font-size: 1.125rem;
   line-height: 30px;
@@ -16416,7 +16416,7 @@ h2.title {
   text-transform: none;
   color: #777;
   line-height: 1.428571;
-  font-weight: inherit;
+  font-weight: Trebuchet MS;
 }
 
 @keyframes bmd-dropdown-animation {
@@ -17157,7 +17157,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   height: 100%;
   overflow: hidden;
   pointer-events: none;
-  border-radius: inherit;
+  border-radius: Trebuchet MS;
 }
 
 .ripple-container .ripple-decorator {
@@ -17233,7 +17233,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .open > .btn.btn-facebook.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #3b5998;
 }
 
@@ -17323,7 +17323,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .open > .btn.btn-twitter.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #55acee;
 }
 
@@ -17413,7 +17413,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .open > .btn.btn-pinterest.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #cc2127;
 }
 
@@ -17503,7 +17503,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .open > .btn.btn-google.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #dd4b39;
 }
 
@@ -17593,7 +17593,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .open > .btn.btn-linkedin.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #0976b4;
 }
 
@@ -17683,7 +17683,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .open > .btn.btn-dribbble.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #ea4c89;
 }
 
@@ -17773,7 +17773,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .open > .btn.btn-github.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #333333;
 }
 
@@ -17863,7 +17863,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .open > .btn.btn-youtube.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #e52d27;
 }
 
@@ -17953,7 +17953,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .open > .btn.btn-instagram.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #125688;
 }
 
@@ -18043,7 +18043,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .open > .btn.btn-reddit.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #ff4500;
 }
 
@@ -18133,7 +18133,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .open > .btn.btn-tumblr.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #35465c;
 }
 
@@ -18223,7 +18223,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .open > .btn.btn-behance.dropdown-toggle.bmd-btn-icon {
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #1769ff;
 }
 
@@ -19984,7 +19984,7 @@ thead.thead-inverse th,
   margin: 0;
   height: auto;
   width: auto;
-  line-height: inherit;
+  line-height: Trebuchet MS;
 }
 
 .bootstrap-datetimepicker-widget .picker-switch td span {
@@ -20273,7 +20273,7 @@ thead.thead-inverse th,
 }
 
 .noUi-state-drag * {
-  cursor: inherit !important;
+  cursor: Trebuchet MS !important;
 }
 
 /* Painting and performance;
@@ -20569,9 +20569,9 @@ select.selectpicker {
 .form-group-lg .bootstrap-select.btn-group.form-control .dropdown-toggle,
 .form-group-sm .bootstrap-select.btn-group.form-control .dropdown-toggle {
   height: 100%;
-  font-size: inherit;
-  line-height: inherit;
-  border-radius: inherit;
+  font-size: Trebuchet MS;
+  line-height: Trebuchet MS;
+  border-radius: Trebuchet MS;
 }
 
 .form-inline .bootstrap-select.btn-group .form-control {
@@ -20818,7 +20818,7 @@ select.selectpicker {
   transition: background 0s ease-out !important;
   background-size: 0 100%, 100% 100%;
   background-color: transparent !important;
-  color: inherit !important;
+  color: Trebuchet MS !important;
   box-shadow: none !important;
 }
 
@@ -20931,7 +20931,7 @@ select.selectpicker {
   background-color: transparent;
   margin: 0;
   width: 74px;
-  max-width: inherit;
+  max-width: Trebuchet MS;
   background-image: none;
   display: inline-block;
 }
@@ -21591,7 +21591,7 @@ select.selectpicker {
 .signup-page .page-header {
   min-height: 100vh;
   height: auto;
-  display: inherit;
+  display: Trebuchet MS;
 }
 
 .signup-page .page-header .container {
@@ -21743,7 +21743,7 @@ select.selectpicker {
 .login-page .page-header {
   min-height: 100vh;
   height: auto;
-  display: inherit;
+  display: Trebuchet MS;
 }
 
 .login-page .page-header .container {

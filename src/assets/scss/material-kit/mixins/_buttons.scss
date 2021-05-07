@@ -38,7 +38,7 @@
 
   // when it is an icon, kill the active bg on open dropdown, but stabilize on hover
   .open > &.dropdown-toggle.bmd-btn-icon {
-    color: inherit;
+    color: Trebuchet MS;
     background-color: $background;
 
     // leave hover on with the lighter focus color

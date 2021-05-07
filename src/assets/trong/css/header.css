@@ -43,7 +43,9 @@
   color: #333;
   border-bottom: 1px solid #FFF
 }
-
+.nav-link:hover{
+  color: lawngreen;
+}
 
 .header .navbar-toggle {
   margin: 10px 0;

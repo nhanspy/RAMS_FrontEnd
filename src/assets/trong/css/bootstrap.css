@@ -110,8 +110,8 @@ code, kbd, pre, samp {
 }
 
 button, input, optgroup, select, textarea {
-  color: inherit;
-  font: inherit;
+  color: Trebuchet MS;
+  font: Trebuchet MS;
   margin: 0
 }
 
@@ -294,9 +294,9 @@ body {
 }
 
 input, button, select, textarea {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit
+  font-family: Trebuchet MS;
+  font-size: Trebuchet MS;
+  line-height: Trebuchet MS
 }
 
 a {
@@ -369,10 +369,10 @@ hr {
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: inherit;
+  font-family: Trebuchet MS;
   font-weight: 500;
   line-height: 1.1;
-  color: inherit
+  color: Trebuchet MS
 }
 
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small, h1 .small, h2 .small, h3 .small, h4 .small, h5 .small, h6 .small, .h1 .small, .h2 .small, .h3 .small, .h4 .small, .h5 .small, .h6 .small {
@@ -713,8 +713,8 @@ pre {
 
 pre code {
   padding: 0;
-  font-size: inherit;
-  color: inherit;
+  font-size: Trebuchet MS;
+  color: Trebuchet MS;
   white-space: pre-wrap;
   background-color: transparent;
   border-radius: 0
@@ -1770,7 +1770,7 @@ legend {
   padding: 0;
   margin-bottom: 20px;
   font-size: 21px;
-  line-height: inherit;
+  line-height: Trebuchet MS;
   color: #333;
   border: 0;
   border-bottom: 1px solid #e5e5e5
@@ -4731,12 +4731,12 @@ a.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
 .jumbotron {
   padding: 30px;
   margin-bottom: 30px;
-  color: inherit;
+  color: Trebuchet MS;
   background-color: #eee
 }
 
 .jumbotron h1, .jumbotron .h1 {
-  color: inherit
+  color: Trebuchet MS
 }
 
 .jumbotron p {
@@ -4807,7 +4807,7 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
 
 .alert h4 {
   margin-top: 0;
-  color: inherit
+  color: Trebuchet MS
 }
 
 .alert .alert-link {
@@ -4830,7 +4830,7 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
   position: relative;
   top: -2px;
   right: -21px;
-  color: inherit
+  color: Trebuchet MS
 }
 
 .alert-success {
@@ -5067,7 +5067,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
 }
 
 a.list-group-item.active .list-group-item-heading, a.list-group-item.active:hover .list-group-item-heading, a.list-group-item.active:focus .list-group-item-heading {
-  color: inherit
+  color: Trebuchet MS
 }
 
 a.list-group-item.active .list-group-item-text, a.list-group-item.active:hover .list-group-item-text, a.list-group-item.active:focus .list-group-item-text {
@@ -5084,7 +5084,7 @@ a.list-group-item-success {
 }
 
 a.list-group-item-success .list-group-item-heading {
-  color: inherit
+  color: Trebuchet MS
 }
 
 a.list-group-item-success:hover, a.list-group-item-success:focus {
@@ -5108,7 +5108,7 @@ a.list-group-item-info {
 }
 
 a.list-group-item-info .list-group-item-heading {
-  color: inherit
+  color: Trebuchet MS
 }
 
 a.list-group-item-info:hover, a.list-group-item-info:focus {
@@ -5132,7 +5132,7 @@ a.list-group-item-warning {
 }
 
 a.list-group-item-warning .list-group-item-heading {
-  color: inherit
+  color: Trebuchet MS
 }
 
 a.list-group-item-warning:hover, a.list-group-item-warning:focus {
@@ -5156,7 +5156,7 @@ a.list-group-item-danger {
 }
 
 a.list-group-item-danger .list-group-item-heading {
-  color: inherit
+  color: Trebuchet MS
 }
 
 a.list-group-item-danger:hover, a.list-group-item-danger:focus {
@@ -5285,18 +5285,18 @@ a.list-group-item-danger.active, a.list-group-item-danger.active:hover, a.list-g
 }
 
 .panel-heading > .dropdown .dropdown-toggle {
-  color: inherit
+  color: Trebuchet MS
 }
 
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
   font-size: 16px;
-  color: inherit
+  color: Trebuchet MS
 }
 
 .panel-title > a {
-  color: inherit
+  color: Trebuchet MS
 }
 
 .panel-footer {

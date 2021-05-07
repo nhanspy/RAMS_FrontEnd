@@ -9,7 +9,7 @@ body::-webkit-scrollbar {
 }
 
 body, div, p, span {
-  font-family: inherit;
+  font-family: Trebuchet MS;
 }
 
 button:focus {
@@ -174,11 +174,11 @@ button:focus {
   outline: 5px auto -webkit-focus-ring-color;
 }
 
-button, input {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
+/*button, input {*/
+/*  font-family: Trebuchet MS;*/
+/*  font-size: inherit;*/
+/*  line-height: Trebuchet MS;*/
+/*}*/
 
 button, input {
   overflow: visible;
@@ -448,16 +448,16 @@ pre {
   fill: #f5f5f5;
 }
 
-.avatar-container[data-v-4a10876e] {
-  position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  margin: 0 60px;
-}
+/*.avatar-container[data-v-4a10876e] {*/
+/*  position: relative;*/
+/*  width: -webkit-fit-content;*/
+/*  width: -moz-fit-content;*/
+/*  width: fit-content;*/
+/*  height: -webkit-fit-content;*/
+/*  height: -moz-fit-content;*/
+/*  height: fit-content;*/
+/*  margin: 0 60px;*/
+/*}*/
 
 /*! CSS Used from: Embedded */
 .loader-container[data-v-e266567a] {
@@ -803,7 +803,7 @@ pre {
 }
 
 .left-content-title[data-v-c4787510], .phoneNumber[data-v-c4787510] {
-  font-family: inherit;
+  font-family: Trebuchet MS;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
@@ -835,7 +835,7 @@ pre {
 }
 
 .content-title[data-v-c4787510] {
-  font-family: inherit;
+  font-family: Trebuchet MS;
   font-size: 12px;
   font-weight: 700;
   font-stretch: normal;
@@ -994,7 +994,7 @@ a.app-CHPlay[data-v-c4787510] {
   font-weight: 600;
   color: #f15a24;
   flex-wrap: wrap;
-  width: inherit;
+  width: Trebuchet MS;
   border-bottom: 1px solid #637280;
 }
 
@@ -1038,7 +1038,7 @@ a.app-CHPlay[data-v-c4787510] {
   line-height: normal;
   letter-spacing: normal;
   font-weight: 400;
-  font-family: inherit;
+  font-family: Trebuchet MS;
   font-size: 14px;
   top: 100%;
   position: -webkit-sticky;
@@ -1047,7 +1047,7 @@ a.app-CHPlay[data-v-c4787510] {
 }
 
 .row-container[data-v-5b1f51eb] {
-  width: inherit;
+  width: Trebuchet MS;
   padding: 24px 16px;
   max-width: 937px;
   display: flex;
@@ -1099,7 +1099,7 @@ a.app-CHPlay[data-v-c4787510] {
 }
 
 .message-text[data-v-27e39dc8] {
-  font-family: inherit;
+  font-family: Trebuchet MS;
   background: none;
   border: none;
   color: #fff;
@@ -1482,7 +1482,7 @@ label.disabled[data-v-c5ae3bdc] {
 .dateSelectContainer[data-v-a30d5d2a] {
   max-width: 400px;
   display: flex;
-  width: inherit;
+  width: Trebuchet MS;
   margin: auto 1px solid #dce1e6;
   flex-direction: column;
   white-space: nowrap;
@@ -1746,8 +1746,8 @@ label.disabled[data-v-c5ae3bdc] {
 
 .title[data-v-aac5370e] {
   text-align: right;
-  width: inherit;
-  font-family: inherit;
+  width: Trebuchet MS;
+  font-family: Trebuchet MS;
   font-size: 20px;
   font-weight: 900;
   font-stretch: normal;
@@ -1867,7 +1867,7 @@ img[data-v-aac5370e] {
 
 .common-routes-container[data-v-7ea45558] {
   width: 100%;
-  font-family: inherit;
+  font-family: Trebuchet MS;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
@@ -1883,7 +1883,7 @@ img[data-v-aac5370e] {
   font-size: 16px;
   font-weight: 700;
   text-align: left;
-  width: inherit;
+  width: Trebuchet MS;
   margin-bottom: 10px;
   color: #f15a24;
 }
@@ -1949,7 +1949,7 @@ img[data-v-aac5370e] {
   display: flex;
   flex-direction: row;
   max-width: 936px;
-  width: inherit;
+  width: Trebuchet MS;
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 4% auto;
@@ -2000,7 +2000,7 @@ img[data-v-302932a8] {
 }
 
 .txts p[data-v-302932a8] {
-  width: inherit !important;
+  width: Trebuchet MS !important;
   margin: 0 0 8px;
   text-shadow: 0 0 2px #000;
 }
@@ -2031,7 +2031,7 @@ img[data-v-302932a8] {
 
 .scroller[data-v-6cba1c00] {
   -webkit-user-drag: none;
-  width: inherit;
+  width: Trebuchet MS;
   overflow: auto;
   -ms-scroll-snap-type: x mandatory;
   scroll-snap-type: x mandatory;
@@ -2077,7 +2077,7 @@ img[data-v-302932a8] {
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-family: inherit;
+  font-family: Trebuchet MS;
   font-weight: 400;
   font-stretch: normal;
   font-style: normal;
@@ -2107,7 +2107,7 @@ img[data-v-302932a8] {
   margin-top: 10px;
   margin-bottom: 10px;
   max-width: 100vw;
-  width: inherit;
+  width: Trebuchet MS;
   overflow: scroll;
   display: flex;
   flex-direction: row;
@@ -2126,7 +2126,7 @@ img[data-v-302932a8] {
   margin-bottom: 30px;
   padding: 0;
   max-width: 920px;
-  width: inherit;
+  width: Trebuchet MS;
 }
 
 .title[data-v-13f6d627] {
@@ -2229,7 +2229,7 @@ img[data-v-302932a8] {
 
 .title-container[data-v-292e059d] {
   display: flex;
-  width: inherit;
+  width: Trebuchet MS;
   overflow: hidden;
   flex-direction: row;
   justify-content: center;
@@ -2587,26 +2587,26 @@ img[data-v-302932a8] {
 }
 
 /*! CSS Used fontfaces */
-@font-face {
-  font-family: "inherit";
-  src: url(https://futabus.vn/_nuxt/fonts/inherit.85bd46c.ttf);
-  font-weight: 400;
-  font-display: swap;
-}
+/*@font-face {*/
+/*  font-family: "Trebuchet MS";*/
+/*  src: url(https://futabus.vn/_nuxt/fonts/Trebuchet MS.85bd46c.ttf);*/
+/*  font-weight: 400;*/
+/*  font-display: swap;*/
+/*}*/
 
-@font-face {
-  font-family: "inherit";
-  src: url(https://futabus.vn/_nuxt/fonts/inherit-Bold.d6079ef.ttf);
-  font-weight: 700;
-  font-display: swap;
-}
+/*@font-face {*/
+/*  font-family: "Trebuchet MS";*/
+/*  src: url(https://futabus.vn/_nuxt/fonts/Trebuchet MS-Bold.d6079ef.ttf);*/
+/*  font-weight: 700;*/
+/*  font-display: swap;*/
+/*}*/
 
-@font-face {
-  font-family: "inherit";
-  src: url(https://futabus.vn/_nuxt/fonts/inherit-Heavy.6c49879.ttf);
-  font-weight: 900;
-  font-display: swap;
-}
+/*@font-face {*/
+/*  font-family: "Trebuchet MS";*/
+/*  src: url(https://futabus.vn/_nuxt/fonts/Trebuchet MS-Heavy.6c49879.ttf);*/
+/*  font-weight: 900;*/
+/*  font-display: swap;*/
+/*}*/
 
 
 

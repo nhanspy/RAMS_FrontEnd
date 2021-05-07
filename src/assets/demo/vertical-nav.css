@@ -182,8 +182,8 @@ Modules - reusable parts of our design
   width: 100%;
   position: absolute;
   left: 0;
-  background-color: inherit;
-  border-radius: inherit;
+  background-color: Trebuchet MS;
+  border-radius: Trebuchet MS;
 }
 
 .touch .cd-nav-trigger span::before {

@@ -13,7 +13,7 @@
 // Headings for larger alerts
 .alert-heading {
   // Specified to prevent conflicts of changing $headings-color
-  color: inherit;
+  color: Trebuchet MS;
 }
 
 // Provide class for links that match alerts
@@ -35,7 +35,7 @@
     top: 0;
     right: 0;
     padding: $alert-padding-y $alert-padding-x;
-    color: inherit;
+    color: Trebuchet MS;
   }
 }
 
