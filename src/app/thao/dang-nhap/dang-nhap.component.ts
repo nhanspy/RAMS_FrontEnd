@@ -4,6 +4,12 @@ import {TokenStorageService} from "../_services/token-storage.service";
 import {AuthService} from "../_services/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
+import { SocialAuthService, GoogleLoginProvider, FacebookLoginProvider, SocialUser } from 'angularx-social-login';
+// import {GoogleLoginProvider, SocialAuthService, SocialUser} from "angularx-social-login";
+import {TokenDto} from "../model/token-dto";
+
+
+
 
 @Component({
   selector: 'app-dang-nhap',
@@ -16,8 +22,13 @@ export class DangNhapComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  // @ts-ignore
+  socialUser: SocialUser;
+  // @ts-ignore
+  userLogged: SocialUser;
 
   constructor(
+    private aauthService: SocialAuthService,
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
     private router: Router
@@ -42,6 +53,67 @@ export class DangNhapComponent implements OnInit {
       err => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
+      }
+    );
+  }
+  signInWithGoogle(): void {
+    // @ts-ignore
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+      // @ts-ignore
+      data => {
+        this.socialUser = data;
+        const tokenGoogle = new TokenDto(this.socialUser.idToken);
+        this.authService.google(tokenGoogle).subscribe(
+          res => {
+            this.tokenStorage.setToken(res.value);
+            this.isLoggedIn = true;
+            this.router.navigate(['/']);
+          },
+          err => {
+            console.log(err);
+            this.logOut();
+          }
+        );
+      }
+    ).catch(
+      // @ts-ignore
+      err => {
+        console.log(err);
+      }
+    );
+  }
+  signInWithFB(): void {
+    // @ts-ignore
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
+      // @ts-ignore
+      data => {
+        this.socialUser = data;
+        const tokenFace = new TokenDto(this.socialUser.authToken);
+        this.authService.facebook(tokenFace).subscribe(
+          res => {
+            this.tokenStorage.setToken(res.value);
+            this.isLoggedIn = true;
+            this.router.navigate(['/']);
+          },
+          err => {
+            console.log(err);
+            this.logOut();
+          }
+        );
+      }
+    ).catch(
+      // @ts-ignore
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  logOut(): void {
+    this.aauthService.signOut().then(
+      data => {
+        this.tokenStorage.logOut();
+        this.isLoggedIn = false;
       }
     );
   }

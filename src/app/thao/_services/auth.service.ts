@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User} from "../../nhan/Models/User.class";
+import {TokenDto} from "../model/token-dto";
 
+const cabecera = {headers: new HttpHeaders({'Content-Type' : 'application/json'})};
 const AUTH_API = 'http://localhost:8080/api/auth/';
 const AUTH_API1 = 'http://localhost:8080/api/public/';
 
@@ -16,6 +18,14 @@ export class AuthService {
   private httpOptions: any;
 
   constructor(private http: HttpClient) { }
+
+  public google(tokenDto: TokenDto): Observable<TokenDto> {
+    return this.http.post<TokenDto>(AUTH_API + 'google', tokenDto, cabecera);
+  }
+
+  public facebook(tokenDto: TokenDto): Observable<TokenDto> {
+    return this.http.post<TokenDto>( AUTH_API+ 'facebook', tokenDto, cabecera);
+  }
 
   login(credentials: any): Observable<any> {
     return this.http.post(AUTH_API + 'signin', {
@@ -63,5 +73,9 @@ export class AuthService {
       password: password,
       code: code
     }, this.httpOptions);
+  }
+
+  signIn(PROVIDER_ID: string) {
+
   }
 }

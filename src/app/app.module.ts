@@ -15,14 +15,19 @@ import {authInterceptorProviders} from "./thao/_helpers/auth.interceptor";
 import { HeaderComponent } from './thao/header/header.component';
 import { FooterComponent } from './thao/footer/footer.component';
 import {FormGroupDirective, FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {VerifyResetPasswordComponent} from "./thao/verify-reset-password/verify-reset-password.component";
-import {ResetPasswordComponent} from "./thao/reset-password/reset-password.component";
 import {ToastrModule} from "ngx-toastr";
 import { DangNhapComponent } from './thao/dang-nhap/dang-nhap.component';
 import { DangKyComponent } from './thao/dang-ky/dang-ky.component';
 import { DangkyuserComponent } from './thao/dangkyuser/dangkyuser.component';
 import { QuenmatkhauComponent } from './thao/quenmatkhau/quenmatkhau.component';
 import { DoimatkhauComponent } from './thao/doimatkhau/doimatkhau.component';
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialAuthServiceConfig,
+  SocialLoginModule
+} from "angularx-social-login";
+import {productoInterceptor} from "./thao/interceptors/producto.interceptor";
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,8 +37,6 @@ import { DoimatkhauComponent } from './thao/doimatkhau/doimatkhau.component';
     BoardModeratorComponent,
     BoardUserComponent,
     TestComponent,
-    ResetPasswordComponent,
-    VerifyResetPasswordComponent,
     KiemTraVeComponent,
     HeaderComponent,
     FooterComponent,
@@ -49,13 +52,36 @@ import { DoimatkhauComponent } from './thao/doimatkhau/doimatkhau.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    SocialLoginModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     ToastrModule.forRoot()
   ],
-  providers: [{provide: APP_BASE_HREF, useValue: '/'}, authInterceptorProviders],
+  providers: [
+    {provide: APP_BASE_HREF, useValue: '/'},
+    authInterceptorProviders,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '326374744185-ti75keqf9ob27h5camp4cvd4sji3o2uo.apps.googleusercontent.com'
+            ),
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('804399990450734'),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
+    productoInterceptor
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
