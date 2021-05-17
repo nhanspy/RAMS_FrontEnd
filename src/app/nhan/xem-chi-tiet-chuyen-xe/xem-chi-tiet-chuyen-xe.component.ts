@@ -1,25 +1,28 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {XemChiTietChuyenXeService} from '../service/xem-chi-tiet-chuyen-xe.service';
 import {ChuyenXe} from '../Models/ChuyenXe.class';
 import {TinhThanh} from '../Models/TinhThanh.class';
 import {Ben} from '../Models/Ben.class';
 import {NhaXe} from '../Models/NhaXe.class';
-import {Ghe} from '../Models/Ghe.class';
 import {TrangThaiGhe} from '../Models/TrangThaiGhe.class';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
+import {GheFirebaseService} from '../service/ghe-firebase.service';
+import {map} from 'rxjs/operators';
+import Ghe from '../Models/Ghe.class';
 
 @Component({
   selector: 'app-xem-chi-tiet-chuyen-xe',
   templateUrl: './xem-chi-tiet-chuyen-xe.component.html',
   styleUrls: ['./xem-chi-tiet-chuyen-xe.component.css', '../../../assets/nhan/css/css.css', '../../../assets/css/material-kit.css?v=2.1.1']
 })
-export class XemChiTietChuyenXeComponent implements OnInit {
+export class XemChiTietChuyenXeComponent implements OnInit, OnChanges, OnDestroy {
 
   constructor(private xemChiTietChuyenXeService: XemChiTietChuyenXeService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
-              private _location: Location
+              private _location: Location,
+              private gheFirebaseService: GheFirebaseService
   ) {
   }
 
@@ -39,16 +42,12 @@ export class XemChiTietChuyenXeComponent implements OnInit {
   chuyenXeTheoTinhs: ChuyenXe[] = [];
   chuyenXeTheoBenDiBenBenDens: ChuyenXe[] = [];
   chuyenXeTheoTinhVaNhaXes: ChuyenXe[] = [];
-  benDiBenDens: ChuyenXe[] = [];
-  // @ts-ignore
-  benDiBenDen: ChuyenXe = new ChuyenXe();
   nhaXes: NhaXe[] = [];
   // @ts-ignore
   ngay = '2021-04-08';
   // @ts-ignore
   nhaXe: NhaXe;
   trangThaiGhes: TrangThaiGhe[] = [];
-
   maTinhDi = 'mt01';
   maTinhDen = 'mt04';
   // @ts-ignore
@@ -56,7 +55,6 @@ export class XemChiTietChuyenXeComponent implements OnInit {
   // @ts-ignore
   benDen: Ben;
   nhaXesTheoBenDiBenDen: NhaXe[] = [];
-  ghes: Ghe[] = [];
   ghesTang1: Ghe[] = [];
   ghesTang2: Ghe[] = [];
   newGhesTang1: Ghe[][] = [];
@@ -65,14 +63,22 @@ export class XemChiTietChuyenXeComponent implements OnInit {
   tongGheDaChon = 0;
   tongTien = 0;
   strGheDaChon = '';
+  ghes: Ghe[] = [];
+  ghesTheoDb: Ghe[] = [];
+  currentGhe?: Ghe;
+  currentIndex = -1;
+  diemDi = '';
+  message = '';
 
   ngOnInit(): void {
-    this.init();
-    this.getTinh();
-    this.getBen();
-    this.getChuyen();
-    this.getNhaXe();
-    this.getTrangThaiGhe();
+    this.init(); //get data from search of Trong
+    this.getTinh();//Get Tinh form data of Trong
+    this.getBen(); //Get Ben from data of Trong
+    this.getChuyen();//Get Chuyen
+    this.getNhaXe();//Get nha xe follow Tinh
+    this.getTrangThaiGhe();// Get TrangThaiGhe
+    this.getGheTheoDB();// update data from API to Firebase
+    this.retrieveGhe();
     // this.ngay = '2021-04-08';
     this.maChuyenXe = 'mcx01';
     console.log('=============');
@@ -89,14 +95,24 @@ export class XemChiTietChuyenXeComponent implements OnInit {
   // thay đổi trạng thái chọn ghế
   // tính tổng tiền
   chonGhe(ghe: Ghe): void{
-    if (ghe.trangThaiGhe.maTrangThai === 'mttg01') {
-      ghe.trangThaiGhe = this.trangThaiGhes[2];
+    if (ghe.trangThaiGhe === 'mttg01') {
+      ghe.trangThaiGhe = 'mttg02';
       ghe.daChon = true;
     } else {
-      if (ghe.trangThaiGhe.maTrangThai === 'mttg02') {
-        ghe.trangThaiGhe = this.trangThaiGhes[1];
+      if (ghe.trangThaiGhe === 'mttg02') {
+        ghe.trangThaiGhe = 'mttg01';
         ghe.daChon = false;
       }
+    }
+    const data = {
+      maGhe: ghe.maGhe,
+      gia: ghe.gia,
+      trangThaiGhe: ghe.trangThaiGhe
+    };
+    if (ghe.key) {
+      this.gheFirebaseService.update(ghe.key, data)
+        .then(() => this.message = 'The ghe was updated successfully!')
+        .catch(err => console.log(err));
     }
     this.setTongTien();
   }
@@ -110,6 +126,7 @@ export class XemChiTietChuyenXeComponent implements OnInit {
         if (item.daChon) {
           this.tongGheDaChon += 1;
           this.strGheDaChon += ((item.tang === 1) ? 'A' : 'B') + item.soGhe + ', ';
+          // @ts-ignore
           this.tongTien += item.gia;
         }
       }
@@ -152,7 +169,7 @@ export class XemChiTietChuyenXeComponent implements OnInit {
           return item.tinhThanh.maTinh === this.maTinhDen;
         }
       );
-      this.getChuyen();
+      // this.getChuyen();
     },
     error => {
       console.log(error);
@@ -191,73 +208,82 @@ export class XemChiTietChuyenXeComponent implements OnInit {
     }
     if (this.chuyenXeTheoTinhVaNhaXes) {
       this.chuyenXes = this.chuyenXeTheoTinhVaNhaXes.slice();
-      this.getGhe();
+      // this.getGhe();
     }
     this.capNhatCacTruong();
   }
 
   onChangeTheoThoiGian(): void {
-    this.getGhe();
+    // this.getGhe();
     this.capNhatCacTruong();
+  }
+
+  getGheTheoDB():void {
+    if (this.chuyenXes) {
+      this.xemChiTietChuyenXeService.getGhe(this.chuyenXes[0].xe.maXe).subscribe(
+        data => {
+          this.ghesTheoDb = data;
+          // console.log(data);
+          if (this.ghesTheoDb) {
+            this.ghesTheoDb.forEach(ghe => {
+              // @ts-ignore
+              this.gheFirebaseService.update(ghe.maGhe, ghe)
+            });
+            this.refreshList();
+          }
+        }
+      );
+    }
   }
 
   // get ghế theo sơ đồ giường 2 tầng
   getGhe(): void {
     //init
-    this.ghes = [];
     this.gheDaChons = [];
     this.newGhesTang1 = [];
     this.newGhesTang2 = [];
     //lấy tất cả ghế
-    if (this.chuyenXes) {
-      this.xemChiTietChuyenXeService.getGhe(this.chuyenXes[0].xe.maXe).subscribe(
-        data => {
-          this.ghes = data;
-          //lấy ghế đã chọn cho tính tiền
-          this.gheDaChons = this.ghes.slice().filter(
-            item => {
-              //set đã chọn cho ghế
-              if (item.trangThaiGhe.maTrangThai === 'mttg02'){
-                item.daChon = true;
-                return true;
-              }
-              return false;
-            }
-          );
-
-          //lấy ghế tầng 1
-          this.ghesTang1 = this.ghes.slice().filter(
-            item => {
-              return item.tang === 1;
-            }
-          );
-          //lấy ghế tầng 2
-          this.ghesTang2 = this.ghes.slice().filter(
-            item => {
-              return item.tang === 2;
-            }
-          );
-          // Sắp xếp ghế
-          // @ts-ignore
-          this.ghes.sort((a: Ghe, b: Ghe) => {
-            return a.soGhe > b.soGhe;
-          });
-          // chuyển số ghế sang mảng 2 chiều tại biến newGhesTang*
-          while (this.ghesTang1.length) {
-            // @ts-ignore
-            this.newGhesTang1.push(this.ghesTang1.splice(0, 3));
-          }
-          while (this.ghesTang2.length) {
-            // @ts-ignore
-            this.newGhesTang2.push(this.ghesTang2.splice(0, 3));
-          }
-          // Tính tổng tiền
-          this.setTongTien();
-        }, error => {
-          console.log(error);
+    //lấy ghế đã chọn cho tính tiền
+    this.gheDaChons = this.ghes.slice().filter(
+      item => {
+        //set đã chọn cho ghế
+        if (item.trangThaiGhe === 'mttg02'){
+          item.daChon = true;
+          return true;
         }
-      );
+        return false;
+      }
+    );
+
+    //lấy ghế tầng 1
+    this.ghesTang1 = this.ghes.slice().filter(
+      item => {
+        return item.tang === 1;
+      }
+    );
+    //lấy ghế tầng 2
+    this.ghesTang2 = this.ghes.slice().filter(
+      item => {
+        return item.tang === 2;
+      }
+    );
+    // Sắp xếp ghế
+    // @ts-ignore
+    this.ghes.sort((a: Ghe, b: Ghe) => {
+      // @ts-ignore
+      return a.soGhe > b.soGhe;
+    });
+    // chuyển số ghế sang mảng 2 chiều tại biến newGhesTang*
+    while (this.ghesTang1.length) {
+      // @ts-ignore
+      this.newGhesTang1.push(this.ghesTang1.splice(0, 3));
     }
+    while (this.ghesTang2.length) {
+      // @ts-ignore
+      this.newGhesTang2.push(this.ghesTang2.splice(0, 3));
+    }
+    // Tính tổng tiền
+    this.setTongTien();
   }
 
   getGheKhongGoiDB(): void {
@@ -266,7 +292,7 @@ export class XemChiTietChuyenXeComponent implements OnInit {
     if (this.chuyenXe) {
           this.gheDaChons = this.ghes.slice().filter(
             item => {
-              if (item.trangThaiGhe.maTrangThai === 'mttg02'){
+              if (item.trangThaiGhe === 'mttg02'){
                 item.daChon = true;
                 return true;
               }
@@ -286,6 +312,7 @@ export class XemChiTietChuyenXeComponent implements OnInit {
           );
           // @ts-ignore
           this.ghes.sort((a, b) => {
+            // @ts-ignore
             return a.soGhe > b.soGhe;
           });
           while (this.ghesTang1.length) {
@@ -305,26 +332,25 @@ export class XemChiTietChuyenXeComponent implements OnInit {
     this.filterChuyenXeTheoBen();
     if (this.chuyenXeTheoBenDiBenBenDens) {
       this.chuyenXes = this.chuyenXeTheoBenDiBenBenDens.slice();
-      this.getGhe();
+      // this.getGhe();
       this.capNhatCacTruong();
     }
+    this.getGheTheoDB();
   }
 
   capNhatCacTruong(): void {
-    if (this.chuyenXes) {
-      this.benDi = this.chuyenXes[0].benDi;
-      this.benDen = this.chuyenXes[0].benDen;
-      this.nhaXe = this.chuyenXes[0].xe.nhaXe;
-      this.chuyenXe = this.chuyenXes[0];
-    }
+    // if (this.chuyenXes) {
+    //   this.benDi = this.chuyenXes[0].benDi;
+    //   this.benDen = this.chuyenXes[0].benDen;
+    //   this.nhaXe = this.chuyenXes[0].xe.nhaXe;
+    //   this.chuyenXe = this.chuyenXes[0];
+    // }
   }
 
   onChangeBenDen(): void{
-    // this.loadChuyenXe();
     this.filterChuyenXeTheoBen();
     if (this.chuyenXeTheoBenDiBenBenDens) {
       this.chuyenXes = this.chuyenXeTheoBenDiBenBenDens.slice();
-      this.getGhe();
       this.capNhatCacTruong();
     }
   }
@@ -359,7 +385,6 @@ export class XemChiTietChuyenXeComponent implements OnInit {
           }
         }
       );
-      // this.onChangeChuyenXeKhiChonNhaXe();
     }
 
     this.nhaXesTheoBenDiBenDen = this.nhaXes.slice();
@@ -419,15 +444,10 @@ export class XemChiTietChuyenXeComponent implements OnInit {
     if (this.gheDaChons) {
       localStorage.setItem('gheDaChons', JSON.stringify(this.gheDaChons));
     }
-    if (this.newGhesTang1) {
-      localStorage.setItem('newGhesTang1', JSON.stringify(this.newGhesTang1));
-    }
-    if (this.newGhesTang2) {
-      localStorage.setItem('newGhesTang2', JSON.stringify(this.newGhesTang2));
-    }
     if (this.ghes) {
       localStorage.setItem('ghes', JSON.stringify(this.ghes));
     }
+    localStorage.setItem('diemDi', JSON.stringify(this.diemDi));
   }
 
   private init(): void {
@@ -439,33 +459,105 @@ export class XemChiTietChuyenXeComponent implements OnInit {
         this.ngay = data.ngay;
       }
     );
+    // this.layDuLieuNeuCo();
+  }
+
+  refreshList(): void {
+    // this.currentTutorial = undefined;
+    this.currentGhe = undefined;
+    this.currentIndex = -1;
+    this.retrieveGhe();
+    this.updateGhe();
+  }
+
+  retrieveGhe(): void {
+    this.gheFirebaseService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      // @ts-ignore
+      this.ghes = data;
+      this.getGhe();
+    });
+  }
+
+  setActiveTutorial(ghe: Ghe, index: number): void {
+    this.currentGhe = ghe;
+    this.currentIndex = index;
+  }
+
+  removeAllGhe(): void {
+    this.gheFirebaseService.deleteAll()
+      .then(() => {
+        this.refreshList();
+        this.message = 'The tutorial was updated successfully!';
+      })
+      .catch(err => console.log(err));
+  }
+
+  updateGhe(){
+    this.ghes?.forEach(
+      ghe => {
+        this.gheFirebaseService.updateGhe(ghe).subscribe(data => {
+          console.log(data);
+        }, error => {
+          console.log(error);
+        });
+      }
+    );
+  }
+
+  // nút trở về
+  backClicked(): void {
+    this._location.back();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.refreshGhe();
+  }
+
+  refreshGhe() {
+    if (this.chuyenXes){
+      this.chuyenXe = this.chuyenXes[0];
+    } else {
+      // @ts-ignore
+      this.chuyenXe = new ChuyenXe();
+    }
+    console.log(this.chuyenXe);
+    if (this.chuyenXe){
+      console.log('update ghe');
+      this.getGhe();
+    } else {
+      this.emptySoDo();
+    }
+  }
+
+  emptySoDo() {
+    this.gheDaChons = [];
+    this.ghesTang1 = [];
+    this.ghesTang2 = [];
+    this.newGhesTang1 = [];
+    this.newGhesTang2 = [];
+  }
+
+  private layDuLieuNeuCo() {
     //lấy dữ liệu từ session nếu có
     if (localStorage.getItem('chuyenXe')) {
       // @ts-ignore
       this.chuyenXe = JSON.parse(localStorage.getItem('chuyenXe'));
       console.log(this.chuyenXe);
     }
-    if (localStorage.getItem('gheDaChons')) {
-      // @ts-ignore
-      this.gheDaChons = JSON.parse(localStorage.getItem('gheDaChons'));
-    }
     if (localStorage.getItem('ghes')) {
       // @ts-ignore
       this.ghes = JSON.parse(localStorage.getItem('ghes'));
     }
-    if (localStorage.getItem('newGhesTang1')) {
-      // @ts-ignore
-      this.newGhesTang1 = JSON.parse(localStorage.getItem('newGhesTang1'));
-    }
-    if (localStorage.getItem('newGhesTang2')) {
-      // @ts-ignore
-      this.newGhesTang2 = JSON.parse(localStorage.getItem('newGhesTang2'));
-    }
-    this.getGheKhongGoiDB();
+    if (this.chuyenXe) this.getGhe();
   }
 
-  // nút trở về
-  backClicked(): void {
-    this._location.back();
+  ngOnDestroy(): void {
+    this.removeAllGhe();
   }
 }

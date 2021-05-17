@@ -23,7 +23,7 @@
             <div data-v-9ebeba40="" class="route-list">
               <div data-v-9ebeba40="" class="start-time">
                 <div data-v-9ebeba40="" class="start-time-title">Bến đi</div>
-                <select data-v-9ebeba40="" class="time-select" [(ngModel)]="benDi" (change)="onChangeBenDi()">
+                <select data-v-9ebeba40="" class="time-select" [(ngModel)]="benDi" (change)="onChangeBenDi();refreshGhe()">
 <!--                  <option data-v-9ebeba40="" disabled selected  >-->
 <!--                    Chọn bến đi-->
 <!--                  </option>-->
@@ -34,14 +34,11 @@
               </div>
 
               <div data-v-9ebeba40="" class="pick-up">
-                <div data-v-9ebeba40="" class="pick-up-title">Bến đến</div>
+                <div data-v-9ebeba40="" class="start-time-title">Bến đến</div>
                 <div data-v-9ebeba40="" class="alert alert-info" style="display: none;">
                   <p style="text-align: center;">Không cón xe nào</p>
                 </div>
-                <select data-v-9ebeba40="" class="time-select" [(ngModel)]="benDen" (ngModelChange)="onChangeBenDen()">
-<!--                  <option data-v-9ebeba40="" disabled selected >-->
-<!--                    Chọn bến đến-->
-<!--                  </option>-->
+                <select data-v-9ebeba40="" class="time-select" [(ngModel)]="benDen" (ngModelChange)="onChangeBenDen();refreshGhe()">
                   <option data-v-9ebeba40="" [ngValue]="benDen" *ngFor="let benDen of benDens">
                     {{benDen.tenBen}}
                   </option>
@@ -54,7 +51,7 @@
             <div data-v-9ebeba40="">
               <div data-v-9ebeba40="" class="start-time">
                 <div data-v-9ebeba40="" class="start-time-title">Chọn nhà xe</div>
-                <select data-v-9ebeba40="" class="time-select" [(ngModel)]="nhaXe" (ngModelChange)="onChangeChuyenXeKhiChonNhaXe()">
+                <select data-v-9ebeba40="" class="time-select" [(ngModel)]="nhaXe" (ngModelChange)="onChangeChuyenXeKhiChonNhaXe();refreshGhe()">
                   <optgroup data-v-9ebeba40="" label="Nhà xe" class="time-group-1">
                     <option data-v-9ebeba40="" [ngValue]="nhaXe" *ngFor="let nhaXe of nhaXesTheoBenDiBenDen">
                       {{nhaXe.tenNhaXe}}
@@ -63,11 +60,11 @@
                 </select>
               </div>
               <div data-v-9ebeba40="" class="pick-up">
-                <div data-v-9ebeba40="" class="pick-up-title">Giờ chạy</div>
+                <div data-v-9ebeba40="" class="start-time-title">Giờ chạy</div>
                 <div data-v-9ebeba40="" class="alert alert-info" style="display: none;">
                   <p style="text-align: center;">Không cón xe nào</p>
                 </div>
-                <select data-v-9ebeba40="" class="time-select" [(ngModel)]="chuyenXe" (ngModelChange)="onChangeTheoThoiGian()">
+                <select data-v-9ebeba40="" class="time-select" [(ngModel)]="chuyenXe" (ngModelChange)="onChangeTheoThoiGian();refreshGhe()">
                   <optgroup data-v-9ebeba40="" label="Giờ chạy" class="time-group-1">
                     <option data-v-9ebeba40="" value="[object Object]"  [ngValue]="chuyenXe" *ngFor="let chuyenXe of chuyenXeTheoTinhVaNhaXes">
                       {{chuyenXe.thoiGian | date:'hh:mm'}}
@@ -81,7 +78,7 @@
             <div data-v-460fb019="" class="title-container">
               <p data-v-460fb019="" class="title"></p>
               <!--                        <i data-v-460fb019="" class="fa show-btn fa-angle-down"></i>-->
-              <input data-v-ca6ea784="" placeholder="Điểm đón mong muốn" id="name" name="name" required="required" autocomplete="name" class="input full" />
+              <input data-v-ca6ea784="" [(ngModel)]="diemDi" placeholder="Điểm đón mong muốn" id="name" name="name" required="required" autocomplete="name" class="input full" />
             </div>
             <div data-v-460fb019="" class="alert alert-info" style="display: none;">
               <p style="text-align: center;">Không tìm thấy thông tin chuyến</p>
@@ -102,9 +99,9 @@
                   <tbody data-v-489ca06a="">
                   <tr data-v-489ca06a="" class=""  *ngFor="let ghes of newGhesTang1">
                     <td data-v-489ca06a="" class="" *ngFor="let ghe of ghes" (click)="chonGhe(ghe)">
-                      <svg data-v-28788e28="" data-v-489ca06a="" xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" class="seat" [ngClass]="{'s-disabled':ghe.trangThaiGhe.maTrangThai === 'mttg03' || ghe.trangThaiGhe.maTrangThai === 'mttg00' }" pos="0">
+                      <svg data-v-28788e28="" data-v-489ca06a="" xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" class="seat" [ngClass]="{'s-disabled':ghe.trangThaiGhe === 'mttg03' || ghe.trangThaiGhe === 'mttg00' }" pos="0">
                         <g data-v-28788e28="" fill="none" fill-rule="evenodd">
-                          <g data-v-28788e28="" [ngClass]="{'active':ghe.trangThaiGhe.maTrangThai === 'mttg01', 'selecting':ghe.trangThaiGhe.maTrangThai === 'mttg02', 'disabled':ghe.trangThaiGhe.maTrangThai === 'mttg03'}">
+                          <g data-v-28788e28="" [ngClass]="{'active':ghe.trangThaiGhe === 'mttg01', 'selecting':ghe.trangThaiGhe === 'mttg02', 'disabled':ghe.trangThaiGhe === 'mttg03'}">
                             <path
                               data-v-28788e28=""
                               d="M8.625.5c-3.038 0-5.5 2.462-5.5 5.5v27.875c0 .828.672 1.5 1.5 1.5h32.75c.828 0 1.5-.672 1.5-1.5V6c0-3.038-2.462-5.5-5.5-5.5H8.625zM5.75 35.5V38c0 1.933 1.567 3.5 3.5 3.5h23.5c1.933 0 3.5-1.567 3.5-3.5v-2.5H5.75z"
@@ -114,7 +111,7 @@
                           </g>
                         </g>
                         <text data-v-28788e28="">
-                          <tspan data-v-28788e28="" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="active-seat-text" *ngIf="ghe.trangThaiGhe.maTrangThai !== 'mttg00'">
+                          <tspan data-v-28788e28="" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="active-seat-text" *ngIf="ghe.trangThaiGhe !== 'mttg00'">
                             A{{ghe.soGhe}}
                           </tspan>
                         </text>
@@ -130,9 +127,9 @@
                   <tbody data-v-489ca06a="">
                   <tr data-v-489ca06a="" class=""  *ngFor="let ghes of newGhesTang2">
                     <td data-v-489ca06a="" class="" *ngFor="let ghe of ghes" (click)="chonGhe(ghe)">
-                      <svg data-v-28788e28="" data-v-489ca06a="" xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" class="seat" [ngClass]="{'s-disabled':ghe.trangThaiGhe.maTrangThai === 'mttg03' || ghe.trangThaiGhe.maTrangThai === 'mttg00' }" pos="0">
+                      <svg data-v-28788e28="" data-v-489ca06a="" xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" class="seat" [ngClass]="{'s-disabled':ghe.trangThaiGhe === 'mttg03' || ghe.trangThaiGhe === 'mttg00' }" pos="0">
                         <g data-v-28788e28="" fill="none" fill-rule="evenodd">
-                          <g data-v-28788e28="" [ngClass]="{'active':ghe.trangThaiGhe.maTrangThai === 'mttg01', 'selecting':ghe.trangThaiGhe.maTrangThai === 'mttg02', 'disabled':ghe.trangThaiGhe.maTrangThai === 'mttg03'}">
+                          <g data-v-28788e28="" [ngClass]="{'active':ghe.trangThaiGhe === 'mttg01', 'selecting':ghe.trangThaiGhe === 'mttg02', 'disabled':ghe.trangThaiGhe === 'mttg03'}">
                             <path
                               data-v-28788e28=""
                               d="M8.625.5c-3.038 0-5.5 2.462-5.5 5.5v27.875c0 .828.672 1.5 1.5 1.5h32.75c.828 0 1.5-.672 1.5-1.5V6c0-3.038-2.462-5.5-5.5-5.5H8.625zM5.75 35.5V38c0 1.933 1.567 3.5 3.5 3.5h23.5c1.933 0 3.5-1.567 3.5-3.5v-2.5H5.75z"
@@ -142,7 +139,7 @@
                           </g>
                         </g>
                         <text data-v-28788e28="">
-                          <tspan data-v-28788e28="" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="active-seat-text" *ngIf="ghe.trangThaiGhe.maTrangThai !== 'mttg00'">
+                          <tspan data-v-28788e28="" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="active-seat-text" *ngIf="ghe.trangThaiGhe !== 'mttg00'">
                             B{{ghe.soGhe}}
                           </tspan>
                         </text>
@@ -177,9 +174,9 @@
                 <div data-v-76009edb="" class="selected-list"> {{strGheDaChon}}</div>
               </div>
               <div data-v-76009edb="" class="total">
-                <div data-v-76009edb="" class="title">Tổng tiền</div>
+                <div data-v-76009edb="" class="title">Giá vé</div>
                 <div data-v-76009edb="" class="total-price-text">
-                  {{tongTien}}
+                  {{tongTien| number:'.'}}
                   <sup data-v-76009edb="">₫</sup>
                 </div>
               </div>
@@ -200,23 +197,23 @@
           </button>
         </div>
         <div data-v-7d8bce1e="" class="right-btns">
-          <a routerLink="/datve">
-            <button data-v-7d8bce1e="" class="btn btn-success" (click)="tiepTuc()">
+          <button data-v-7d8bce1e="" class="btn btn-success" (click)="tiepTuc()" [disabled]="tongGheDaChon==0">
+            <a routerLink="/datve">
               TIẾP TỤC
-              <img
-                data-v-7d8bce1e=""
-                alt="back"
-                class="icon lazyLoad isLoaded"
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAASKADAAQAAAABAAAASAAAAACQMUbvAAABnklEQVR4Ae3a4W3CMBCGYdIVUBkDmKGDdIkyUffoEizRUtoZ0u8QkSrrcjE0DTh+LUWQu2AnTy4/cLxY0BBAAAEEEEAAAQQQQAABBBBAAIFZCTRTXE3bto8a5/k81mvTNMcpxi1iDMPR9q6tawd92RRx8lOcpDBeOplfn1+lID1MgeSMsVTsrRQk5/zHCwnBHjF7rLxWTCWNJ+L0JJm1NsPwGkhmJhlDOnpCioEEkvNoeSEqyVNJYiAlIN4uSJ5KEgMpAfF2QfJUkhhICYi3C5KnksQykLbJT+rbBSnjnoMEUoZAxiEDlfSp/Cqjm3kfMoC0+++rv9WM4iXXZS8W+l4utJd0NLtjVT0bbX0TbR/K2duSOtsAjk28reuU0VWDE9x6cMAJBIIUlQNOIBCkqBxwAoEgReWAEwgEKSoHnEAgSFE51+PYv/Wq/3gOLaCqF8eKStXhrVFU+DTPc/c4t5pR/Jbdk5YD74Mns46UKsVbBnz3ldPdnb653i4/yqchqSMWko+iSScIIIAAAggggAACCCCAAAIIIIDAnwR+AARz1rJJfntoAAAAAElFTkSuQmCC"
-              />
-            </button>
-          </a>
+            </a>
+            <img
+              data-v-7d8bce1e=""
+              alt="back"
+              class="icon lazyLoad isLoaded"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAASKADAAQAAAABAAAASAAAAACQMUbvAAABnklEQVR4Ae3a4W3CMBCGYdIVUBkDmKGDdIkyUffoEizRUtoZ0u8QkSrrcjE0DTh+LUWQu2AnTy4/cLxY0BBAAAEEEEAAAQQQQAABBBBAAIFZCTRTXE3bto8a5/k81mvTNMcpxi1iDMPR9q6tawd92RRx8lOcpDBeOplfn1+lID1MgeSMsVTsrRQk5/zHCwnBHjF7rLxWTCWNJ+L0JJm1NsPwGkhmJhlDOnpCioEEkvNoeSEqyVNJYiAlIN4uSJ5KEgMpAfF2QfJUkhhICYi3C5KnksQykLbJT+rbBSnjnoMEUoZAxiEDlfSp/Cqjm3kfMoC0+++rv9WM4iXXZS8W+l4utJd0NLtjVT0bbX0TbR/K2duSOtsAjk28reuU0VWDE9x6cMAJBIIUlQNOIBCkqBxwAoEgReWAEwgEKSoHnEAgSFE51+PYv/Wq/3gOLaCqF8eKStXhrVFU+DTPc/c4t5pR/Jbdk5YD74Mns46UKsVbBnz3ldPdnb653i4/yqchqSMWko+iSScIIIAAAggggAACCCCAAAIIIIDAnwR+AARz1rJJfntoAAAAAElFTkSuQmCC"
+            />
+          </button>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!-- Optional JavaScript -->
+{{message}}
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

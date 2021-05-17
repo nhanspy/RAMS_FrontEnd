@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyCOa4nYd0tnQrpynqOZQj5HimnL54sUqbQ',
+    authDomain: 'rtep-firebase.firebaseapp.com',
+    databaseURL: 'https://rtep-firebase-default-rtdb.asia-southeast1.firebasedatabase.app',
+    projectId: 'rtep-firebase',
+    storageBucket: 'rtep-firebase.appspot.com',
+    messagingSenderId: '989640681446',
+    appId: '1:989640681446:web:21ec82d36156daa8f75827'
+    // measurementId: "G-BFQJR6PVP2"
+  }
 };
 
 /*

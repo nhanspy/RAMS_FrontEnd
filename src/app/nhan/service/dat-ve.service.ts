@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {VeXe} from '../Models/VeXe.class';
-import {Ghe} from '../Models/Ghe.class';
 const baseURL = 'http://localhost:8080/api/v1';
 @Injectable({
   providedIn: 'root'
@@ -32,6 +31,7 @@ export class DatVeService {
     let ghes : String[] = [];
     veXe.ghe.forEach(
       item => {
+        // @ts-ignore
         ghes.push(item.maGhe);
       }
     );

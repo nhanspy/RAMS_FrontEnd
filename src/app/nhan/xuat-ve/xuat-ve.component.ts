@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {DatVeService} from '../service/dat-ve.service';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
-import {Ghe} from '../Models/Ghe.class';
 import {XemChiTietChuyenXeService} from '../service/xem-chi-tiet-chuyen-xe.service';
 import {ChuyenXe} from '../Models/ChuyenXe.class';
 import {AuthService} from '../service/auth.service';
 import {TokenStorageService} from '../service/token-storage.service';
 import {XuatVeService} from '../service/xuat-ve.service';
+import Ghe from '../Models/Ghe.class';
 
 @Component({
   selector: 'app-xuat-ve',
@@ -66,6 +66,7 @@ export class XuatVeComponent implements OnInit {
       // @ts-ignore
       this.gheDaChons = JSON.parse(localStorage.getItem('gheDaChons'));
       this.gheDaChons.forEach(item => {
+        // @ts-ignore
         this.strMaGhe.push(item.maGhe);
       });
       // @ts-ignore
@@ -123,7 +124,7 @@ export class XuatVeComponent implements OnInit {
           this.ghes = data;
           this.gheDaChons = this.ghes.slice().filter(
             item => {
-              if (item.trangThaiGhe.maTrangThai === 'mttg02'){
+              if (item.trangThaiGhe === 'mttg02'){
                 item.daChon = true;
                 return true;
               }
@@ -144,6 +145,7 @@ export class XuatVeComponent implements OnInit {
           );
           // @ts-ignore
           this.ghes.sort((a, b) => {
+            // @ts-ignore
             return a.soGhe > b.soGhe;
           });
           while (this.ghesTang1.length) {

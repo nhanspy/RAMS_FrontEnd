@@ -27,9 +27,9 @@
                   <tr data-v-489ca06a="" class=""  *ngFor="let ghes of newGhesTang1">
                     <td data-v-489ca06a="" class="" *ngFor="let ghe of ghes" >
 <!--                    <td data-v-489ca06a="" class="" *ngFor="let ghe of ghes" (click)="chonGhe(ghe)">-->
-                      <svg data-v-28788e28="" data-v-489ca06a="" xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" class="seat" [ngClass]="{'s-disabled':ghe.trangThaiGhe.maTrangThai === 'mttg03' || ghe.trangThaiGhe.maTrangThai === 'mttg00' }" pos="0">
+                      <svg data-v-28788e28="" data-v-489ca06a="" xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" class="seat" [ngClass]="{'s-disabled':ghe.trangThaiGhe === 'mttg03' || ghe.trangThaiGhe === 'mttg00' }" pos="0">
                         <g data-v-28788e28="" fill="none" fill-rule="evenodd">
-                          <g data-v-28788e28="" [ngClass]="{'active':ghe.trangThaiGhe.maTrangThai === 'mttg01', 'selecting':ghe.trangThaiGhe.maTrangThai === 'mttg02', 'disabled':ghe.trangThaiGhe.maTrangThai === 'mttg03'}">
+                          <g data-v-28788e28="" [ngClass]="{'active':ghe.trangThaiGhe === 'mttg01', 'selecting':ghe.trangThaiGhe === 'mttg02', 'disabled':ghe.trangThaiGhe === 'mttg03'}">
                             <path
                               data-v-28788e28=""
                               d="M8.625.5c-3.038 0-5.5 2.462-5.5 5.5v27.875c0 .828.672 1.5 1.5 1.5h32.75c.828 0 1.5-.672 1.5-1.5V6c0-3.038-2.462-5.5-5.5-5.5H8.625zM5.75 35.5V38c0 1.933 1.567 3.5 3.5 3.5h23.5c1.933 0 3.5-1.567 3.5-3.5v-2.5H5.75z"
@@ -39,7 +39,7 @@
                           </g>
                         </g>
                         <text data-v-28788e28="">
-                          <tspan data-v-28788e28="" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="active-seat-text" *ngIf="ghe.trangThaiGhe.maTrangThai !== 'mttg00'">
+                          <tspan data-v-28788e28="" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="active-seat-text" *ngIf="ghe.trangThaiGhe !== 'mttg00'">
                             A{{ghe.soGhe}}
                           </tspan>
                         </text>
@@ -56,9 +56,9 @@
                   <tr data-v-489ca06a="" class=""  *ngFor="let ghes of newGhesTang2">
                     <td data-v-489ca06a="" class="" *ngFor="let ghe of ghes">
 <!--                    <td data-v-489ca06a="" class="" *ngFor="let ghe of ghes" (click)="chonGhe(ghe)">-->
-                      <svg data-v-28788e28="" data-v-489ca06a="" xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" class="seat" [ngClass]="{'s-disabled':ghe.trangThaiGhe.maTrangThai === 'mttg03' || ghe.trangThaiGhe.maTrangThai === 'mttg00' }" pos="0">
+                      <svg data-v-28788e28="" data-v-489ca06a="" xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" class="seat" [ngClass]="{'s-disabled':ghe.trangThaiGhe === 'mttg03' || ghe.trangThaiGhe === 'mttg00' }" pos="0">
                         <g data-v-28788e28="" fill="none" fill-rule="evenodd">
-                          <g data-v-28788e28="" [ngClass]="{'active':ghe.trangThaiGhe.maTrangThai === 'mttg01', 'selecting':ghe.trangThaiGhe.maTrangThai === 'mttg02', 'disabled':ghe.trangThaiGhe.maTrangThai === 'mttg03'}">
+                          <g data-v-28788e28="" [ngClass]="{'active':ghe.trangThaiGhe === 'mttg01', 'selecting':ghe.trangThaiGhe === 'mttg02', 'disabled':ghe.trangThaiGhe === 'mttg03'}">
                             <path
                               data-v-28788e28=""
                               d="M8.625.5c-3.038 0-5.5 2.462-5.5 5.5v27.875c0 .828.672 1.5 1.5 1.5h32.75c.828 0 1.5-.672 1.5-1.5V6c0-3.038-2.462-5.5-5.5-5.5H8.625zM5.75 35.5V38c0 1.933 1.567 3.5 3.5 3.5h23.5c1.933 0 3.5-1.567 3.5-3.5v-2.5H5.75z"
@@ -68,7 +68,7 @@
                           </g>
                         </g>
                         <text data-v-28788e28="">
-                          <tspan data-v-28788e28="" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="active-seat-text" *ngIf="ghe.trangThaiGhe.maTrangThai !== 'mttg00'">
+                          <tspan data-v-28788e28="" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="active-seat-text" *ngIf="ghe.trangThaiGhe !== 'mttg00'">
                             B{{ghe.soGhe}}
                           </tspan>
                         </text>

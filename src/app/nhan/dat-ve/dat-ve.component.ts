@@ -3,10 +3,10 @@ import {DatVeService} from '../service/dat-ve.service';
 import {VeXe} from '../Models/VeXe.class';
 import {Router} from '@angular/router';
 import {ChuyenXe} from '../Models/ChuyenXe.class';
-import {Ghe} from '../Models/Ghe.class';
 import {Location} from '@angular/common';
 import {AuthService} from '../service/auth.service';
 import {TokenStorageService} from '../service/token-storage.service';
+import Ghe from '../Models/Ghe.class';
 @Component({
   selector: 'app-dat-ve',
   templateUrl: './dat-ve.component.html',
@@ -50,6 +50,7 @@ export class DatVeComponent implements OnInit {
   tongTien: number;
   // @ts-ignore
   strGheDaChon: string;
+  diemDi = '';
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
@@ -70,6 +71,13 @@ export class DatVeComponent implements OnInit {
       // @ts-ignore
       this.gheDaChons = JSON.parse(localStorage.getItem('gheDaChons'));
     }
+    if (localStorage.getItem('diemDi')) {
+      // @ts-ignore
+      this.diemDi = JSON.parse(localStorage.getItem('diemDi'));
+      if (this.diemDi == ''){
+        this.diemDi = this.chuyenXe.benDi.tenBen;
+      }
+    }
     this.setTongTien();
   }
 
@@ -82,6 +90,7 @@ export class DatVeComponent implements OnInit {
         if (item.daChon) {
           this.tongGheDaChon += 1;
           this.strGheDaChon += ((item.tang === 1) ? 'A' : 'B') + item.soGhe + ', ';
+          // @ts-ignore
           this.tongTien += item.gia;
         }
       }

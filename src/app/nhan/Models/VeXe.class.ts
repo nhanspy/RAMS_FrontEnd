@@ -1,4 +1,4 @@
-import {Ghe} from './Ghe.class';
+import Ghe from './Ghe.class';
 import {ChuyenXe} from './ChuyenXe.class';
 import {User} from './User.class';
 

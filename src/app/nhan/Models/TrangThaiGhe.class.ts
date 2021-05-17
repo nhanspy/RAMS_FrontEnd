@@ -1,4 +1,5 @@
-import {Ghe} from './Ghe.class';
+import Ghe from './Ghe.class';
+
 
 export class TrangThaiGhe {
   private _maTrangThai: string;

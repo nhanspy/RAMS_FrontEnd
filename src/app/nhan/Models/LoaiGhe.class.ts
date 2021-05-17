@@ -1,4 +1,4 @@
-import {Ghe} from './Ghe.class';
+import Ghe from './Ghe.class';
 
 export class LoaiGhe {
   private _maLoaiGhe: string;

@@ -38,6 +38,9 @@ import {DangkyuserComponent} from './thao/dangkyuser/dangkyuser.component';
 import {QuenmatkhauComponent} from './thao/quenmatkhau/quenmatkhau.component';
 import {DoimatkhauComponent} from './thao/doimatkhau/doimatkhau.component';
 import {ToastrModule} from 'ngx-toastr';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 @NgModule({
   declarations: [
@@ -83,7 +86,9 @@ import {ToastrModule} from 'ngx-toastr';
       NgxPaginationModule,
       IvyCarouselModule,
       AppRoutingModule,
-      ToastrModule.forRoot()
+      ToastrModule.forRoot(),
+      AngularFireModule.initializeApp(environment.firebase),
+      AngularFireDatabaseModule,
     ],
 
   providers: [

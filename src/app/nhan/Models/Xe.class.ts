@@ -1,7 +1,8 @@
-import {Ghe} from './Ghe.class';
+
 import {ChuyenXe} from './ChuyenXe.class';
 import {NhaXe} from './NhaXe.class';
 import {LoaiXe} from './LoaiXe.class';
+import Ghe from './Ghe.class';
 
 export class Xe {
   private _maXe: string;

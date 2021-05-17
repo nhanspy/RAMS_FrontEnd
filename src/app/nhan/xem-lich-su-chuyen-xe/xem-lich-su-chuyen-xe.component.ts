@@ -4,7 +4,8 @@ import {TinhThanh} from '../Models/TinhThanh.class';
 import {Ben} from '../Models/Ben.class';
 import {NhaXe} from '../Models/NhaXe.class';
 import {TrangThaiGhe} from '../Models/TrangThaiGhe.class';
-import {Ghe} from '../Models/Ghe.class';
+import Ghe from '../Models/Ghe.class';
+// import {Ghe} from '../Models/Ghe.class';
 
 @Component({
   selector: 'app-xem-lich-su-chuyen-xe',
