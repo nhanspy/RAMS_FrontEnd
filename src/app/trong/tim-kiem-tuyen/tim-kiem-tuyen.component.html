@@ -32,10 +32,10 @@
               <div data-v-c5ae3bdc="" data-v-3ceb75b5="" class="auto-complete-place-container place-select-from">
                 <label data-v-c5ae3bdc="" class="title">Điểm đi</label>
                 <div class="form-group" [class.has-error]="bendi.touched && bendi.invalid">
-                  <select id="college_name" class="form-control" [ngModel]="getbendi" name="college_name" required
+                  <select id="college_name" class="form-control" [ngModel]="getbendi" name="college_name"  required
                           #bendi="ngModel"
                           #mySelect (change)='selecttinhthanh(mySelect.value)'>
-                    <option class="option" *ngFor="let thing of tinhthanhlist" [value]="thing.tenTinh">
+                    <option class="option"  *ngFor="let thing of tinhthanhlist" [value]="thing.tenTinh">
                       {{thing.tenTinh}}
                     </option>
                   </select>
@@ -50,7 +50,7 @@
               <div data-v-c5ae3bdc="" data-v-3ceb75b5="" class="auto-complete-place-container">
                 <label data-v-c5ae3bdc="" class="title">Điểm đến</label>
                 <div class="form-group" [class.has-error]="benden.touched && benden.invalid">
-                  <select class="form-control" [ngModel]="getbenden" name="college2_name" required #benden="ngModel"
+                  <select class="form-control" [ngModel]="getbenden" name="college2_name"     required #benden="ngModel"
                           #mySelect1 (change)='selecttinhthanh(mySelect1.value)'>
                     <option *ngFor="let thing of tinhthanhlist" [value]="thing.tenTinh">{{thing.tenTinh}}</option>
                   </select>

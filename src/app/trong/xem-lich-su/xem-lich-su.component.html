@@ -1,60 +1,3 @@
-<!--<div style="text-align: center" class="container">-->
-<!--  <h1 style="text-align: center; font-family: Trebuchet MS; width: 1110px; background: orange;margin: 30px">{{Title}}</h1>-->
-<!--    <div class="tbl-header" style="font-family: Trebuchet MS" >-->
-<!--      <table class="table" >-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--          <td></td>-->
-<!--          <td><input type="text" class="form-control" placeholder="Tìm theo chuyến xe" #txtSearch (keyup)="searchMaChuyen(txtSearch.value)"></td>-->
-<!--          <td><input type="text" class="form-control" placeholder="Tìm theo tên nhà xe" #txtSearch4 (keyup)="searchMaXe(txtSearch4.value)"></td>-->
-<!--          <td><input type="text" class="form-control" placeholder="Tìm theo bến đi" #txtSearch1 (keyup)="searchBenDi(txtSearch1.value)"></td>-->
-<!--          <td><input type="text" class="form-control" placeholder="Tìm theo bến đến" #txtSearch2 (keyup)="searchBenDen(txtSearch2.value)"></td>-->
-<!--          <td><input type="text" class="form-control" placeholder="Tìm theo thời gian" #txtSearch3 (keyup)="searchThoiGian(txtSearch3.value)"></td>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--      </table>-->
-<!--    </div>-->
-<!--    <div class="tbl-content" style="font-family: Trebuchet MS" >-->
-<!--        <tr class="filters">-->
-<!--          <th style="width: 5%"><input type="text" class="form-control" placeholder="#" disabled></th>-->
-<!--          <th><input style="text-align: center" type="text" class="form-control" placeholder="Tên chuyến xe" disabled></th>-->
-<!--          <th><input style="text-align: center" type="text" class="form-control" placeholder="Tên nhà xe" disabled></th>-->
-<!--          <th><input style="text-align: center" type="text" class="form-control" placeholder="Bến đi" disabled></th>-->
-<!--          <th><input style="text-align: center" type="text" class="form-control" placeholder="Bến đến" disabled></th>-->
-<!--          <th><input style="text-align: center" type="text" class="form-control" placeholder="Thời gian" disabled></th>-->
-<!--        </tr>-->
-<!--        <tbody *ngIf="xemlichsulist.length !=0;else elseBlock">-->
-<!--        <tr *ngFor="let xemLichSu of xemlichsulist | paginate: { id: 'listing_pagination',-->
-<!--                                                      itemsPerPage: 10,-->
-<!--                                                      currentPage: page,-->
-<!--                                                      totalItems: totalRec}; let i = index">-->
-<!--          <td>{{i+1}}</td>-->
-<!--          <td>{{xemLichSu.maChuyen}}</td>-->
-<!--          <td>{{xemLichSu.xe.nhaXe.tenNhaXe}}</td>-->
-<!--          <td>{{xemLichSu.benDi.tenBen}}</td>-->
-<!--          <td>{{xemLichSu.benDen.tenBen}}</td>-->
-<!--          <td>{{xemLichSu.thoiGian}}</td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--        <ng-template #elseBlock>-->
-<!--          <tr>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td><a>KHÔNG TÌM THẤY</a></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--          </tr>-->
-<!--        </ng-template>-->
-<!--&lt;!&ndash;        <div class="card-footer pb-0 pt-3">&ndash;&gt;-->
-<!--&lt;!&ndash;          <jw-pagination [items]="xemlichsulist" (loadstart)="onChangePage($event)"></jw-pagination>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-<!--      <div>-->
-<!--        <pagination-controls previousLabel="Trước" nextLabel="Sau" style="text-align: right"  id="listing_pagination" (pageChange)="page = $event"></pagination-controls>-->
-<!--      </div></div>-->
-<!--</div>-->
-
-
 <body>
 <section>
   <!--for demo wrap-->
@@ -90,10 +33,9 @@
     <table cellpadding="0" cellspacing="0" border="0">
       <tbody *ngIf="xemlichsulist.length !=0;else elseBlock">
       <tr *ngFor="let xemLichSu of xemlichsulist | paginate: { id: 'listing_pagination',
-                                                      itemsPerPage: pageSize,
+                                                      itemsPerPage: 10,
                                                       currentPage: page,
-                                                      totalItems: count}; let i = index"[class.active]="i == currentIndex"
-          (click)="setActiveTutorial(xemLichSu, i)">
+                                                      totalItems: totalRec}; let i = index">
         <td>{{i+1}}</td>
         <td>{{xemLichSu.maChuyen}}</td>
         <td>{{xemLichSu.xe.nhaXe.tenNhaXe}}</td>
@@ -115,14 +57,7 @@
     </table>
   </div>
   <div style="margin-bottom: -1em">
-    <pagination-controls previousLabel="Trước" nextLabel="Sau" [responsive]="true" (pageChange)="handlePageChange($event)">
-    </pagination-controls>
-    <select (change)="handlePageSizeChange($event)">
-      <option *ngFor="let size of pageSizes" [ngValue]="size">
-        {{ size }}
-      </option>
-    </select>
+    <pagination-controls previousLabel="Trước" nextLabel="Sau" style="text-align: right"  id="listing_pagination" (pageChange)="page = $event"></pagination-controls>
   </div>
 </section>
 </body>
-

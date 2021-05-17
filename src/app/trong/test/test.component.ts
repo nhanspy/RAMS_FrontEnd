@@ -38,10 +38,10 @@ export class TestComponent implements OnInit {
 
   ngOnInit(): void {
     // this.xemlichsulist = this.xemLichSu2Service.xemlichsulist;
-    this.xemLichSuService.readAll().subscribe(data => {
-      this.xemlichsulist = data;
-      this.xemlichsulistRoot = data;
-      // @ts-ignore
+    // this.xemLichSuService.readAll().subscribe(data => {
+    //   this.xemlichsulist = data;
+    //   this.xemlichsulistRoot = data;
+    //   // @ts-ignore
       // this.totalRec = this.xemlichsulist.length;
       // console.log(this.totalRec);
       // console.log(this.page);
@@ -58,10 +58,10 @@ export class TestComponent implements OnInit {
       // }, error => {
       //   console.log('loi: ' + error);
       // });
-    }, error => {
-      console.log('loi me roi: ' + error);
-    });
-    // @ts-ignore
+    // }, error => {
+    //   console.log('loi me roi: ' + error);
+    // });
+    // // @ts-ignore
     // this.xemLichSuService.getNhaXe().subscribe(data => {
     //   this.nhaxelist = data;
     // }, error => {
@@ -73,69 +73,69 @@ export class TestComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  search() {
-    let dem = 0;
-    this.xemlichsulist = this.xemlichsulistRoot;
-    if (this.keywordMaChuyen) {
-      this.xemlichsulist = this.xemlichsulist.filter(item => {
-        return item.maChuyen.includes(this.keywordMaChuyen);
-      });
-      dem++;
-    }
-    if (this.keywordBenDi) {
-      this.xemlichsulist = this.xemlichsulist.filter(item => {
-        return item.benDi.tenBen.includes(this.keywordBenDi);
-      });
-      dem++;
-    }
-    if (this.keywordBenDen) {
-      this.xemlichsulist = this.xemlichsulist.filter(item => {
-        return item.benDen.tenBen.includes(this.keywordBenDen);
-      });
-      dem++;
-    }
-    if (this.keywordThoiGian) {
-      this.xemlichsulist = this.xemlichsulist.filter(item => {
-        return item.thoiGian.includes(this.keywordThoiGian);
-      });
-      dem++;
-    }
-    if (this.keywordMaXe) {
-      this.xemlichsulist = this.xemlichsulist.filter(item => {
-        return item.xe.nhaXe.tenNhaXe.includes(this.keywordMaXe);
-      });
-      dem++;
-    }
-    // tslint:disable-next-line:triple-equals
-    if (dem === 0) {
-      this.xemlichsulist = this.xemlichsulistRoot;
-    }
-  }
-
-  searchMaChuyen(value: string) {
-    this.keywordMaChuyen = value;
-    this.search();
-  }
-
-  searchBenDi(value: string) {
-    this.keywordBenDi = value;
-    this.search();
-  }
-
-  searchBenDen(value: string) {
-    this.keywordBenDen = value;
-    this.search();
-  }
-
-  searchThoiGian(value: string) {
-    this.keywordThoiGian = value;
-    this.search();
-  }
-
-  searchMaXe(value: string) {
-    this.keywordMaXe = value;
-    this.search();
-  }
-
+  // search() {
+  //   let dem = 0;
+  //   this.xemlichsulist = this.xemlichsulistRoot;
+  //   if (this.keywordMaChuyen) {
+  //     this.xemlichsulist = this.xemlichsulist.filter(item => {
+  //       return item.maChuyen.includes(this.keywordMaChuyen);
+  //     });
+  //     dem++;
+  //   }
+  //   if (this.keywordBenDi) {
+  //     this.xemlichsulist = this.xemlichsulist.filter(item => {
+  //       return item.benDi.tenBen.includes(this.keywordBenDi);
+  //     });
+  //     dem++;
+  //   }
+  //   if (this.keywordBenDen) {
+  //     this.xemlichsulist = this.xemlichsulist.filter(item => {
+  //       return item.benDen.tenBen.includes(this.keywordBenDen);
+  //     });
+  //     dem++;
+  //   }
+  //   if (this.keywordThoiGian) {
+  //     this.xemlichsulist = this.xemlichsulist.filter(item => {
+  //       return item.thoiGian.includes(this.keywordThoiGian);
+  //     });
+  //     dem++;
+  //   }
+  //   if (this.keywordMaXe) {
+  //     this.xemlichsulist = this.xemlichsulist.filter(item => {
+  //       return item.xe.nhaXe.tenNhaXe.includes(this.keywordMaXe);
+  //     });
+  //     dem++;
+  //   }
+  //   // tslint:disable-next-line:triple-equals
+  //   if (dem === 0) {
+  //     this.xemlichsulist = this.xemlichsulistRoot;
+  //   }
+  // }
+  //
+  // searchMaChuyen(value: string) {
+  //   this.keywordMaChuyen = value;
+  //   this.search();
+  // }
+  //
+  // searchBenDi(value: string) {
+  //   this.keywordBenDi = value;
+  //   this.search();
+  // }
+  //
+  // searchBenDen(value: string) {
+  //   this.keywordBenDen = value;
+  //   this.search();
+  // }
+  //
+  // searchThoiGian(value: string) {
+  //   this.keywordThoiGian = value;
+  //   this.search();
+  // }
+  //
+  // searchMaXe(value: string) {
+  //   this.keywordMaXe = value;
+  //   this.search();
+  // }
+  //
 
 }
