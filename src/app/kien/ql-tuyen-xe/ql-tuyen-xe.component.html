@@ -267,12 +267,12 @@
                     </td>
                     <td>
                       <select class="form-select form-control" aria-label="Default select example" formControlName="benDi">
-                        <option *ngFor="let benXe of benXeList" [value]="benXe" >{{benXe.tenBen}}</option>
+                        <option [selected]="benXe.maBen.includes(chuyenXes.benDi.maBen)" *ngFor="let benXe of benXeList; let i = index" [value]="benXe" >{{benXe.tenBen}}</option>
                       </select>
                     </td>
                     <td>
                       <select class="form-select form-control" aria-label="Default select example" formControlName="benDen">
-                        <option *ngFor="let benXe of benXeList" [value]="benXe" >{{benXe.tenBen}}</option>
+                        <option [selected]="benXe.maBen.includes(chuyenXes.benDen.maBen)" *ngFor="let benXe of benXeList" [value]="benXe" >{{benXe.tenBen}}</option>
                       </select>
                     </td>
 <!--                    <td>-->
@@ -303,7 +303,7 @@
                     <td>{{tuyenxeList.benDen.tenBen}}</td>
                     <td>{{tuyenxeList.thoiGian}}</td>
                     <td>
-                      <button type="button" class="btn btn-success" (click)="chuyenXes = tuyenxeList;editchuyenxe($event, i); enableAddNewchuyenxe=1 ">Sửa</button>
+                      <button type="button" class="btn btn-success" (click)="chuyenXes = tuyenxeList;editchuyenxe($event, i); enableAddNewchuyenxe=1; enableEditIndexchuyenxe = i ">Sửa</button>
                       <button type="button" class="btn btn-danger" (click)="removeChuyenxe(keywordMaxe, tuyenxeList.maChuyen)" [disabled]="isDisable">Xóa</button>
                     </td>
                   </tbody>
