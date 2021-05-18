@@ -15,16 +15,18 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+  Oauth_URL = 'http://localhost:8080/oauth/';
+
   private httpOptions: any;
 
   constructor(private http: HttpClient) { }
 
   public google(tokenDto: TokenDto): Observable<TokenDto> {
-    return this.http.post<TokenDto>(AUTH_API + 'google', tokenDto, cabecera);
+    return this.http.post<TokenDto>(this.Oauth_URL + 'google', tokenDto, cabecera);
   }
 
   public facebook(tokenDto: TokenDto): Observable<TokenDto> {
-    return this.http.post<TokenDto>( AUTH_API+ 'facebook', tokenDto, cabecera);
+    return this.http.post<TokenDto>( this.Oauth_URL+ 'facebook', tokenDto, cabecera);
   }
 
   login(credentials: any): Observable<any> {

@@ -8,8 +8,6 @@ import {HomeComponent} from "./thao/home/home.component";
 import {ProfileComponent} from "./thao/profile/profile.component";
 import {BoardAdminComponent} from "./thao/board-admin/board-admin.component";
 import {BoardModeratorComponent} from "./thao/board-moderator/board-moderator.component";
-import {BoardUserComponent} from "./thao/board-user/board-user.component";
-import {TestComponent} from "./thao/test/test.component";
 import {APP_BASE_HREF} from "@angular/common";
 import {authInterceptorProviders} from "./thao/_helpers/auth.interceptor";
 import { HeaderComponent } from './thao/header/header.component';
@@ -35,8 +33,6 @@ import {productoInterceptor} from "./thao/interceptors/producto.interceptor";
     ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
-    BoardUserComponent,
-    TestComponent,
     KiemTraVeComponent,
     HeaderComponent,
     FooterComponent,

@@ -29,6 +29,7 @@ export class TokenStorageService {
 
   public setToken(value: string): string{
     return localStorage.getItem(TOKEN_KEY) as string;
+    sessionStorage.removeItem(TOKEN_KEY);
   }
 
   public saveUser(user: any): void {
