@@ -6,7 +6,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 @Component({
   selector: 'app-ql-nha-xe',
   templateUrl: './ql-nha-xe.component.html',
-  styleUrls: ['./ql-nha-xe.component.sass']
+  // styleUrls: ['./ql-nha-xe.component.sass']
 })
 export class QlNhaXeComponent implements OnInit {
   // @ts-ignore

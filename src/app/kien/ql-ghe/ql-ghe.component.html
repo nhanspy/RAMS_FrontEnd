@@ -139,44 +139,59 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Quản lý chức năng
+                Quản lý tài khoản
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
+                <a routerLink="/qlnguoidung" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Quản lý người dùng</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link active">
+                <a routerLink="/qlnhaxe" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Quản lý nhà xe</p>
                 </a>
               </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Quản lý nhà xe
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a routerLink="/qltuyenxe" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Quản lý chuyến xe</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index4.html" class="nav-link">
+                <a routerLink="/qlxe" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Quản lý xe</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index5.html" class="nav-link">
+                <a routerLink="/qlghe" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Quản lý ghế</p>
                 </a>
               </li>
             </ul>
           </li>
-          VIET CODE O DAY 1234
         </ul>
       </nav>
     </div>
@@ -228,12 +243,12 @@
                   <td width="720px"><input type="text" class="form-control" placeholder="Tìm tên trạng thái" #txtSearch5
                                            (keyup)="searchTenthangthai(txtSearch5.value)"></td>
                   <tr>
-                    <th>Mã ghế</th>
-                    <th>Mã loại ghế</th>
-                    <th>Tên loại ghế</th>
-                    <th>Mã trạng thái</th>
-                    <th>Tên trạng thái</th>
-                    <th>Hành động</th>
+                    <th width="720px">Mã ghế</th>
+                    <th width="720px">Mã loại ghế</th>
+                    <th width="720px">Tên loại ghế</th>
+                    <th width="720px">Mã trạng thái</th>
+                    <th width="720px">Tên trạng thái</th>
+                    <th width="720px">Hành động</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -245,7 +260,6 @@
                         Vui lòng điền vào trường Mã ghế.
                       </p>
                     </td>
-                  <tr *ngIf="enableAddNewghe == 1">
                     <td class="form-group">
                       <input id="maLoaiGhe" type="text" class="form-control" placeholder="Vui lòng nhập Mã loại ghế"
                              formControlName="maLoaiGhe">
@@ -253,7 +267,6 @@
                         Vui lòng điền vào trường Mã loại ghế.
                       </p>
                     </td>
-                  <tr *ngIf="enableAddNewghe == 1">
                     <td class="form-group">
                       <input id="tenLoaiGhe" type="text" class="form-control" placeholder="Vui lòng nhập Tên Loại ghế"
                              formControlName="tenLoaiGhe">
@@ -261,7 +274,6 @@
                         Vui lòng điền vào trường Tên loại ghế.
                       </p>
                     </td>
-                  <tr *ngIf="enableAddNewghe == 1">
                     <td class="form-group">
                       <input id="maTrangThai" type="text" class="form-control" placeholder="Vui lòng nhập Mã trạng thái"
                              formControlName="maTrangThai">
@@ -269,7 +281,6 @@
                         Vui lòng điền vào trường Mã ghế.
                       </p>
                     </td>
-                  <tr *ngIf="enableAddNewghe == 1">
                     <td class="form-group">
                       <input id="tenTrangThai" type="text" class="form-control" placeholder="Vui lòng nhập Tên trạng thái"
                              formControlName="tenTrangThai">
@@ -279,10 +290,10 @@
                     </td>
                     <td >
                       <button type="submit" class="btn btn-primary " [disabled]="!gheForm.valid">Lưu</button>
-                      <button (click)="enableAddNewghe = -1" type="button" class="btn btn-info" ng-click="cancel()">Hủy</button>
+                      <button (click)="enableAddNewghe = -1;" type="button" class="btn btn-info" ng-click="cancel()">Hủy</button>
                     </td>
                   </tr>
-                  <tr *ngFor="let gheList of gheList | paginate: { id: 'listing_pagination',itemsPerPage: 5,currentPage: page, totalItems: totalRec}; let i = index">
+                  <tr *ngFor="let gheList of gheList | paginate: { id: 'listing_pagination',itemsPerPage: 5,currentPage: page, totalItems: totalRec}, let i = index">
                     <td>{{gheList.maGhe}}</td>
                     <td>{{gheList.loaiGhe.maLoaiGhe}}</td>
                     <td>{{gheList.loaiGhe.tenLoaiGhe}}</td>

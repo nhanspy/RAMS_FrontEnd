@@ -12,6 +12,8 @@ import { QlNhaXeComponent } from './kien/ql-nha-xe/ql-nha-xe.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {QlXeComponent} from './kien/ql-xe/ql-xe.component';
+import {QlGheComponent} from './kien/ql-ghe/ql-ghe.component';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     QlNguoiDungComponent,
     QlTuyenXeComponent,
     QlNhaXeComponent,
+    QlXeComponent,
+    QlGheComponent
     // DangKyComponent,
     // DangNhapComponent,
     // KiemTraVeComponent,

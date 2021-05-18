@@ -26,10 +26,10 @@ export class QlGheService {
   create(data): Observable<any>{
     return this.http.post<Ghe>(this.baseURL, {
       maGhe: data.maGhe,
-      maLoaighe: data.loaiGhe.maLoaiGhe,
-      tenLoaighe: data.loaiGhe.tenLoaiGhe,
-      maTrangthai: data.trangThaiGhe.maTrangThai,
-      tenTrangthai: data.trangThaiGhe.tenTrangThai,
+      maLoaiGhe: data.loaiGhe.maLoaiGhe,
+      tenLoaiGhe: data.loaiGhe.tenLoaiGhe,
+      maTrangThai: data.trangThaiGhe.maTrangThai,
+      tenTrangThai: data.trangThaiGhe.tenTrangThai,
     }, httpOptions);
   }
   // @ts-ignore

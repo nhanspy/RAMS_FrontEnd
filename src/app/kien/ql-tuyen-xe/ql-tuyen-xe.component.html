@@ -139,44 +139,59 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Quản lý chức năng
+                Quản lý tài khoản
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
+                <a routerLink="/qlnguoidung" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Quản lý người dùng</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link active">
+                <a routerLink="/qlnhaxe" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Quản lý nhà xe</p>
                 </a>
               </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Quản lý nhà xe
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a routerLink="/qltuyenxe" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Quản lý chuyến xe</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index4.html" class="nav-link">
+                <a routerLink="/qlxe" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Quản lý xe</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index5.html" class="nav-link">
+                <a routerLink="/qlghe" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Quản lý ghế</p>
                 </a>
               </li>
             </ul>
           </li>
-          VIET CODE O DAY 1234
         </ul>
       </nav>
     </div>
@@ -207,7 +222,7 @@
             <div class="table-wrapper">
               <div class="table-title">
                 <div class="row">
-                  <div class="col-sm-8"><h2>Quản lý chuyến xe</h2></div>
+                  <div class="col-sm-8"><h2>Quản lý tuyến xe</h2></div>
                   <div class="col-sm-4">
                     <button (click)="new(); enableAddNewchuyenxe = enableAddNewchuyenxe*-1" type="button" class="btn btn-info add-new" ><i class="fa fa-plus"></i> Thêm mới</button>
                   </div><br><br><br>
@@ -255,16 +270,21 @@
                         <option *ngFor="let benXe of benXeList" [value]="benXe" >{{benXe.tenBen}}</option>
                       </select>
                     </td>
+                    <td>
+                      <select class="form-select form-control" aria-label="Default select example" formControlName="benDen">
+                        <option *ngFor="let benXe of benXeList" [value]="benXe" >{{benXe.tenBen}}</option>
+                      </select>
+                    </td>
 <!--                    <td>-->
-<!--                      <select class="form-select" class="form-control" aria-label="Default select example" [(ngModel)]="chuyenXePush.benDi">-->
+<!--                    <select class="form-select" class="form-control" aria-label="Default select example" [(ngModel)]="chuyenXePush.benDi">-->
+<!--                      <option *ngFor="let benXe of benXeList" [ngValue]="benXe" >{{benXe.tenBen}}</option>-->
+<!--                    </select>-->
+<!--                  </td>-->
+<!--                    <td>-->
+<!--                      <select class="form-select" class="form-control" aria-label="Default select example" [(ngModel)]="chuyenXePush.benDen">-->
 <!--                        <option *ngFor="let benXe of benXeList" [ngValue]="benXe" >{{benXe.tenBen}}</option>-->
 <!--                      </select>-->
 <!--                    </td>-->
-                    <td>
-                      <select class="form-select" class="form-control" aria-label="Default select example" [(ngModel)]="chuyenXePush.benDen">
-                        <option *ngFor="let benXe of benXeList" [ngValue]="benXe" >{{benXe.tenBen}}</option>
-                      </select>
-                    </td>
                     <td class="form-group">
                       <input id="thoiGian" type="date" class="form-control" placeholder="Vui lòng nhập Thời gian"
                              formControlName="thoiGian">
@@ -273,11 +293,11 @@
                       </p>
                     </td>
                     <td >
-                      <button type="submit" class="btn btn-primary " [disabled]="chuyenXeForm.valid">Lưu</button>
-                      <button (click)="enableAddNewchuyenxe = -1;cancelbutton()" type="button" class="btn btn-info" ng-click="cancel()">Hủy</button>
+                      <button type="submit" class="btn btn-primary " [disabled]="!chuyenXeForm.valid">Lưu</button>
+                      <button (click)="enableAddNewchuyenxe = -1;" type="button" class="btn btn-info" ng-click="cancel()">Hủy</button>
                     </td>
                   </tr>
-                  <tr *ngFor="let tuyenxeList of chuyenXeList | paginate: { id: 'listing_pagination',itemsPerPage: 5,currentPage: page, totalItems: totalRec}; let i = index">
+                  <tr *ngFor="let tuyenxeList of chuyenXeList | paginate: { id: 'listing_pagination',itemsPerPage: 5,currentPage: page, totalItems: totalRec}, let i = index">
                     <td>{{tuyenxeList.maChuyen}}</td>
                     <td>{{tuyenxeList.benDi.tenBen}}</td>
                     <td>{{tuyenxeList.benDen.tenBen}}</td>

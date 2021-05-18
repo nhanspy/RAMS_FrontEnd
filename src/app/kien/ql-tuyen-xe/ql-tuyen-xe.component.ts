@@ -8,7 +8,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 @Component({
   selector: 'app-ql-tuyen-xe',
   templateUrl: './ql-tuyen-xe.component.html',
-  styleUrls: ['./ql-tuyen-xe.component.sass']
+  // styleUrls: ['./ql-tuyen-xe.component.sass']
 })
 export class QlTuyenXeComponent implements OnInit {
   // @ts-ignore
@@ -51,6 +51,7 @@ export class QlTuyenXeComponent implements OnInit {
     this._qlTuyenXeService.getAllBenXe().subscribe(
       data => {
         this.benXeList = data;
+        // console.log(this.benXeList);
       },
       error => {
         console.log(error);
@@ -113,6 +114,7 @@ export class QlTuyenXeComponent implements OnInit {
     this.chuyenXeForm.patchValue(this.chuyenXes);
     // this.chuyenXeForm.setValue('benDi': this.chuyenXes.benDi);
     console.log(this.chuyenXeForm.value);
+    console.log(i, e);
     console.log(this.chuyenXes);
     // @ts-ignore
     // this.chuyenXeForm = new ChuyenXe();
@@ -133,7 +135,7 @@ export class QlTuyenXeComponent implements OnInit {
   // tslint:disable-next-line:typedef
   new(){
     // @ts-ignore
-    this.chuyenXeForm = new ChuyenXe();
+    this.chuyenXes = new ChuyenXe();
   }
   // tslint:disable-next-line:typedef
   removeChuyenxe(index: string, maChuyen: string){

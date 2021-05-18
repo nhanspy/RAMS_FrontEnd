@@ -139,44 +139,59 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Quản lý chức năng
+                Quản lý tài khoản
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
+                <a routerLink="/qlnguoidung" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Quản lý người dùng</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link active">
+                <a routerLink="/qlnhaxe" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Quản lý nhà xe</p>
                 </a>
               </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Quản lý nhà xe
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a routerLink="/qltuyenxe" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Quản lý chuyến xe</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index4.html" class="nav-link">
+                <a routerLink="/qlxe" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Quản lý xe</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index5.html" class="nav-link">
+                <a routerLink="/qlghe" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Quản lý ghế</p>
                 </a>
               </li>
             </ul>
           </li>
-          VIET CODE O DAY 1234
         </ul>
       </nav>
     </div>
@@ -207,28 +222,37 @@
             <div class="table-wrapper">
               <div class="table-title">
                 <div class="row">
-                  <div class="col-sm-8"><h2>Quản lý chuyến xe</h2></div>
+                  <div class="col-sm-8"><h2>Quản lý xe</h2></div>
                   <div class="col-sm-4">
-                    <button (click)="new(); enableAddNewxe = enableAddNewxe*-1" type="button" class="btn btn-info add-new" ><i class="fa fa-plus"></i> Thêm mới</button>
-                  </div><br><br><br>
+                    <button (click)="new(); enableAddNewxe = enableAddNewxe*-1" type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Thêm mới
+                    </button>
+                  </div>
+                  <br><br><br>
                 </div>
               </div>
               <form [formGroup]="xeForm" (ngSubmit)="onSubmit()">
                 <table class="table table-striped">
                   <thead>
                   <!--        tìm kiếm-->
-                  <td><input type="text" class="form-control" placeholder="Tìm kiếm Mã xe" #txtSearch (keyup)="searchMaxe(txtSearch.value)"></td>
-                  <td><input type="text" class="form-control" placeholder="Tìm kiếm Biển số xe" #txtSearch1 (keyup)="searchBiensoxe(txtSearch1.value)"></td>
-                  <td><input type="text" class="form-control" placeholder="Tìm kiếm Mã nhà xe" #txtSearch2 (keyup)="searchManhaxe(txtSearch2.value)"></td>
-                  <td><input type="text" class="form-control" placeholder="Tìm kiếm Tên nhà xe" #txtSearch3 (keyup)="searchTennhaxe(txtSearch3.value)"></td>
-                  <td><input type="text" class="form-control" placeholder="Tìm kiếm Mã loai xe" #txtSearch4 (keyup)="searchMaloaixe(txtSearch4.value)"></td>
+                  <tr>
+                  <td width="720px"><input type="text" class="form-control" placeholder="Tìm kiếm Mã xe" #txtSearch
+                                           (keyup)="searchMaxe(txtSearch.value)"></td>
+                  <td width="720px"><input type="text" class="form-control" placeholder="Tìm kiếm Biển số xe" #txtSearch1
+                                           (keyup)="searchBiensoxe(txtSearch1.value)"></td>
+                  <td width="720px"><input type="text" class="form-control" placeholder="Tìm kiếm Mã nhà xe" #txtSearch2
+                                           (keyup)="searchManhaxe(txtSearch2.value)"></td>
+                  <td width="720px"><input type="text" class="form-control" placeholder="Tìm kiếm Tên nhà xe" #txtSearch3
+                                           (keyup)="searchTennhaxe(txtSearch3.value)"></td>
+                  <td width="720px"><input type="text" class="form-control" placeholder="Tìm kiếm Mã loai xe" #txtSearch4
+                                           (keyup)="searchMaloaixe(txtSearch4.value)"></td>
+                  </tr>
                  <tr>
-                    <th>Mã xe</th>
-                    <th>Biển số xe</th>
-                    <th>Mã nhà xe</th>
-                    <th>Tên nhà xe</th>
-                    <th>Mã loại ghế</th>
-                    <th>Hành động</th>
+                    <th width="720px">Mã xe</th>
+                    <th width="720px">Biển số xe</th>
+                    <th width="720px">Mã nhà xe</th>
+                    <th width="720px">Tên nhà xe</th>
+                    <th width="720px">Mã loại ghế</th>
+                    <th width="720px">Hành động</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -240,7 +264,6 @@
                         Vui lòng điền vào trường Mã xe.
                       </p>
                     </td>
-                  <tr *ngIf="enableAddNewxe == 1">
                     <td class="form-group">
                       <input id="bienSoXe" type="text" class="form-control" placeholder="Vui lòng nhập Biển số xe"
                              formControlName="bienSoXe">
@@ -248,7 +271,6 @@
                         Vui lòng điền vào trường Biển số xe.
                       </p>
                     </td>
-                  <tr *ngIf="enableAddNewxe == 1">
                     <td class="form-group">
                       <input id="maNhaXe" type="text" class="form-control" placeholder="Vui lòng nhập Mã nhà xe"
                              formControlName="maNhaXe">
@@ -256,7 +278,6 @@
                         Vui lòng điền vào trường Mã nhà xe..
                       </p>
                     </td>
-                  <tr *ngIf="enableAddNewxe == 1">
                     <td class="form-group">
                       <input id="tenNhaXe" type="text" class="form-control" placeholder="Vui lòng nhập Tên nhà xe"
                              formControlName="tenNhaXe">
@@ -264,7 +285,6 @@
                         Vui lòng điền vào trường Tên nhà xe.
                       </p>
                     </td>
-                  <tr *ngIf="enableAddNewxe == 1">
                     <td class="form-group">
                       <input id="maLoaiXe" type="text" class="form-control" placeholder="Vui lòng nhập Mã loại xe"
                              formControlName="maLoaiXe">
@@ -273,11 +293,11 @@
                       </p>
                     </td>
                     <td >
-                      <button type="submit" class="btn btn-primary " [disabled]="!xeForm.valid">Lưu</button>
-                      <button (click)="enableAddNewxe = -1" type="button" class="btn btn-info" ng-click="cancel()">Hủy</button>
+                      <button type="submit" class="btn btn-primary " [disabled]="xeForm.valid">Lưu</button>
+                      <button (click)="enableAddNewxe = -1;" type="button" class="btn btn-info" ng-click="cancel()">Hủy</button>
                     </td>
                   </tr>
-                  <tr *ngFor="let xeList of xeList | paginate: { id: 'listing_pagination',itemsPerPage: 5,currentPage: page, totalItems: totalRec}; let i = index">
+                  <tr *ngFor="let xeList of xeList | paginate: { id: 'listing_pagination',itemsPerPage: 5,currentPage: page, totalItems: totalRec}, let i = index">
                     <td>{{xeList.maXe}}</td>
                     <td>{{xeList.bienSoXe}}</td>
                     <td>{{xeList.nhaXe.maNhaXe}}</td>

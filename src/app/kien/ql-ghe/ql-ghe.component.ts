@@ -7,7 +7,7 @@ import {QlGheService} from '../kien-s/ql-ghe.service';
 @Component({
   selector: 'app-ql-ghe',
   templateUrl: './ql-ghe.component.html',
-  styleUrls: ['./ql-ghe.component.sass']
+  // styleUrls: ['./ql-ghe.component.sass']
 })
 export class QlGheComponent implements OnInit {
   // @ts-ignore
@@ -90,10 +90,16 @@ export class QlGheComponent implements OnInit {
     this.enableEditghe = true;
     this.enableEditIndexghe = i;
     this.enableAddNewghe = 1;
-
     this.gheForm.patchValue(this.ghe);
+    // @ts-ignore
+    this.gheForm.get('maLoaiGhe').patchValue(this.ghe.loaiGhe.maLoaiGhe);
+    // @ts-ignore
+    this.gheForm.get('tenLoaiGhe').patchValue(this.ghe.loaiGhe.tenLoaiGhe);
+    // @ts-ignore
+    this.gheForm.get('maTrangThai').patchValue(this.ghe.trangThaiGhe.maTrangThai);
+    // @ts-ignore
+    this.gheForm.get('tenTrangThai').patchValue(this.ghe.trangThaiGhe.tenTrangThai);
     console.log(this.gheForm.value);
-    console.log(i, e);
     console.log(this.gheForm);
   }
   // tslint:disable-next-line:typedef
@@ -108,7 +114,7 @@ export class QlGheComponent implements OnInit {
       this._qlGheService.delete(maGhe).subscribe(
         data => {
           console.log(data);
-          if (data == null) { // @ts-ignore
+          if (data == null) {// @ts-ignore
             this.gheList.splice(index, 1); }
         }, error => {
           console.log(error);
