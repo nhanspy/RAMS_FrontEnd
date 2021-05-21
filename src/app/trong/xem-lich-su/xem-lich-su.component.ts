@@ -3,6 +3,7 @@ import {ChuyenXe} from '../../nhan/Models/ChuyenXe.class';
 import {XemLichSuService} from '../Services/xem-lich-su.service';
 
 
+
 @Component({
   selector: 'app-xem-lich-su',
   templateUrl: './xem-lich-su.component.html',
@@ -15,7 +16,7 @@ export class XemLichSuComponent implements OnInit, OnChanges {
   // @ts-ignore
   totalRec: string;
   page: number = 1;
-  Title = 'XEM LỊCH SỬ TUYẾN XE';
+  Title = 'Xem lịch sử tuyến xe';
   // @ts-ignore
   keywordMaChuyen: string | '';
   // @ts-ignore
@@ -71,37 +72,36 @@ export class XemLichSuComponent implements OnInit, OnChanges {
 
     // console.log(this.xemLichSuService.getXeTheoChuyenXe(this.xemlichsulist[0]));
   }
-
   // tslint:disable-next-line:typedef
-  search() {
+  search(){
     let dem = 0;
     this.xemlichsulist = this.xemlichsulistRoot;
-    if (this.keywordMaChuyen) {
-      this.xemlichsulist = this.xemlichsulist.filter(item => {
+    if (this.keywordMaChuyen){
+      this.xemlichsulist = this.xemlichsulist.filter( item => {
         return item.maChuyen.includes(this.keywordMaChuyen);
       });
       dem++;
     }
-    if (this.keywordBenDi) {
-      this.xemlichsulist = this.xemlichsulist.filter(item => {
+    if (this.keywordBenDi){
+      this.xemlichsulist = this.xemlichsulist.filter( item => {
         return item.benDi.tenBen.includes(this.keywordBenDi);
       });
       dem++;
     }
-    if (this.keywordBenDen) {
-      this.xemlichsulist = this.xemlichsulist.filter(item => {
+    if (this.keywordBenDen){
+      this.xemlichsulist = this.xemlichsulist.filter( item => {
         return item.benDen.tenBen.includes(this.keywordBenDen);
       });
       dem++;
     }
-    if (this.keywordThoiGian) {
-      this.xemlichsulist = this.xemlichsulist.filter(item => {
+    if (this.keywordThoiGian){
+      this.xemlichsulist = this.xemlichsulist.filter( item => {
         return item.thoiGian.includes(this.keywordThoiGian);
       });
       dem++;
     }
-    if (this.keywordMaXe) {
-      this.xemlichsulist = this.xemlichsulist.filter(item => {
+    if (this.keywordMaXe){
+      this.xemlichsulist = this.xemlichsulist.filter( item => {
         return item.xe.nhaXe.tenNhaXe.includes(this.keywordMaXe);
       });
       dem++;
@@ -111,28 +111,23 @@ export class XemLichSuComponent implements OnInit, OnChanges {
       this.xemlichsulist = this.xemlichsulistRoot;
     }
   }
-
-  searchMaChuyen(value: string) {
+  searchMaChuyen(value: string){
     this.keywordMaChuyen = value;
     this.search();
   }
-
-  searchBenDi(value: string) {
+  searchBenDi(value: string){
     this.keywordBenDi = value;
     this.search();
   }
-
-  searchBenDen(value: string) {
+  searchBenDen(value: string){
     this.keywordBenDen = value;
     this.search();
   }
-
-  searchThoiGian(value: string) {
+  searchThoiGian(value: string){
     this.keywordThoiGian = value;
     this.search();
   }
-
-  searchMaXe(value: string) {
+  searchMaXe(value: string){
     this.keywordMaXe = value;
     this.search();
   }

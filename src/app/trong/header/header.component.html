@@ -1,36 +1,38 @@
-<body style="height: 80px; margin-bottom: 0px">
-<!--<div class="overlay"></div>-->
-<!--<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">-->
-<!--  <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">-->
-<!--</video>-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="height: 60px; margin-bottom: 0px">
   <a class="img" href="timkiemtuyen">
-    <img src="/assets/../assets/trong/img/horizontal_on_white_by_logaster.png" height="75" width="165"/>
+    <img src="/assets/../assets/trong/img/horizontal_on_white_by_logaster.png" height="60" width="165"/>
   </a>
-  <!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
-  <!--    <span class="navbar-toggler-icon"></span>-->
-  <!--  </button>-->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" href="#"></a>
       </li>
     </ul>
-    <ul style="font-size: 16pt; font-family: inherit; list-style-type: none" class="form-inline my-2 my-lg-0">
+    <ul style="font-size: 16pt !important; font-family: Trebuchet MS; list-style-type: none" class="form-inline my-2 my-lg-0">
       <li class="nav-item active">
         <a class="nav-link" href="timkiemtuyen">Trang Chủ </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="xemlichsu">Tìm Kiếm</a>
+        <a class="nav-link" href="xemlichsu" *ngIf="isLoggedIn && (isTruyVet || isNhaXe || isNhaXe)">Tìm Kiếm</a>
       </li>
       <li style="list-style-type: none" class="nav-item">
-        <a class="nav-link" href="dangnhap">Đăng nhập</a>
+        <a class="nav-link" href="dangnhap" *ngIf="!isLoggedIn">Đăng nhập</a>
       </li>
       <li style="list-style-type: none" class="nav-item">
-        <a class="nav-link" href="dangky">Đăng ký</a>
+        <a class="nav-link" href="qlnguoidung"*ngIf="isLoggedIn && (isAdmin || isNhaXe) ">Quản lý</a>
+      </li>
+      <li style="list-style-type: none" class="nav-item">
+        <a class="nav-link" href="dangky"*ngIf="!isLoggedIn">Đăng ký nhà xe</a>
+      </li>
+      <li style="list-style-type: none" class="nav-item">
+        <a class="nav-link" href="dangkyuser"*ngIf="!isLoggedIn">Đăng ký người dùng</a>
+      </li>
+      <li style="list-style-type: none" class="nav-item">
+        <a class="nav-link" href=""*ngIf="isLoggedIn" (click)="logout()">Đăng xuất</a>
       </li>
     </ul>
   </div>
 </nav>
-</body>
+<!--</body>-->
 

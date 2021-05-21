@@ -17,73 +17,8 @@
 </head>
 
 <body class="login-page sidebar-collapse">
-<nav class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
-  <div class="container">
-    <div class="navbar-translate">
-      <a class="navbar-brand" href="https://demos.creative-tim.com/material-kit-pro/index.html">
-        Trang chủ</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="navbar-toggler-icon"></span>
-        <span class="navbar-toggler-icon"></span>
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ml-auto">
-        <li class="dropdown nav-item">
-          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-            <i class="material-icons">apps</i> Tìm kiếm
-          </a>
-          <div class="dropdown-menu dropdown-with-icons">
-            <a href="../presentation.html" class="dropdown-item">
-              <i class="material-icons">layers</i> Người dùng
-            </a>
-            <a href="../index.html" class="dropdown-item">
-              <i class="material-icons">line_style</i>Nhà xe
-            </a>
-          </div>
-        </li>
-        <li class="dropdown nav-item">
-          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-            <i class="material-icons">view_day</i> Quản lý
-          </a>
-          <div class="dropdown-menu dropdown-with-icons">
-            <a href="../sections.html#headers" class="dropdown-item">
-              <i class="material-icons">dns</i> Người dùng
-            </a>
-            <a href="../sections.html#features" class="dropdown-item">
-              <i class="material-icons">build</i> Nhà xe
-            </a>
-            <a href="../sections.html#blogs" class="dropdown-item">
-              <i class="material-icons">list</i> Ghế
-            </a>
-          </div>
-        </li>
-        <li class="dropdown nav-item">
-          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-            <i class="material-icons">view_carousel</i> Đặt vé
-          </a>
-          <div class="dropdown-menu dropdown-with-icons">
-            <a href="../examples/about-us.html" class="dropdown-item">
-              <i class="material-icons">account_balance</i> About Us
-            </a>
-            <a href="../examples/blog-post.html" class="dropdown-item">
-              <i class="material-icons">art_track</i> Blog Post
-            </a>
-          </div>
-        </li>
-        <li class="button-container nav-item iframe-extern">
-          <a href="https://www.creative-tim.com/product/material-kit-pro?ref=presentation" target="_blank" class="btn  btn-rose   btn-round btn-block">
-            <i class="material-icons">shopping_cart</i> Thanh toán
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<div class="page-header header-filter" style="background-image: url('/assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
-  <div class="container">
+<div  class="page-header header-filter" style="background-image: url('/assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
+  <div class="container" >
     <div class="row">
       <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
         <form name="form" class="form" method="" action="" (ngSubmit)="onSubmit()">
@@ -91,15 +26,12 @@
             <div class="card-header card-header-primary text-center">
               <h4 class="card-title">Đăng nhập</h4>
               <div class="social-line">
-                <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                  <i class="fa fa-facebook-square"></i>
-                </a>
-<!--                <a href="#pablo" class="btn btn-just-icon btn-link btn-white">-->
-<!--                  <i class="fa fa-twitter"></i>-->
-<!--                </a>-->
-                <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                  <i class="fa fa-google-plus"></i>
-                </a>
+<!--                <button class="btn btn-just-icon btn-link btn-white" (click)="signInWithFB()">-->
+<!--                  <i class="fa fa-facebook-square"></i>-->
+<!--                </button>-->
+<!--                <button  class="btn btn-just-icon btn-link btn-white" (click)="signInWithGoogle()">-->
+<!--                  <i class="fa fa-google-plus"></i>-->
+<!--                </button>-->
               </div>
             </div>
             <div class="card-body " >
@@ -127,14 +59,16 @@
             </div>
             <div class="custom-control custom-checkbox mb-3">
               <input type="checkbox" class="custom-control-input" id="customCheck1">
-              <label style="padding-left: 20px" class="custom-control-label" for="customCheck1">Nhớ mật khẩu</label>
-              <a class="haha" routerLink="/password" >Quên mật khẩu</a>
+              <label style="padding-left: 20px; padding-top: 5px" class="custom-control-label" for="customCheck1">Nhớ mật khẩu</label>
+              <a class="haha" routerLink="/quenmatkhau" >Quên mật khẩu</a>
             </div>
 
             <div class="card-footer justify-content-center">
+<!--              <button style="height:50px; width: 150px; border-radius: 10px; background: mediumpurple; color: black; text-align: center " >-->
               <a>
-                <input  type="submit"  class="btn btn-rose btn-link btn-lg" value="Đăng nhập">
+                <input  type="submit"  class="btn btn-primary btn-block" value="Đăng nhập">
               </a>
+<!--              </button>-->
             </div>
           </div>
         </form>

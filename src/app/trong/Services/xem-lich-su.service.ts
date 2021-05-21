@@ -17,12 +17,10 @@ export class XemLichSuService {
   chuyenXes: ChuyenXe[] = [];
   // @ts-ignore
   xe: Xe;
-  Data: any;
 
-  readAll(): Observable<any> {
+  readAll(): Observable<any>{
     return this.httpClient.get(baseURL + '/' + 'chuyenxe');// chua biet dung hay sai
   }
-
   getTinhThanh(tinhThanh: TinhThanh): Observable<any> {
     return this.httpClient.get(baseURL + '/' + 'tinhthanh');
   }

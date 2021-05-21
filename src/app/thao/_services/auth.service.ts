@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User} from "../../nhan/Models/User.class";
+import {TokenDto} from "../model/token-dto";
 
+const cabecera = {headers: new HttpHeaders({'Content-Type' : 'application/json'})};
 const AUTH_API = 'http://localhost:8080/api/auth/';
 const AUTH_API1 = 'http://localhost:8080/api/public/';
 
@@ -13,9 +15,19 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+  Oauth_URL = 'http://localhost:8080/oauth/';
+
   private httpOptions: any;
 
   constructor(private http: HttpClient) { }
+
+  public google(tokenDto: TokenDto): Observable<TokenDto> {
+    return this.http.post<TokenDto>(this.Oauth_URL + 'google', tokenDto, cabecera);
+  }
+
+  public facebook(tokenDto: TokenDto): Observable<TokenDto> {
+    return this.http.post<TokenDto>( this.Oauth_URL+ 'facebook', tokenDto, cabecera);
+  }
 
   login(credentials: any): Observable<any> {
     return this.http.post(AUTH_API + 'signin', {
@@ -26,7 +38,7 @@ export class AuthService {
 
   register(user: User): Observable<any> {
     console.log(user);
-    return  this.http.post(AUTH_API + 'signupNguoiDung', user);
+    return  this.http.post(AUTH_API + 'signupNhaXe', user);
   }
   dangky(user: User): Observable<any> {
     // return this.http.post(AUTH_API + 'signupNhaxe', {
@@ -43,7 +55,7 @@ export class AuthService {
   resetPassword(email: string): Observable<any> {
     console.log(email)
     return this.http.post(AUTH_API1 + 'reset-password', {
-      email,
+      email: email,
     }, this.httpOptions);
   }
   verify(code: string): Observable<any>{
@@ -63,5 +75,9 @@ export class AuthService {
       password: password,
       code: code
     }, this.httpOptions);
+  }
+
+  signIn(PROVIDER_ID: string) {
+
   }
 }

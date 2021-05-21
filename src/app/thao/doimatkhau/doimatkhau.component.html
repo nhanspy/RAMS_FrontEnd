@@ -1,1 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    DangKy
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/css/material-kit.css">
+
+</head>
+
+<body class="login-page sidebar-collapse">
+<div class="page-header header-filter" style="background-image: url('/assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+        <div *ngIf="isSendMail then sent else notSent"></div>
+        <ng-template #sent>
+          <div *ngIf="isSuccessful then accepted else denied"></div>
+          <ng-template #accepted>
+        <form  name="form" class="form" method="" action="" [formGroup]="formGroup" (ngSubmit)="onSubmitt()">
+          <div class="card card-login card-hidden">
+            <h2 style="text-align: center">Cài lại mật khẩu</h2>
+            <div class="card-body " >
+              <p class="card-description text-center"></p>
+
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">lock_outline</i>
+                      </span>
+                  </div>
+                  <input formControlName="newPassword" type="password" class="form-control" placeholder="Mật khẩu">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">lock_outline</i>
+                      </span>
+                  </div>
+                  <input formControlName="repeatNewPassword" type="password" class="form-control" placeholder="Xác nhận mật khẩu">
+                </div>
+              </div>
+
+              <div class="error-place">
+                <div *ngFor="let validation of validation_messages.password">
+                  <!--   <small class="text-danger" *ngIf="formGroup.get('repeatNewPassword').hasError(validation.type) && (formGroup.get('repeatNewPassword').touched || formGroup.get('repeatNewPassword').pristine)">{{validation.message}}</small>-->
+                </div>
+              </div>
+
+              <div *ngIf="isSubmited then submited else notSubmited"></div>
+              <ng-template #notSubmited>
+                <button  class="btn btn-primary btn-block" type="submit">Xác nhận</button>
+              </ng-template>
+              <ng-template #submited>
+                <button class="btn btn-lg btn-primary text-uppercase" type="button" disabled>
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  Loading...
+                </button>
+              </ng-template>
+
+            </div>
+            <div class="card-footer justify-content-center">
+            </div>
+          </div>
+        </form>
+          </ng-template>
+          <ng-template #denied>
+          </ng-template>
+        </ng-template>
+        <ng-template #notSent>
+          <div class="alert alert-danger" role="alert">
+            <ul>
+              <li> Bạn cần sử dụng đường dẫn xác thực chúng tôi đã gửi cho bạn!</li>
+              <li>Một email đã được gửi tới địa chỉ Email của bạn, hãy truy cập thư cá nhân và nhấn vào đường dẫn xác
+                thực
+              </li>
+              <li><span><h5>Lưu ý:</h5></span>nếu không tìm thấy hãy tìm trong mục <span> <h5>Thư rác/Spam</h5></span>
+              </li>
+            </ul>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
 

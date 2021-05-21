@@ -13,12 +13,15 @@ import {ToastrService} from "ngx-toastr";
 export class DangkyuserComponent implements OnInit {
   // @ts-ignore
   formRegnx: FormGroup;
+  isLoggedIn = false;
+  roles: string[] = [];
 
   constructor(private formBuild: FormBuilder,
               private tokenStorageService: TokenStorageService,
               private authService: AuthService,
               private router: Router,
               private toastr: ToastrService,
+              private tokenStorage: TokenStorageService,
               private route: ActivatedRoute) {
     this.formRegnx= this.formBuild.group({
         ten: ['',[Validators.required]],
@@ -61,6 +64,13 @@ export class DangkyuserComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
+      this.router.navigate(['timkiemtuyen']).then(() => {
+        window.location.reload();
+      });
+    }
   }
   onSubmitt(): void {
     console.log(this.formRegnx.value);
@@ -79,9 +89,9 @@ export class DangkyuserComponent implements OnInit {
               extendedTimeOut: 1500
             });
             alert('Đăng ký thành công');
-            // this.router.navigate(['dangnhap']).then(() => {
-            //   window.location.reload();
-            // });
+            this.router.navigate(['timkiemtuyen']).then(() => {
+              window.location.reload();
+            });
           },
           err => {
             this.toastr.error(err.error.message, 'Lỗi: ', {

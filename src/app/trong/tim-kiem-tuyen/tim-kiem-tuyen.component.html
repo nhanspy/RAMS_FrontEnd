@@ -13,16 +13,17 @@
               <div data-v-c5ae3bdc="" data-v-3ceb75b5="" class="auto-complete-place-container place-select-from">
                 <label data-v-c5ae3bdc="" class="title">Điểm đi</label>
                 <div class="form-group" [class.has-error]="bendi.touched && bendi.invalid">
-                  <select id="college_name" class="form-control" [ngModel]="getbendi" name="college_name" required
+                  <select id="college_name" class="form-control" [ngModel]="getbendi" name="college_name"  required
                           #bendi="ngModel"
                           #mySelect (change)='selecttinhthanhdi(mySelect.value)'>
-                    <option class="option" *ngFor="let thing of tinhthanhlist" [value]="thing.maTinh">
+                    <option class="option"  *ngFor="let thing of tinhthanhlist" [value]="thing.maTinh">
                       {{thing.tenTinh}}
                     </option>
                   </select>
                   <span style="color: red" class="help-block" *ngIf="bendi.touched && bendi.invalid">
                     Bạn cần phải chọn điểm đi!
                   </span>
+
                 </div>
               </div>
               <img data-v-3ceb75b5="" alt="change" class="change-img center lazyLoad isLoaded"
@@ -30,7 +31,7 @@
               <div data-v-c5ae3bdc="" data-v-3ceb75b5="" class="auto-complete-place-container">
                 <label data-v-c5ae3bdc="" class="title">Điểm đến</label>
                 <div class="form-group" [class.has-error]="benden.touched && benden.invalid">
-                  <select class="form-control" [ngModel]="getbenden" name="college2_name" required #benden="ngModel"
+                  <select class="form-control" [ngModel]="getbenden" name="college2_name"     required #benden="ngModel"
                           #mySelect1 (change)='selecttinhthanhden(mySelect1.value)'>
                     <option *ngFor="let thing of tinhthanhlist" [value]="thing.maTinh">{{thing.tenTinh}}</option>
                   </select>
@@ -42,7 +43,8 @@
               <div style="margin-left: 1px" data-v-c5ae3bdc="" data-v-3ceb75b5="" class="auto-complete-place-container">
                 <label data-v-c5ae3bdc="" class="title">Chọn ngày đi:</label>
                 <div class="form-group">
-                  <input class="form-control" [(ngModel)]="getthoigian" min="{{date|date:'yyyy-MM-dd'}}" type="date"
+                  <!--                  <div  class="form-control">-->
+                  <input class="form-control" [(ngModel)]="getthoigian" min="{{date|date:'yyyy-MM-dd'}}" #mySelect2 (change)='selectthoigian(mySelect2.value)' type="date"
                          name="date_start"
                          required
                          #date_start="ngModel"/>
@@ -50,10 +52,10 @@
 
               </div>
             </div>
+
           </div>
           <a data-v-3ceb75b5="" class="buy-btn btn" href="/" style="text-decoration: none" [routerLink]="['/chitiet']" [queryParams]="{maTinhDi: getbendi, maTinhDen: getbenden, ngay: getthoigian}">
-            <i style="font-family: inherit !important;" data-v-3ceb75b5=""  class="fa fa-search buy-icon">
-            </i>
+            <i style="font-family: Trebuchet MS !important;" data-v-3ceb75b5="" class="fa fa-search buy-icon"></i>
             TÌM CHUYẾN XE
           </a>
         </div>
@@ -61,5 +63,85 @@
     </div>
   </div>
 </div>
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <img style="border-radius: 10px" width="50px" height="40px" src="/assets/trong/img/2168281.png"
+           class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
 
+      <!-- Twitter -->
+      <!--      <img style="border-radius: 10px" width="50px" height="40px" src="/assets/trong/img/3128212.png" class="btn btn-outline-light btn-floating m-1" href="#!" role="button">-->
+
+      <!-- Google -->
+      <img style="border-radius: 10px" width="50px" height="40px" src="/assets/trong/img/104093.png"
+           class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+
+
+      <!-- Instagram -->
+      <img style="border-radius: 10px" width="50px" height="40px" src="/assets/trong/img/2175198.png"
+           class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+
+
+      <!-- Linkedin -->
+      <!--      <img style="border-radius: 10px" width="50px" height="40px" src="/assets/trong/img/61109.png" class="btn btn-outline-light btn-floating m-1" href="#!" role="button">-->
+
+
+      <!-- Github -->
+      <!--      <img style="border-radius: 10px" width="50px" height="40px" src="/assets/trong/img/3291667.png" class="btn btn-outline-light btn-floating m-1" href="#!" role="button">-->
+
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Form -->
+    <section class="">
+      <form action="">
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+          <!--Grid column-->
+          <div class="col-auto">
+            <p class="pt-2">
+              <strong>Đăng ký tin mới</strong>
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-5 col-12">
+            <!-- Email input -->
+            <div class="form-outline form-white mb-4">
+              <input type="email" id="form5Example2" class="form-control"/>
+              <label class="form-label" for="form5Example2">Địa chỉ mail</label>
+            </div>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-auto">
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-outline-light mb-4">
+              Đăng ký
+            </button>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </form>
+    </section>
+    <!-- Section: Form -->
+
+
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+
+    <a class="text-white" href="timkiemtuyen">quanlytuyenxe.rams.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
 

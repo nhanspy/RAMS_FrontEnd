@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ChuyenXe} from '../../nhan/Models/ChuyenXe.class';
-import {Ben} from '../../nhan/Models/Ben.class';
-import {QlTuyenXeService} from '../services/kien-s/ql-tuyen-xe.service';
+import {QlTuyenXeService} from '../kien-s/ql-tuyen-xe.service';
+import {ChuyenXe} from '../Models/ChuyenXe.class';
+import {Ben} from '../Models/Ben.class';
+import {Router} from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-ql-tuyen-xe',
@@ -9,6 +11,11 @@ import {QlTuyenXeService} from '../services/kien-s/ql-tuyen-xe.service';
   styleUrls: ['./ql-tuyen-xe.component.css']
 })
 export class QlTuyenXeComponent implements OnInit {
+  // @ts-ignore
+  chuyenXeForm: FormGroup;
+  // @ts-ignore
+  totalRec: string;
+  page: number = 1;
   isDisable = false;
   chuyenXeList: ChuyenXe[] = [];
   chuyenXeListRoot: ChuyenXe[] = [];
@@ -30,7 +37,8 @@ export class QlTuyenXeComponent implements OnInit {
 
   // @ts-ignore
   // tslint:disable-next-line:variable-name
-  constructor(private _qlTuyenXeService: QlTuyenXeService) {
+  constructor(private _qlTuyenXeService: QlTuyenXeService,
+              private router: Router) {
     this._qlTuyenXeService.getAll().subscribe(data => {
       console.log(data);
       this.chuyenXeList = data;
@@ -43,6 +51,7 @@ export class QlTuyenXeComponent implements OnInit {
     this._qlTuyenXeService.getAllBenXe().subscribe(
       data => {
         this.benXeList = data;
+        // console.log(this.benXeList);
       },
       error => {
         console.log(error);
@@ -61,14 +70,20 @@ export class QlTuyenXeComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     this.chuyenXes = new ChuyenXe();
+    this.chuyenXeForm = new FormGroup({
+      maChuyen: new FormControl('',[Validators.required]),
+      thoiGian: new FormControl('',[Validators.required]),
+      benDi: new FormControl(),
+      benDen: new FormControl()
+    });
   }
   // tslint:disable-next-line:typedef
   addchuyenxe() {
     // @ts-ignore
-    console.log(this.chuyenXePush);
-    this._qlTuyenXeService.save(this.chuyenXePush).subscribe(response => {
+    console.log(this.chuyenXeForm.value);
+    this._qlTuyenXeService.create(this.chuyenXeForm.value).subscribe(response => {
         alert('Thêm thành công!!');
-        console.log(response);
+        // console.log(response);
         this._qlTuyenXeService.getAll().subscribe(data => {
           console.log(data);
           this.chuyenXeList = data;
@@ -85,32 +100,42 @@ export class QlTuyenXeComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   onSubmit() {
-    console.log(123);
-    console.log(this.chuyenXes);
+    // console.log(123);
+    // console.log(this.chuyenXes);
     this.addchuyenxe();
 
   }
   // @ts-ignore
   // tslint:disable-next-line:typedef
-  editchuyenxe(tuyenXe: ChuyenXe, i: number) {
-
-    // @ts-ignore
-    this.chuyenXePush = new ChuyenXe();
-    console.log(this.chuyenXePush);
-    // @ts-ignore
-    this.chuyenXePush.maChuyen = tuyenXe.maChuyen;
-    this.chuyenXePush.thoiGian = tuyenXe.thoiGian;
-    this.chuyenXePush.xe = tuyenXe.xe;
-    this.chuyenXePush.benDi = tuyenXe.benDi;
-    this.chuyenXePush.benDen = tuyenXe.benDen;
+  editchuyenxe(i, e) {
     this.enableEditchuyenxe = true;
     this.enableEditIndexchuyenxe = i;
-    console.log(this.chuyenXePush);
+    this.enableAddNewchuyenxe = 1;
+    this.chuyenXeForm.patchValue(this.chuyenXes);
+    // this.chuyenXeForm.setValue('benDi': this.chuyenXes.benDi);
+    console.log(this.chuyenXeForm.value);
+    console.log(i, e);
+    console.log(this.chuyenXes);
+    // @ts-ignore
+    // this.chuyenXeForm = new ChuyenXe();
+    // console.log(this.chuyenXeForm.value);
+    // // @ts-ignore
+    // this.chuyenXePush.maChuyen = this.chuyenXes.maChuyen;
+    // this.chuyenXePush.thoiGian = this.chuyenXes.thoiGian;
+    // // this.chuyenXePush.xe = tuyenXe.xe;
+    // this.chuyenXePush.benDi = this.chuyenXes.benDi;
+    // this.chuyenXePush.benDen = this.chuyenXes.benDen;
+    // this.enableEditchuyenxe = true;
+    // this.enableEditIndexchuyenxe = i;
+    // console.log(this.chuyenXePush);
+    // console.log(this.chuyenXeForm.value);
+    // console.log(i, e);
+    // console.log(this.chuyenXeForm);
   }
   // tslint:disable-next-line:typedef
   new(){
     // @ts-ignore
-    this.chuyenXePush = new ChuyenXe();
+    this.chuyenXes = new ChuyenXe();
   }
   // tslint:disable-next-line:typedef
   removeChuyenxe(index: string, maChuyen: string){
@@ -225,3 +250,4 @@ export class QlTuyenXeComponent implements OnInit {
   }
 
 }
+

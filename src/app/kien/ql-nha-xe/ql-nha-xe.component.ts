@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {NhaXe} from '../../nhan/Models/NhaXe.class';
-import {QlNhaXeService} from '../services/kien-s/ql-nha-xe.service';
+import {QlNhaXeService} from '../kien-s/ql-nha-xe.service';
+import {NhaXe} from '../Models/NhaXe.class';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-ql-nha-xe',
@@ -8,6 +9,11 @@ import {QlNhaXeService} from '../services/kien-s/ql-nha-xe.service';
   styleUrls: ['./ql-nha-xe.component.css']
 })
 export class QlNhaXeComponent implements OnInit {
+  // @ts-ignore
+  nhaXeForm: FormGroup;
+  // @ts-ignore
+  totalRec: string;
+  page: number = 1;
   isDisable = false;
   nhaxeList: NhaXe[] = [];
   nhaxeListroot: NhaXe[] = [];
@@ -18,13 +24,13 @@ export class QlNhaXeComponent implements OnInit {
   // tslint:disable-next-line:variable-name
   constructor(private _qlNhaXeService: QlNhaXeService) {
     this._qlNhaXeService.getAll().subscribe(data => {
-    console.log(data);
-    this.nhaxeList = data;
-    this.nhaxeListroot = data;
-  }, error => {
-    console.log(123);
-    console.log(error);
-  });
+      console.log(data);
+      this.nhaxeList = data;
+      this.nhaxeListroot = data;
+    }, error => {
+      console.log(123);
+      console.log(error);
+    });
   }
   // @ts-ignore
   enableEditnhaxe = false;
@@ -36,14 +42,26 @@ export class QlNhaXeComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     this.nhaXe = new NhaXe();
+    this.nhaXeForm = new FormGroup({
+      maNhaXe: new FormControl('', [Validators.required]),
+      tenNhaXe: new FormControl('', [Validators.required]),
+    });
   }
   // tslint:disable-next-line:typedef
   addnhaxe() {
     // @ts-ignore
-    console.log(this.nhaXe);
-    this._qlNhaXeService.create(this.nhaXe).subscribe(response => {
+    console.log(this.nhaXeForm.value);
+    this._qlNhaXeService.create(this.nhaXeForm.value).subscribe(response => {
         alert('Thêm thành công!!');
-        console.log(response);
+        // console.log(response);
+        this._qlNhaXeService.getAll().subscribe(data => {
+          console.log(data);
+          this.nhaxeList = data;
+          this.nhaxeListroot = data;
+        }, error => {
+          console.log(123);
+          console.log(error);
+        });
       },
       // @ts-ignore
       error => {
@@ -52,8 +70,6 @@ export class QlNhaXeComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   onSubmit() {
-    console.log(123);
-    console.log(this.nhaXe)
     this.addnhaxe();
   }
   // @ts-ignore
@@ -61,7 +77,12 @@ export class QlNhaXeComponent implements OnInit {
   editNhaxe(e, i) {
     this.enableEditnhaxe = true;
     this.enableEditIndexnhaxe = i;
+    this.enableAddNewnhaxe = 1;
+
+    this.nhaXeForm.patchValue(this.nhaXe);
+    console.log(this.nhaXeForm.value);
     console.log(i, e);
+    console.log(this.nhaXeForm);
   }
   // tslint:disable-next-line:typedef
   new(){
@@ -114,3 +135,4 @@ export class QlNhaXeComponent implements OnInit {
     this.search();
   }
 }
+

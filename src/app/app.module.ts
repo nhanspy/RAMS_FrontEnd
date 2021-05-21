@@ -28,9 +28,9 @@ import {HomeComponent} from './thao/home/home.component';
 import {ProfileComponent} from './thao/profile/profile.component';
 import {BoardAdminComponent} from './thao/board-admin/board-admin.component';
 import {BoardModeratorComponent} from './thao/board-moderator/board-moderator.component';
-import {BoardUserComponent} from './thao/board-user/board-user.component';
-import {ResetPasswordComponent} from './thao/reset-password/reset-password.component';
-import {VerifyResetPasswordComponent} from './thao/verify-reset-password/verify-reset-password.component';
+// import {BoardUserComponent} from './thao/board-user/board-user.component';
+// import {ResetPasswordComponent} from './thao/reset-password/reset-password.component';
+// import {VerifyResetPasswordComponent} from './thao/verify-reset-password/verify-reset-password.component';
 import {KiemTraVeComponent} from './thao/kiem-tra-ve/kiem-tra-ve.component';
 import {DangNhapComponent} from './thao/dang-nhap/dang-nhap.component';
 import {DangKyComponent} from './thao/dang-ky/dang-ky.component';
@@ -41,16 +41,19 @@ import {ToastrModule} from 'ngx-toastr';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {QlXeComponent} from './kien/ql-xe/ql-xe.component';
+import {QlGheComponent} from './kien/ql-ghe/ql-ghe.component';
+import {HeaderThaoComponent} from './thao/header/header.component';
+import {FooterThaoComponent} from './thao/footer/footer.component';
+import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig} from 'angularx-social-login';
 
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
     DatVeComponent,
     XemLichSuChuyenXeComponent,
     XemChiTietChuyenXeComponent,
-    QlNguoiDungComponent,
-    QlTuyenXeComponent,
-    QlNhaXeComponent,
     XemLichSuComponent,
     TimKiemTuyenComponent,
     HeaderComponent,
@@ -62,9 +65,9 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
     ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
-    BoardUserComponent,
-    ResetPasswordComponent,
-    VerifyResetPasswordComponent,
+    // BoardUserComponent,
+    // ResetPasswordComponent,
+    // VerifyResetPasswordComponent,
     KiemTraVeComponent,
     HeaderComponent,
     FooterComponent,
@@ -72,7 +75,14 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
     DangKyComponent,
     DangkyuserComponent,
     QuenmatkhauComponent,
-    DoimatkhauComponent
+    DoimatkhauComponent,
+    QlNguoiDungComponent,
+    QlTuyenXeComponent,
+    QlNhaXeComponent,
+    QlXeComponent,
+    QlGheComponent,
+    HeaderThaoComponent,
+    FooterThaoComponent
   ],
     imports: [
       BrowserModule,
@@ -94,6 +104,22 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
   providers: [
     XemChiTietChuyenXeService
   ],
+  // provide: 'SocialAuthServiceConfig',
+  // useValue: {
+  //   autoLogin: false,
+  //   providers: [
+  //     {
+  //       id: GoogleLoginProvider.PROVIDER_ID,
+  //       provider: new GoogleLoginProvider(
+  //         '326374744185-ti75keqf9ob27h5camp4cvd4sji3o2uo.apps.googleusercontent.com'
+  //       ),
+  //     },
+  //     {
+  //       id: FacebookLoginProvider.PROVIDER_ID,
+  //       provider: new FacebookLoginProvider('804399990450734'),
+  //     },
+  //   ],
+  // } as SocialAuthServiceConfig,
   bootstrap: [AppComponent]
 })
 export class AppModule { }
