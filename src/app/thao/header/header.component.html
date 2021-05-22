@@ -65,11 +65,23 @@
             </a>
           </div>
         </li>
-        <li class="button-container nav-item iframe-extern">
-          <a href="https://www.creative-tim.com/product/material-kit-pro?ref=presentation" style="background-color:#7a43b6" target="_blank" class="btn  btn-rose   btn-round btn-block">
+<!--        <ul class="navbar-nav ml-auto" >-->
+          <li class="nav-item disabled" *ngIf="isLogged">
+            <a class="nav-link" >
+              {{userLogged.name}}
+            </a>
+          </li>
+<!--        </ul>-->
+<!--        <li class="button-container nav-item iframe-extern">-->
+        <img *ngIf="isLogged" src="{{userLogged.photoUrl}}" class="rounded-circle mr-3" style="width: 50px">
+          <button *ngIf="!isLogged" routerLink="/dangnhap" type="submit" style="background-color:#7a43b6" target="_blank" class="btn  btn-rose   btn-round btn-block">
             <i class="material-icons">face</i> Đăng nhập
-          </a>
-        </li>
+          </button>
+        <button (click)="logOut()" *ngIf="!isLogged" type="submit" style="background-color:#7a43b6" target="_blank" class="btn  btn-rose   btn-round btn-block">
+          <i class="material-icons">face</i> Đăng xuất
+        </button>
+
+<!--        </li>-->
       </ul>
     </div>
   </div>
@@ -78,4 +90,7 @@
 </div>
 </body>
 </html>
+
+
+
 

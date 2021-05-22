@@ -26,6 +26,7 @@ import {
   SocialLoginModule
 } from "angularx-social-login";
 import {productoInterceptor} from "./thao/interceptors/producto.interceptor";
+
 @NgModule({
   declarations: [
     AppComponent,

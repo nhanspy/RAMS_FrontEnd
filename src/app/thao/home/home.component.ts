@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
+import {SocialAuthService} from "angularx-social-login";
+import {Router} from "@angular/router";
+import {TokenStorageService} from "../_services/token-storage.service";
 
 @Component({
   selector: 'app-home',
@@ -9,17 +12,18 @@ import { UserService } from '../_services/user.service';
 export class HomeComponent implements OnInit {
 
   // @ts-ignore
-  content: string;
+  userLogged: SocialUser;
+  // @ts-ignore
+  isLogged: boolean;
 
-  constructor(private userService: UserService) { }
+  constructor( private authService: SocialAuthService,
+               private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
-    this.userService.getPublicContent().subscribe(
+    this.authService.authState.subscribe(
       data => {
-        this.content = data;
-      },
-      err => {
-        this.content = JSON.parse(err.error).message;
+        this.userLogged = data;
+        this.isLogged = (this.userLogged != null && this.tokenStorage.getToken() != null);
       }
     );
   }

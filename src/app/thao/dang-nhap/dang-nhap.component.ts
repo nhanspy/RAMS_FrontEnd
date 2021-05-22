@@ -5,7 +5,6 @@ import {AuthService} from "../_services/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import { SocialAuthService, GoogleLoginProvider, FacebookLoginProvider, SocialUser } from 'angularx-social-login';
-// import {GoogleLoginProvider, SocialAuthService, SocialUser} from "angularx-social-login";
 import {TokenDto} from "../model/token-dto";
 
 
@@ -28,7 +27,7 @@ export class DangNhapComponent implements OnInit {
   userLogged: SocialUser;
 
   constructor(
-    private aauthService: SocialAuthService,
+    private oauthService: SocialAuthService,
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
     private router: Router
@@ -48,7 +47,7 @@ export class DangNhapComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.router.navigate(['quenmatkhau']);
+        this.router.navigate(['/']);
       },
       err => {
         this.errorMessage = err.error.message;
@@ -58,7 +57,7 @@ export class DangNhapComponent implements OnInit {
   }
   signInWithGoogle(): void {
     // @ts-ignore
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+    this.oauthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       // @ts-ignore
       data => {
         this.socialUser = data;
@@ -67,7 +66,7 @@ export class DangNhapComponent implements OnInit {
           res => {
             this.tokenStorage.setToken(res.value);
             this.isLoggedIn = true;
-            this.router.navigate(['/']);
+            this.router.navigate(['/trangchu']);
           },
           err => {
             console.log(err);
@@ -83,8 +82,7 @@ export class DangNhapComponent implements OnInit {
     );
   }
   signInWithFB(): void {
-    // @ts-ignore
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
+    this.oauthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
       // @ts-ignore
       data => {
         this.socialUser = data;
@@ -110,7 +108,7 @@ export class DangNhapComponent implements OnInit {
   }
 
   logOut(): void {
-    this.aauthService.signOut().then(
+    this.oauthService.signOut().then(
       data => {
         this.tokenStorage.logOut();
         this.isLoggedIn = false;

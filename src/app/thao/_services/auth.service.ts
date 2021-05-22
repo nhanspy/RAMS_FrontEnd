@@ -7,6 +7,7 @@ import {TokenDto} from "../model/token-dto";
 const cabecera = {headers: new HttpHeaders({'Content-Type' : 'application/json'})};
 const AUTH_API = 'http://localhost:8080/api/auth/';
 const AUTH_API1 = 'http://localhost:8080/api/public/';
+const Oauth_URL = 'http://localhost:8080/oauth/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,18 +16,22 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
-  Oauth_URL = 'http://localhost:8080/oauth/';
+
 
   private httpOptions: any;
 
   constructor(private http: HttpClient) { }
 
   public google(tokenDto: TokenDto): Observable<TokenDto> {
-    return this.http.post<TokenDto>(this.Oauth_URL + 'google', tokenDto, cabecera);
+    console.log("--------------------------------------------------------");
+    console.log(tokenDto);
+    console.log(cabecera);
+    console.log("--------------------------------------------------------");
+    return this.http.post<TokenDto>(Oauth_URL + 'google', tokenDto, cabecera);
   }
 
   public facebook(tokenDto: TokenDto): Observable<TokenDto> {
-    return this.http.post<TokenDto>( this.Oauth_URL+ 'facebook', tokenDto, cabecera);
+    return this.http.post<TokenDto>( Oauth_URL+ 'facebook', tokenDto, cabecera);
   }
 
   login(credentials: any): Observable<any> {

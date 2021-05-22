@@ -18,7 +18,7 @@
 
 <body class="ecommerce-page sidebar-collapse">
 <nav  class="navbar  navbar-transparent fixed-top navbar-expand-lg"  color-on-scroll="100" id="sectionsNav">
-<!-- navbar-color-on-scroll  fixed-top  navbar-expand-lg-->
+  <!-- navbar-color-on-scroll  fixed-top  navbar-expand-lg-->
   <div class="container">
     <div class="navbar-translate">
       <a class="navbar-brand" href="https://demos.creative-tim.com/material-kit-pro/index.html">
@@ -50,21 +50,34 @@
         </li>
         <li class="dropdown nav-item">
           <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-             Đăng kí
+            Đăng kí
           </a>
-          <div class="dropdown-menu dropdown-with-icons">
-            <a href="/dangkyuser" class="dropdown-item">
-              <i class="material-icons">account_balance</i> Người dùng
-            </a>
-            <a href="dangky" class="dropdown-item">
-              <i class="material-icons">art_track</i> Nhà xe
-            </a>
-          </div>
+<!--          <div class="dropdown-menu dropdown-with-icons">-->
+<!--            <a href="/dangkyuser" class="dropdown-item">-->
+<!--              <i class="material-icons">account_balance</i> Người dùng-->
+<!--            </a>-->
+
+<!--            <a href="dangky" class="dropdown-item">-->
+<!--              <i class="material-icons">art_track</i> Nhà xe-->
+<!--            </a>-->
+<!--          </div>-->
         </li>
+        <ul class="navbar-nav ml-auto" *ngIf="isLogged">
+          <li class="nav-item disabled">
+            <a class="nav-link" >
+              {{userLogged.name}}
+            </a>
+          </li>
+        </ul>
+
+        <img *ngIf="isLogged" src="{{userLogged.photoUrl}}" class="rounded-circle mr-3" style="width: 50px">
         <li class="button-container nav-item iframe-extern">
-          <a href="/dangnhap" style="background-color:#7a43b6" target="_blank" class="btn  btn-rose   btn-round btn-block">
-            <i class="material-icons">face</i> Đăng nhập
-          </a>
+<!--          <button  routerLink="/dangnhap"  style="background-color:#7a43b6" target="_blank" class="btn  btn-rose   btn-round btn-block">-->
+<!--            <i class="material-icons">face</i> Đăng nhập-->
+<!--          </button>-->
+          <button  routerLink="/dangnhap" *ngIf="isLogged" style="background-color:#7a43b6" target="_blank" class="btn  btn-rose   btn-round btn-block">
+            <i class="material-icons">face</i> Đăng xuất
+          </button>
         </li>
       </ul>
     </div>
@@ -220,3 +233,4 @@
 </body>
 
 </html>
+
