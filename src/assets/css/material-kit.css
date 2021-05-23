@@ -18104,7 +18104,7 @@ thead.thead-inverse th,
 .card {
   border: 0;
   margin-bottom: 30px;
-  margin-top: 30px;
+  margin-top: 80px;
   border-radius: 6px;
   color: rgba(0, 0, 0, 0.87);
   background: #fff;
@@ -21025,7 +21025,7 @@ select.selectpicker {
 }
 
 .login-page .page-header .container {
-  padding-top: 23vh;
+  padding-top: 10vh;
 }
 
 .login-page .footer .container {
@@ -21043,7 +21043,7 @@ select.selectpicker {
 }
 
 .ecommerce-page .card-header .container {
-  padding-top: 20vh;
+  padding-top: 10vh;
   color: #FFFFFF;
   text-align: center;
 }
