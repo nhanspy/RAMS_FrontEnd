@@ -15,7 +15,7 @@ import {Location} from '@angular/common';
 @Component({
   selector: 'app-dang-nhap',
   templateUrl: './dang-nhap.component.html',
-  styleUrls: ['./dang-nhap.component.css']
+  styleUrls: ['./dang-nhap.component.css', '../../../assets/css/material-kit.css']
 })
 export class DangNhapComponent implements OnInit {
   form: any = {};
@@ -29,7 +29,7 @@ export class DangNhapComponent implements OnInit {
   userLogged: SocialUser;
 
   constructor(
-    // private aauthService: SocialAuthService,
+    private oauthService: SocialAuthService,
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
     private router: Router,
@@ -40,10 +40,11 @@ export class DangNhapComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
-      this.location.back();
+      // this.location.back();
     }
   }
   onSubmit(): void {
+    console.log(123);
     this.authService.login(this.form).subscribe(
       data => {
         this.tokenStorage.saveToken(data.accessToken);
@@ -55,71 +56,71 @@ export class DangNhapComponent implements OnInit {
         this.location.back();
       },
       err => {
+        console.log(err);
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }
     );
   }
-  // signInWithGoogle(): void {
-  //   // @ts-ignore
-  //   this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
-  //     // @ts-ignore
-  //     data => {
-  //       this.socialUser = data;
-  //       const tokenGoogle = new TokenDto(this.socialUser.idToken);
-  //       this.authService.google(tokenGoogle).subscribe(
-  //         res => {
-  //           this.tokenStorage.setToken(res.value);
-  //           this.isLoggedIn = true;
-  //           this.router.navigate(['/']);
-  //         },
-  //         err => {
-  //           console.log(err);
-  //           this.logOut();
-  //         }
-  //       );
-  //     }
-  //   ).catch(
-  //     // @ts-ignore
-  //     err => {
-  //       console.log(err);
-  //     }
-  //   );
-  // }
-  // signInWithFB(): void {
-  //   // @ts-ignore
-  //   this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
-  //     // @ts-ignore
-  //     data => {
-  //       this.socialUser = data;
-  //       const tokenFace = new TokenDto(this.socialUser.authToken);
-  //       this.authService.facebook(tokenFace).subscribe(
-  //         res => {
-  //           this.tokenStorage.setToken(res.value);
-  //           this.isLoggedIn = true;
-  //           this.router.navigate(['/']);
-  //         },
-  //         err => {
-  //           console.log(err);
-  //           this.logOut();
-  //         }
-  //       );
-  //     }
-  //   ).catch(
-  //     // @ts-ignore
-  //     err => {
-  //       console.log(err);
-  //     }
-  //   );
-  // }
+  signInWithGoogle(): void {
+    // @ts-ignore
+    this.oauthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+      // @ts-ignore
+      data => {
+        this.socialUser = data;
+        const tokenGoogle = new TokenDto(this.socialUser.idToken);
+        this.authService.google(tokenGoogle).subscribe(
+          res => {
+            this.tokenStorage.setToken(res.value);
+            this.isLoggedIn = true;
+            this.router.navigate(['/timkiemtuyen']);
+          },
+          err => {
+            console.log(err);
+            this.logOut();
+          }
+        );
+      }
+    ).catch(
+      // @ts-ignore
+      err => {
+        console.log(err);
+      }
+    );
+  }
+  signInWithFB(): void {
+    this.oauthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
+      // @ts-ignore
+      data => {
+        this.socialUser = data;
+        const tokenFace = new TokenDto(this.socialUser.authToken);
+        this.authService.facebook(tokenFace).subscribe(
+          res => {
+            this.tokenStorage.setToken(res.value);
+            this.isLoggedIn = true;
+            this.router.navigate(['/']);
+          },
+          err => {
+            console.log(err);
+            this.logOut();
+          }
+        );
+      }
+    ).catch(
+      // @ts-ignore
+      err => {
+        console.log(err);
+      }
+    );
+  }
 
-  // logOut(): void {
-  //   this.aauthService.signOut().then(
-  //     data => {
-  //       this.tokenStorage.logOut();
-  //       this.isLoggedIn = false;
-  //     }
-  //   );
-  // }
+  logOut(): void {
+    this.oauthService.signOut().then(
+      data => {
+        this.tokenStorage.logOut();
+        this.isLoggedIn = false;
+      }
+    );
+  }
 
 }

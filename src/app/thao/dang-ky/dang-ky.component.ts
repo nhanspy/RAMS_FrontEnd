@@ -66,9 +66,9 @@ export class DangKyComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
-      this.router.navigate(['timkiemtuyen']).then(() => {
-        window.location.reload();
-      });
+      // this.router.navigate(['timkiemtuyen']).then(() => {
+      //   window.location.reload();
+      // });
     }
   }
   onSubmitt(): void {
@@ -88,9 +88,9 @@ export class DangKyComponent implements OnInit {
               extendedTimeOut: 1500
             });
             alert('Đăng ký thành công');
-            this.router.navigate(['timkiemtuyen']).then(() => {
-              window.location.reload();
-            });
+            // this.router.navigate(['dangnhap']).then(() => {
+            //   window.location.reload();
+            // });
           },
           err => {
             this.toastr.error(err.error.message, 'Lỗi: ', {

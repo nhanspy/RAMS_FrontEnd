@@ -12,12 +12,12 @@
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/assets/css/material-kit.css">
+<!--  <link rel="stylesheet" href="/assets/css/material-kit.css">-->
 
 </head>
 
 <body class="login-page sidebar-collapse">
-<div  class="page-header header-filter" style="background-image: url('/assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
+<div  class="page-header header-filter" style="background-image: url('/assets/img/examples/background.jpg'); background-size: cover; background-position: top center;">
   <div class="container" >
     <div class="row">
       <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
@@ -26,12 +26,12 @@
             <div class="card-header card-header-primary text-center">
               <h4 class="card-title">Đăng nhập</h4>
               <div class="social-line">
-<!--                <button class="btn btn-just-icon btn-link btn-white" (click)="signInWithFB()">-->
-<!--                  <i class="fa fa-facebook-square"></i>-->
-<!--                </button>-->
-<!--                <button  class="btn btn-just-icon btn-link btn-white" (click)="signInWithGoogle()">-->
-<!--                  <i class="fa fa-google-plus"></i>-->
-<!--                </button>-->
+                <button class="btn btn-just-icon btn-link btn-white" (click)="signInWithFB()">
+                  <i class="fa fa-facebook-square"></i>
+                </button>
+                <button  class="btn btn-just-icon btn-link btn-white" (click)="signInWithGoogle()">
+                  <i class="fa fa-google-plus"></i>
+                </button>
               </div>
             </div>
             <div class="card-body " >
@@ -76,6 +76,7 @@
     </div>
   </div>
 </div>
+{{errorMessage}}
 </body>
 
 </html>

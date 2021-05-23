@@ -43,9 +43,12 @@ import {environment} from '../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {QlXeComponent} from './kien/ql-xe/ql-xe.component';
 import {QlGheComponent} from './kien/ql-ghe/ql-ghe.component';
-import {HeaderThaoComponent} from './thao/header/header.component';
 import {FooterThaoComponent} from './thao/footer/footer.component';
-import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig} from 'angularx-social-login';
+import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
+import {APP_BASE_HREF} from '@angular/common';
+import {authInterceptorProviders} from './thao/_helpers/auth.interceptor';
+import {productoInterceptor} from './thao/interceptors/producto.interceptor';
+import {HeaderThaoComponent} from './thao/header/header.component';
 
 // @ts-ignore
 @NgModule({
@@ -97,31 +100,40 @@ import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig} fro
       IvyCarouselModule,
       AppRoutingModule,
       ToastrModule.forRoot(),
+      HttpClientModule,
+      ReactiveFormsModule,
+      SocialLoginModule,
+      AppRoutingModule,
+      FormsModule,
+      HttpClientModule,
+      ReactiveFormsModule,
       AngularFireModule.initializeApp(environment.firebase),
       AngularFireDatabaseModule,
     ],
 
   providers: [
-    XemChiTietChuyenXeService
+    {provide: APP_BASE_HREF, useValue: '/'},
+    authInterceptorProviders,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '326374744185-ti75keqf9ob27h5camp4cvd4sji3o2uo.apps.googleusercontent.com'
+            ),
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('804399990450734'),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
+    productoInterceptor
   ],
-  // provide: 'SocialAuthServiceConfig',
-  // useValue: {
-  //   autoLogin: false,
-  //   providers: [
-  //     {
-  //       id: GoogleLoginProvider.PROVIDER_ID,
-  //       provider: new GoogleLoginProvider(
-  //         '326374744185-ti75keqf9ob27h5camp4cvd4sji3o2uo.apps.googleusercontent.com'
-  //       ),
-  //     },
-  //     {
-  //       id: FacebookLoginProvider.PROVIDER_ID,
-  //       provider: new FacebookLoginProvider('804399990450734'),
-  //     },
-  //   ],
-  // } as SocialAuthServiceConfig,
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-
