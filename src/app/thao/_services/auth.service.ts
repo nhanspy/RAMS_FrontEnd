@@ -23,15 +23,13 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   public google(tokenDto: TokenDto): Observable<TokenDto> {
-    console.log("--------------------------------------------------------");
     console.log(tokenDto);
     console.log(cabecera);
-    console.log("--------------------------------------------------------");
     return this.http.post<TokenDto>(Oauth_URL + 'google', tokenDto, cabecera);
   }
 
   public facebook(tokenDto: TokenDto): Observable<TokenDto> {
-    return this.http.post<TokenDto>( Oauth_URL+ 'facebook', tokenDto, cabecera);
+    return this.http.post<TokenDto>( Oauth_URL + 'facebook', tokenDto, cabecera);
   }
 
   login(credentials: any): Observable<any> {
