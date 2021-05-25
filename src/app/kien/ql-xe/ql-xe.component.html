@@ -235,18 +235,18 @@
                   <thead>
                   <!--        tìm kiếm-->
                   <tr>
-                  <td width="720px"><input type="text" class="form-control" placeholder="Tìm kiếm Mã xe" #txtSearch
-                                           (keyup)="searchMaxe(txtSearch.value)"></td>
-                  <td width="720px"><input type="text" class="form-control" placeholder="Tìm kiếm Biển số xe" #txtSearch1
-                                           (keyup)="searchBiensoxe(txtSearch1.value)"></td>
-                  <td width="720px"><input type="text" class="form-control" placeholder="Tìm kiếm Mã nhà xe" #txtSearch2
-                                           (keyup)="searchManhaxe(txtSearch2.value)"></td>
-                  <td width="720px"><input type="text" class="form-control" placeholder="Tìm kiếm Tên nhà xe" #txtSearch3
-                                           (keyup)="searchTennhaxe(txtSearch3.value)"></td>
-                  <td width="720px"><input type="text" class="form-control" placeholder="Tìm kiếm Mã loai xe" #txtSearch4
-                                           (keyup)="searchMaloaixe(txtSearch4.value)"></td>
+                    <td width="720px"><input type="text" class="form-control" placeholder="Tìm kiếm Mã xe" #txtSearch
+                                             (keyup)="searchMaxe(txtSearch.value)"></td>
+                    <td width="720px"><input type="text" class="form-control" placeholder="Tìm kiếm Biển số xe" #txtSearch1
+                                             (keyup)="searchBiensoxe(txtSearch1.value)"></td>
+                    <td width="720px"><input type="text" class="form-control" placeholder="Tìm kiếm Mã nhà xe" #txtSearch2
+                                             (keyup)="searchManhaxe(txtSearch2.value)"></td>
+                    <td width="720px"><input type="text" class="form-control" placeholder="Tìm kiếm Tên nhà xe" #txtSearch3
+                                             (keyup)="searchTennhaxe(txtSearch3.value)"></td>
+                    <td width="720px"><input type="text" class="form-control" placeholder="Tìm kiếm Mã loai xe" #txtSearch4
+                                             (keyup)="searchMaloaixe(txtSearch4.value)"></td>
                   </tr>
-                 <tr>
+                  <tr>
                     <th width="720px">Mã xe</th>
                     <th width="720px">Biển số xe</th>
                     <th width="720px">Mã nhà xe</th>
@@ -260,36 +260,50 @@
                     <td class="form-group">
                       <input id="maXe" type="text" class="form-control" placeholder="Vui lòng nhập Mã xe"
                              formControlName="maXe">
-                      <p class="text-danger" *ngIf="xeForm.controls.maXe.errors?.required">
-                        Vui lòng điền vào trường Mã xe.
+                      <p *ngFor="let validation of validation_messages.maXe">
+                        <small class="text-danger"
+                               *ngIf="xeForm.get('maXe')!.hasError(validation.type) && xeForm.get('maXe')!.touched">
+                          {{validation.message}}</small>
                       </p>
                     </td>
+
                     <td class="form-group">
                       <input id="bienSoXe" type="text" class="form-control" placeholder="Vui lòng nhập Biển số xe"
                              formControlName="bienSoXe">
-                      <p class="text-danger" *ngIf="xeForm.controls.bienSoXe.errors?.required">
-                        Vui lòng điền vào trường Biển số xe.
+                      <p *ngFor="let validation of validation_messages.bienSoXe">
+                        <small class="text-danger"
+                               *ngIf="xeForm.get('bienSoXe')!.hasError(validation.type) && xeForm.get('bienSoXe')!.touched">
+                          {{validation.message}}</small>
                       </p>
                     </td>
+
                     <td class="form-group">
                       <input id="maNhaXe" type="text" class="form-control" placeholder="Vui lòng nhập Mã nhà xe"
                              formControlName="maNhaXe">
-                      <p class="text-danger" *ngIf="xeForm.controls.maNhaXe.errors?.required">
-                        Vui lòng điền vào trường Mã nhà xe..
+                      <p *ngFor="let validation of validation_messages.maNhaXe">
+                        <small class="text-danger"
+                               *ngIf="xeForm.get('maNhaXe')!.hasError(validation.type) && xeForm.get('maNhaXe')!.touched">
+                          {{validation.message}}</small>
                       </p>
+
                     </td>
                     <td class="form-group">
                       <input id="tenNhaXe" type="text" class="form-control" placeholder="Vui lòng nhập Tên nhà xe"
                              formControlName="tenNhaXe">
-                      <p class="text-danger" *ngIf="xeForm.controls.tenNhaXe.errors?.required">
-                        Vui lòng điền vào trường Tên nhà xe.
+                      <p *ngFor="let validation of validation_messages.tenNhaXe">
+                        <small class="text-danger"
+                               *ngIf="xeForm.get('tenNhaXe')!.hasError(validation.type) && xeForm.get('tenNhaXe')!.touched">
+                          {{validation.message}}</small>
                       </p>
                     </td>
+
                     <td class="form-group">
                       <input id="maLoaiXe" type="text" class="form-control" placeholder="Vui lòng nhập Mã loại xe"
                              formControlName="maLoaiXe">
-                      <p class="text-danger" *ngIf="xeForm.controls.maLoaiXe.errors?.required">
-                        Vui lòng điền vào trường Mã loại xe.
+                      <p *ngFor="let validation of validation_messages.maLoaiXe">
+                        <small class="text-danger"
+                               *ngIf="xeForm.get('maLoaiXe')!.hasError(validation.type) && xeForm.get('maLoaiXe')!.touched">
+                          {{validation.message}}</small>
                       </p>
                     </td>
                     <td >

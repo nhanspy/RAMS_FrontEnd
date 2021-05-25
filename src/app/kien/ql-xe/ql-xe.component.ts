@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Xe} from '../Models/Xe.class';
 import {QlXeService} from '../kien-s/ql-xe.service';
 
@@ -31,7 +31,16 @@ export class QlXeComponent implements OnInit {
   keywordSochongoi: string;
   // @ts-ignore
   // tslint:disable-next-line:variable-name
-  constructor(private _qlXeService: QlXeService) {
+  constructor(private _qlXeService: QlXeService,
+              private formBuilder: FormBuilder) {
+    this.xeForm = this.formBuilder.group({
+      maXe: new FormControl('', [Validators.required]),
+      bienSoXe: new FormControl('', [Validators.required]),
+      maNhaXe: new FormControl('', [Validators.required]),
+      tenNhaXe: new FormControl('', [Validators.required]),
+      maLoaiXe: new FormControl('', [Validators.required]),
+      soChoNgoi: new FormControl('', [Validators.required]),
+    });
     this._qlXeService.getAll().subscribe(data => {
       console.log(data);
       this.xeList = data;
@@ -50,17 +59,29 @@ export class QlXeComponent implements OnInit {
   xe: Xe;
 
   // @ts-ignore
+  validation_messages = {
+    'maXe': [
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ],
+    'bienSoXe': [
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ],
+    'maNhaXe':[
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ],
+    'tenNhaXe':[
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ],
+    'maLoaiXe':[
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ],
+    'soChoNgoi':[
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ]
+  };
   ngOnInit(): void {
     // @ts-ignore
     this.xe = new Xe();
-    this.xeForm = new FormGroup({
-      maXe: new FormControl('', [Validators.required]),
-      bienSoXe: new FormControl('', [Validators.required]),
-      maNhaXe: new FormControl('', [Validators.required]),
-      tenNhaXe: new FormControl('', [Validators.required]),
-      maLoaiXe: new FormControl('', [Validators.required]),
-      soChoNgoi: new FormControl('', [Validators.required]),
-    });
   }
 
   // tslint:disable-next-line:typedef

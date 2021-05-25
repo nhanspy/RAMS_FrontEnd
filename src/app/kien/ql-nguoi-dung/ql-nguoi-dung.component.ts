@@ -6,6 +6,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {dateOfBirth} from './validator-customer/date-of-birth.validator';
 import {TokenStorageService} from '../../thao/_services/token-storage.service';
 import {Router} from '@angular/router';
+import {LoadjsService} from "../kien-s/loadjs.service";
 
 @Component({
   selector: 'app-ql-nguoi-dung',
@@ -53,7 +54,9 @@ export class QlNguoiDungComponent implements OnInit {
   constructor(private _qlNguoiDungService: QlNguoiDungService,
               private tokenStorage: TokenStorageService,
               private router: Router,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private loadjsService: LoadjsService) {
+    this.loadjsService.loadScrip('assets/js/date.js');
     this.nguoiDungForm =  this.formBuilder.group({
       // tslint:disable-next-line:max-line-length
       username: new FormControl('', [Validators.required, Validators.pattern('^(?=.{6,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$')]),
@@ -120,17 +123,6 @@ export class QlNguoiDungComponent implements OnInit {
     }
     // @ts-ignore
     this.user = new User();
-    this.nguoiDungForm = new FormGroup({
-      // tslint:disable-next-line:max-line-length
-      username: new FormControl('', [Validators.required, Validators.pattern('^(?=.{6,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$')]),
-      // tslint:disable-next-line:max-line-length
-      ten: new FormControl('', [Validators.required, Validators.pattern('^[^\\d\\t`~!@#$%^&*()_\\-+=|\\\\{}\\[\\]:;"\'<>,.?\/]{3,15}$'), Validators.maxLength(15), Validators.minLength(3)]),
-      email: new FormControl('', [Validators.required, Validators.pattern('^[\\w-\\.]+@(?!.*gmai\\.com|mail|gmial|gail|gmil|gmal|gmaiil|gmeo|gmaill|gnail\\.com|gmail\\.con|outlook\\.com\\.vn|mytam\\.info|mytamentertainment\\.com|yhoo\\.com|yaho\\.com|yahu\\.com|gmail\\.com\\.vn|gamil\\.com|email\\.com.*)([\\w-]+\\.)+[\\w-]{2,4}$')]),
-      soDienThoai: new FormControl('', [Validators.pattern('^(\\+84|0)\\d{9,10}'), Validators.required]),
-      ngaySinh: new FormControl('', [Validators.required, Validators.pattern('/^((0[1-9]|[12][0-9]|3[01])(\\/)(0[13578]|1[02]))|((0[1-9]|[12][0-9])(\\/)(02))|((0[1-9]|[12][0-9]|3[0])(\\/)(0[469]|11))(\\/)\\d{4}$/'), dateOfBirth] ),
-      // diaChi: new FormControl('', [Validators.required]),
-      gioiTinh: new FormControl('', [Validators.required])
-    });
   }
   // tslint:disable-next-line:typedef
   addnguoidung() {

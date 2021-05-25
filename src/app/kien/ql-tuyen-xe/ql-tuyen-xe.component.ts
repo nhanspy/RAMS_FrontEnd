@@ -3,7 +3,7 @@ import {QlTuyenXeService} from '../kien-s/ql-tuyen-xe.service';
 import {ChuyenXe} from '../Models/ChuyenXe.class';
 import {Ben} from '../Models/Ben.class';
 import {Router} from '@angular/router';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-ql-tuyen-xe',
@@ -38,7 +38,14 @@ export class QlTuyenXeComponent implements OnInit {
   // @ts-ignore
   // tslint:disable-next-line:variable-name
   constructor(private _qlTuyenXeService: QlTuyenXeService,
-              private router: Router) {
+              private router: Router,
+              private formBuilder: FormBuilder) {
+    this.chuyenXeForm = this.formBuilder.group({
+      maChuyen: new FormControl('',[Validators.required]),
+      thoiGian: new FormControl('',[Validators.required]),
+      benDi: new FormControl('',[Validators.required]),
+      benDen: new FormControl('',[Validators.required])
+    });
     this._qlTuyenXeService.getAll().subscribe(data => {
       console.log(data);
       this.chuyenXeList = data;
@@ -67,15 +74,23 @@ export class QlTuyenXeComponent implements OnInit {
   // @ts-ignore
   chuyenXePush: ChuyenXe;
   // @ts-ignore
+  validation_messages = {
+    'maChuyen': [
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ],
+    'thoiGian': [
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ],
+    'benDi': [
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ],
+    'benDen': [
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ]
+  };
   ngOnInit(): void {
     // @ts-ignore
     this.chuyenXes = new ChuyenXe();
-    this.chuyenXeForm = new FormGroup({
-      maChuyen: new FormControl('',[Validators.required]),
-      thoiGian: new FormControl('',[Validators.required]),
-      benDi: new FormControl(),
-      benDen: new FormControl()
-    });
   }
   // tslint:disable-next-line:typedef
   addchuyenxe() {

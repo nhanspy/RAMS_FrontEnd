@@ -253,15 +253,19 @@
                     <td class="form-group">
                       <input id="maNhaXe" type="text" class="form-control" placeholder="Vui lòng nhập Mã nhà xe"
                              formControlName="maNhaXe">
-                      <p class="text-danger" *ngIf="nhaXeForm.controls.maNhaXe.errors?.required">
-                        Vui lòng điền vào trường Mã nhà xe.
+                      <p *ngFor="let validation of validation_messages.maNhaXe">
+                        <small class="text-danger"
+                               *ngIf="nhaXeForm.get('maNhaXe')!.hasError(validation.type) && nhaXeForm.get('maNhaXe')!.touched">
+                          {{validation.message}}</small>
                       </p>
                     </td>
                     <td class="form-group">
                       <input id="tenNhaXe" type="text" class="form-control" placeholder="Vui lòng nhập Tên nhà xe"
                              formControlName="tenNhaXe">
-                      <p class="text-danger" *ngIf="nhaXeForm.controls.tenNhaXe.errors?.required">
-                        Vui lòng điền vào trường Tên nhà xe.
+                      <p *ngFor="let validation of validation_messages.tenNhaXe">
+                        <small class="text-danger"
+                               *ngIf="nhaXeForm.get('tenNhaXe')!.hasError(validation.type) && nhaXeForm.get('tenNhaXe')!.touched">
+                          {{validation.message}}</small>
                       </p>
                     </td>
                     <td >

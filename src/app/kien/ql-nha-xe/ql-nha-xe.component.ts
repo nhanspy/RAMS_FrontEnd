@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {QlNhaXeService} from '../kien-s/ql-nha-xe.service';
 import {NhaXe} from '../Models/NhaXe.class';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-ql-nha-xe',
@@ -22,7 +22,12 @@ export class QlNhaXeComponent implements OnInit {
 // @ts-ignore
   keywordTennhaxe: string;
   // tslint:disable-next-line:variable-name
-  constructor(private _qlNhaXeService: QlNhaXeService) {
+  constructor(private _qlNhaXeService: QlNhaXeService,
+              private formBuilder: FormBuilder) {
+    this.nhaXeForm = this.formBuilder.group({
+      maNhaXe: new FormControl('', [Validators.required]),
+      tenNhaXe: new FormControl('', [Validators.required]),
+    });
     this._qlNhaXeService.getAll().subscribe(data => {
       console.log(data);
       this.nhaxeList = data;
@@ -39,13 +44,17 @@ export class QlNhaXeComponent implements OnInit {
   // @ts-ignore
   nhaXe: NhaXe;
   // @ts-ignore
+  validation_messages = {
+    'maNhaXe': [
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ],
+    'tenNhaXe': [
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ]
+  };
   ngOnInit(): void {
     // @ts-ignore
     this.nhaXe = new NhaXe();
-    this.nhaXeForm = new FormGroup({
-      maNhaXe: new FormControl('', [Validators.required]),
-      tenNhaXe: new FormControl('', [Validators.required]),
-    });
   }
   // tslint:disable-next-line:typedef
   addnhaxe() {

@@ -261,8 +261,10 @@
                     <td class="form-group">
                       <input id="maChuyen" type="text" class="form-control" placeholder="Vui lòng nhập Mã chuyến xe"
                              formControlName="maChuyen">
-                      <p class="text-danger" *ngIf="chuyenXeForm.controls.maChuyen.errors?.required">
-                        Vui lòng điền vào trường Mã chuyến xe.
+                      <p *ngFor="let validation of validation_messages.maChuyen">
+                        <small class="text-danger"
+                               *ngIf="chuyenXeForm.get('maChuyen')!.hasError(validation.type) && chuyenXeForm.get('maChuyen')!.touched">
+                          {{validation.message}}</small>
                       </p>
                     </td>
                     <td>
@@ -275,21 +277,14 @@
                         <option [selected]="benXe.maBen.includes(chuyenXes.benDen.maBen)" *ngFor="let benXe of benXeList" [value]="benXe" >{{benXe.tenBen}}</option>
                       </select>
                     </td>
-<!--                    <td>-->
-<!--                    <select class="form-select" class="form-control" aria-label="Default select example" [(ngModel)]="chuyenXePush.benDi">-->
-<!--                      <option *ngFor="let benXe of benXeList" [ngValue]="benXe" >{{benXe.tenBen}}</option>-->
-<!--                    </select>-->
-<!--                  </td>-->
-<!--                    <td>-->
-<!--                      <select class="form-select" class="form-control" aria-label="Default select example" [(ngModel)]="chuyenXePush.benDen">-->
-<!--                        <option *ngFor="let benXe of benXeList" [ngValue]="benXe" >{{benXe.tenBen}}</option>-->
-<!--                      </select>-->
-<!--                    </td>-->
+
                     <td class="form-group">
                       <input id="thoiGian" type="date" class="form-control" placeholder="Vui lòng nhập Thời gian"
                              formControlName="thoiGian">
-                      <p class="text-danger" *ngIf="chuyenXeForm.controls.thoiGian.errors?.required">
-                        Vui lòng điền vào trường Thời gian.
+                      <p *ngFor="let validation of validation_messages.thoiGian">
+                        <small class="text-danger"
+                               *ngIf="chuyenXeForm.get('thoiGian')!.hasError(validation.type) && chuyenXeForm.get('thoiGian')!.touched">
+                          {{validation.message}}</small>
                       </p>
                     </td>
                     <td >
@@ -315,7 +310,7 @@
             </div>
           </div>
         </div>
-        </div>
+      </div>
     </section>
   </div>
   <aside class="control-sidebar control-sidebar-dark">
