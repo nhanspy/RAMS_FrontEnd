@@ -256,36 +256,46 @@
                     <td class="form-group">
                       <input id="maGhe" type="text" class="form-control" placeholder="Vui lòng nhập Mã ghế"
                              formControlName="maGhe">
-                      <p class="text-danger" *ngIf="gheForm.controls.maGhe.errors?.required">
-                        Vui lòng điền vào trường Mã ghế.
+                      <p *ngFor="let validation of validation_messages.maGhe">
+                        <small class="text-danger"
+                               *ngIf="gheForm.get('maGhe')!.hasError(validation.type) && gheForm.get('maGhe')!.touched">
+                          {{validation.message}}</small>
                       </p>
                     </td>
                     <td class="form-group">
                       <input id="maLoaiGhe" type="text" class="form-control" placeholder="Vui lòng nhập Mã loại ghế"
                              formControlName="maLoaiGhe">
-                      <p class="text-danger" *ngIf="gheForm.controls.maLoaiGhe.errors?.required">
-                        Vui lòng điền vào trường Mã loại ghế.
+                      <p *ngFor="let validation of validation_messages.maLoaiGhe">
+                        <small class="text-danger"
+                               *ngIf="gheForm.get('maLoaiGhe')!.hasError(validation.type) && gheForm.get('maLoaiGhe')!.touched">
+                          {{validation.message}}</small>
                       </p>
                     </td>
                     <td class="form-group">
                       <input id="tenLoaiGhe" type="text" class="form-control" placeholder="Vui lòng nhập Tên Loại ghế"
                              formControlName="tenLoaiGhe">
-                      <p class="text-danger" *ngIf="gheForm.controls.tenLoaiGhe.errors?.required">
-                        Vui lòng điền vào trường Tên loại ghế.
+                      <p *ngFor="let validation of validation_messages.tenLoaiGhe">
+                        <small class="text-danger"
+                               *ngIf="gheForm.get('tenLoaiGhe')!.hasError(validation.type) && gheForm.get('tenLoaiGhe')!.touched">
+                          {{validation.message}}</small>
                       </p>
                     </td>
                     <td class="form-group">
                       <input id="maTrangThai" type="text" class="form-control" placeholder="Vui lòng nhập Mã trạng thái"
                              formControlName="maTrangThai">
-                      <p class="text-danger" *ngIf="gheForm.controls.maTrangThai.errors?.required">
-                        Vui lòng điền vào trường Mã ghế.
+                      <p *ngFor="let validation of validation_messages.maTrangThai">
+                        <small class="text-danger"
+                               *ngIf="gheForm.get('maTrangThai')!.hasError(validation.type) && gheForm.get('maTrangThai')!.touched">
+                          {{validation.message}}</small>
                       </p>
                     </td>
                     <td class="form-group">
                       <input id="tenTrangThai" type="text" class="form-control" placeholder="Vui lòng nhập Tên trạng thái"
                              formControlName="tenTrangThai">
-                      <p class="text-danger" *ngIf="gheForm.controls.tenTrangThai.errors?.required">
-                        Vui lòng điền vào trường Tên trạng thái.
+                      <p *ngFor="let validation of validation_messages.tenTrangThai">
+                        <small class="text-danger"
+                               *ngIf="gheForm.get('tenTrangThai')!.hasError(validation.type) && gheForm.get('tenTrangThai')!.touched">
+                          {{validation.message}}</small>
                       </p>
                     </td>
                     <td >

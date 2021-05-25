@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Ghe} from '../Models/Ghe.class';
 import {QlGheService} from '../kien-s/ql-ghe.service';
 
@@ -30,7 +30,15 @@ export class QlGheComponent implements OnInit {
   keywordTenloaighe: string;
 
   // tslint:disable-next-line:variable-name
-  constructor(private _qlGheService: QlGheService) {
+  constructor(private _qlGheService: QlGheService,
+              private formBuilder: FormBuilder) {
+    this.gheForm = this.formBuilder.group({
+      maGhe: new FormControl('', [Validators.required]),
+      maLoaiGhe: new FormControl('', [Validators.required]),
+      tenLoaiGhe: new FormControl('', [Validators.required]),
+      maTrangThai: new FormControl('', [Validators.required]),
+      tenTrangThai: new FormControl('', [Validators.required]),
+    });
     this._qlGheService.getAll().subscribe(data => {
       console.log(data);
       this.gheList = data;
@@ -47,17 +55,26 @@ export class QlGheComponent implements OnInit {
   // @ts-ignore
   ghe: Ghe;
   // @ts-ignore
+  validation_messages = {
+    'maGhe': [
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ],
+    'maLoaiGhe': [
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ],
+    'tenLoaiGhe': [
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ],
+    'maTrangThai': [
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ],
+    'tenTrangThai': [
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ]
+  };
   ngOnInit(): void {
     // @ts-ignore
     this.ghe = new Ghe();
-    this.gheForm = new FormGroup({
-      maGhe: new FormControl('', [Validators.required]),
-      maLoaiGhe: new FormControl('', [Validators.required]),
-      tenLoaiGhe: new FormControl('', [Validators.required]),
-      maTrangThai: new FormControl('', [Validators.required]),
-      tenTrangThai: new FormControl('', [Validators.required]),
-
-    });
   }
   // tslint:disable-next-line:typedef
   addghe() {

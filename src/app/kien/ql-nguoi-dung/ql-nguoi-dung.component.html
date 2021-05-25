@@ -239,17 +239,17 @@
                   <thead>
                   <tr>
                     <td width="720px"><input type="text" class="form-control" placeholder="Tìm người dùng" #txtSearch
-                               (keyup)="searchUsername(txtSearch.value)"></td>
+                                             (keyup)="searchUsername(txtSearch.value)"></td>
                     <td width="720px"><input type="text" class="form-control" placeholder="Tìm tên" #txtSearch2
-                               (keyup)="searchTen(txtSearch2.value)"></td>
+                                             (keyup)="searchTen(txtSearch2.value)"></td>
                     <td width="720px"><input type="text" class="form-control" placeholder="Tìm email" #txtSearch3
                                              (keyup)="searchEmail(txtSearch3.value)"></td>
                     <td width="720px"><input type="text" class="form-control" maxlength="10" placeholder="Tìm SĐT" #txtSearch4
-                               (keyup)="searchSodienthoai(txtSearch4.value)"></td>
+                                             (keyup)="searchSodienthoai(txtSearch4.value)"></td>
                     <td width="720px"><input type="text" class="form-control" placeholder="Tìm ngày sinh̉" #txtSearch5
-                               (keyup)="searchNgaysinh(txtSearch5.value)"></td>
-<!--                    <td width="720px"><input type="text" class="form-control" placeholder="Tìm địa chỉ" #txtSearch7-->
-<!--                               (keyup)="searchDiachi(txtSearch7.value)"></td>-->
+                                             (keyup)="searchNgaysinh(txtSearch5.value)"></td>
+                    <!--                    <td width="720px"><input type="text" class="form-control" placeholder="Tìm địa chỉ" #txtSearch7-->
+                    <!--                               (keyup)="searchDiachi(txtSearch7.value)"></td>-->
                   </tr>
                   <tr>
                     <th width="720px">Tên người dùng</th>
@@ -257,7 +257,7 @@
                     <th width="720px">Email</th>
                     <th width="720px">Số điện thoại</th>
                     <th width="600px">Ngày sinh</th>
-<!--                    <th width="720px">Địa chỉ</th>-->
+                    <!--                    <th width="720px">Địa chỉ</th>-->
                     <th width="720px">Giới tính</th>
                     <th width="720px">Hành động</th>
                   </tr>
@@ -268,76 +268,52 @@
                     <td class="form-group">
                       <input id="username" type="text" class="form-control" placeholder="Vui lòng nhập Tên người dùng"
                              formControlName="username">
-                      <p class="text-danger" *ngIf="nguoiDungForm.controls.username.errors?.required">
-                        Vui lòng điền vào trường username.
-                      </p>
-                      <p *ngIf="nguoiDungForm.controls.username.errors?.pattern" class="text-danger">
-                        Tên username chỉ bao gồm chữ cái, đầy đủ họ tên không thể chứa ký tự đặc biệt, không chứa dấu cách, tối thiểu 6 kí tự và tối đa là 20 kí tự.
+                      <p *ngFor="let validation of validation_messages.username">
+                        <small class="text-danger"
+                               *ngIf="nguoiDungForm.get('username')!.hasError(validation.type) && nguoiDungForm.get('username')!.touched">
+                          {{validation.message}}</small>
                       </p>
                     </td>
                     <!--            ten-->
                     <td class="form-group">
                       <input id="ten" type="text" class="form-control" placeholder="Vui lòng nhập Họ và tên"
                              formControlName="ten">
-                      <p class="text-danger" *ngIf="nguoiDungForm.controls.ten.errors?.required">
-                        Vui lòng điền vào trường tên.
-                      </p>
-                      <p *ngIf="nguoiDungForm.controls.ten.errors?.pattern" class="text-danger">
-                        Tên chỉ bao gồm chữ cái, tên không thể chứa ký tự đặc biệt, chữ số và tối đa 15 ký
-                        tự.
+                      <p *ngFor="let validation of validation_messages.ten">
+                        <small class="text-danger"
+                               *ngIf="nguoiDungForm.get('ten')!.hasError(validation.type) && nguoiDungForm.get('ten')!.touched">
+                          {{validation.message}}</small>
                       </p>
                     </td>
                     <!--            email-->
                     <td class="form-group">
                       <input id="email" type="text" class="form-control" placeholder="Vui lòng nhập Email"
                              formControlName="email">
-                      <p *ngIf="nguoiDungForm.controls.email.errors?.required" class="text-danger">
-                        Vui lòng điền vào trường E-mail.
+                      <p *ngFor="let validation of validation_messages.email">
+                        <small class="text-danger"
+                               *ngIf="nguoiDungForm.get('email')!.hasError(validation.type) && nguoiDungForm.get('email')!.touched">
+                          {{validation.message}}</small>
                       </p>
-                      <p *ngIf="nguoiDungForm.controls.email.errors?.pattern" class="text-danger">
-                        Vui lòng nhập đúng định dạng abc@gmail.com.
-                      </p>
-                      <!--                <p class="text-danger" *ngIf="!isCheck">-->
-                      <!--                  {{listError.existEmail}}-->
-                      <!--                </p>-->
                     </td>
                     <!--            so dien thoai-->
                     <td class="form-group">
                       <input id="soDienThoai" type="text" class="form-control" placeholder="Vui lòng nhập Số điện thoại"
                              formControlName="soDienThoai">
-                      <p *ngIf="nguoiDungForm.controls.soDienThoai.errors?.required" class="text-danger">
-                        Vui lòng điền vào trường Số điện thoại.
+                      <p *ngFor="let validation of validation_messages.soDienThoai">
+                        <small class="text-danger"
+                               *ngIf="nguoiDungForm.get('soDienThoai')!.hasError(validation.type) && nguoiDungForm.get('soDienThoai')!.touched">
+                          {{validation.message}}</small>
                       </p>
-                      <p *ngIf="nguoiDungForm.controls.soDienThoai.errors?.pattern" class="text-danger">
-                        Số điện thoại chưa đúng định dạng 0(3/5/7/8/9)xxxxxxxx.
-                      </p>
-                      <!--              <p class="text-danger" *ngIf="!isCheck">-->
-                      <!--                {{listError.existPhone}}-->
-                      <!--              </p>-->
                     </td>
-                    <!--            ngay sinh-->
+
                     <td class="form-group">
                       <input id="ngaySinh" type="date" class="form-control" placeholder="Vui lòng nhập Ngày tháng năm sinh"
                              formControlName="ngaySinh">
-                      <p *ngIf="nguoiDungForm.controls.ngaySinh.errors?.required" class="text-danger">
-                        Vui lòng điền vào trường Ngày sinh.
+                      <p *ngFor="let validation of validation_messages.ngaySinh">
+                        <small class="text-danger"
+                               *ngIf="nguoiDungForm.get('ngaySinh')!.hasError(validation.type) && nguoiDungForm.get('ngaySinh')!.touched">
+                          {{validation.message}}</small>
                       </p>
-                      <!--              <p class="text-danger" *ngIf="nguoiDungForm.hasError('minAge','dateOfBirth')">-->
-                      <!--                Khách hàng cần đủ 18 tuổi trở lên.-->
-                      <!--              </p>-->
-                      <!--              <p class="text-danger" *ngIf="nguoiDungForm.hasError('maxAge','dateOfBirth')">-->
-                      <!--                Số tuổi vượt quá giới hạn.-->
-                      <!--              </p>-->
                     </td>
-                    <!--            dia chi-->
-<!--                    <td class="form-group">-->
-<!--                      <input id="diaChi" type="text" class="form-control" placeholder="Vui lòng nhập địa chỉ"-->
-<!--                             formControlName="diaChi">-->
-<!--                      <p *ngIf="nguoiDungForm.controls.diaChi.errors?.required" class="text-danger">-->
-<!--                        Vui lòng điền vào trường Địa chỉ.-->
-<!--                      </p>-->
-<!--                    </td>-->
-                    <!--            gioi tinh-->
                     <td>
                       <select class="form-select" class="form-control" aria-label="Default select example">
                         <option value="1">Nam</option>
@@ -355,7 +331,7 @@
                     <td>{{nguoidungList.email}}</td>
                     <td>{{nguoidungList.soDienThoai}}</td>
                     <td>{{nguoidungList.ngaySinh}}</td>
-<!--                    <td>{{nguoidungList.diaChi}}</td>-->
+                    <!--                    <td>{{nguoidungList.diaChi}}</td>-->
                     <td>{{nguoidungList.gioiTinh ? 'Nam' : 'Nữ'}}</td>
                     <td>
                       <button type="button" class="btn btn-success" (click)="nguoiDung = nguoidungList; editNguoidung($event, i);enableAddNew=1 ">Sửa</button>

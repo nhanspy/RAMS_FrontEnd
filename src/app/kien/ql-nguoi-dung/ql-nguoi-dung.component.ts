@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {QlNguoiDungService} from '../kien-s/ql-nguoi-dung.service';
 import {User} from '../Models/User.class';
 import {SignupRequest} from '../Models/SignupRequest.class';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {dateOfBirth} from './validator-customer/date-of-birth.validator';
 import {TokenStorageService} from '../../thao/_services/token-storage.service';
 import {Router} from '@angular/router';
@@ -52,8 +52,19 @@ export class QlNguoiDungComponent implements OnInit {
   // tslint:disable-next-line:variable-name
   constructor(private _qlNguoiDungService: QlNguoiDungService,
               private tokenStorage: TokenStorageService,
-              private router: Router
-  ) {
+              private router: Router,
+              private formBuilder: FormBuilder) {
+    this.nguoiDungForm =  this.formBuilder.group({
+      // tslint:disable-next-line:max-line-length
+      username: new FormControl('', [Validators.required, Validators.pattern('^(?=.{6,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$')]),
+      // tslint:disable-next-line:max-line-length
+      ten: new FormControl('', [Validators.required, Validators.pattern('^[^\\d\\t`~!@#$%^&*()_\\-+=|\\\\{}\\[\\]:;"\'<>,.?\/]{3,15}$'), Validators.maxLength(15), Validators.minLength(3)]),
+      email: new FormControl('', [Validators.required, Validators.pattern('^[\\w-\\.]+@(?!.*gmai\\.com|mail|gmial|gail|gmil|gmal|gmaiil|gmeo|gmaill|gnail\\.com|gmail\\.con|outlook\\.com\\.vn|mytam\\.info|mytamentertainment\\.com|yhoo\\.com|yaho\\.com|yahu\\.com|gmail\\.com\\.vn|gamil\\.com|email\\.com.*)([\\w-]+\\.)+[\\w-]{2,4}$')]),
+      soDienThoai: new FormControl('', [Validators.pattern('^(\\+84|0)\\d{9,10}'), Validators.required]),
+      ngaySinh: new FormControl('', [Validators.required, Validators.pattern('/^((0[1-9]|[12][0-9]|3[01])(\\/)(0[13578]|1[02]))|((0[1-9]|[12][0-9])(\\/)(02))|((0[1-9]|[12][0-9]|3[0])(\\/)(0[469]|11))(\\/)\\d{4}$/'), dateOfBirth] ),
+      // diaChi: new FormControl('', [Validators.required]),
+      gioiTinh: new FormControl('', [Validators.required])
+    });
     this._qlNguoiDungService.getAll().subscribe(data => {
       console.log(data);
       this.NguoidungList = data;
@@ -74,6 +85,31 @@ export class QlNguoiDungComponent implements OnInit {
   enableAddNew = -1;
   // @ts-ignore
   nguoiDung: User;
+  validation_messages = {
+    'username': [
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ],
+    'ten': [
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ],
+    'email':[
+      {type: 'required',message: 'Trường này không được để trống!'},
+      {type:'pattern',message: 'Email sai định dạng' }
+    ],
+    'soDienThoai':[
+      {type: 'required',message: 'Trường này không được để trống!'},
+      {type: 'pattern', message: 'Số điện thoại không hợp lệ'},
+    ],
+    'maLoaiXe':[
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ],
+    'ngaySinh':[
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ],
+    'gioiTinh':[
+      {type: 'required',message: 'Trường này không được để trống!'}
+    ]
+  };
   ngOnInit(): void {
     if (this.tokenStorage.getToken() && !(this.tokenStorage.getUser().roles.includes("ROLE_ADMIN") || this.tokenStorage.getUser().roles.includes("ROLE_NHAXE"))) {
       this.isLoggedIn = true;
