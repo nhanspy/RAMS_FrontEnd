@@ -42,6 +42,7 @@ export class TokenStorageService {
   }
 
   logOut(): void {
+    window.sessionStorage.clear();
     sessionStorage.clear();
   }
 }

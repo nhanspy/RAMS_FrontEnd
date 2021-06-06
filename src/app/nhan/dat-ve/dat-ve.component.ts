@@ -7,6 +7,7 @@ import {Location} from '@angular/common';
 import {AuthService} from '../service/auth.service';
 import {TokenStorageService} from '../service/token-storage.service';
 import Ghe from '../Models/Ghe.class';
+import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 @Component({
   selector: 'app-dat-ve',
   templateUrl: './dat-ve.component.html',
@@ -14,6 +15,8 @@ import Ghe from '../Models/Ghe.class';
 })
 export class DatVeComponent implements OnInit {
 
+  public payPalConfig?: IPayPalConfig;
+  private showSuccess: boolean | undefined;
   // @ts-ignore
   price: number;
   maVe = 'mv02';
@@ -22,7 +25,12 @@ export class DatVeComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
   // tslint:disable-next-line:variable-name
-  constructor(private datVeService: DatVeService, private router: Router, private _location: Location, private authService: AuthService, private tokenStorage: TokenStorageService) {
+  constructor(private datVeService: DatVeService,
+              private router: Router,
+              private _location: Location,
+              private authService: AuthService,
+              private tokenStorage: TokenStorageService
+  ) {
 
     this.datVeService.getById(this.maVe).subscribe(
       data => {
@@ -51,6 +59,8 @@ export class DatVeComponent implements OnInit {
   // @ts-ignore
   strGheDaChon: string;
   diemDi = '';
+  // @ts-ignore
+  arrStrMaVe : String[];
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
@@ -58,10 +68,11 @@ export class DatVeComponent implements OnInit {
       this.roles = this.tokenStorage.getUser().roles;
       this.currentUser = this.tokenStorage.getUser();
       console.log(this.currentUser);
-      this.datVeService.sendMail(this.currentUser.email, 'thao ngu');
+      // this.datVeService.sendMail(this.currentUser.email, 'thao ngu');
     } else {
       this.router.navigate(['dangnhap']);
     }
+
 
     if (localStorage.getItem('chuyenXe')) {
       // @ts-ignore
@@ -79,6 +90,17 @@ export class DatVeComponent implements OnInit {
       }
     }
     this.setTongTien();
+    this.initConfig();
+  }
+
+  private updateVe() {
+    this.datVeService.updateVeXe(this.arrStrMaVe).subscribe(
+      data => {
+        console.log(data);
+      }, error => {
+        console.error();
+      }
+    );
   }
 
   setTongTien(): void{
@@ -87,7 +109,7 @@ export class DatVeComponent implements OnInit {
     this.strGheDaChon = '';
     this.gheDaChons.forEach(
       item => {
-        if (item.daChon) {
+        if (item.daChon && item.email === this.currentUser.email) {
           this.tongGheDaChon += 1;
           this.strGheDaChon += ((item.tang === 1) ? 'A' : 'B') + item.soGhe + ', ';
           // @ts-ignore
@@ -109,9 +131,11 @@ export class DatVeComponent implements OnInit {
       data => {
         console.log(data);
         if (data) {
-          localStorage.setItem('maVeChuaThanhToan', JSON.stringify(data));
+          // localStorage.setItem('maVeChuaThanhToan', JSON.stringify(data));
+          this.arrStrMaVe = data;
+          this.updateVe();
         }
-        window.location.href = 'http://localhost:8080/' + this.tongTien;
+        // window.location.href = 'http://localhost:8080/' + this.tongTien;
       },
       error => {
         console.log(error);
@@ -124,6 +148,107 @@ export class DatVeComponent implements OnInit {
   logout(): void {
     this.tokenStorage.signOut();
     window.location.reload();
+  }
+
+  private initConfig(): void {
+    const cost = this.tongTien * 0.000043 + '';
+    console.log(cost);
+    console.log(this.tongTien);
+    this.payPalConfig = {
+      currency: 'USD',
+      clientId: 'sb',
+      createOrderOnClient: (data) => <ICreateOrderRequest>{
+        intent: 'CAPTURE',
+        purchase_units: [
+          {
+            amount: {
+              currency_code: 'USD',
+              value: cost,
+              breakdown: {
+                item_total: {
+                  currency_code: 'USD',
+                  value: cost
+                }
+              }
+            },
+            items: [
+              {
+                name: 'Enterprise Subscription',
+                quantity: '1',
+                category: 'DIGITAL_GOODS',
+                unit_amount: {
+                  currency_code: 'USD',
+                  value: cost,
+                },
+              }
+            ]
+          }
+        ]
+      },
+      advanced: {
+        commit: 'true'
+      },
+      style: {
+        label: 'paypal',
+        layout: 'vertical'
+      },
+      onApprove: (callBackData, actions) => {
+        console.log('onApprove - transaction was approved, but not authorized', callBackData, actions);
+        actions.order.get().then((details: any) => {
+          console.log('onApprove - you can get full order details inside onApprove: ', details);
+        });
+
+        this.updateGhe(this.arrStrMaVe);
+        // const data = {
+        //   mail: this.currentUser.email,
+        //   ten: this.currentUser.username,
+        //   soDienThoai: this.currentUser.soDienThoai,
+        //   ghe: this.strGheDaChon,
+        //   maVe: this.maVe.toString(),
+        //   thoiGian: this.chuyenXe.thoiGian,
+        //   tong: this.tongTien
+        // }
+        //
+        // // this.datVeService.sendMail(this.currentUser.email, 'thao_ngu').subscribe(
+        // //   data => {
+        // //     console.log(data);
+        // //   }, error => {
+        // //     console.log(error);
+        // //   }
+        // // );
+        // this.datVeService.sendMailPost(data).subscribe(
+        //   data => {
+        //     console.log(data);
+        //   }, error => {
+        //     console.log(error);
+        //   }
+        // );
+      },
+      onClientAuthorization: (data) => {
+        console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+        this.showSuccess = true;
+      },
+      onCancel: (data, actions) => {
+        console.log('OnCancel', data, actions);
+      },
+      onError: err => {
+        console.log('OnError', err);
+      },
+      onClick: (data, actions) => {
+        console.log('onClick', data, actions);
+        this.thanhToan();
+      },
+    };
+  }
+  private updateGhe(strMaVe: String[]) {
+    console.log(strMaVe);
+    this.datVeService.updateGhe(strMaVe).subscribe(
+      data => {
+        console.log(data);
+      }, error => {
+        console.error();
+      }
+    );
   }
 
 }

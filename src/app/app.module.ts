@@ -49,6 +49,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import {authInterceptorProviders} from './thao/_helpers/auth.interceptor';
 import {productoInterceptor} from './thao/interceptors/producto.interceptor';
 import {HeaderThaoComponent} from './thao/header/header.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 // @ts-ignore
 @NgModule({
@@ -68,9 +69,6 @@ import {HeaderThaoComponent} from './thao/header/header.component';
     ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
-    // BoardUserComponent,
-    // ResetPasswordComponent,
-    // VerifyResetPasswordComponent,
     KiemTraVeComponent,
     HeaderComponent,
     FooterComponent,
@@ -88,6 +86,7 @@ import {HeaderThaoComponent} from './thao/header/header.component';
     FooterThaoComponent
   ],
     imports: [
+      NgxPayPalModule,
       BrowserModule,
       AppRoutingModule,
       HttpClientModule,
@@ -98,15 +97,8 @@ import {HeaderThaoComponent} from './thao/header/header.component';
       MatFormFieldModule,
       NgxPaginationModule,
       IvyCarouselModule,
-      AppRoutingModule,
       ToastrModule.forRoot(),
-      HttpClientModule,
-      ReactiveFormsModule,
       SocialLoginModule,
-      AppRoutingModule,
-      FormsModule,
-      HttpClientModule,
-      ReactiveFormsModule,
       AngularFireModule.initializeApp(environment.firebase),
       AngularFireDatabaseModule,
     ],

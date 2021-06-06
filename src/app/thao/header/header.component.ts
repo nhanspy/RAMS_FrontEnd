@@ -12,7 +12,7 @@ import {TokenStorageService} from "../_services/token-storage.service";
 })
 export class HeaderThaoComponent implements OnInit {
   // @ts-ignore
-  userLogged: SocialUser;
+  userLogged: any;
   // @ts-ignore
   isLogged: boolean;
   constructor(
@@ -28,14 +28,22 @@ export class HeaderThaoComponent implements OnInit {
         this.isLogged = (this.userLogged != null && this.tokenStorage.getToken() != null);
       }
     );
+    if (!this.isLogged){
+      this.userLogged = this.tokenStorage.getUser();
+      if (this.userLogged) this.isLogged = true;
+    }
   }
   logOut(): void {
     this.oauthService.signOut().then(
       data => {
-        this.tokenStorage.logOut();
-        this.router.navigate(['/login']);
+        this.tokenStorage.signOut();
+        // this.isLogged = false;
+        // this.router.navigate(['/login']);
       }
-    );
+    ).catch(error => {
+      this.tokenStorage.signOut();
+    });
+    this.isLogged = false;
   }
 
 }

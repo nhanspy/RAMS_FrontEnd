@@ -23,7 +23,7 @@
                   <div data-v-561fbfed="" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-ms-12">
                     <div data-v-561fbfed="" class="col-xs-12 field">
                       <div data-v-561fbfed="" class="col-xs-4 sub-tit">Họ tên:</div>
-                      <div data-v-561fbfed="" class="col-xs-8">{{currentUser.username}}</div>
+                      <div data-v-561fbfed="" class="col-xs-8">{{currentUser.username}}{{currentUser.name}}</div>
                     </div>
                     <div data-v-561fbfed="" class="col-xs-12 field">
                       <div data-v-561fbfed="" class="col-xs-4 sub-tit">Số điện thoại:</div>
@@ -93,28 +93,30 @@
             <div data-v-a30aa7c2="" class="title">CHỌN PHƯƠNG THỨC THANH TOÁN</div>
             <div data-v-a30aa7c2="" class="payment-item-list">
               <div data-v-988311c2="" data-v-a30aa7c2="" class="payment-item-container">
-                <button data-v-988311c2="" class="selected">
-                  <svg data-v-988311c2="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22" height="23" viewBox="0 0 22 23" class="check checked">
-                    <defs data-v-988311c2=""><circle data-v-988311c2="" id="huxf6b78oa" cx="11" cy="11" r="11"></circle></defs>
-                    <g data-v-988311c2="" fill="none" fill-rule="evenodd">
-                      <g data-v-988311c2="" transform="translate(-518 -791) translate(252 741) translate(0 43) translate(266 8)">
-                        <mask data-v-988311c2="" id="9unrvtawmb" fill="#fff"><use data-v-988311c2="" xlink:href="#huxf6b78oa"></use></mask>
-                        <use data-v-988311c2="" fill="#EF5222" fill-rule="nonzero" xlink:href="#huxf6b78oa"></use>
-                        <path data-v-988311c2="" fill-rule="nonzero" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 11.125L9.058 14.25 15.375 8" mask="url(#9unrvtawmb)"></path>
-                      </g>
-                    </g>
-                  </svg>
-                  <svg data-v-988311c2="" xmlns="http://www.w3.org/2000/svg" width="22" height="23" viewBox="0 0 22 23" class="check not-check">
-                    <g data-v-988311c2="" fill="none" fill-rule="evenodd" stroke-opacity=".63">
-                      <g data-v-988311c2="" fill-rule="nonzero" stroke="#637280" stroke-width="1.2">
-                        <g data-v-988311c2="" transform="translate(-838 -791) translate(252 741) translate(320 43) translate(266 8)"><circle data-v-988311c2="" cx="11" cy="11" r="10.4"></circle></g>
-                      </g>
-                    </g>
-                  </svg>
-                  <div data-v-988311c2="" class="icons"><img data-v-988311c2="" src="/assets/nhan/imgs/paypal.png" alt="Paypal" class="icon lazyLoad" /></div>
-                  <p data-v-988311c2="" class="text">Paypal</p>
-                </button>
+<!--                <button data-v-988311c2="" class="selected">-->
+<!--                  <svg data-v-988311c2="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22" height="23" viewBox="0 0 22 23" class="check checked">-->
+<!--                    <defs data-v-988311c2=""><circle data-v-988311c2="" id="huxf6b78oa" cx="11" cy="11" r="11"></circle></defs>-->
+<!--                    <g data-v-988311c2="" fill="none" fill-rule="evenodd">-->
+<!--                      <g data-v-988311c2="" transform="translate(-518 -791) translate(252 741) translate(0 43) translate(266 8)">-->
+<!--                        <mask data-v-988311c2="" id="9unrvtawmb" fill="#fff"><use data-v-988311c2="" xlink:href="#huxf6b78oa"></use></mask>-->
+<!--                        <use data-v-988311c2="" fill="#EF5222" fill-rule="nonzero" xlink:href="#huxf6b78oa"></use>-->
+<!--                        <path data-v-988311c2="" fill-rule="nonzero" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 11.125L9.058 14.25 15.375 8" mask="url(#9unrvtawmb)"></path>-->
+<!--                      </g>-->
+<!--                    </g>-->
+<!--                  </svg>-->
+<!--                  <svg data-v-988311c2="" xmlns="http://www.w3.org/2000/svg" width="22" height="23" viewBox="0 0 22 23" class="check not-check">-->
+<!--                    <g data-v-988311c2="" fill="none" fill-rule="evenodd" stroke-opacity=".63">-->
+<!--                      <g data-v-988311c2="" fill-rule="nonzero" stroke="#637280" stroke-width="1.2">-->
+<!--                        <g data-v-988311c2="" transform="translate(-838 -791) translate(252 741) translate(320 43) translate(266 8)"><circle data-v-988311c2="" cx="11" cy="11" r="10.4"></circle></g>-->
+<!--                      </g>-->
+<!--                    </g>-->
+<!--                  </svg>-->
+<!--                  <div data-v-988311c2="" class="icons"><img data-v-988311c2="" src="/assets/nhan/imgs/paypal.png" alt="Paypal" class="icon lazyLoad" /></div>-->
+<!--                  <p data-v-988311c2="" class="text">Paypal</p>-->
+<!--                </button>-->
+
               </div>
+
             </div>
           </div>
         </div>
@@ -134,9 +136,10 @@
           </a>
         </div>
         <div data-v-7d8bce1e="" class="right-btns">
-          <button data-v-7d8bce1e="" class="btn btn-success" (click)="thanhToan()">
-            THANH TOÁN
-          </button>
+          <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+<!--          <button data-v-7d8bce1e="" class="btn btn-success" (click)="thanhToan()">-->
+<!--            THANH TOÁN-->
+<!--          </button>-->
         </div>
       </div>
     </div>

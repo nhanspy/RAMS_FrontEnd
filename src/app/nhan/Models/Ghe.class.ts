@@ -14,6 +14,7 @@ export default class Ghe {
   hang?: number;
   gia?: number| 0;
   daChon?: boolean | false;
+  email?: string;
 
   constructor(maGhe: string, tenGhe: string, loaiGhe: LoaiGhe, trangThaiGhe: String, veXe: VeXe, xe: string, soGhe: number, tang: number, hang: number, daChon: boolean, gia: number) {
     this.maGhe = maGhe;

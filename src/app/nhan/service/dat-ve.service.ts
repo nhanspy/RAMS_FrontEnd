@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {VeXe} from '../Models/VeXe.class';
 const baseURL = 'http://localhost:8080/api/v1';
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 @Injectable({
   providedIn: 'root'
 })
+
 export class DatVeService {
 
   // tslint:disable-next-line:variable-name
@@ -47,11 +51,11 @@ export class DatVeService {
   }
 
   updateVeXe(maVe: String[]): Observable<any>{
-    return this._httpClient.post(baseURL + '/vexe/updateState', maVe);
+    return this._httpClient.post(baseURL + '/vexe/updateState', maVe , httpOptions);
   }
 
   updateGhe(strMaVe: String[]): Observable<any>{
-    return this._httpClient.post(baseURL + '/ghe/updateGhe', strMaVe);
+    return this._httpClient.post(baseURL + '/ghe/updateGhe', strMaVe , httpOptions);
   }
 
   // @ts-ignore
@@ -61,5 +65,13 @@ export class DatVeService {
     console.log(this.urlStr);
     // @ts-ignore
     return this._httpClient.get(this.urlStr);
+  }
+
+  sendMailPost(data: any){
+    this.urlStr = 'http://localhost:8080/send';
+    console.log(this.urlStr);
+    console.log(data);
+    // @ts-ignore
+    return this._httpClient.post(this.urlStr, data);
   }
 }

@@ -46,11 +46,12 @@
           <li class="nav-item disabled" *ngIf="isLogged">
             <a class="nav-link" >
               {{userLogged.name}}
+              {{userLogged.username}}
             </a>
           </li>
 <!--        </ul>-->
 <!--        <li class="button-container nav-item iframe-extern">-->
-        <img *ngIf="isLogged" src="{{userLogged.photoUrl}}" class="rounded-circle mr-3" style="width: 50px">
+        <img *ngIf="isLogged && userLogged.photoUrl" src="{{userLogged.photoUrl}}" class="rounded-circle mr-3" style="width: 50px">
 <!--        <button *ngIf="!isLogged" routerLink="/dangnhap" type="submit" style="background-color:#7a43b6" target="_blank" class="btn  btn-rose   btn-round btn-block">-->
 <!--          <i class="material-icons">face</i> Đăng nhập-->
 <!--        </button>-->

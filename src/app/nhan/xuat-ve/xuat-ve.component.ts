@@ -8,6 +8,7 @@ import {AuthService} from '../service/auth.service';
 import {TokenStorageService} from '../service/token-storage.service';
 import {XuatVeService} from '../service/xuat-ve.service';
 import Ghe from '../Models/Ghe.class';
+import {User} from '../Models/User.class';
 
 @Component({
   selector: 'app-xuat-ve',
@@ -32,17 +33,38 @@ export class XuatVeComponent implements OnInit {
   // @ts-ignore
   chuyenXe: ChuyenXe;
   isLoggedIn = false;
+  // @ts-ignore
   currentUser: any;
   errorMessage = '';
   roles: string[] = [];
+  tongGheDaChon = 0;
+  strGheDaChon = '';
+  tongTien = 0;
 
   ngOnInit(): void {
+    this.init();
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
       this.currentUser = this.tokenStorage.getUser();
       console.log(this.currentUser);
-      this.datVeService.sendMail(this.currentUser.email, 'thao_ngu').subscribe(
+      const data = {
+        mail: this.currentUser.email,
+        ten: this.currentUser.username,
+        soDienThoai: this.currentUser.soDienThoai,
+        ghe: this.strGheDaChon,
+        maVe: this.maVe.toString(),
+        thoiGian: this.chuyenXe.thoiGian,
+        tong: this.tongTien
+      }
+      // this.datVeService.sendMail(this.currentUser.email, 'thao_ngu').subscribe(
+      //   data => {
+      //     console.log(data);
+      //   }, error => {
+      //     console.log(error);
+      //   }
+      // );
+      this.datVeService.sendMailPost(data).subscribe(
         data => {
           console.log(data);
         }, error => {
@@ -52,7 +74,6 @@ export class XuatVeComponent implements OnInit {
     } else {
       this.router.navigate(['dangnhap']);
     }
-    this.init();
   }
 
   private init(): void {
@@ -68,9 +89,14 @@ export class XuatVeComponent implements OnInit {
       this.gheDaChons.forEach(item => {
         // @ts-ignore
         this.strMaGhe.push(item.maGhe);
+        this.tongGheDaChon += 1;
+        this.strGheDaChon += ((item.tang === 1) ? 'A' : 'B') + item.soGhe + ', ';
+        // @ts-ignore
+        this.tongTien += item.gia;
       });
       // @ts-ignore
       console.log(this.strMaGhe);
+      this.strGheDaChon = this.strGheDaChon.substring(0, this.strGheDaChon.length - 2);
       this.updateGhe(this.strMaGhe);
     }
     if (localStorage.getItem('chuyenXe')) {
@@ -82,14 +108,6 @@ export class XuatVeComponent implements OnInit {
     if (localStorage.getItem('ghes')) {
       // @ts-ignore
       this.ghes = JSON.parse(localStorage.getItem('ghes'));
-    }
-    if (localStorage.getItem('newGhesTang1')) {
-      // @ts-ignore
-      this.newGhesTang1 = JSON.parse(localStorage.getItem('newGhesTang1'));
-    }
-    if (localStorage.getItem('newGhesTang2')) {
-      // @ts-ignore
-      this.newGhesTang2 = JSON.parse(localStorage.getItem('newGhesTang2'));
     }
   }
 
@@ -113,68 +131,4 @@ export class XuatVeComponent implements OnInit {
     );
   }
 
-  getGhe(): void {
-    this.ghes = [];
-    this.gheDaChons = [];
-    this.newGhesTang1 = [];
-    this.newGhesTang2 = [];
-    if (this.chuyenXe) {
-      this.xemChiTietChuyenXeService.getGhe(this.chuyenXe.xe.maXe).subscribe(
-        data => {
-          this.ghes = data;
-          this.gheDaChons = this.ghes.slice().filter(
-            item => {
-              if (item.trangThaiGhe === 'mttg02'){
-                item.daChon = true;
-                return true;
-              }
-              return false;
-            }
-          );
-          // console.log(this.gheDaChons);
-
-          this.ghesTang1 = this.ghes.slice().filter(
-            item => {
-              return item.tang === 1;
-            }
-          );
-          this.ghesTang2 = this.ghes.slice().filter(
-            item => {
-              return item.tang === 2;
-            }
-          );
-          // @ts-ignore
-          this.ghes.sort((a, b) => {
-            // @ts-ignore
-            return a.soGhe > b.soGhe;
-          });
-          while (this.ghesTang1.length) {
-            // @ts-ignore
-            this.newGhesTang1.push(this.ghesTang1.splice(0, 3));
-          }
-          while (this.ghesTang2.length) {
-            // @ts-ignore
-            this.newGhesTang2.push(this.ghesTang2.splice(0, 3));
-          }
-          if (this.chuyenXe) {
-            localStorage.setItem('chuyenXe', JSON.stringify(this.chuyenXe));
-          }
-          if (this.gheDaChons) {
-            localStorage.setItem('gheDaChons', JSON.stringify(this.gheDaChons));
-          }
-          if (this.newGhesTang1) {
-            localStorage.setItem('newGhesTang1', JSON.stringify(this.newGhesTang1));
-          }
-          if (this.newGhesTang2) {
-            localStorage.setItem('newGhesTang2', JSON.stringify(this.newGhesTang2));
-          }
-          if (this.ghes) {
-            localStorage.setItem('ghes', JSON.stringify(this.ghes));
-          }
-        }, error => {
-          console.log(error);
-        }
-      );
-    }
-  }
 }

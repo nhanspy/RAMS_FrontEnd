@@ -10,6 +10,7 @@ import {Location} from '@angular/common';
 import {GheFirebaseService} from '../service/ghe-firebase.service';
 import {map} from 'rxjs/operators';
 import Ghe from '../Models/Ghe.class';
+import {TokenStorageService} from '../service/token-storage.service';
 
 @Component({
   selector: 'app-xem-chi-tiet-chuyen-xe',
@@ -22,7 +23,8 @@ export class XemChiTietChuyenXeComponent implements OnInit, OnChanges, OnDestroy
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private _location: Location,
-              private gheFirebaseService: GheFirebaseService
+              private gheFirebaseService: GheFirebaseService,
+              private tokenStorage: TokenStorageService
   ) {
   }
 
@@ -69,8 +71,21 @@ export class XemChiTietChuyenXeComponent implements OnInit, OnChanges, OnDestroy
   currentIndex = -1;
   diemDi = '';
   message = '';
+  isLoggedIn = false;
+  currentUser: any;
+  errorMessage = '';
+  roles: string[] = [];
 
   ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
+      this.currentUser = this.tokenStorage.getUser();
+      console.log(this.currentUser);
+      // this.datVeService.sendMail(this.currentUser.email, 'thao ngu');
+    } else {
+      this.router.navigate(['dangnhap']);
+    }
     this.init(); //get data from search of Trong
     this.getTinh();//Get Tinh form data of Trong
     this.getBen(); //Get Ben from data of Trong
@@ -95,11 +110,12 @@ export class XemChiTietChuyenXeComponent implements OnInit, OnChanges, OnDestroy
   // thay đổi trạng thái chọn ghế
   // tính tổng tiền
   chonGhe(ghe: Ghe): void{
+    if (ghe.trangThaiGhe === 'mttg02' && ghe.email != this.currentUser.email) return;
     if (ghe.trangThaiGhe === 'mttg01') {
       ghe.trangThaiGhe = 'mttg02';
       ghe.daChon = true;
     } else {
-      if (ghe.trangThaiGhe === 'mttg02') {
+      if (ghe.trangThaiGhe === 'mttg02' && ghe.email === this.currentUser.email) {
         ghe.trangThaiGhe = 'mttg01';
         ghe.daChon = false;
       }
@@ -107,9 +123,12 @@ export class XemChiTietChuyenXeComponent implements OnInit, OnChanges, OnDestroy
     const data = {
       maGhe: ghe.maGhe,
       gia: ghe.gia,
-      trangThaiGhe: ghe.trangThaiGhe
+      trangThaiGhe: ghe.trangThaiGhe,
+      email: ghe.trangThaiGhe==='mttg02'?this.currentUser.email:''
     };
+
     if (ghe.key) {
+
       this.gheFirebaseService.update(ghe.key, data)
         .then(() => this.message = 'The ghe was updated successfully!')
         .catch(err => console.log(err));
@@ -123,7 +142,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, OnChanges, OnDestroy
     this.strGheDaChon = '';
     this.ghes.forEach(
       item => {
-        if (item.daChon) {
+        if (item.daChon && item.email === this.currentUser.email) {
           this.tongGheDaChon += 1;
           this.strGheDaChon += ((item.tang === 1) ? 'A' : 'B') + item.soGhe + ', ';
           // @ts-ignore
@@ -226,6 +245,8 @@ export class XemChiTietChuyenXeComponent implements OnInit, OnChanges, OnDestroy
           // console.log(data);
           if (this.ghesTheoDb) {
             this.ghesTheoDb.forEach(ghe => {
+              // ghe.email = this.currentUser.email;
+              ghe.email = '';
               // @ts-ignore
               this.gheFirebaseService.update(ghe.maGhe, ghe)
             });
@@ -433,11 +454,12 @@ export class XemChiTietChuyenXeComponent implements OnInit, OnChanges, OnDestroy
     this.gheDaChons = [];
     this.ghes.forEach(
       item => {
-        if (item.daChon) {
+        if (item.daChon && item.email === this.currentUser.email) {
           this.gheDaChons.push(item);
         }
       }
     );
+    console.log(this.gheDaChons);
     if (this.chuyenXe) {
       localStorage.setItem('chuyenXe', JSON.stringify(this.chuyenXe));
     }
@@ -448,6 +470,8 @@ export class XemChiTietChuyenXeComponent implements OnInit, OnChanges, OnDestroy
       localStorage.setItem('ghes', JSON.stringify(this.ghes));
     }
     localStorage.setItem('diemDi', JSON.stringify(this.diemDi));
+
+    this.router.navigate(['datve'])
   }
 
   private init(): void {
@@ -467,7 +491,7 @@ export class XemChiTietChuyenXeComponent implements OnInit, OnChanges, OnDestroy
     this.currentGhe = undefined;
     this.currentIndex = -1;
     this.retrieveGhe();
-    this.updateGhe();
+    // this.updateGhe();
   }
 
   retrieveGhe(): void {
@@ -558,6 +582,6 @@ export class XemChiTietChuyenXeComponent implements OnInit, OnChanges, OnDestroy
   }
 
   ngOnDestroy(): void {
-    this.removeAllGhe();
+    // this.removeAllGhe();
   }
 }

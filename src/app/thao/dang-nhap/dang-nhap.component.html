@@ -21,7 +21,7 @@
   <div class="container" >
     <div class="row">
       <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-        <form name="form" class="form" method="" action="" (ngSubmit)="onSubmit()">
+        <form name="form" class="form" method="" action="">
           <div class="card card-login card-hidden">
             <div class="card-header card-header-primary text-center">
               <h4 class="card-title">Đăng nhập</h4>
@@ -66,7 +66,7 @@
             <div class="card-footer justify-content-center">
 <!--              <button style="height:50px; width: 150px; border-radius: 10px; background: mediumpurple; color: black; text-align: center " >-->
               <a>
-                <input  type="submit"  class="btn btn-primary btn-block" value="Đăng nhập">
+                <input  type="submit"  class="btn btn-primary btn-block" (click)="onSubmit()" value="Đăng nhập">
               </a>
 <!--              </button>-->
             </div>

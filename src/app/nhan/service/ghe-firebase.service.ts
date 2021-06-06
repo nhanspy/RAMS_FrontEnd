@@ -39,6 +39,7 @@ export class GheFirebaseService {
   }
 
   update(key: string, value: any): Promise<void> {
+    // this.tutorialsRef = this.db.list('/' + value.email)
     return this.tutorialsRef.update(key, value);
   }
 

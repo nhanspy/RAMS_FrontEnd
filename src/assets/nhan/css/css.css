@@ -38244,6 +38244,9 @@ input:checked + .slider:before {
 .seat[data-v-28788e28]:hover {
     cursor: pointer;
 }
+.s-disabled[data-v-28788e28] {
+  /*pointer-events: none;*/
+}
 .s-disabled[data-v-28788e28]:hover {
     cursor: not-allowed !important;
 }
@@ -38272,6 +38275,13 @@ input:checked + .slider:before {
 .selecting[data-v-28788e28] {
     fill: #fdbab0;
     stroke: #f8967e;
+  /*border: 1px solid #f8967e;*/
+  /*background-color: #fdbab0;*/
+}
+
+.selecting-other[data-v-28788e28] {
+  fill: #f8eb89;
+  stroke: #f8e911;
   /*border: 1px solid #f8967e;*/
   /*background-color: #fdbab0;*/
 }
@@ -38438,11 +38448,19 @@ td[data-v-489ca06a] {
     color: #637280;
 }
 .seat-statuses .select[data-v-76009edb] {
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
-    border: 1px solid #f8967e;
-    background-color: #fdbab0;
+   width: 20px;
+   height: 20px;
+   border-radius: 4px;
+   border: 1px solid #f8967e;
+   background-color: #fdbab0;
+ }
+
+.seat-statuses .select-other[data-v-76009edb] {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid #f8e911;
+  background-color: #f8eb89;
 }
 .seat-statuses .disable[data-v-76009edb] {
     width: 20px;

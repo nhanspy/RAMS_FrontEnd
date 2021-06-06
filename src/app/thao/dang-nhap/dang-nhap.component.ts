@@ -44,7 +44,7 @@ export class DangNhapComponent implements OnInit {
     }
   }
   onSubmit(): void {
-    console.log(123);
+    console.log(321);
     this.authService.login(this.form).subscribe(
       data => {
         this.tokenStorage.saveToken(data.accessToken);
@@ -53,6 +53,7 @@ export class DangNhapComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
         // this.router.navigate(['quenmatkhau']);
+        window.location.reload();
         this.location.back();
       },
       err => {
@@ -63,6 +64,7 @@ export class DangNhapComponent implements OnInit {
     );
   }
   signInWithGoogle(): void {
+    console.log(123);
     // @ts-ignore
     this.oauthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       // @ts-ignore
@@ -71,9 +73,14 @@ export class DangNhapComponent implements OnInit {
         const tokenGoogle = new TokenDto(this.socialUser.idToken);
         this.authService.google(tokenGoogle).subscribe(
           res => {
-            this.tokenStorage.setToken(res.value);
+            console.log(res);
+            this.isLoginFailed = false;
             this.isLoggedIn = true;
-            this.router.navigate(['/timkiemtuyen']);
+            this.tokenStorage.saveToken(res.value);
+            this.tokenStorage.saveUser(data);
+            // this.tokenStorage.setToken(res.value);
+            // this.router.navigate(['/timkiemtuyen']);
+            this.location.back();
           },
           err => {
             console.log(err);
@@ -121,6 +128,8 @@ export class DangNhapComponent implements OnInit {
         this.isLoggedIn = false;
       }
     );
+    this.tokenStorage.logOut();
+    this.isLoggedIn = false;
   }
 
 }
