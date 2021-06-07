@@ -46,7 +46,7 @@ export class DatVeService {
       chuyenXe: veXe.chuyenXe.maChuyen,
       giaTien: veXe.giaTien,
       ghe: ghes,
-      thanhToan: false
+      isThanhToan: false
     });
   }
 
@@ -68,7 +68,7 @@ export class DatVeService {
   }
 
   sendMailPost(data: any){
-    this.urlStr = 'http://localhost:8080/send';
+    this.urlStr = 'http://localhost:8080/mail/send';
     console.log(this.urlStr);
     console.log(data);
     // @ts-ignore

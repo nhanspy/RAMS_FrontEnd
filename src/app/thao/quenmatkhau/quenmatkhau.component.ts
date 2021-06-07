@@ -47,6 +47,7 @@ export class QuenmatkhauComponent implements OnInit {
   }
   onSubmit() {
       this.isSubmited = true;
+      console.log(123);
       this.authService.resetPassword(this.formGroup.value.email).subscribe(
         data => {
           this.toaster.success("Email đã được gửi!", "Thành công: ", {

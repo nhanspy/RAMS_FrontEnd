@@ -97,6 +97,7 @@ export class DatVeComponent implements OnInit {
     this.datVeService.updateVeXe(this.arrStrMaVe).subscribe(
       data => {
         console.log(data);
+        console.log("update ve thanh cong");
       }, error => {
         console.error();
       }
@@ -130,10 +131,12 @@ export class DatVeComponent implements OnInit {
     this.datVeService.postVeXe(this.veXe).subscribe(
       data => {
         console.log(data);
+        console.log("post ve thanh ccong");
         if (data) {
           // localStorage.setItem('maVeChuaThanhToan', JSON.stringify(data));
           this.arrStrMaVe = data;
           this.updateVe();
+          this.updateGhe(this.arrStrMaVe);
         }
         // window.location.href = 'http://localhost:8080/' + this.tongTien;
       },
@@ -193,36 +196,14 @@ export class DatVeComponent implements OnInit {
         layout: 'vertical'
       },
       onApprove: (callBackData, actions) => {
+        this.thanhToan();
         console.log('onApprove - transaction was approved, but not authorized', callBackData, actions);
         actions.order.get().then((details: any) => {
           console.log('onApprove - you can get full order details inside onApprove: ', details);
         });
 
-        this.updateGhe(this.arrStrMaVe);
-        // const data = {
-        //   mail: this.currentUser.email,
-        //   ten: this.currentUser.username,
-        //   soDienThoai: this.currentUser.soDienThoai,
-        //   ghe: this.strGheDaChon,
-        //   maVe: this.maVe.toString(),
-        //   thoiGian: this.chuyenXe.thoiGian,
-        //   tong: this.tongTien
-        // }
-        //
-        // // this.datVeService.sendMail(this.currentUser.email, 'thao_ngu').subscribe(
-        // //   data => {
-        // //     console.log(data);
-        // //   }, error => {
-        // //     console.log(error);
-        // //   }
-        // // );
-        // this.datVeService.sendMailPost(data).subscribe(
-        //   data => {
-        //     console.log(data);
-        //   }, error => {
-        //     console.log(error);
-        //   }
-        // );
+      this.sendMail();
+
       },
       onClientAuthorization: (data) => {
         console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
@@ -236,17 +217,46 @@ export class DatVeComponent implements OnInit {
       },
       onClick: (data, actions) => {
         console.log('onClick', data, actions);
-        this.thanhToan();
+
       },
     };
   }
   private updateGhe(strMaVe: String[]) {
     console.log(strMaVe);
+    console.log('tien hanh update ghe');
     this.datVeService.updateGhe(strMaVe).subscribe(
       data => {
         console.log(data);
       }, error => {
         console.error();
+      }
+    );
+  }
+
+  private sendMail(){
+    const data = {
+      mail: this.currentUser.email,
+      ten: this.currentUser.username,
+      soDienThoai: this.currentUser.soDienThoai,
+      ghe: this.strGheDaChon,
+      maVe: this.maVe.toString(),
+      thoiGian: this.chuyenXe.thoiGian,
+      tongTien: this.tongTien,
+      tongGhe: this.tongGheDaChon
+    }
+
+    // this.datVeService.sendMail(this.currentUser.email, 'thao_ngu').subscribe(
+    //   data => {
+    //     console.log(data);
+    //   }, error => {
+    //     console.log(error);
+    //   }
+    // );
+    this.datVeService.sendMailPost(data).subscribe(
+      data => {
+        console.log(data);
+      }, error => {
+        console.log(error);
       }
     );
   }
