@@ -1,8 +1,8 @@
-<nav  class="navbar  navbar-transparent fixed-top navbar-expand-lg"  color-on-scroll="100" id="sectionsNav">
+<nav style="z-index: 10000000;"  class="navbar navbar-color-on-scroll fixed-top navbar-expand-lg"  color-on-scroll="100" id="sectionsNav">
   <!-- navbar-color-on-scroll  fixed-top  navbar-expand-lg-->
   <div class="container">
     <div class="navbar-translate">
-      <a class="navbar-brand" href="https://demos.creative-tim.com/material-kit-pro/index.html">
+      <a class="navbar-brand" href="#">
         RAMS </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="sr-only">Toggle navigation</span>
@@ -18,29 +18,18 @@
           </a>
         </li>
         <li class=" nav-item">
-          <a href="#" class=" nav-link" >Lịch trình
+          <a href="xemlichsu" class=" nav-link" *ngIf="isLogged && (isTruyVet || isNhaXe || isNhaXe)">Lịch sử chuyến
           </a>
         </li>
         <li class=" nav-item">
-          <a href="#" class=" nav-link" >Tin tức
+          <a href="qlnguoidung" class=" nav-link"*ngIf="isLogged && (isAdmin || isNhaXe) ">Quản lý
           </a>
         </li>
-        <li class=" nav-item">
-          <a href="#" class=" nav-link" >Giới thiệu
-          </a>
+        <li class="nav-item">
+          <a href="dangkyuser" class="nav-link" *ngIf="!isLogged"> Đăng ký nhà xe </a>
         </li>
-        <li class="dropdown nav-item">
-          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-            Đăng kí
-          </a>
-          <div class="dropdown-menu dropdown-with-icons">
-            <a href="/examples/about-us.html" class="dropdown-item">
-              <i class="material-icons">account_balance</i> Người dùng
-            </a>
-            <a href="/examples/blog-post.html" class="dropdown-item">
-              <i class="material-icons">art_track</i> Nhà xe
-            </a>
-          </div>
+        <li class="nav-item">
+          <a href="dangky" class="nav-link" *ngIf="!isLogged">Đăng ký người dùng </a>
         </li>
 <!--        <ul class="navbar-nav ml-auto" >-->
           <li class="nav-item disabled" *ngIf="isLogged">
@@ -49,17 +38,12 @@
               {{userLogged.username}}
             </a>
           </li>
-<!--        </ul>-->
-<!--        <li class="button-container nav-item iframe-extern">-->
         <img *ngIf="isLogged && userLogged.photoUrl" src="{{userLogged.photoUrl}}" class="rounded-circle mr-3" style="width: 50px">
-<!--        <button *ngIf="!isLogged" routerLink="/dangnhap" type="submit" style="background-color:#7a43b6" target="_blank" class="btn  btn-rose   btn-round btn-block">-->
-<!--          <i class="material-icons">face</i> Đăng nhập-->
-<!--        </button>-->
-        <a *ngIf="!isLogged" routerLink="/dangnhap" target="_blank" class="btn btn-rose btn-round btn-block XXsnipcss_extracted_selector_selectionXX">
+        <a *ngIf="!isLogged" style="width: 150px;" routerLink="/dangnhap" class="btn btn-rose btn-round btn-block XXsnipcss_extracted_selector_selectionXX">
           <i class="material-icons">face</i> Đăng nhập
         </a>
 
-        <button (click)="logOut()" *ngIf="isLogged" type="submit" style="background-color:#7a43b6" target="_blank" class="btn  btn-rose   btn-round btn-block">
+        <button (click)="logOut()" style="width: 150px;" *ngIf="isLogged" type="submit" style="background-color:#7a43b6" target="_blank" class="btn  btn-rose   btn-round btn-block">
           <i class="material-icons">face</i> Đăng xuất
         </button>
 

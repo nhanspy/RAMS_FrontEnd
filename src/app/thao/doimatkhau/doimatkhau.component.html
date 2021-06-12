@@ -17,7 +17,7 @@
 </head>
 
 <body class="login-page sidebar-collapse">
-<div class="page-header header-filter" style="background-image: url('/assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
+<div class="page-header header-filter" style="background-image: url('/assets/img/examples/background.jpg'); background-size: cover; background-position: top center;">
   <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
@@ -25,56 +25,50 @@
         <ng-template #sent>
           <div *ngIf="isSuccessful then accepted else denied"></div>
           <ng-template #accepted>
-        <form  name="form" class="form" method="" action="" [formGroup]="formGroup" (ngSubmit)="onSubmitt()">
-          <div class="card card-login card-hidden">
-            <h2 style="text-align: center">Cài lại mật khẩu</h2>
-            <div class="card-body " >
-              <p class="card-description text-center"></p>
-
-              <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="material-icons">lock_outline</i>
-                      </span>
+            <form name="form" class="form" method="" action="" [formGroup]="formGroup" (ngSubmit)="onSubmitt()">
+              <div class="card card-login card-hidden">
+                <h2 style="text-align: center">Cài lại mật khẩu</h2>
+                <div class="card-body " >
+                  <p class="card-description text-center"></p>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text">
+                            <i class="material-icons">lock_outline</i>
+                          </span>
+                      </div>
+                      <input formControlName="newPassword" type="password" class="form-control" placeholder="Mật khẩu">
+                    </div>
                   </div>
-                  <input formControlName="newPassword" type="password" class="form-control" placeholder="Mật khẩu">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="material-icons">lock_outline</i>
-                      </span>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text">
+                            <i class="material-icons">lock_outline</i>
+                          </span>
+                      </div>
+                      <input formControlName="repeatNewPassword" type="password" class="form-control" placeholder="Xác nhận mật khẩu">
+                    </div>
                   </div>
-                  <input formControlName="repeatNewPassword" type="password" class="form-control" placeholder="Xác nhận mật khẩu">
+                  <div class="error-place">
+                    <div *ngFor="let validation of validation_messages.password">
+                    </div>
+                  </div>
+                  <div *ngIf="isSubmited then submited else notSubmited"></div>
+                  <ng-template #notSubmited>
+                    <button  class="btn btn-primary btn-block" type="submit">Xác nhận</button>
+                  </ng-template>
+                  <ng-template #submited>
+                    <button class="btn btn-lg btn-primary text-uppercase" type="button" disabled>
+                      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                      Loading...
+                    </button>
+                  </ng-template>
+                </div>
+                <div class="card-footer justify-content-center">
                 </div>
               </div>
-
-              <div class="error-place">
-                <div *ngFor="let validation of validation_messages.password">
-                  <!--   <small class="text-danger" *ngIf="formGroup.get('repeatNewPassword').hasError(validation.type) && (formGroup.get('repeatNewPassword').touched || formGroup.get('repeatNewPassword').pristine)">{{validation.message}}</small>-->
-                </div>
-              </div>
-
-              <div *ngIf="isSubmited then submited else notSubmited"></div>
-              <ng-template #notSubmited>
-                <button  class="btn btn-primary btn-block" type="submit">Xác nhận</button>
-              </ng-template>
-              <ng-template #submited>
-                <button class="btn btn-lg btn-primary text-uppercase" type="button" disabled>
-                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                  Loading...
-                </button>
-              </ng-template>
-
-            </div>
-            <div class="card-footer justify-content-center">
-            </div>
-          </div>
-        </form>
+            </form>
           </ng-template>
           <ng-template #denied>
           </ng-template>

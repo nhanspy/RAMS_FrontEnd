@@ -41,14 +41,13 @@
                   </div>
                 </div>
                 <div class="col-lg-4 col-md-6 ">
-                  <div *ngIf="isSubmited then submited else notsubmited"></div>
+                  <div *ngIf="isSubmited && !isSendMail then submited else notsubmited"></div>
                   <ng-template #notsubmited>
-                  <button type="submit" class="btn btn-primary btn-block">Xác nhận</button>
+                    <button type="submit" class="btn btn-primary btn-block">Xác nhận</button>
                   </ng-template>
                   <ng-template #submited>
                     <button class="btn btn-lg btn-primary text-uppercase" type="button" disabled>
                       <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-
                     </button>
                   </ng-template>
                 </div>

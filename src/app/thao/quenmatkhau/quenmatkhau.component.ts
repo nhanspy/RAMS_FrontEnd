@@ -20,6 +20,7 @@ export class QuenmatkhauComponent implements OnInit {
   errorMessage = '';
   isLoggedIn = false;
   isSubmited = false;
+  isSendMail = false;
   roles: string[] = [];
   // formValid = false;
 
@@ -53,8 +54,9 @@ export class QuenmatkhauComponent implements OnInit {
           this.toaster.success("Email đã được gửi!", "Thành công: ", {
             timeOut: 2500,
             extendedTimeOut: 1500
-
           });
+          this.isSendMail = true;
+          alert("Đã gủi mail!!");
           // this.router.navigateByUrl("/verifypass");
 
         },

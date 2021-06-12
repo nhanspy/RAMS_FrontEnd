@@ -15,6 +15,11 @@ export class HeaderThaoComponent implements OnInit {
   userLogged: any;
   // @ts-ignore
   isLogged: boolean;
+  isAdmin = false;
+  isNhaXe = false;
+  isTruyVet = false;
+  // @ts-ignore
+  private roles: string[];
   constructor(
     private oauthService: SocialAuthService,
     private router: Router,
@@ -22,6 +27,7 @@ export class HeaderThaoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // window.location.reload();
     this.oauthService.authState.subscribe(
       data => {
         this.userLogged = data;
@@ -31,6 +37,11 @@ export class HeaderThaoComponent implements OnInit {
     if (!this.isLogged){
       this.userLogged = this.tokenStorage.getUser();
       if (this.userLogged) this.isLogged = true;
+      const user = this.tokenStorage.getUser();
+      this.roles = user.roles;
+      this.isAdmin = this.roles.includes('ROLE_ADMIN');
+      this.isNhaXe = this.roles.includes('ROLE_NHAXE');
+      this.isTruyVet = this.roles.includes('ROLE_TRUYVET');
     }
   }
   logOut(): void {

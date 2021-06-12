@@ -40,7 +40,7 @@ export class DangNhapComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
-      // this.location.back();
+      // this.win;
     }
   }
   onSubmit(): void {
@@ -52,9 +52,10 @@ export class DangNhapComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        // this.router.navigate(['quenmatkhau']);
+        // this.router.navigate(this.location.back());
         window.location.reload();
         this.location.back();
+        // window.location.reload();
       },
       err => {
         console.log(err);
@@ -80,6 +81,7 @@ export class DangNhapComponent implements OnInit {
             this.tokenStorage.saveUser(data);
             // this.tokenStorage.setToken(res.value);
             // this.router.navigate(['/timkiemtuyen']);
+            window.location.reload();
             this.location.back();
           },
           err => {
@@ -105,6 +107,7 @@ export class DangNhapComponent implements OnInit {
           res => {
             this.tokenStorage.setToken(res.value);
             this.isLoggedIn = true;
+            window.location.reload();
             this.router.navigate(['/']);
           },
           err => {
