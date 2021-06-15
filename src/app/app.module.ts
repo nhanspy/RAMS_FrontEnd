@@ -45,7 +45,7 @@ import {QlXeComponent} from './kien/ql-xe/ql-xe.component';
 import {QlGheComponent} from './kien/ql-ghe/ql-ghe.component';
 import {FooterThaoComponent} from './thao/footer/footer.component';
 import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
-import {APP_BASE_HREF} from '@angular/common';
+import {APP_BASE_HREF, DatePipe} from '@angular/common';
 import {authInterceptorProviders} from './thao/_helpers/auth.interceptor';
 import {productoInterceptor} from './thao/interceptors/producto.interceptor';
 import {HeaderThaoComponent} from './thao/header/header.component';
@@ -124,7 +124,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
         ],
       } as SocialAuthServiceConfig,
     },
-    productoInterceptor
+    productoInterceptor,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

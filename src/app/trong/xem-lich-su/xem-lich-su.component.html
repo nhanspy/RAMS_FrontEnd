@@ -7,8 +7,8 @@
       <thead>
       <tr>
         <td style="width: 20px"></td>
-        <td><input style="text-align: center" type="text" class="form-control" placeholder="Tìm theo chuyến xe"
-                   #txtSearch (keyup)="searchMaChuyen(txtSearch.value)"></td>
+<!--        <td><input style="text-align: center" type="text" class="form-control" placeholder="Tìm theo chuyến xe"-->
+<!--                   #txtSearch (keyup)="searchMaChuyen(txtSearch.value)"></td>-->
         <td><input style="text-align: center" type="text" class="form-control" placeholder="Tìm theo tên nhà xe"
                    #txtSearch4 (keyup)="searchMaXe(txtSearch4.value)"></td>
         <td><input style="text-align: center" type="text" class="form-control" placeholder="Tìm theo bến đi" #txtSearch1
@@ -20,7 +20,7 @@
       </tr>
       <tr class="filters">
         <th style="width: 20px">#</th>
-        <th><label style="text-align: center">Tên chuyến xe</label></th>
+<!--        <th><label style="text-align: center">Tên chuyến xe</label></th>-->
         <th><label style="text-align: center">Tên nhà xe</label></th>
         <th><label style="text-align: center">Bến đi</label></th>
         <th><label style="text-align: center">Bến đến</label></th>
@@ -32,12 +32,12 @@
   <div class="tbl-content">
     <table cellpadding="0" cellspacing="0" border="0">
       <tbody *ngIf="xemlichsulist.length !=0;else elseBlock">
-      <tr *ngFor="let xemLichSu of xemlichsulist | paginate: { id: 'listing_pagination',
+      <tr  [routerLink]="['/lichsu']" [queryParams]="{maChuyenXe: xemLichSu.maChuyen}" *ngFor="let xemLichSu of xemlichsulist | paginate: { id: 'listing_pagination',
                                                       itemsPerPage: 10,
                                                       currentPage: page,
                                                       totalItems: totalRec}; let i = index">
         <td style="width: 20px">{{i+1}}</td>
-        <td>{{xemLichSu.maChuyen}}</td>
+<!--        <td>{{xemLichSu.maChuyen}}</td>-->
         <td>{{xemLichSu.xe.nhaXe.tenNhaXe}}</td>
         <td>{{xemLichSu.benDi.tenBen}}</td>
         <td>{{xemLichSu.benDen.tenBen}}</td>

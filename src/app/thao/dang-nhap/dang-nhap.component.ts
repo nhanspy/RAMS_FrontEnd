@@ -53,8 +53,9 @@ export class DangNhapComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
         // this.router.navigate(this.location.back());
-        window.location.reload();
-        this.location.back();
+        history.back();
+        // window.location.reload();
+        // this.location.back();
         // window.location.reload();
       },
       err => {
@@ -83,6 +84,10 @@ export class DangNhapComponent implements OnInit {
             // this.router.navigate(['/timkiemtuyen']);
             window.location.reload();
             this.location.back();
+            history.back();
+            // this.router.navigate(['dangnhap']).then(() => {
+            //   window.location.reload();
+            // });
           },
           err => {
             console.log(err);

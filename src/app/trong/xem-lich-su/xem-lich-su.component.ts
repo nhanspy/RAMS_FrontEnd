@@ -1,6 +1,7 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ChuyenXe} from '../../nhan/Models/ChuyenXe.class';
 import {XemLichSuService} from '../Services/xem-lich-su.service';
+import {DatePipe} from '@angular/common';
 
 
 
@@ -30,7 +31,8 @@ export class XemLichSuComponent implements OnInit, OnChanges {
   // @ts-ignore
   xe: Xe;
 
-  constructor(private xemLichSuService: XemLichSuService) {
+  constructor(private xemLichSuService: XemLichSuService,
+              private datePipe: DatePipe) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -42,23 +44,6 @@ export class XemLichSuComponent implements OnInit, OnChanges {
     this.xemLichSuService.readAll().subscribe(data => {
       this.xemlichsulist = data;
       this.xemlichsulistRoot = data;
-      // @ts-ignore
-      // this.totalRec = this.xemlichsulist.length;
-      // console.log(this.totalRec);
-      // console.log(this.page);
-      // tslint:disable-next-line:no-shadowed-variable
-      // this.xemLichSuService.getXeTheoChuyenXe(this.xemlichsulist[0]).subscribe(data => {
-      //   // @ts-ignore
-      //   this.xe = data;
-      //   this.xemLichSuService.getNhaXeTheoXe(this.xe).subscribe(data => {
-      //     // @ts-ignore
-      //     this.nhaXe = data;
-      //     this.tenNhaXe = this.nhaXe.tenNhaXe;
-      //     console.log(this.tenNhaXe);
-      //   });
-      // }, error => {
-      //   console.log('loi: ' + error);
-      // });
     }, error => {
       console.log('loi me roi: ' + error);
     });
@@ -78,31 +63,34 @@ export class XemLichSuComponent implements OnInit, OnChanges {
     this.xemlichsulist = this.xemlichsulistRoot;
     if (this.keywordMaChuyen){
       this.xemlichsulist = this.xemlichsulist.filter( item => {
-        return item.maChuyen.includes(this.keywordMaChuyen);
+        return item.maChuyen.toLowerCase().includes(this.keywordMaChuyen.toLowerCase());
       });
       dem++;
     }
     if (this.keywordBenDi){
       this.xemlichsulist = this.xemlichsulist.filter( item => {
-        return item.benDi.tenBen.includes(this.keywordBenDi);
+        return item.benDi.tenBen.toLowerCase().includes(this.keywordBenDi.toLowerCase());
       });
       dem++;
     }
     if (this.keywordBenDen){
       this.xemlichsulist = this.xemlichsulist.filter( item => {
-        return item.benDen.tenBen.includes(this.keywordBenDen);
+        return item.benDen.tenBen.toLowerCase().includes(this.keywordBenDen.toLowerCase());
       });
       dem++;
     }
     if (this.keywordThoiGian){
       this.xemlichsulist = this.xemlichsulist.filter( item => {
-        return item.thoiGian.includes(this.keywordThoiGian);
+        // @ts-ignore
+        // console.log(this.datePipe.transform(item.thoiGian, 'dd/MM/yyyy'));
+        // @ts-ignore
+        return this.datePipe.transform(item.thoiGian, 'dd/MM/yyyy').includes(this.keywordThoiGian);
       });
       dem++;
     }
     if (this.keywordMaXe){
       this.xemlichsulist = this.xemlichsulist.filter( item => {
-        return item.xe.nhaXe.tenNhaXe.includes(this.keywordMaXe);
+        return item.xe.nhaXe.tenNhaXe.toLowerCase().includes(this.keywordMaXe.toLowerCase());
       });
       dem++;
     }
@@ -125,6 +113,7 @@ export class XemLichSuComponent implements OnInit, OnChanges {
   }
   searchThoiGian(value: string){
     this.keywordThoiGian = value;
+    console.log(value);
     this.search();
   }
   searchMaXe(value: string){

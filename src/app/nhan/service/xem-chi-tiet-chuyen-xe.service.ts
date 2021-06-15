@@ -20,6 +20,8 @@ export class XemChiTietChuyenXeService {
   getChuyen(ngay: string): Observable<any> {
     // @ts-ignore
     return this._httpClient.get(baseURL + '/chuyenxe/ngay/' + ngay);
+  }getTrangThaiGhe(): Observable<any>{
+    return this._httpClient.get(baseURL + '/trangthaighe');
   }
 
   getNhaXe(): Observable<any> {
@@ -31,9 +33,7 @@ export class XemChiTietChuyenXeService {
     return this._httpClient.get(baseURL + '/ghe/xe/' + maXe);
   }
 
-  getTrangThaiGhe(): Observable<any>{
-    return this._httpClient.get(baseURL + '/trangthaighe');
-  }
+
 
   getBenTheoTinh(tinhThanh: TinhThanh, bens: Ben[]): Ben[] {
     // tslint:disable-next-line:label-position no-unused-expression

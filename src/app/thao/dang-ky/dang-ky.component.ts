@@ -88,15 +88,16 @@ export class DangKyComponent implements OnInit {
               extendedTimeOut: 1500
             });
             alert('Đăng ký thành công');
-            // this.router.navigate(['dangnhap']).then(() => {
-            //   window.location.reload();
-            // });
+            this.router.navigate(['dangnhap']).then(() => {
+              window.location.reload();
+            });
           },
           err => {
             this.toastr.error(err.error.message, 'Lỗi: ', {
               timeOut: 1500,
               extendedTimeOut: 1500
             });
+            alert('Email hoặc username đã được sử dụng!');
           }
         );
       }

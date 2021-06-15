@@ -3,7 +3,7 @@
     <div class="row" >
       <div class="col-md-8 ml-auto mr-auto">
         <div class="brand">
-
+          <!--Chổ này thêm ở hình background trên-->
         </div>
       </div>
     </div>
@@ -12,8 +12,49 @@
 <div class="main main-raised">
   <div class="section section-basic">
     <div data-v-511c74d1="" class="child">
-      <div class="">
-        <div data-v-2d892928="" class="">
+      <div class="row center">
+        <div data-v-2d892928="" class="col-sm-12 col-xs-12 col-ms-12 half col-lg-5 col-md-5">
+          <div data-v-9ebeba40="" data-v-2d892928="" class="info-container">
+            <div data-v-9ebeba40="" class="title one-way-title">
+              Thông tin chuyến xe
+            </div>
+            <div data-v-9ebeba40="" class="route-list">
+              <div data-v-9ebeba40="" class="start-time">
+                <div data-v-9ebeba40="" class="start-time-title">Nhà xe: <span style="font-weight: 400">{{this.chuyenXe.xe.nhaXe.tenNhaXe}}</span></div>
+              </div>
+              <div data-v-9ebeba40="" class="start-time">
+                <div data-v-9ebeba40="" class="start-time-title">Biển số xe: <span style="font-weight: 400">{{this.chuyenXe.xe.bienSoXe}}</span></div>
+              </div>
+              <div data-v-9ebeba40="" class="start-time">
+                <div data-v-9ebeba40="" class="start-time-title">Bến đi: <span style="font-weight: 400">{{this.chuyenXe.benDi.tenBen}}</span></div>
+              </div>
+              <div data-v-9ebeba40="" class="start-time">
+                <div data-v-9ebeba40="" class="start-time-title">Bến đến: <span style="font-weight: 400">{{this.chuyenXe.benDi.tenBen}}</span></div>
+              </div>
+              <div data-v-9ebeba40="" class="start-time">
+                <div data-v-9ebeba40="" class="start-time-title">Thời gian: <span style="font-weight: 400">{{this.chuyenXe.thoiGian | date:"hh:mm dd/MM/yyyy"}}</span></div>
+              </div>
+            </div>
+          </div>
+          <div data-v-460fb019="" data-v-2d892928="" class="time-line-container">
+            <div data-v-9ebeba40="" class="title one-way-title">
+              Thông tin người dùng
+            </div>
+            <div data-v-9ebeba40="" class="route-list">
+              <div data-v-9ebeba40="" class="start-time">
+                <div data-v-9ebeba40="" class="start-time-title" *ngIf="user.ten">Tên: <span style="font-weight: 400">{{this.user.ten}}</span></div>
+                <div data-v-9ebeba40="" class="start-time-title" *ngIf="!user.ten">Tên: <span style="font-weight: 400">{{this.user.username}}</span></div>
+              </div>
+              <div data-v-9ebeba40="" class="start-time">
+                <div data-v-9ebeba40="" class="start-time-title">Email: <span style="font-weight: 400">{{this.user.email}}</span></div>
+              </div>
+              <div data-v-9ebeba40="" class="start-time">
+                <div data-v-9ebeba40="" class="start-time-title">Số điện thoại: <span style="font-weight: 400">{{this.user.soDienThoai}}</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-v-2d892928="" class="col-lg-7 col-md-7 col-sm-12 col-xs-12 col-ms-12 half">
           <div data-v-76009edb="" data-v-2d892928="" class="seat-map-container margin">
             <div data-v-76009edb="" class="title">Sơ đồ ghế</div>
             <div data-v-76009edb="" class="seat-tables">
@@ -25,11 +66,10 @@
                 <table data-v-489ca06a="" class="table seat-table">
                   <tbody data-v-489ca06a="">
                   <tr data-v-489ca06a="" class=""  *ngFor="let ghes of newGhesTang1">
-                    <td data-v-489ca06a="" class="" *ngFor="let ghe of ghes" >
-<!--                    <td data-v-489ca06a="" class="" *ngFor="let ghe of ghes" (click)="chonGhe(ghe)">-->
-                      <svg data-v-28788e28="" data-v-489ca06a="" xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" class="seat" [ngClass]="{'s-disabled':ghe.trangThaiGhe === 'mttg03' || ghe.trangThaiGhe === 'mttg00' }" pos="0">
+                    <td data-v-489ca06a="" class="" *ngFor="let ghe of ghes" (click)="chonGhe(ghe)">
+                      <svg data-v-28788e28="" data-v-489ca06a="" xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" class="seat" [ngClass]="{'s-disabled':!(ghe.trangThaiGhe === 'mttg03' || ghe.trangThaiGhe === 'mttg00' || (ghe.trangThaiGhe === 'mttg02' && ghe.email != currentUser.email))} " pos="0">
                         <g data-v-28788e28="" fill="none" fill-rule="evenodd">
-                          <g data-v-28788e28="" [ngClass]="{'active':ghe.trangThaiGhe === 'mttg01', 'selecting':ghe.trangThaiGhe === 'mttg02', 'disabled':ghe.trangThaiGhe === 'mttg03'}">
+                          <g data-v-28788e28="" [ngClass]="{'active':ghe.trangThaiGhe === 'mttg01', 'selecting':ghe.trangThaiGhe === 'mttg02' && ghe.email === currentUser.email, 'disabled':ghe.trangThaiGhe === 'mttg03', 'selecting-other':ghe.trangThaiGhe === 'mttg02' && ghe.email != currentUser.email}">
                             <path
                               data-v-28788e28=""
                               d="M8.625.5c-3.038 0-5.5 2.462-5.5 5.5v27.875c0 .828.672 1.5 1.5 1.5h32.75c.828 0 1.5-.672 1.5-1.5V6c0-3.038-2.462-5.5-5.5-5.5H8.625zM5.75 35.5V38c0 1.933 1.567 3.5 3.5 3.5h23.5c1.933 0 3.5-1.567 3.5-3.5v-2.5H5.75z"
@@ -54,11 +94,10 @@
                 <table data-v-489ca06a="" class="table seat-table">
                   <tbody data-v-489ca06a="">
                   <tr data-v-489ca06a="" class=""  *ngFor="let ghes of newGhesTang2">
-                    <td data-v-489ca06a="" class="" *ngFor="let ghe of ghes">
-<!--                    <td data-v-489ca06a="" class="" *ngFor="let ghe of ghes" (click)="chonGhe(ghe)">-->
-                      <svg data-v-28788e28="" data-v-489ca06a="" xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" class="seat" [ngClass]="{'s-disabled':ghe.trangThaiGhe === 'mttg03' || ghe.trangThaiGhe === 'mttg00' }" pos="0">
+                    <td data-v-489ca06a="" class="" *ngFor="let ghe of ghes" (click)="chonGhe(ghe)">
+                      <svg data-v-28788e28="" data-v-489ca06a="" xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" class="seat" [ngClass]="{'s-disabled':!(ghe.trangThaiGhe === 'mttg03' || ghe.trangThaiGhe === 'mttg00' || (ghe.trangThaiGhe === 'mttg02' && ghe.email != currentUser.email))}" pos="0">
                         <g data-v-28788e28="" fill="none" fill-rule="evenodd">
-                          <g data-v-28788e28="" [ngClass]="{'active':ghe.trangThaiGhe === 'mttg01', 'selecting':ghe.trangThaiGhe === 'mttg02', 'disabled':ghe.trangThaiGhe === 'mttg03'}">
+                          <g data-v-28788e28="" [ngClass]="{'active':ghe.trangThaiGhe === 'mttg01', 'selecting':ghe.trangThaiGhe === 'mttg02', 'disabled':ghe.trangThaiGhe === 'mttg03' , 'selecting-other':ghe.trangThaiGhe === 'mttg02' && ghe.email != currentUser.email}">
                             <path
                               data-v-28788e28=""
                               d="M8.625.5c-3.038 0-5.5 2.462-5.5 5.5v27.875c0 .828.672 1.5 1.5 1.5h32.75c.828 0 1.5-.672 1.5-1.5V6c0-3.038-2.462-5.5-5.5-5.5H8.625zM5.75 35.5V38c0 1.933 1.567 3.5 3.5 3.5h23.5c1.933 0 3.5-1.567 3.5-3.5v-2.5H5.75z"
@@ -78,15 +117,12 @@
                   </tbody>
                 </table>
               </div>
+              <!--fragment#9619d48026#tail-->
             </div>
             <div data-v-76009edb="" class="seat-statuses">
               <div data-v-76009edb="" class="status-item">
                 <div data-v-76009edb="" class="active"></div>
                 <div data-v-76009edb="" class="status-text">Trống</div>
-              </div>
-              <div data-v-76009edb="" class="status-item">
-                <div data-v-76009edb="" class="select"></div>
-                <div data-v-76009edb="" class="status-text">Đang chọn</div>
               </div>
               <div data-v-76009edb="" class="status-item">
                 <div data-v-76009edb="" class="disable"></div>
@@ -99,11 +135,9 @@
     </div>
   </div>
 </div>
-<!-- Optional JavaScript -->
+{{message}}
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<!--</body>-->
-<!--</html>-->
